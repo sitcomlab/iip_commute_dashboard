@@ -1,0 +1,22 @@
+import { BaseTile, ImageProps } from './BaseTile'
+
+export type SuccessStoryTileProps = {
+  children: React.ReactElement | React.ReactElement[]
+} & ImageProps
+
+/**
+ * A tile that represents a success story
+ * @param SuccessStoryTileProps properties of the success story tile
+ * @returns SuccessStoryTileProps
+ */
+export default function SuccessStoryTile({
+  children,
+  ...props
+}: SuccessStoryTileProps) {
+  return (
+    <BaseTile variant="successStory" {...props}>
+      <h1>Erfolgsgeschichte</h1>
+      <>{children}</>
+    </BaseTile>
+  )
+}
