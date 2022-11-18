@@ -1,3 +1,4 @@
+import { Button } from '../Elements/Button'
 import { BaseTile, ImageProps } from './BaseTile'
 
 export type SuccessStoryTileProps = {
@@ -14,7 +15,11 @@ export default function SuccessStoryTile({
   ...props
 }: SuccessStoryTileProps) {
   return (
-    <BaseTile variant="successStory" {...props}>
+    <BaseTile
+      footerCenterElement={<Button>Weitere Informationen</Button>}
+      variant="successStory"
+      {...props}
+    >
       <h1>Erfolgsgeschichte</h1>
       <>{children}</>
     </BaseTile>
