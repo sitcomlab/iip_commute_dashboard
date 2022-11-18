@@ -1,3 +1,4 @@
+import Progress from '@/components/Charts/Progress'
 import { Button } from '@/components/Elements/Button'
 import { Spacer } from '@/components/Elements/Spacer'
 import { Spinner } from '@/components/Elements/Spinner'
@@ -19,6 +20,7 @@ export default function Home() {
           porro magni beatae ad veritatis explicabo numquam quidem nisi eius!
           Nihil.
         </div>
+        <Progress progress={33} />
       </BaseTile>
       <Spacer size="lg" />
       <BaseTile
@@ -33,6 +35,7 @@ export default function Home() {
           porro magni beatae ad veritatis explicabo numquam quidem nisi eius!
           Nihil.
         </div>
+        <Progress progress={42} />
       </BaseTile>
       <Spacer size="lg" />
       <SuccessStoryTile
