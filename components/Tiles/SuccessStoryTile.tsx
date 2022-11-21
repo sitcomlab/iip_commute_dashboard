@@ -1,4 +1,5 @@
 import { Button } from '../Elements/Button'
+import { Spacer } from '../Elements/Spacer'
 import { BaseTile, ImageProps } from './BaseTile'
 
 export type SuccessStoryTileProps = {
@@ -20,7 +21,8 @@ export default function SuccessStoryTile({
       variant="successStory"
       {...props}
     >
-      <h1>Erfolgsgeschichte</h1>
+      <h1 className="text-lg font-semibold text-blue-900">Erfolgsgeschichte</h1>
+      <Spacer />
       <>{children}</>
     </BaseTile>
   )
