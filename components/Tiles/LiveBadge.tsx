@@ -1,6 +1,10 @@
 function PulsatingCircle() {
   return (
-    <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className="h-full w-full"
+      viewBox="0 0 40 40"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <circle cx="20" cy="20" fill="none" r="10" stroke="#fff" strokeWidth="2">
         <animate
           attributeName="r"
