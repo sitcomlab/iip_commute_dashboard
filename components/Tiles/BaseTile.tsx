@@ -2,8 +2,8 @@ import clsx from 'clsx'
 import TileFooter from './TileFooter'
 
 const variants = {
-  primary: 'bg-green-100 rounded-3xl',
-  successStory: 'bg-blue-100 rounded-lg',
+  primary: 'bg-primary-100 rounded-3xl',
+  successStory: 'bg-secondary rounded-lg',
 }
 
 export type ImageProps =
