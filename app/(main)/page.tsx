@@ -10,7 +10,7 @@ import SuccessStoryTile from '@/components/Tiles/SuccessStoryTile'
 export default function Home() {
   return (
     <div>
-      <div className="gap-8 md:columns-2">
+      <div className="gap-8 lg:columns-2">
         <ChartTile />
 
         <BaseTile footerCenterElement={<LiveBadge />}>
