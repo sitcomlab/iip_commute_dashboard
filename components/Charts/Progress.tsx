@@ -8,13 +8,13 @@ interface Props {
 
 function Progress({ progress }: Props) {
   return (
-    <div className="rounded-full border-2 border-blue-900 p-[.25rem]">
+    <div className="rounded-full border-2 border-primary p-[.25rem]">
       <ProgressPrimitive.Root
         className="h-3 w-full overflow-hidden rounded-full"
         value={progress}
       >
         <ProgressPrimitive.Indicator
-          className="h-full rounded-full bg-blue-500 duration-300 ease-in-out"
+          className="flex h-full rounded-full bg-primary duration-300 ease-in-out"
           style={{ width: `${progress}%` }}
         />
       </ProgressPrimitive.Root>
