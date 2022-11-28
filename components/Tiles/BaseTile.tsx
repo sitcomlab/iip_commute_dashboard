@@ -3,6 +3,7 @@ import TileFooter from './TileFooter'
 
 const variants = {
   primary: 'bg-primary-100 rounded-3xl',
+  mobility: 'bg-green-100 rounded-3xl',
   successStory: 'bg-secondary rounded-lg',
 }
 

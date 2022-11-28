@@ -2,6 +2,7 @@ import Progress from '@/components/Charts/Progress'
 import { Spacer } from '@/components/Elements/Spacer'
 import Slider from '@/components/Inputs/Slider'
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
+import ChartTile from '@/components/Mobility/Bicycle/ChartTile'
 import { BaseTile } from '@/components/Tiles/BaseTile'
 import LiveBadge from '@/components/Tiles/LiveBadge'
 import SuccessStoryTile from '@/components/Tiles/SuccessStoryTile'
@@ -10,19 +11,7 @@ export default function Home() {
   return (
     <div>
       <div className="gap-8 md:columns-2">
-        <BaseTile>
-          <h1 className="text-6xl font-bold text-green-500">Hello World</h1>
-          <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-            cumque repellat officia sunt quibusdam ut, hic eaque quo! Expedita
-            porro magni beatae ad veritatis explicabo numquam quidem nisi eius!
-            Nihil. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Mollitia cumque repellat officia sunt quibusdam ut, hic eaque quo!
-            Expedita porro magni beatae ad veritatis explicabo numquam quidem
-            nisi eius! Nihil.
-          </div>
-          <Progress progress={33} />
-        </BaseTile>
+        <ChartTile />
 
         <BaseTile footerCenterElement={<LiveBadge />}>
           <h1 className="text-6xl font-bold text-green-500">Hello World</h1>
