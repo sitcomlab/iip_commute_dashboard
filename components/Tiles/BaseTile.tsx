@@ -44,7 +44,11 @@ export function BaseTile({
         {startImage}
         <div className="flex w-full flex-col justify-between p-8">
           <div>{children}</div>
-          <TileFooter>{footerCenterElement}</TileFooter>
+          <TileFooter
+            variant={variant === 'successStory' ? 'inverse' : 'primary'}
+          >
+            {footerCenterElement}
+          </TileFooter>
         </div>
         {endImage}
       </div>
