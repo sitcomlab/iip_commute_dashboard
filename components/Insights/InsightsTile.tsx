@@ -1,26 +1,35 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 type InsightsTileProps = {
   title: string
+  link: string
+  image: string
 }
 
-export default function InsightsTile({ title }: InsightsTileProps) {
+export default function InsightsTile({
+  title,
+  link,
+  image,
+}: InsightsTileProps) {
   return (
-    <div className="group w-full overflow-hidden rounded-t rounded-b-3xl bg-secondary-500 transition-all hover:bg-secondary-100">
-      <div className="p-8 text-white group-hover:text-secondary-500">
-        <p className="text-4xl">{title}</p>
-        <p className="mt-8 underline">Alle anzeigen</p>
-      </div>
-      <div className="relative h-56">
-        <Image
-          alt={'Image'}
-          className="object-cover"
-          fill
-          src={
-            'https://doinggeoandethics.files.wordpress.com/2022/11/grafik-19.png'
-          }
-        />
-      </div>
+    <div className="h-full bg-white">
+      <Link href={link}>
+        <div className="group flex h-full w-full flex-col overflow-hidden rounded-t rounded-b-3xl bg-secondary-500 transition-all hover:bg-opacity-30">
+          <div className="flex-1 p-8 text-white group-hover:text-secondary-500">
+            <p className="text-4xl">{title}</p>
+            <p className="mt-8 underline">Alle anzeigen</p>
+          </div>
+          <div className="relative h-72 overflow-hidden">
+            <Image
+              alt={'Image'}
+              className="object-cover transition-all group-hover:scale-105"
+              fill
+              src={image}
+            />
+          </div>
+        </div>
+      </Link>
     </div>
   )
 }

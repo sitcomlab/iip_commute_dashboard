@@ -1,6 +1,20 @@
+import directus, { insightsCollectionName } from '@/lib/directus'
+import { use } from 'react'
 import InsightsTile from './InsightsTile'
 
+const getInsightsData = async () => {
+  const { data } = await directus.items(insightsCollectionName).readByQuery({
+    filter: {
+      status: 'published',
+    },
+    limit: 3,
+  })
+  return data
+}
+
 export default function InsightsContainer() {
+  const insights = use(getInsightsData())
+
   return (
     <div className="relative w-full">
       <div className="absolute top-0 left-0 -z-10 h-1/3 w-full bg-primary-50"></div>
@@ -8,10 +22,16 @@ export default function InsightsContainer() {
         <div className="mb-8 flex w-full justify-end">
           <span className="text-4xl text-secondary-500">Einblicke</span>
         </div>
-        <div className="flex w-full flex-col items-center justify-between space-y-4 md:flex-row md:space-x-4 md:space-y-0">
-          <InsightsTile title="Große Projekte - große Wirkung" />
-          <InsightsTile title="Münster auf dem Weg zur Klimaneutralität" />
-          <InsightsTile title="Große Projekte - große Wirkung" />
+        <div className="flex w-full flex-col items-center justify-between space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0">
+          {insights?.map(({ id, title, link, image }) => (
+            <div className="flex-1 self-stretch" key={id}>
+              <InsightsTile
+                image={`${process.env.NEXT_PUBLIC_DIRECTUS_URL}/assets/${image}`}
+                link={link}
+                title={title}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>
