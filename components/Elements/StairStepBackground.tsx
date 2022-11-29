@@ -2,6 +2,7 @@ import clsx from 'clsx'
 
 const variants = {
   primary: 'bg-primary-50',
+  secondary: 'bg-secondary-500 bg-opacity-20',
 }
 
 export type StairStepBackgroundProps = {
