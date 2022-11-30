@@ -1,6 +1,8 @@
 import Progress from '@/components/Charts/Progress'
+import MoreDetails from '@/components/Elements/MoreDetails'
 import { Spacer } from '@/components/Elements/Spacer'
 import StairStepBackground from '@/components/Elements/StairStepBackground'
+import Title from '@/components/Elements/Title'
 import Slider from '@/components/Inputs/Slider'
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import InsightsContainer from '@/components/Insights/InsightsContainer'
@@ -15,7 +17,8 @@ export default function Home() {
       <InsightsContainer />
       <StairStepBackground variant="secondary">
         <div className="container mx-auto p-12">
-          <h1>Daten im Fokus</h1>
+          <Title size="lg">Daten im Fokus</Title>
+          <MoreDetails className="mt-4" link="#" />
         </div>
       </StairStepBackground>
       <div className="container mx-auto p-12">
