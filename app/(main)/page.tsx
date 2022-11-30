@@ -1,4 +1,5 @@
 import Progress from '@/components/Charts/Progress'
+import Collapsible from '@/components/Elements/Collapsible'
 import MoreDetails from '@/components/Elements/MoreDetails'
 import { Spacer } from '@/components/Elements/Spacer'
 import StairStepBackground from '@/components/Elements/StairStepBackground'
@@ -18,7 +19,14 @@ export default function Home() {
       <StairStepBackground variant="secondary">
         <div className="container mx-auto p-12">
           <Title size="lg">Daten im Fokus</Title>
-          <MoreDetails className="mt-4" link="#" />
+          <Collapsible trigger={<MoreDetails className="mt-4" />}>
+            <div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde,
+              neque reprehenderit. Unde distinctio ipsa temporibus aliquam
+              minima asperiores perferendis harum vel, vero, impedit ratione ut
+              eligendi, tenetur sed accusantium nesciunt.
+            </div>
+          </Collapsible>
         </div>
       </StairStepBackground>
       <div className="container mx-auto p-12">
