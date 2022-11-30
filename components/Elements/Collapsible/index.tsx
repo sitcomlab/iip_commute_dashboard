@@ -2,6 +2,7 @@
 
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
 import { useState } from 'react'
+import styles from './Collapsible.module.css'
 
 type CollapsibleProps = {
   trigger: React.ReactElement
@@ -16,7 +17,9 @@ export default function Collapsible({ trigger, children }: CollapsibleProps) {
       <CollapsiblePrimitive.Trigger asChild>
         {trigger}
       </CollapsiblePrimitive.Trigger>
-      <CollapsiblePrimitive.Content>{children}</CollapsiblePrimitive.Content>
+      <CollapsiblePrimitive.Content className={styles.CollapsibleContent}>
+        {children}
+      </CollapsiblePrimitive.Content>
     </CollapsiblePrimitive.Root>
   )
 }
