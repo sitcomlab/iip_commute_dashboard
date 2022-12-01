@@ -1,11 +1,12 @@
 import Image from 'next/image'
-import StairStepBackground from '../Elements/StairStepBackground'
+import StairStepBackground from '../StairStepBackground'
 import MSLogo from '@/assets/logos/stadtlogo-muenster.png'
-import { Button } from '../Elements/Button'
-import MoreDetails from '../Elements/MoreDetails'
-import Title from '../Elements/Title'
+import { Button } from '../../Elements/Button'
+import MoreDetails from '../../Elements/MoreDetails'
+import Title from '../../Elements/Title'
 import Link from 'next/link'
-import Collapsible from '../Elements/Collapsible'
+import Collapsible from '../../Elements/Collapsible'
+import Container from '../Container'
 
 export default function Navbar() {
   return (
@@ -18,7 +19,7 @@ export default function Navbar() {
         />
       </div>
       <StairStepBackground>
-        <div className="container mx-auto p-12">
+        <Container>
           <div className="flex justify-between">
             <div className="">
               <Title size="lg">
@@ -27,7 +28,7 @@ export default function Navbar() {
                   Münster
                 </span>
               </Title>
-              <Collapsible trigger={<MoreDetails className="mt-4" link="#" />}>
+              <Collapsible trigger={<MoreDetails className="mt-4" />}>
                 <div>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   Reiciendis, cupiditate! Tempora cum maiores soluta rem enim
@@ -45,7 +46,7 @@ export default function Navbar() {
               <Button>Gebäude</Button>
             </div>
           </div>
-        </div>
+        </Container>
       </StairStepBackground>
     </div>
   )

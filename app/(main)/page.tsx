@@ -1,24 +1,36 @@
-import Progress from '@/components/Charts/Progress'
-import WeatherTile from '@/components/Climate/WeatherTile'
+import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
 import Collapsible from '@/components/Elements/Collapsible'
 import MoreDetails from '@/components/Elements/MoreDetails'
 import { Spacer } from '@/components/Elements/Spacer'
-import StairStepBackground from '@/components/Elements/StairStepBackground'
+import StairStepBackground from '@/components/Layout/StairStepBackground'
 import Title from '@/components/Elements/Title'
-import Slider from '@/components/Inputs/Slider'
-import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import InsightsContainer from '@/components/Insights/InsightsContainer'
-import ChartTile from '@/components/Mobility/Bicycle/ChartTile'
-import { BaseTile } from '@/components/Tiles/BaseTile'
-import LiveBadge from '@/components/Tiles/LiveBadge'
-import SuccessStoryTile from '@/components/Tiles/SuccessStoryTile'
+import ChartTile from '@/components/Tiles/Mobility/Bicycle/ChartTile'
+import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
+import Container from '@/components/Layout/Container'
+import Columns from '@/components/Layout/Columns'
+import SuccessStoryTile from '@/components/Tiles/SuccessStory'
+import directus, {
+  directusImage,
+  successStoriesCollectionName,
+} from '@/lib/directus'
 
-export default function Home() {
+export default async function Home() {
+  const { data: successStories } = await directus
+    .items(successStoriesCollectionName)
+    .readByQuery({
+      filter: {
+        status: 'published',
+      },
+      limit: 2,
+    })
+  console.log(successStories)
+
   return (
     <div>
       <InsightsContainer />
       <StairStepBackground variant="secondary">
-        <div className="container mx-auto p-12">
+        <Container>
           <Title size="lg">Daten im Fokus</Title>
           <Collapsible trigger={<MoreDetails className="mt-4" />}>
             <div>
@@ -28,98 +40,32 @@ export default function Home() {
               eligendi, tenetur sed accusantium nesciunt.
             </div>
           </Collapsible>
-        </div>
+        </Container>
       </StairStepBackground>
-      <div className="container mx-auto p-12">
-        <div className="gap-8 lg:columns-2">
+      <Container>
+        <Columns>
           <ChartTile />
           <WeatherTile />
-          <BaseTile footerCenterElement={<LiveBadge />}>
-            <h1 className="text-6xl font-bold text-green-500">Hello World</h1>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-              cumque repellat officia sunt quibusdam ut, hic eaque quo! Expedita
-              porro magni beatae ad veritatis explicabo numquam quidem nisi
-              eius! Nihil. Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Mollitia cumque repellat officia sunt quibusdam ut, hic
-              eaque quo! Expedita porro magni beatae ad veritatis explicabo
-              numquam quidem nisi eius! Nihil. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Mollitia cumque repellat officia
-              sunt quibusdam ut, hic eaque quo! Expedita porro magni beatae ad
-              veritatis explicabo numquam quidem nisi eius! Nihil.
-            </div>
-            <Slider
-              defaultValue={[2]}
-              labels={['2000', '2010', '2020', '2030']}
-              max={6}
-              min={0}
-            />
-            <ToggleGroup
-              items={[
-                {
-                  element: '2020',
-                  value: '2020',
-                },
-                {
-                  element: '2021',
-                  value: '2021',
-                },
-                {
-                  element: '2022',
-                  value: '2022',
-                },
-              ]}
-            />
-          </BaseTile>
-
-          <BaseTile footerCenterElement={<LiveBadge />}>
-            <h1 className="text-6xl font-bold text-green-500">Hello World</h1>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-              cumque repellat officia sunt quibusdam ut, hic eaque quo! Expedita
-              porro magni beatae ad veritatis explicabo numquam quidem nisi
-              eius! Nihil. Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Mollitia cumque repellat officia sunt quibusdam ut, hic
-              eaque quo! Expedita porro magni beatae ad veritatis explicabo
-              numquam quidem nisi eius! Nihil. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Mollitia cumque repellat officia
-              sunt quibusdam ut, hic eaque quo! Expedita porro magni beatae ad
-              veritatis explicabo numquam quidem nisi eius! Nihil.
-            </div>
-            <Progress progress={42} />
-          </BaseTile>
-
-          <BaseTile>
-            <h1 className="text-6xl font-bold text-green-500">Hello World</h1>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-              cumque repellat officia sunt quibusdam ut, hic eaque quo! Expedita
-              porro magni beatae ad veritatis explicabo numquam quidem nisi
-              eius! Nihil.
-            </div>
-            <Progress progress={33} />
-          </BaseTile>
-
-          <BaseTile footerCenterElement={<LiveBadge />}>
-            <h1 className="text-6xl font-bold text-green-500">Hello World</h1>
-            <div>Lorem ipsum</div>
-            <Progress progress={42} />
-          </BaseTile>
-        </div>
+        </Columns>
+        <CO2EmissionsTile />
         <Spacer />
-        <SuccessStoryTile
-          endImage={
-            <img src="https://www.stadt-muenster.de/fileadmin/user_upload/stadt-muenster/obm/pics/vorschau-lewe-lambertikirchplatz-m.jpg" />
-          }
-        >
-          <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-            cumque repellat officia sunt quibusdam ut, hic eaque quo! Expedita
-            porro magni beatae ad veritatis explicabo numquam quidem nisi eius!
-            Nihil.
-          </div>
-        </SuccessStoryTile>
-      </div>
+        {successStories && successStories[0] && (
+          <SuccessStoryTile
+            image={directusImage(successStories[0].image)}
+            imagePosition={successStories[0].image_position}
+            link={successStories[0].link}
+            text={successStories[0].text}
+          ></SuccessStoryTile>
+        )}
+        {successStories && successStories[1] && (
+          <SuccessStoryTile
+            image={directusImage(successStories[1].image)}
+            imagePosition={successStories[1].image_position}
+            link={successStories[1].link}
+            text={successStories[1].text}
+          ></SuccessStoryTile>
+        )}
+      </Container>
     </div>
   )
 }

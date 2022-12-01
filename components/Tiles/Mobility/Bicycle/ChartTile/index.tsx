@@ -1,7 +1,7 @@
 'use client'
 
 import Slider from '@/components/Inputs/Slider'
-import MobilityTile from '@/components/Tiles/MobilityTile'
+import MobilityTile from '@/components/Tiles/Base/MobilityTile'
 import { format, subDays } from 'date-fns'
 import { useState } from 'react'
 import BicycleProgress from './BicycleProgress'

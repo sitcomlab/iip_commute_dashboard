@@ -7,7 +7,7 @@ const variants = {
 }
 
 const sizes = {
-  sm: 'text-xl',
+  sm: 'text-md font-semibold',
   md: 'text-3xl',
   lg: 'text-5xl',
 }

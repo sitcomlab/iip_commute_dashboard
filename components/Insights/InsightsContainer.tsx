@@ -1,6 +1,7 @@
 import directus, { insightsCollectionName } from '@/lib/directus'
 import { use } from 'react'
 import Title from '../Elements/Title'
+import Container from '../Layout/Container'
 import InsightsTile from './InsightsTile'
 
 const getInsightsData = async () => {
@@ -19,7 +20,7 @@ export default function InsightsContainer() {
   return (
     <div className="relative w-full">
       <div className="absolute top-0 left-0 -z-10 h-1/3 w-full bg-primary-50"></div>
-      <div className="container mx-auto p-12">
+      <Container>
         <div className="mb-8 flex w-full justify-end">
           <Title size="lg" variant="secondary">
             Einblicke
@@ -36,7 +37,7 @@ export default function InsightsContainer() {
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </div>
   )
 }

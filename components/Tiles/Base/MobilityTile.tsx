@@ -1,10 +1,10 @@
-import { Spacer } from '../Elements/Spacer'
+import { Spacer } from '@/components/Elements/Spacer'
 import { BaseTile, BaseTileProps } from './BaseTile'
 import LiveBadge from './LiveBadge'
 
-export type ClimateTileProps = {
+export type MobilityTileProps = {
   children: React.ReactElement | React.ReactElement[]
-  title: string | React.ReactElement
+  title: string
   subtitle?: string
   live?: boolean
 } & BaseTileProps
@@ -14,20 +14,20 @@ export type ClimateTileProps = {
  * @param MobilityTileProps properties of the mobility tile
  * @returns Mobility Tile
  */
-export default function ClimateTile({
+export default function MobilityTile({
   children,
   live,
   title,
   subtitle,
   ...props
-}: ClimateTileProps) {
+}: MobilityTileProps) {
   return (
     <BaseTile
-      footerCenterElement={live ? <LiveBadge variant="climate" /> : undefined}
-      variant="climate"
+      footerCenterElement={live ? <LiveBadge variant="mobility" /> : undefined}
+      variant="mobility"
       {...props}
     >
-      <h1 className="text-6xl font-light text-sky-500">{title}</h1>
+      <h1 className="text-6xl font-light text-green-500">{title}</h1>
       <h3 className="text-xl">{subtitle}</h3>
       <Spacer />
       <>{children}</>
