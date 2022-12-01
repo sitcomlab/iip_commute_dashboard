@@ -8,17 +8,23 @@ const variants = {
 }
 
 export type MoreDetailsProps = {
-  link: string
+  link?: string
   variant?: keyof typeof variants
+  className?: string
 }
 
 export default function MoreDetails({
-  link,
+  link = '',
   variant = 'primary',
+  className,
 }: MoreDetailsProps) {
   return (
     <Link
-      className={clsx('flex items-center space-x-1', variants[variant])}
+      className={clsx(
+        'flex items-center space-x-1',
+        variants[variant],
+        className,
+      )}
       href={link}
     >
       <InformationCircleIcon className="h-5" />

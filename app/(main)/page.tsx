@@ -1,6 +1,10 @@
 import Progress from '@/components/Charts/Progress'
+import WeatherTile from '@/components/Climate/WeatherTile'
+import Collapsible from '@/components/Elements/Collapsible'
+import MoreDetails from '@/components/Elements/MoreDetails'
 import { Spacer } from '@/components/Elements/Spacer'
 import StairStepBackground from '@/components/Elements/StairStepBackground'
+import Title from '@/components/Elements/Title'
 import Slider from '@/components/Inputs/Slider'
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import InsightsContainer from '@/components/Insights/InsightsContainer'
@@ -15,13 +19,21 @@ export default function Home() {
       <InsightsContainer />
       <StairStepBackground variant="secondary">
         <div className="container mx-auto p-12">
-          <h1>Daten im Fokus</h1>
+          <Title size="lg">Daten im Fokus</Title>
+          <Collapsible trigger={<MoreDetails className="mt-4" />}>
+            <div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde,
+              neque reprehenderit. Unde distinctio ipsa temporibus aliquam
+              minima asperiores perferendis harum vel, vero, impedit ratione ut
+              eligendi, tenetur sed accusantium nesciunt.
+            </div>
+          </Collapsible>
         </div>
       </StairStepBackground>
       <div className="container mx-auto p-12">
         <div className="gap-8 lg:columns-2">
           <ChartTile />
-
+          <WeatherTile />
           <BaseTile footerCenterElement={<LiveBadge />}>
             <h1 className="text-6xl font-bold text-green-500">Hello World</h1>
             <div>

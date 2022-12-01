@@ -1,5 +1,6 @@
 import directus, { insightsCollectionName } from '@/lib/directus'
 import { use } from 'react'
+import Title from '../Elements/Title'
 import InsightsTile from './InsightsTile'
 
 const getInsightsData = async () => {
@@ -20,7 +21,9 @@ export default function InsightsContainer() {
       <div className="absolute top-0 left-0 -z-10 h-1/3 w-full bg-primary-50"></div>
       <div className="container mx-auto p-12">
         <div className="mb-8 flex w-full justify-end">
-          <span className="text-4xl text-secondary-500">Einblicke</span>
+          <Title size="lg" variant="secondary">
+            Einblicke
+          </Title>
         </div>
         <div className="flex w-full flex-col items-center justify-between space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0">
           {insights?.map(({ id, title, link, image }) => (
