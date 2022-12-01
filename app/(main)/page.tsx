@@ -1,17 +1,17 @@
 import Progress from '@/components/Charts/Progress'
-import WeatherTile from '@/components/Climate/WeatherTile'
+import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
 import Collapsible from '@/components/Elements/Collapsible'
 import MoreDetails from '@/components/Elements/MoreDetails'
 import { Spacer } from '@/components/Elements/Spacer'
-import StairStepBackground from '@/components/Elements/StairStepBackground'
+import StairStepBackground from '@/components/Layout/StairStepBackground'
 import Title from '@/components/Elements/Title'
 import Slider from '@/components/Inputs/Slider'
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import InsightsContainer from '@/components/Insights/InsightsContainer'
-import ChartTile from '@/components/Mobility/Bicycle/ChartTile'
-import { BaseTile } from '@/components/Tiles/BaseTile'
-import LiveBadge from '@/components/Tiles/LiveBadge'
-import SuccessStoryTile from '@/components/Tiles/SuccessStoryTile'
+import ChartTile from '@/components/Tiles/Mobility/Bicycle/ChartTile'
+import { BaseTile } from '@/components/Tiles/Base/BaseTile'
+import LiveBadge from '@/components/Tiles/Base/LiveBadge'
+import SuccessStoryTile from '@/components/Tiles/Base/SuccessStoryTile'
 
 export default function Home() {
   return (

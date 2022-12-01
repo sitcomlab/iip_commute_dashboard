@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import StairStepBackground from '../Elements/StairStepBackground'
+import StairStepBackground from '../StairStepBackground'
 
 export default function Footer() {
   return (

@@ -1,5 +1,6 @@
-import { Button } from '../Elements/Button'
-import { Spacer } from '../Elements/Spacer'
+import { Button } from '@/components/Elements/Button'
+import { Spacer } from '@/components/Elements/Spacer'
+import Title from '@/components/Elements/Title'
 import { BaseTile, ImageProps } from './BaseTile'
 
 export type SuccessStoryTileProps = {
@@ -21,7 +22,7 @@ export default function SuccessStoryTile({
       variant="successStory"
       {...props}
     >
-      <h1 className="text-lg font-semibold text-primary">Erfolgsgeschichte</h1>
+      <Title variant="inverse">Erfolgsgeschichte</Title>
       <Spacer />
       <>{children}</>
     </BaseTile>

@@ -4,8 +4,8 @@ import {
   ShareIcon,
   SquaresPlusIcon,
 } from '@heroicons/react/24/outline'
-import MoreDetails from '../Elements/MoreDetails'
 import clsx from 'clsx'
+import MoreDetails from '@/components/Elements/MoreDetails'
 
 const variants = {
   primary: 'text-primary',
