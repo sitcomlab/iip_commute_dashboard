@@ -6,6 +6,7 @@ import MoreDetails from '../../Elements/MoreDetails'
 import Title from '../../Elements/Title'
 import Link from 'next/link'
 import Collapsible from '../../Elements/Collapsible'
+import Container from '../Container'
 
 export default function Navbar() {
   return (
@@ -18,7 +19,7 @@ export default function Navbar() {
         />
       </div>
       <StairStepBackground>
-        <div className="container mx-auto p-12">
+        <Container>
           <div className="flex justify-between">
             <div className="">
               <Title size="lg">
@@ -45,7 +46,7 @@ export default function Navbar() {
               <Button>Gebäude</Button>
             </div>
           </div>
-        </div>
+        </Container>
       </StairStepBackground>
     </div>
   )
