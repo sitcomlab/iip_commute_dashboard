@@ -23,7 +23,7 @@ export default function ClimateTile({
 }: ClimateTileProps) {
   return (
     <BaseTile
-      footerCenterElement={live ? <LiveBadge /> : undefined}
+      footerCenterElement={live ? <LiveBadge variant="climate" /> : undefined}
       variant="climate"
       {...props}
     >

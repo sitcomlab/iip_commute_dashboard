@@ -1,3 +1,16 @@
+import clsx from 'clsx'
+
+const variants = {
+  primary: 'bg-primary-500',
+  mobility: 'bg-green-500',
+  successStory: 'bg-secondary',
+  climate: 'bg-sky-500',
+}
+
+type LiveBadgeProps = {
+  variant?: keyof typeof variants
+}
+
 function PulsatingCircle() {
   return (
     <svg
@@ -28,9 +41,14 @@ function PulsatingCircle() {
   )
 }
 
-export default function LiveBadge() {
+export default function LiveBadge({ variant = 'primary' }: LiveBadgeProps) {
   return (
-    <div className="flex w-fit items-center space-x-1 rounded-lg bg-green-500 px-2 py-1 text-white">
+    <div
+      className={clsx(
+        'flex w-fit items-center space-x-1 rounded-lg px-2 py-1 text-white',
+        variants[variant],
+      )}
+    >
       <div className="flex h-4 w-4  items-center justify-center">
         <PulsatingCircle />
       </div>

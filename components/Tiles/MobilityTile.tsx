@@ -23,7 +23,7 @@ export default function MobilityTile({
 }: MobilityTileProps) {
   return (
     <BaseTile
-      footerCenterElement={live ? <LiveBadge /> : undefined}
+      footerCenterElement={live ? <LiveBadge variant="mobility" /> : undefined}
       variant="mobility"
       {...props}
     >
