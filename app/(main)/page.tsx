@@ -6,12 +6,26 @@ import StairStepBackground from '@/components/Layout/StairStepBackground'
 import Title from '@/components/Elements/Title'
 import InsightsContainer from '@/components/Insights/InsightsContainer'
 import ChartTile from '@/components/Tiles/Mobility/Bicycle/ChartTile'
-import SuccessStoryTile from '@/components/Tiles/Base/SuccessStoryTile'
 import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
 import Container from '@/components/Layout/Container'
 import Columns from '@/components/Layout/Columns'
+import SuccessStoryTile from '@/components/Tiles/SuccessStory'
+import directus, {
+  directusImage,
+  successStoriesCollectionName,
+} from '@/lib/directus'
 
-export default function Home() {
+export default async function Home() {
+  const { data: successStories } = await directus
+    .items(successStoriesCollectionName)
+    .readByQuery({
+      filter: {
+        status: 'published',
+      },
+      limit: 2,
+    })
+  console.log(successStories)
+
   return (
     <div>
       <InsightsContainer />
@@ -35,18 +49,22 @@ export default function Home() {
         </Columns>
         <CO2EmissionsTile />
         <Spacer />
-        <SuccessStoryTile
-          endImage={
-            <img src="https://www.stadt-muenster.de/fileadmin/user_upload/stadt-muenster/obm/pics/vorschau-lewe-lambertikirchplatz-m.jpg" />
-          }
-        >
-          <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-            cumque repellat officia sunt quibusdam ut, hic eaque quo! Expedita
-            porro magni beatae ad veritatis explicabo numquam quidem nisi eius!
-            Nihil.
-          </div>
-        </SuccessStoryTile>
+        {successStories && successStories[0] && (
+          <SuccessStoryTile
+            image={directusImage(successStories[0].image)}
+            imagePosition={successStories[0].image_position}
+            link={successStories[0].link}
+            text={successStories[0].text}
+          ></SuccessStoryTile>
+        )}
+        {successStories && successStories[1] && (
+          <SuccessStoryTile
+            image={directusImage(successStories[1].image)}
+            imagePosition={successStories[1].image_position}
+            link={successStories[1].link}
+            text={successStories[1].text}
+          ></SuccessStoryTile>
+        )}
       </Container>
     </div>
   )
