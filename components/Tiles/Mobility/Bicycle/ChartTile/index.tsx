@@ -1,36 +1,47 @@
 'use client'
 
+import { Spacer } from '@/components/Elements/Spacer'
 import Slider from '@/components/Inputs/Slider'
 import MobilityTile from '@/components/Tiles/Base/MobilityTile'
+import { useBicycleCount } from '@/hooks/useBicycleCount'
 import { format, subDays } from 'date-fns'
 import { useState } from 'react'
-import BicycleProgress from './BicycleProgress'
+import BicycleRow from './BicycleRow'
 
 export default function ChartTile() {
   const lastDays = new Array(7)
     .fill(undefined)
-    .map((e, i) => subDays(new Date(), i))
+    .map((e, i) => subDays(new Date(), i + 1))
     .reverse()
 
-  const [mockVal, setMockVal] = useState(0)
+  const [date, setDate] = useState<Date>(lastDays[lastDays.length - 1])
+
+  const data = useBicycleCount(date)
 
   return (
     <MobilityTile live subtitle="im Stadtgebiet" title="Radler:innen">
       <>
-        <div className="bg-white p-4">
-          <BicycleProgress progress={mockVal * 100} />
-          <BicycleProgress progress={mockVal * 100} />
-          <BicycleProgress progress={mockVal * 100} />
-          <BicycleProgress progress={mockVal * 100} />
+        <div className="rounded bg-white px-4 py-2">
+          {data &&
+            data.map(e => (
+              <BicycleRow
+                count={e.count}
+                key={e.id}
+                max={Math.max(...data.map(e => e.count))}
+                min={Math.min(...data.map(e => e.count))}
+                name={e.name}
+              />
+            ))}
         </div>
+        <Spacer size="sm" />
         {lastDays.length > 0 && (
           <Slider
-            defaultValue={[0]}
+            defaultValue={[lastDays.length - 1]}
             labels={lastDays.map(d => format(d, 'dd.MM.'))}
             max={lastDays.length - 1}
             min={0}
             onValueChange={([e]) => {
-              setMockVal(e / (lastDays.length - 1))
+              setDate(lastDays[e])
             }}
           />
         )}
