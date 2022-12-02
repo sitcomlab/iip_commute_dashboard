@@ -7,7 +7,7 @@ This is the Klimadashboard Münster. It provides real time information about the
 - [Technical overview](#technical-overview)
 - [Development](#development)
   - [Prerequisites](#prerequisites)
-- [Getting Started](#getting-started)
+  - [Getting Started](#getting-started)
 
 ## Technical Overview
 
