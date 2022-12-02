@@ -63,7 +63,7 @@ export default function ToggleGroup({
       {items.map((e, i) => (
         <ToggleGroupPrimitive.Item
           className={clsx(
-            'py-2 px-8 transition-all duration-300',
+            'px-4 transition-all duration-300 md:py-2 md:px-8',
             background[variant],
             i !== items.length - 1 && `border-r-2 ${lastBorder[variant]}`,
             value === e.value

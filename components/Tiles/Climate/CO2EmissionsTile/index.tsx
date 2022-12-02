@@ -19,7 +19,7 @@ export default function CO2EmissionsTile() {
     >
       <div className="flex">
         <div className="flex-1">
-          <div className="flex justify-between">
+          <div className="flex flex-col justify-between md:flex-row">
             <ToggleGroup
               items={[
                 {

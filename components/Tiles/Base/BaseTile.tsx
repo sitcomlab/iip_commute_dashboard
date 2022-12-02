@@ -34,7 +34,7 @@ export function BaseTile({
   footerCenterElement,
 }: BaseTileProps) {
   return (
-    <div className="pb-8">
+    <div className="pb-4 md:pb-8">
       <div
         className={clsx(
           'flex h-fit overflow-hidden rounded-3xl',
@@ -43,7 +43,7 @@ export function BaseTile({
         )}
       >
         {startImage}
-        <div className="flex w-full flex-col justify-between p-12">
+        <div className="flex w-full flex-col justify-between p-8 md:p-12">
           <div>{children}</div>
           <TileFooter>{footerCenterElement}</TileFooter>
         </div>
