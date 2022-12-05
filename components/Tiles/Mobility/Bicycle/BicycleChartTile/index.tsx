@@ -8,7 +8,7 @@ import { format, subDays } from 'date-fns'
 import { useState } from 'react'
 import BicycleRow from './BicycleRow'
 
-export default function ChartTile() {
+export default function BicycleChartTile() {
   const lastDays = new Array(7)
     .fill(undefined)
     .map((e, i) => subDays(new Date(), i + 1))

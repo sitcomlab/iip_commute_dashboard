@@ -22,12 +22,14 @@ export default function Navbar() {
         <Container>
           <div className="flex justify-between">
             <div className="flex-1">
-              <Title size="lg">
-                <span>
-                  Klimadashboard <br />
-                  Münster
-                </span>
-              </Title>
+              <Link href={'/'}>
+                <Title size="lg">
+                  <span>
+                    Klimadashboard <br />
+                    Münster
+                  </span>
+                </Title>
+              </Link>
               <Collapsible trigger={<MoreDetails className="mt-4" />}>
                 <div>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -41,9 +43,15 @@ export default function Navbar() {
               <Link href={'/klima'}>
                 <Button>Klima in Münster</Button>
               </Link>
-              <Button>Energien</Button>
-              <Button>Mobilität</Button>
-              <Button>Gebäude</Button>
+              <Link href={'/energie'}>
+                <Button>Energien</Button>
+              </Link>
+              <Link href={'/mobilitaet'}>
+                <Button>Mobilität</Button>
+              </Link>
+              <Link href={'/gebaeude'}>
+                <Button>Gebäude</Button>
+              </Link>
             </div>
           </div>
         </Container>
