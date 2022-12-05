@@ -1,11 +1,16 @@
 'use client'
 
+import { Spacer } from '@/components/Elements/Spacer'
 import Switch from '@/components/Inputs/Switch'
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import { BeakerIcon } from '@heroicons/react/24/outline'
+import { useState } from 'react'
 import ClimateTile from '../../Base/ClimateTile'
+import CO2Chart from './CO2Chart'
 
 export default function CO2EmissionsTile() {
+  const [showFuture, setShowFuture] = useState(true)
+
   return (
     <ClimateTile
       title={
@@ -19,7 +24,7 @@ export default function CO2EmissionsTile() {
     >
       <div className="flex">
         <div className="flex-1">
-          <div className="flex justify-between">
+          <div className="flex flex-col justify-between md:flex-row">
             <ToggleGroup
               items={[
                 {
@@ -33,13 +38,16 @@ export default function CO2EmissionsTile() {
               ]}
               variant="climate"
             />
-            <Switch label="Klimaneutral" variant="climate" />
+            <Switch
+              defaultChecked={showFuture}
+              label="Klimaneutral"
+              onCheckedChange={setShowFuture}
+              variant="climate"
+            />
           </div>
-          <div className="bg-white p-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-            impedit facere dolore perspiciatis quos cumque exercitationem
-            praesentium eos porro iusto qui repellendus, eaque iure deserunt
-            fuga, quae aliquid itaque vel?
+          <Spacer size="sm" />
+          <div className="h-72 rounded bg-white p-2">
+            <CO2Chart showFuture={showFuture} />
           </div>
         </div>
         <div className="w-72 flex-none px-4">
