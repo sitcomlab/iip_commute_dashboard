@@ -1,31 +1,32 @@
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
-import clsx from 'clsx'
 import Link from 'next/link'
+import type { VariantProps } from 'class-variance-authority'
+import { cva, cx } from 'class-variance-authority'
 
-const variants = {
-  primary: 'text-primary',
-  inverse: 'text-white',
-}
+const style = cva('flex cursor-pointer items-center space-x-1', {
+  variants: {
+    variant: {
+      primary: 'text-primary',
+      inverse: 'text-white',
+    },
+  },
+  defaultVariants: {
+    variant: 'primary',
+  },
+})
 
-export type MoreDetailsProps = {
+export type MoreDetailsProps = VariantProps<typeof style> & {
   link?: string
-  variant?: keyof typeof variants
   className?: string
 }
 
 export default function MoreDetails({
   link,
-  variant = 'primary',
+  variant,
   className,
 }: MoreDetailsProps) {
   const Details = (
-    <div
-      className={clsx(
-        'flex cursor-pointer items-center space-x-1',
-        variants[variant],
-        className,
-      )}
-    >
+    <div className={cx(style({ variant }), className)}>
       <InformationCircleIcon className="h-5" />
       <span className="text-sm font-semibold underline">Mehr Details</span>
     </div>

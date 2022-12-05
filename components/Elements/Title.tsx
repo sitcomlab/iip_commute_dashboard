@@ -1,29 +1,29 @@
-import clsx from 'clsx'
+import type { VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 
-const variants = {
-  primary: 'text-primary',
-  secondary: 'text-secondary',
-  inverse: 'text-white',
-}
+const title = cva('', {
+  variants: {
+    variant: {
+      primary: 'text-primary',
+      secondary: 'text-secondary',
+      inverse: 'text-white',
+    },
+    size: {
+      sm: 'md:text-md text-sm font-semibold',
+      md: 'md:text-3xl text-xl',
+      lg: 'md:text-5xl text-3xl',
+    },
+  },
+  defaultVariants: {
+    variant: 'primary',
+    size: 'md',
+  },
+})
 
-const sizes = {
-  sm: 'md:text-md text-sm font-semibold',
-  md: 'md:text-3xl text-xl',
-  lg: 'md:text-5xl text-3xl',
-}
-
-type TitleProps = {
-  variant?: keyof typeof variants
-  size?: keyof typeof sizes
+type TitleProps = VariantProps<typeof title> & {
   children: React.ReactElement | string
 }
 
-export default function Title({
-  variant = 'primary',
-  size = 'md',
-  children,
-}: TitleProps) {
-  return (
-    <span className={clsx(variants[variant], sizes[size])}>{children}</span>
-  )
+export default function Title({ variant, size, children }: TitleProps) {
+  return <span className={title({ variant, size })}>{children}</span>
 }

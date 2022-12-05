@@ -1,7 +1,8 @@
 import { BeakerIcon, CloudIcon, SunIcon } from '@heroicons/react/24/outline'
-import clsx from 'clsx'
 import { Duration } from 'date-fns'
 import { animated, useSpring } from 'react-spring'
+import type { VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 
 type PhenomenaType = {
   [key: string]: {
@@ -42,15 +43,21 @@ const phenomena: PhenomenaType = {
   },
 }
 
-const sizes = {
-  md: 'text-2xl',
-  xl: 'text-5xl',
-}
+const phenomenonStyle = cva('text-sky-500', {
+  variants: {
+    size: {
+      md: 'text-2xl',
+      xl: 'text-5xl',
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+  },
+})
 
-type PhenomenonProps = {
+type PhenomenonProps = VariantProps<typeof phenomenonStyle> & {
   phenomenon: keyof typeof phenomena
   value: number | Duration
-  size?: keyof typeof sizes
 }
 
 export default function Phenomenon({
@@ -68,7 +75,7 @@ export default function Phenomenon({
       <Icon className="h-8 text-sky-500" />
       <div>
         <p className="text-sm font-semibold text-primary-500">{title}</p>
-        <span className={clsx('text-sky-500', sizes[size])}>
+        <span className={phenomenonStyle({ size })}>
           <>
             <animated.span>
               {/* @ts-ignore */}
