@@ -7,9 +7,9 @@ const variants = {
 }
 
 const sizes = {
-  sm: 'text-md font-semibold',
-  md: 'text-3xl',
-  lg: 'text-5xl',
+  sm: 'md:text-md text-sm font-semibold',
+  md: 'md:text-3xl text-xl',
+  lg: 'md:text-5xl text-3xl',
 }
 
 type TitleProps = {

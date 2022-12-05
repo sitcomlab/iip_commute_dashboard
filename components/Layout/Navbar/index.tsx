@@ -21,7 +21,7 @@ export default function Navbar() {
       <StairStepBackground>
         <Container>
           <div className="flex justify-between">
-            <div className="">
+            <div className="flex-1">
               <Title size="lg">
                 <span>
                   Klimadashboard <br />
@@ -37,7 +37,7 @@ export default function Navbar() {
                 </div>
               </Collapsible>
             </div>
-            <div className="flex h-fit space-x-2">
+            <div className="flex h-fit flex-wrap space-x-2">
               <Link href={'/klima'}>
                 <Button>Klima in Münster</Button>
               </Link>
