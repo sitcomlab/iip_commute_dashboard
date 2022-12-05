@@ -5,7 +5,7 @@ import { Spacer } from '@/components/Elements/Spacer'
 import StairStepBackground from '@/components/Layout/StairStepBackground'
 import Title from '@/components/Elements/Title'
 import InsightsContainer from '@/components/Insights/InsightsContainer'
-import ChartTile from '@/components/Tiles/Mobility/Bicycle/ChartTile'
+import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
 import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
 import Container from '@/components/Layout/Container'
 import Columns from '@/components/Layout/Columns'
@@ -43,7 +43,7 @@ export default async function Home() {
       </StairStepBackground>
       <Container>
         <Columns>
-          <ChartTile />
+          <BicycleChartTile />
           <WeatherTile />
         </Columns>
         <CO2EmissionsTile />
