@@ -20,6 +20,7 @@ const tileFooterStyle = cva('flex flex-1 space-x-1', {
 })
 
 type TileFooterProps = VariantProps<typeof tileFooterStyle> & {
+  onEmbedClick?: () => void
   children?: React.ReactElement
 }
 
@@ -27,13 +28,18 @@ type TileFooterProps = VariantProps<typeof tileFooterStyle> & {
  * A footer for all tiles with sharing, export and embed button as well as a more information link
  * @returns TileFooter
  */
-export default function TileFooter({ children, variant }: TileFooterProps) {
+export default function TileFooter({
+  onEmbedClick,
+  children,
+  variant,
+}: TileFooterProps) {
   return (
     <div className="mt-6 flex w-full items-center justify-between">
       <div className={tileFooterStyle({ variant })}>
-        <Link href={'/embed/123'}>
-          <SquaresPlusIcon className="h-5 stroke-2" />
-        </Link>
+        <SquaresPlusIcon
+          className="h-5 cursor-pointer stroke-2"
+          onClick={onEmbedClick}
+        />
         <Link href={'#'}>
           <ShareIcon className="h-5 stroke-2" />
         </Link>
