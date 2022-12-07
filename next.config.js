@@ -13,6 +13,7 @@ const nextConfig = {
 
     return config
   },
+  reactStrictMode: true,
   experimental: {
     appDir: true,
   },
