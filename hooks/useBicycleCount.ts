@@ -1,6 +1,23 @@
 import { isEqual } from 'date-fns'
 import { useEffect, useState } from 'react'
 
+type BicycleAPIResponse = {
+  name: string
+  id: string
+  data: {
+    counts: number
+    date: string
+    isoDate: string
+    status: number
+  }[]
+}
+
+type BicycleStationData = {
+  count: number
+  id: string
+  name: string
+}
+
 const counter = [
   { name: 'Wolbecker Str.', id: '100020113' }, // wolbecker
   { name: 'Promenade', id: '100031297' }, // promenade
@@ -25,26 +42,12 @@ export function useBicycleCount(timestamp: Date) {
   timestamp.setUTCSeconds(0)
   timestamp.setUTCMilliseconds(0)
 
-  const [data, setData] = useState<
-    {
-      name: string
-      id: string
-      data: {
-        counts: number
-        date: string
-        isoDate: string
-        status: number
-      }[]
-    }[]
-  >()
+  const [data, setData] = useState<BicycleAPIResponse[]>()
 
-  const [filteredData, setFilteredData] = useState<
-    {
-      count: number
-      id: string
-      name: string
-    }[]
-  >()
+  const [filteredData, setFilteredData] = useState<BicycleStationData[]>()
+
+  const [totalMin, setTotalMin] = useState(0)
+  const [totalMax, setTotalMax] = useState(0)
 
   useEffect(() => {
     const fetchPromise = Promise.all(
@@ -73,5 +76,26 @@ export function useBicycleCount(timestamp: Date) {
     setFilteredData(filtered)
   }, [timestamp, data])
 
-  return filteredData
+  useEffect(() => {
+    if (!data) {
+      return
+    }
+
+    const min = Math.min(
+      ...data.map(e =>
+        Math.min(...e.data.map(x => x.counts).filter(y => y !== null)),
+      ),
+    )
+
+    const max = Math.max(
+      ...data.map(e =>
+        Math.max(...e.data.map(x => x.counts).filter(y => y !== null)),
+      ),
+    )
+
+    setTotalMin(min)
+    setTotalMax(max)
+  }, [data])
+
+  return { min: totalMin, max: totalMax, data: filteredData }
 }
