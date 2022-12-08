@@ -50,6 +50,7 @@ export function ReactECharts({
       const myOption: EChartsOption = {
         textStyle: {
           fontFamily: 'var(--font-inter)',
+          color: '#005b79',
         },
         ...option,
       }

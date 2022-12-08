@@ -79,6 +79,7 @@ const getSeries = (data: StadtradelnData) => {
     zlevel: 10,
     itemStyle: {
       color: colors[k].color,
+      borderRadius: [2, 2, 0, 0],
     },
     barGap: 2,
     xAxisIndex: 1,
