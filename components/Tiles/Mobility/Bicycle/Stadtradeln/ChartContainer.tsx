@@ -24,7 +24,7 @@ export default function ChartContainer() {
         />
         <div className="flex items-center space-x-4">
           <div className="h-1 w-12 rounded bg-energy" />
-          <p className="text-primary">Freiburg</p>
+          <p className="text-primary">Mannheim</p>
         </div>
         <div className="flex items-center space-x-4">
           <div className="h-1 w-12 rounded bg-buildings" />
