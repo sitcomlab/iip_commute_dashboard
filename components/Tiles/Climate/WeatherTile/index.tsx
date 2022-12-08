@@ -1,9 +1,9 @@
 'use client'
 
+import { SunLarge } from '@/components/Icons'
 import Slider from '@/components/Inputs/Slider'
 import useWeather from '@/hooks/useWeather'
 import { conditionMapping } from '@/lib/brightsky'
-import { CloudIcon } from '@heroicons/react/24/outline'
 import { addHours, format } from 'date-fns'
 import { useState } from 'react'
 import ClimateTile from '../ClimateTile'
@@ -33,10 +33,10 @@ export default function WeatherTile() {
     >
       <div>
         {weather && (
-          <div className="mb-8 flex">
+          <div className="mb-8 flex space-x-4">
             <div className="flex flex-1 flex-col justify-between">
               <span>
-                <CloudIcon className="h-24 text-climate" />
+                <SunLarge className="h-24 text-primary" />
               </span>
               <p className="my-4 text-xl">
                 In Münster ist es gerade{' '}
