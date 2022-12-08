@@ -2,7 +2,7 @@
 
 import { Spacer } from '@/components/Elements/Spacer'
 import Slider from '@/components/Inputs/Slider'
-import MobilityTile from '@/components/Tiles/Base/MobilityTile'
+import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
 import { useBicycleCount } from '@/hooks/useBicycleCount'
 import { format, subDays } from 'date-fns'
 import { useState } from 'react'

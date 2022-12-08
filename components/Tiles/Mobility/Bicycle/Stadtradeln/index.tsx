@@ -1,4 +1,4 @@
-import MobilityTile from '@/components/Tiles/Base/MobilityTile'
+import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
 import ChartContainer from './ChartContainer'
 
 export default function StadtradelnTile() {

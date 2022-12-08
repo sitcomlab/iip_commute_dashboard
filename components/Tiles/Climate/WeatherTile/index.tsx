@@ -6,7 +6,7 @@ import { conditionMapping } from '@/lib/brightsky'
 import { CloudIcon } from '@heroicons/react/24/outline'
 import { addHours, format } from 'date-fns'
 import { useState } from 'react'
-import ClimateTile from '../../Base/ClimateTile'
+import ClimateTile from '../ClimateTile'
 import Phenomenon from './Phenomenon'
 
 export default function WeatherTile() {

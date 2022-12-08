@@ -2,12 +2,7 @@ import * as React from 'react'
 import { SVGProps } from 'react'
 function SvgBicycleStart(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      height={51.54}
-      width={48.022}
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" {...props}>
       <g data-name="Komponente 52 \u2013 2" transform="translate(1.25 1.25)">
         <path
           d="M368.379 478.69h-8.534a2.844 2.844 0 0 1-2.845-2.845h0a2.844 2.844 0 0 1 2.845-2.845h8.534a2.844 2.844 0 0 1 2.845 2.845h0a2.844 2.844 0 0 1-2.845 2.845z"

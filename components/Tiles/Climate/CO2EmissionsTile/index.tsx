@@ -5,7 +5,7 @@ import Switch from '@/components/Inputs/Switch'
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import { BeakerIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
-import ClimateTile from '../../Base/ClimateTile'
+import ClimateTile from '../ClimateTile'
 import CO2Chart from './CO2Chart'
 
 export default function CO2EmissionsTile() {
