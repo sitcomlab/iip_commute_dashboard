@@ -1,1 +1,2 @@
-export { default as BicycleIcon } from './BicycleIcon'
+export { default as BicycleEnd } from './BicycleEnd'
+export { default as BicycleStart } from './BicycleStart'

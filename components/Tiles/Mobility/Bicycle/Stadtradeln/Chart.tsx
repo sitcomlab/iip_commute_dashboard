@@ -23,8 +23,6 @@ type StadtradelnData = {
   }
 }
 
-console.log()
-
 const colors: {
   [key: keyof StadtradelnData]: {
     color: string
