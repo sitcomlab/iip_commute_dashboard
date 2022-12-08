@@ -132,6 +132,12 @@ export default function Chart({ compare }: ChartProps) {
   return (
     <ReactECharts
       option={{
+        grid: {
+          left: '15%',
+          right: '10%',
+          top: '10%',
+          bottom: '5%',
+        },
         xAxis: [
           {
             // hidden xaxis for lines
