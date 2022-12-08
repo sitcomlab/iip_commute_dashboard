@@ -15,6 +15,7 @@ import directus, {
   successStoriesCollectionName,
 } from '@/lib/directus'
 import AnimatedPage from '@/components/Layout/AnimatedPage'
+import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
 
 export default async function Home() {
   const { data: successStories } = await directus
@@ -46,6 +47,7 @@ export default async function Home() {
         <Columns>
           <BicycleChartTile />
           <WeatherTile />
+          <StadtradelnTile />
         </Columns>
         <CO2EmissionsTile />
         <Spacer />

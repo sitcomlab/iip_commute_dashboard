@@ -28,7 +28,8 @@ const switchThumbInnerStyle = cva(
   {
     variants: {
       checked: {
-        false: 'opacity-0',
+        false: 'opacity-100',
+        true: 'opacity-0',
       },
     },
   },

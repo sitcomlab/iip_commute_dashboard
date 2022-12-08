@@ -1,0 +1,26 @@
+{
+  "muenster": {
+    "name": "Münster",
+    "data": [
+      { "year": 2020, "km": 914414 },
+      { "year": 2021, "km": 1393450 },
+      { "year": 2022, "km": 1948616 }
+    ]
+  },
+  "konstanz": {
+    "name": "Konstanz",
+    "data": [
+      { "year": 2020, "km": 145838 },
+      { "year": 2021, "km": 198751 },
+      { "year": 2022, "km": 256476 }
+    ]
+  },
+  "mannheim": {
+    "name": "Mannheim",
+    "data": [
+      { "year": 2020, "km": 461836 },
+      { "year": 2021, "km": 547516 },
+      { "year": 2022, "km": 764025 }
+    ]
+  }
+}
