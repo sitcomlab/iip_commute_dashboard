@@ -35,7 +35,7 @@ export default function StadtradelnTile() {
           </div>
         </div>
       </div>
-      <p className="my-2">
+      <p className="my-2 font-semibold">
         Auf die Leeze, fertig, los! Für mehr Radverkehr, Klimaschutz und
         Lebensqualität in die Pedale treten: Seit 2020 beteiligt sich die Stadt
         Münster an der jährlich stattfindenden, dreiwöchigen bundesweiten Aktion
