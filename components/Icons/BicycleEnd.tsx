@@ -2,7 +2,12 @@ import * as React from 'react'
 import { SVGProps } from 'react'
 function SvgBicycleEnd(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      height={51.873}
+      width={36.63}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g data-name="Komponente 53 \u2013 2" transform="translate(1.25 1.582)">
         <ellipse
           cx={16}

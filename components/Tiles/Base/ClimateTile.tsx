@@ -1,4 +1,5 @@
 import { Spacer } from '@/components/Elements/Spacer'
+import { MuensterIcon } from '@/components/Icons'
 import { BaseTile, BaseTileProps } from './BaseTile'
 import LiveBadge from './LiveBadge'
 
@@ -27,7 +28,10 @@ export default function ClimateTile({
       variant="climate"
       {...props}
     >
-      <span className="text-6xl font-light text-climate">{title}</span>
+      <div className="flex justify-between">
+        <span className="text-6xl font-light text-climate">{title}</span>
+        <MuensterIcon className="h-10 w-12" />
+      </div>
       <br />
       <span className="text-xl">{subtitle}</span>
       <Spacer />
