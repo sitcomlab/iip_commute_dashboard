@@ -15,8 +15,8 @@ export default function InsightsTile({
   return (
     <div className="h-full overflow-hidden rounded-3xl bg-white">
       <Link href={link}>
-        <div className="group flex h-full w-full flex-col  bg-secondary-500 transition-all hover:bg-opacity-30">
-          <div className="flex flex-1 flex-col justify-between p-8 text-white group-hover:text-secondary-500">
+        <div className="group flex h-full w-full flex-col  bg-secondary transition-all hover:bg-opacity-30">
+          <div className="flex flex-1 flex-col justify-between p-8 text-white group-hover:text-secondary">
             <p className="text-4xl">{title}</p>
             <p className="mt-8 underline">Alle anzeigen</p>
           </div>

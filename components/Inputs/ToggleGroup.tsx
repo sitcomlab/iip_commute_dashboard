@@ -17,9 +17,9 @@ const toggleGroupStyle = cva<{
   variants: {
     variant: {
       primary: 'border-primary',
-      mobility: 'border-green-500',
+      mobility: 'border-mobility',
       successStory: 'border-secondary',
-      climate: 'border-sky-500',
+      climate: 'border-climate',
     },
   },
   defaultVariants: {
@@ -36,9 +36,9 @@ const toggleGroupBackgroundStyle = cva<{
   variants: {
     variant: {
       primary: 'bg-primary',
-      mobility: 'bg-green-500',
+      mobility: 'bg-mobility',
       successStory: 'bg-secondary',
-      climate: 'bg-sky-500',
+      climate: 'bg-climate',
     },
     isLast: {
       true: 'border-r-2',
@@ -53,7 +53,7 @@ const toggleGroupBackgroundStyle = cva<{
     {
       variant: 'mobility',
       isLast: true,
-      className: 'border-r-green-500',
+      className: 'border-r-mobility',
     },
     {
       variant: 'successStory',
@@ -63,7 +63,7 @@ const toggleGroupBackgroundStyle = cva<{
     {
       variant: 'climate',
       isLast: true,
-      className: 'border-r-sky-500',
+      className: 'border-r-climate',
     },
   ],
   defaultVariants: {
@@ -93,7 +93,7 @@ const selectedStyle = cva('px-4 transition-all duration-300 md:py-2 md:px-8', {
     {
       selected: false,
       variant: 'mobility',
-      className: 'text-green-500',
+      className: 'text-mobility',
     },
     {
       selected: false,
@@ -103,7 +103,7 @@ const selectedStyle = cva('px-4 transition-all duration-300 md:py-2 md:px-8', {
     {
       selected: false,
       variant: 'climate',
-      className: 'text-sky-500',
+      className: 'text-climate',
     },
   ],
   defaultVariants: {

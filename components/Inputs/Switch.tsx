@@ -9,9 +9,9 @@ const switchThumbStyle = cva(
     variants: {
       variant: {
         primary: 'bg-primary',
-        mobility: 'bg-green-500',
+        mobility: 'bg-mobility',
         successStory: 'bg-secondary',
-        climate: 'bg-sky-500',
+        climate: 'bg-climate',
       },
       checked: {
         true: 'translate-x-full',
@@ -41,9 +41,9 @@ const switchBorderStyle = cva(
     variants: {
       variant: {
         primary: 'outline-primary',
-        mobility: 'outline-green-500',
+        mobility: 'outline-mobility',
         successStory: 'outline-secondary',
-        climate: 'outline-sky-500',
+        climate: 'outline-climate',
       },
     },
     defaultVariants: {

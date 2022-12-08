@@ -29,7 +29,7 @@ export default function BicycleRow({ name, count, min, max }: BicycleRowProps) {
     <div className="my-2 flex w-full items-center">
       <div className="w-40 flex-none">
         <p className="text-primary">{name}</p>
-        <animated.p className="text-3xl text-green-500">
+        <animated.p className="text-3xl text-mobility">
           {props.val.to(e =>
             e.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.'),
           )}

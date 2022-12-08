@@ -27,7 +27,7 @@ export default function MobilityTile({
       variant="mobility"
       {...props}
     >
-      <span className="text-6xl font-light text-green-500">{title}</span>
+      <span className="text-6xl font-light text-mobility">{title}</span>
       <br />
       <span className="text-xl">{subtitle}</span>
       <Spacer />

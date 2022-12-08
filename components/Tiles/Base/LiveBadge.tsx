@@ -5,10 +5,10 @@ const liveBadgeStyle = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-primary-500',
-        mobility: 'bg-green-500',
-        successStory: 'bg-secondary',
-        climate: 'bg-sky-500',
+        primary: 'bg-primary',
+        mobility: 'bg-mobility',
+        successStory: 'bg-primary',
+        climate: 'bg-climate',
       },
     },
     defaultVariants: {

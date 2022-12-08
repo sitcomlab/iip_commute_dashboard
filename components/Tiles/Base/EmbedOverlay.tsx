@@ -42,7 +42,7 @@ export default function EmbedOverlay({ onClose, ...props }: EmbedOverlayProps) {
   return (
     <animated.div
       {...props}
-      className="absolute top-0 left-0 h-full w-full bg-primary-900 bg-opacity-90 p-8 backdrop-blur md:p-12"
+      className="absolute top-0 left-0 h-full w-full bg-primary bg-opacity-90 p-8 backdrop-blur md:p-12"
     >
       <div className="flex w-full justify-end">
         <XMarkIcon

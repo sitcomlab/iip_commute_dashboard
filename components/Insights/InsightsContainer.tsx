@@ -18,7 +18,7 @@ export default function InsightsContainer() {
 
   return (
     <div className="relative w-full">
-      <div className="absolute top-0 left-0 -z-10 h-1/3 w-full bg-primary-50"></div>
+      <div className="absolute top-0 left-0 -z-10 h-1/3 w-full bg-primary-light"></div>
       <Container>
         <div className="flex w-full flex-col items-center justify-between space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0">
           {insights?.map(({ id, title, link, image }) => (

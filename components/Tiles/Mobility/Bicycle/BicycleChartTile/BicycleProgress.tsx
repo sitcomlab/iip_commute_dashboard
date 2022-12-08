@@ -4,7 +4,7 @@ export default function BicycleProgress({ progress }: { progress: number }) {
       <div>S</div>
       <div className="flex flex-1">
         <div
-          className={'h-2 bg-green-500 transition-all'}
+          className={'h-2 bg-mobility transition-all'}
           style={{ width: `${progress}%` }}
         ></div>
         <div>E</div>

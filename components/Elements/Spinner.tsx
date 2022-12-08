@@ -4,7 +4,8 @@ import { cva, cx } from 'class-variance-authority'
 const spinner = cva('animate-spin', {
   variants: {
     variant: {
-      primary: 'text-green-500',
+      primary: 'text-primary',
+      secondary: 'text-secondary',
       light: 'text-slate-300',
     },
     size: {

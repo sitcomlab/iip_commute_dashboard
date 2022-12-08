@@ -9,10 +9,10 @@ import TileFooter from './TileFooter'
 const baseTileStyle = cva('relative flex h-fit overflow-hidden rounded-3xl', {
   variants: {
     variant: {
-      primary: 'bg-primary-100',
-      mobility: 'bg-green-100',
-      successStory: 'bg-primary-100',
-      climate: 'bg-sky-100',
+      primary: 'bg-primary-light',
+      mobility: 'bg-mobility-light',
+      successStory: 'bg-primary-light',
+      climate: 'bg-climate-light',
     },
   },
   defaultVariants: {

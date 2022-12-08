@@ -15,7 +15,7 @@ export default function StadtradelnTile() {
           <Chart compare={compare} />
         </div>
         <div className="flex items-center space-x-4 p-4">
-          <div className="h-1 w-12 rounded bg-green-500" />
+          <div className="h-1 w-12 rounded bg-mobility" />
           <p className="text-primary">geradelte Kilometer in Münster</p>
         </div>
         <div className="flex w-full flex-col justify-between space-y-2 rounded border border-dashed border-primary p-4 lg:flex-row lg:space-x-2">
@@ -23,13 +23,14 @@ export default function StadtradelnTile() {
             defaultChecked={compare}
             label="Städtevergleich"
             onCheckedChange={setCompare}
+            variant={'mobility'}
           />
           <div className="flex items-center space-x-4">
-            <div className="h-1 w-12 rounded bg-orange-500" />
+            <div className="h-1 w-12 rounded bg-energy" />
             <p className="text-primary">Freiburg</p>
           </div>
           <div className="flex items-center space-x-4">
-            <div className="h-1 w-12 rounded bg-purple-500" />
+            <div className="h-1 w-12 rounded bg-buildings" />
             <p className="text-primary">Konstanz</p>
           </div>
         </div>

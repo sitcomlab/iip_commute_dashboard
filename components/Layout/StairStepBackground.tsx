@@ -4,8 +4,8 @@ import { cva } from 'class-variance-authority'
 const phenomenonStyle = cva('flex-[3_3_0%]', {
   variants: {
     variant: {
-      primary: 'bg-primary-50',
-      secondary: 'bg-secondary-500 bg-opacity-20',
+      primary: 'bg-primary-light',
+      secondary: 'bg-secondary bg-opacity-20',
     },
   },
   defaultVariants: {

@@ -43,7 +43,7 @@ const phenomena: PhenomenaType = {
   },
 }
 
-const phenomenonStyle = cva('text-sky-500', {
+const phenomenonStyle = cva('text-climate', {
   variants: {
     size: {
       md: 'text-2xl',
@@ -72,9 +72,9 @@ export default function Phenomenon({
   const Icon = icon
   return (
     <div className="my-2 flex items-center space-x-2">
-      <Icon className="h-8 text-sky-500" />
+      <Icon className="h-8 text-climate" />
       <div>
-        <p className="text-sm font-semibold text-primary-500">{title}</p>
+        <p className="text-sm font-semibold text-primary">{title}</p>
         <span className={phenomenonStyle({ size })}>
           <>
             <animated.span>
