@@ -97,5 +97,10 @@ export function useBicycleCount(timestamp: Date) {
     setTotalMax(max)
   }, [data])
 
-  return { min: totalMin, max: totalMax, data: filteredData }
+  return {
+    min: totalMin,
+    max: totalMax,
+    data: filteredData,
+    stationCount: counter.length,
+  }
 }
