@@ -10,6 +10,7 @@ const baseTileStyle = cva('relative flex h-fit overflow-hidden rounded-3xl', {
   variants: {
     variant: {
       primary: 'bg-primary-light',
+      secondary: 'bg-secondary',
       mobility: 'bg-mobility-light',
       successStory: 'bg-primary-light',
       climate: 'bg-climate-light',
@@ -58,7 +59,10 @@ export function BaseTile({
         {startImage}
         <div className="flex w-full flex-col justify-between p-6 md:p-12">
           <div>{children}</div>
-          <TileFooter onEmbedClick={() => setShowOverlay(true)}>
+          <TileFooter
+            onEmbedClick={() => setShowOverlay(true)}
+            variant={variant === 'secondary' ? 'inverse' : 'primary'}
+          >
             {footerCenterElement}
           </TileFooter>
         </div>

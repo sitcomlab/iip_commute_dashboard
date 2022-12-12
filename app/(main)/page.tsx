@@ -13,13 +13,24 @@ import SuccessStoryTile from '@/components/Tiles/SuccessStory'
 import directus, {
   directusImage,
   successStoriesCollectionName,
+  surveyCollectionName,
 } from '@/lib/directus'
 import AnimatedPage from '@/components/Layout/AnimatedPage'
 import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
+import SurveyTile from '@/components/Tiles/Survey'
 
 export default async function Home() {
   const { data: successStories } = await directus
     .items(successStoriesCollectionName)
+    .readByQuery({
+      filter: {
+        status: 'published',
+      },
+      limit: 2,
+    })
+
+  const { data: surveys } = await directus
+    .items(surveyCollectionName)
     .readByQuery({
       filter: {
         status: 'published',
@@ -48,6 +59,15 @@ export default async function Home() {
           <BicycleChartTile />
           <WeatherTile />
           <StadtradelnTile />
+          {surveys && surveys[0] && (
+            <SurveyTile
+              answer={{
+                percent: surveys[0].answer_percent,
+                text: surveys[0].answer_text,
+              }}
+              question={surveys[0].question}
+            />
+          )}
         </Columns>
         <CO2EmissionsTile />
         <Spacer />
@@ -59,6 +79,17 @@ export default async function Home() {
             text={successStories[0].text}
           ></SuccessStoryTile>
         )}
+        <Columns>
+          {surveys && surveys[1] && (
+            <SurveyTile
+              answer={{
+                percent: surveys[1].answer_percent,
+                text: surveys[1].answer_text,
+              }}
+              question={surveys[1].question}
+            />
+          )}
+        </Columns>
         {successStories && successStories[1] && (
           <SuccessStoryTile
             image={directusImage(successStories[1].image)}

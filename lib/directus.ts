@@ -5,6 +5,7 @@ const directusUrl =
 
 export const insightsCollectionName = 'klima_insights'
 export const successStoriesCollectionName = 'klima_success_stories'
+export const surveyCollectionName = 'klima_survey'
 
 export type Insights = {
   id: ID
@@ -23,11 +24,20 @@ export type SuccessStory = {
   image_position: 'left' | 'right'
 }
 
+export type Survey = {
+  id: ID
+  status: 'draft' | 'archived' | 'published'
+  question: string
+  answer_percent: number
+  answer_text: string
+}
+
 // Map your collections to its respective types. The SDK will
 // infer its types based on usage later.
 type DirectusCollection = {
   klima_insights: Insights
   klima_success_stories: SuccessStory
+  klima_survey: Survey
 }
 
 const directus = new Directus<DirectusCollection>(directusUrl)
