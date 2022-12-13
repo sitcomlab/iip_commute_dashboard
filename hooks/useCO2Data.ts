@@ -1,16 +1,13 @@
 // @ts-ignore
-import CO2Data from '@/assets/data/Klimaschutz-Bilanz-Muenster-1990-2020.csv'
+import CO2Data from '@/assets/data/CO2_Emissionen_Sektoren.csv'
 
 type CO2Data = {
-  'CO2 in kt': number
-  'Gesamt in % zu 1990': string
   Jahr: number
-  Strom: number
-  'Strom in %': string
+  'Private Haushalte': number
+  'Gewerbe + Sonstiges': number
+  Industrie: number
   Verkehr: number
-  'Verkehr in %': string
-  Wärme: number
-  'Wärme in %': string
+  Gesamt: number
 }
 
 export default function useCO2Data(): CO2Data[] {

@@ -1,8 +1,7 @@
 'use client'
 
-import { Spacer } from '@/components/Elements/Spacer'
+import Title from '@/components/Elements/Title'
 import Switch from '@/components/Inputs/Switch'
-import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import { BeakerIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
 import ClimateTile from '../ClimateTile'
@@ -24,30 +23,19 @@ export default function CO2EmissionsTile() {
     >
       <div className="flex">
         <div className="flex-1">
-          <div className="flex flex-col justify-between md:flex-row">
-            <ToggleGroup
-              items={[
-                {
-                  element: 'Endenergieverbrauch in GWh',
-                  value: 'A',
-                },
-                {
-                  element: 'CO₂-Emissionen in 1000t',
-                  value: 'B',
-                },
-              ]}
-              variant="climate"
-            />
-            <Switch
-              defaultChecked={showFuture}
-              label="Klimaneutral"
-              onCheckedChange={setShowFuture}
-              variant="climate"
-            />
-          </div>
-          <Spacer size="sm" />
-          <div className="h-72 rounded bg-white p-2">
-            <CO2Chart showFuture={showFuture} />
+          <div className="flex h-96 flex-col rounded bg-white p-2">
+            <div className="flex flex-col justify-between md:flex-row md:px-16 md:pt-4">
+              <Title size={'sm'}>CO₂-Emissionen in 1000t</Title>
+              <Switch
+                defaultChecked={showFuture}
+                label="Klimaneutral"
+                onCheckedChange={setShowFuture}
+                variant="climate"
+              />
+            </div>
+            <div className="w-full flex-1">
+              <CO2Chart showFuture={showFuture} />
+            </div>
           </div>
         </div>
         <div className="w-72 flex-none px-4">

@@ -1,16 +1,20 @@
 import useCO2Data from '@/hooks/useCO2Data'
 import { parse } from 'date-fns'
-import { ReactECharts } from '@/components/Charts/ReactECharts'
 import { SeriesOption } from 'echarts'
+import { ReactECharts } from '@/components/Charts/ReactECharts'
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from '@/tailwind.config'
 
 type CO2ChartProps = {
   showFuture?: boolean
 }
 
+const { theme } = resolveConfig(tailwindConfig)
+
 export default function CO2Chart({ showFuture = false }: CO2ChartProps) {
   const data = useCO2Data()
 
-  const transformdata = (baseData: any[]) =>
+  const withFuture = (baseData: number[][]) =>
     showFuture
       ? [
           ...baseData,
@@ -18,39 +22,58 @@ export default function CO2Chart({ showFuture = false }: CO2ChartProps) {
         ]
       : baseData
 
+  const prepareData = (key: keyof typeof data[0]) =>
+    withFuture(
+      data.map(e => [
+        parse(`01-01-${e.Jahr}`, 'dd-MM-yyyy', new Date()).getTime(),
+        e[key],
+      ]),
+    )
+
   const series: SeriesOption[] = [
     {
       type: 'line',
-      name: 'Wärme',
-      data: transformdata(
-        data.map(e => [
-          parse(`01-01-${e.Jahr}`, 'dd-MM-yyyy', new Date()).getTime(),
-          e.Wärme,
-        ]),
-      ),
-      showSymbol: false,
-    },
-    {
-      type: 'line',
-      name: 'Strom',
-      data: transformdata(
-        data.map(e => [
-          parse(`01-01-${e.Jahr}`, 'dd-MM-yyyy', new Date()).getTime(),
-          e.Strom,
-        ]),
-      ),
-      showSymbol: false,
-    },
-    {
-      type: 'line',
       name: 'Verkehr',
-      data: transformdata(
-        data.map(e => [
-          parse(`01-01-${e.Jahr}`, 'dd-MM-yyyy', new Date()).getTime(),
-          e.Verkehr,
-        ]),
-      ),
+      data: prepareData('Verkehr'),
       showSymbol: false,
+      // @ts-ignore
+      color: theme?.colors?.mobility.DEFAULT || '#34c17b',
+      lineStyle: {
+        width: 3,
+      },
+    },
+    {
+      type: 'line',
+      name: 'Industrie',
+      data: prepareData('Industrie'),
+      showSymbol: false,
+      // @ts-ignore
+      color: theme?.colors?.primary.DEFAULT || '#005b79',
+      lineStyle: {
+        width: 3,
+      },
+    },
+    {
+      type: 'line',
+      name: 'Gewerbe und Sonstiges',
+      data: prepareData('Gewerbe + Sonstiges'),
+      showSymbol: false,
+      // @ts-ignore
+      color: '#f3e500',
+      lineStyle: {
+        width: 3,
+      },
+    },
+    {
+      type: 'line',
+      name: 'Private Haushalte',
+      data: prepareData('Private Haushalte'),
+      showSymbol: false,
+      // @ts-ignore
+      color: theme?.colors?.energy.DEFAULT || '#f28443',
+      lineStyle: {
+        width: 3,
+      },
     },
   ]
 
@@ -60,31 +83,25 @@ export default function CO2Chart({ showFuture = false }: CO2ChartProps) {
         xAxis: {
           type: 'time',
           show: true,
-          axisPointer: {
-            show: true,
-            lineStyle: {
-              color: '#7581BD',
-              width: 2,
-              type: 'solid',
-            },
-            label: {
-              show: true,
-              position: 'insideTop',
-            },
-            handle: {
-              show: true,
-              color: '#7581BD',
-            },
-          },
         },
         yAxis: {
           type: 'value',
-          min: 'dataMin',
+          min: '0',
+          axisLabel: {
+            formatter: (val: any) => (val / 1000).toFixed(0),
+          },
         },
         series: series,
         legend: {
           show: true,
           bottom: 0,
+          icon: 'circle',
+          textStyle: {
+            minMargin: 100,
+          },
+        },
+        textStyle: {
+          fontSize: 12,
         },
       }}
     />
