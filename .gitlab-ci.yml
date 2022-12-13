@@ -22,3 +22,39 @@ deploy_production:
     - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
     - vercel build --prod --token=$VERCEL_TOKEN
     - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+
+cron_fetch_dwd_climate_data:
+  image: ubuntu:22
+  stage: build
+  only:
+    - schedules
+    - web
+
+  before_script:
+    - apt-get update
+    - apt-get install miller
+    - apt-get install unzip
+
+  script:
+    - mkdir tmp
+    - cd tmp
+    - curl https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/monatswerte_KL_03404_18530101_19911231_hist.zip >> dwd_history_03404.zip
+    - unzip -o dwd_history_03404.zip
+    - mv produkt_klima_monat_18530101_19911231_03404.txt klima_history_03404.csv
+    - curl https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/monatswerte_KL_01766_19891001_20211231_hist.zip >> dwd_history_01766.zip
+    - unzip -o dwd_history_01766.zip
+    - mv produkt_klima_monat_19891001_20211231_01766.txt klima_history_01766.csv
+    - curl https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/recent/monatswerte_KL_01766_akt.zip >> dwd_recent_01766.zip
+    - unzip -o dwd_recent_01766.zip
+    - mv produkt_klima_monat_20210501_20221130_01766.txt klima_recent_01766.csv
+    - mlr --csv cat *.csv > klima_merge.csv
+    - mlr --csv --ifs ';' --ofs ',' sort -n MESS_DATUM_BEGINN klima_merge.csv > klima_sorted.csv
+    - awk -F, '{key = $2 FS $3} !seen[key]++' klima_sorted.csv > klima_without_dupl.csv
+    - cd ..
+    - mv tmp/klima_without_dupl.csv assets/data/climate_muenster.csv
+    - git config user.email "f.erdmann@reedu.de"
+    - git config user.name "ci-bot"
+    - git remote add origin https://oauth2:$ACCESS_TOKEN@gitlab.opencode.de/smart-city-muenster/klimadashboard-muenster/klimadashboard-muenster.git
+    - git add assets/*
+    - "git commit -m 'ci: update climate csv file'"
+    - git push origin HEAD:main -o ci.skip # prevent triggering pipeline again

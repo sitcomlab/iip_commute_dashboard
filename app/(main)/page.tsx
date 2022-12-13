@@ -19,6 +19,7 @@ import AnimatedPage from '@/components/Layout/AnimatedPage'
 import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
 import SurveyTile from '@/components/Tiles/Survey'
 import BusTile from '@/components/Tiles/Mobility/Bus'
+import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
 
 export default async function Home() {
   const { data: successStories } = await directus
@@ -59,6 +60,7 @@ export default async function Home() {
         <Columns>
           <BicycleChartTile />
           <WeatherTile />
+          <ClimateDevelopmentTile />
           <StadtradelnTile />
           <BusTile />
           {surveys && surveys[0] && (
