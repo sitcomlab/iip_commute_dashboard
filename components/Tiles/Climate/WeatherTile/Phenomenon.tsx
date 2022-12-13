@@ -1,9 +1,9 @@
 import { CloudIcon } from '@heroicons/react/24/outline'
-import { animated, useSpring } from 'react-spring'
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 import { Sun, Temperature, Water, Wind } from '@/components/Icons'
 import { SVGProps } from 'react'
+import AnimatedNumber from '@/components/Elements/AnimatedNumber'
 
 type PhenomenaType = {
   [key: string]: {
@@ -68,8 +68,6 @@ export default function Phenomenon({
 }: PhenomenonProps) {
   const { title, unit, icon, decimals } = phenomena[phenomenon]
 
-  const props = useSpring({ val: value, config: { duration: 100 } })
-
   const Icon = icon
   return (
     <div className="my-2 flex items-center space-x-2">
@@ -81,10 +79,7 @@ export default function Phenomenon({
         ></p>
         <span className={phenomenonStyle({ size })}>
           <>
-            <animated.span>
-              {props.val.to(val => val.toFixed(decimals || 0))}
-            </animated.span>{' '}
-            {unit}
+            <AnimatedNumber decimals={decimals}>{value}</AnimatedNumber> {unit}
           </>
         </span>
       </div>

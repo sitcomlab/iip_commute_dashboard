@@ -1,4 +1,4 @@
-import { animated, useSpring } from 'react-spring'
+import AnimatedNumber from '@/components/Elements/AnimatedNumber'
 import BicycleProgress from './BicycleProgress'
 
 type BicycleRowProps = {
@@ -23,17 +23,13 @@ function mapBetween(
 export default function BicycleRow({ name, count, min, max }: BicycleRowProps) {
   const progress = mapBetween(count, min * 0.9, max * 1.1)
 
-  const props = useSpring({ to: { val: count }, config: { duration: 100 } })
-
   return (
     <div className="my-2 flex w-full items-center">
       <div className="w-28 flex-none md:w-40">
         <p className="text-sm text-primary md:text-base">{name}</p>
-        <animated.p className="text-lg text-mobility md:text-3xl">
-          {props.val.to(e =>
-            e.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.'),
-          )}
-        </animated.p>
+        <AnimatedNumber className="text-lg text-mobility md:text-3xl">
+          {count}
+        </AnimatedNumber>
       </div>
       <div className="flex-1">
         <BicycleProgress progress={progress} />
