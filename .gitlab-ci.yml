@@ -53,7 +53,7 @@ cron_fetch_dwd_climate_data:
     - mv tmp/klima_without_dupl.csv assets/data/climate_muenster.csv
     - git config user.email "f.erdmann@reedu.de"
     - git config user.name "ci-bot"
-    - git remote add origin https://oauth2:$ACCESS_TOKEN@gitlab.opencode.de/smart-city-muenster/klimadashboard-muenster/klimadashboard-muenster.git
+    - git remote add gitlab_ci_origin https://oauth2:$ACCESS_TOKEN@gitlab.opencode.de/smart-city-muenster/klimadashboard-muenster/klimadashboard-muenster.git
     - git add assets/*
     - "git commit -m 'ci: update climate csv file'"
-    - git push origin HEAD:main
+    - git push gitlab_ci_origin HEAD:main
