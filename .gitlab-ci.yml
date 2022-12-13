@@ -32,7 +32,7 @@ cron_fetch_dwd_climate_data:
 
   before_script:
     - apt-get update
-    - apt-get install --yes curl miller unzip
+    - apt-get install --yes curl miller unzip git
 
   script:
     - mkdir tmp
@@ -56,4 +56,4 @@ cron_fetch_dwd_climate_data:
     - git remote add origin https://oauth2:$ACCESS_TOKEN@gitlab.opencode.de/smart-city-muenster/klimadashboard-muenster/klimadashboard-muenster.git
     - git add assets/*
     - "git commit -m 'ci: update climate csv file'"
-    - git push origin HEAD:main -o ci.skip # prevent triggering pipeline again
+    - git push origin HEAD:main
