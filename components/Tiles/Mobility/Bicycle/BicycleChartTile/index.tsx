@@ -22,7 +22,12 @@ export default function BicycleChartTile() {
   const loading = !data
 
   return (
-    <MobilityTile live subtitle="im Stadtgebiet" title="Radler:innen">
+    <MobilityTile
+      dataSource="Stadt Münster - Amt für Mobilität und Tiefbau"
+      live
+      subtitle="im Stadtgebiet"
+      title="Radler:innen"
+    >
       <>
         <div className="rounded bg-white px-4 py-2">
           {loading &&
@@ -52,6 +57,13 @@ export default function BicycleChartTile() {
             }}
           />
         )}
+        <Spacer size={'sm'} />
+        <p className="font-medium">
+          An verschiedenen Zählstellen in der Stadt wird die Anzahl an
+          vorbeiradelnden Radfahrer*innen gemessen. Seit Jahren werden es stetig
+          mehr. Diese Zahlen sind wichtig für die Stadtplanung und weisen u.a.
+          auf einen Ausbaubedarf bei Radwegen und Velorouten hin.
+        </p>
       </>
     </MobilityTile>
   )

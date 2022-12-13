@@ -18,13 +18,19 @@ const iconTileTitleStyle = cva('text-4xl md:text-6xl font-light', {
   },
 })
 
-export type IconTileProps = VariantProps<typeof iconTileTitleStyle> & {
-  children: React.ReactElement | React.ReactElement[]
-  title: string | React.ReactElement
-  icon: (_props: SVGProps<SVGSVGElement>) => JSX.Element
-  subtitle?: string
-  live?: boolean
+export type DataSourceProps = {
+  dataRetrieval?: string
+  dataSource: string
 }
+
+export type IconTileProps = VariantProps<typeof iconTileTitleStyle> &
+  DataSourceProps & {
+    children: React.ReactElement | React.ReactElement[]
+    title: string | React.ReactElement
+    icon: (_props: SVGProps<SVGSVGElement>) => JSX.Element
+    subtitle?: string
+    live?: boolean
+  }
 
 /**
  * A tile that shows mobility information
@@ -38,6 +44,8 @@ export default function IconTile({
   icon,
   subtitle,
   variant,
+  dataRetrieval,
+  dataSource,
 }: IconTileProps) {
   const Icon = icon
 
@@ -53,6 +61,13 @@ export default function IconTile({
       <span className="text-lg md:text-xl">{subtitle}</span>
       <Spacer />
       <>{children}</>
+      <Spacer />
+      <div className="flex space-x-2 text-xs text-primary">
+        <span className="font-semibold">
+          Datenstand: {dataRetrieval ?? (live ? 'live' : 'undefined')}
+        </span>
+        <span>Quelle: {dataSource}</span>
+      </div>
     </BaseTile>
   )
 }

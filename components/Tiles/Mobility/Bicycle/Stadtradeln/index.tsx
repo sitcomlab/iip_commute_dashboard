@@ -3,7 +3,12 @@ import ChartContainer from './ChartContainer'
 
 export default function StadtradelnTile() {
   return (
-    <MobilityTile subtitle="auf der Überholspur" title="Stadtradeln">
+    <MobilityTile
+      dataRetrieval="01.01.2022"
+      dataSource="Stadtradeln"
+      subtitle="auf der Überholspur"
+      title="Stadtradeln"
+    >
       <ChartContainer />
       <p className="my-2 font-medium">
         Auf die Leeze, fertig, los! Für mehr Radverkehr, Klimaschutz und

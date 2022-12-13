@@ -1,7 +1,7 @@
 import { MuensterIcon } from '@/components/Icons'
-import IconTile from '../Base/IconTile'
+import IconTile, { DataSourceProps } from '../Base/IconTile'
 
-export type ClimateTileProps = {
+export type ClimateTileProps = DataSourceProps & {
   children: React.ReactElement | React.ReactElement[]
   title: string | React.ReactElement
   subtitle?: string
@@ -18,9 +18,13 @@ export default function ClimateTile({
   live,
   title,
   subtitle,
+  dataSource,
+  dataRetrieval,
 }: ClimateTileProps) {
   return (
     <IconTile
+      dataRetrieval={dataRetrieval}
+      dataSource={dataSource}
       icon={MuensterIcon}
       live={live}
       subtitle={subtitle}

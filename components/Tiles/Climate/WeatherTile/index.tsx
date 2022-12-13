@@ -24,6 +24,7 @@ export default function WeatherTile() {
 
   return (
     <ClimateTile
+      dataSource="DWD"
       live
       title={
         <span>
