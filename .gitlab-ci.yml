@@ -32,7 +32,7 @@ cron_fetch_dwd_climate_data:
 
   before_script:
     - apt-get update
-    - apt-get install curl miller unzip
+    - apt-get install --yes curl miller unzip
 
   script:
     - mkdir tmp
