@@ -24,7 +24,7 @@ deploy_production:
     - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
 
 cron_fetch_dwd_climate_data:
-  image: ubuntu:22
+  image: ubuntu:20.04
   stage: build
   only:
     - schedules
