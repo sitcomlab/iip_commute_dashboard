@@ -16,7 +16,7 @@ export default function SurveyAnswer({
   const [animatedNumber, api] = useSpring({ val: 0 }, [])
 
   useEffect(() => {
-    api({ val: percent })
+    api.start({ val: percent })
   }, [percent])
 
   return (
