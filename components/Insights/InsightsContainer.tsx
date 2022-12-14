@@ -1,5 +1,4 @@
 import directus, { insightsCollectionName } from '@/lib/directus'
-import { use } from 'react'
 import Container from '../Layout/Container'
 import InsightsTile from './InsightsTile'
 
@@ -13,8 +12,8 @@ const getInsightsData = async () => {
   return data
 }
 
-export default function InsightsContainer() {
-  const insights = use(getInsightsData())
+export default async function InsightsContainer() {
+  const insights = await getInsightsData()
 
   return (
     <div className="relative w-full">

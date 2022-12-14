@@ -42,6 +42,7 @@ export default async function Home() {
 
   return (
     <AnimatedPage>
+      {/* @ts-expect-error Server Component */}
       <InsightsContainer />
       <StairStepBackground variant="secondary">
         <Container>
