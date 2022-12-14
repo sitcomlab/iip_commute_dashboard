@@ -32,6 +32,25 @@ const climateTemperature = climateData.map(e => ({
   value: e.MO_TT,
 }))
 
+// use these to calculate monthly averages
+
+// const before1900Data = climateTemperature.filter(e => Number(e.year) < 1900)
+
+// const monthAvg = new Array(12)
+//   .fill(1)
+//   .map((e, i) => i + 1)
+//   .reduce(
+//     (a: any, e) => ({
+//       ...a,
+//       [Number(e)]:
+//         before1900Data
+//           .filter(d => Number(d.month) === e)
+//           .reduce((sum, mv) => sum + mv.value, 0) /
+//         before1900Data.filter(d => Number(d.month) === e).length,
+//     }),
+//     {},
+//   )
+
 const climateYears = climateTemperature.reduce(
   (
     a: {
@@ -45,7 +64,7 @@ const climateYears = climateTemperature.reduce(
     [o.year]: {
       // @ts-ignore
       ...a[o.year],
-      [o.month]: o.value,
+      [Number(o.month)]: o.value,
     },
   }),
   {},
@@ -54,7 +73,7 @@ const climateYears = climateTemperature.reduce(
 export default function ClimateDevelopmentTile() {
   return (
     <ClimateTile dataSource="DWD" live title={'Klima'}>
-      <div className="h-96 w-full rounded bg-white">
+      <div className="h-96 w-full">
         <div className="h-full w-full">
           <RadarChart data={climateYears} />
         </div>

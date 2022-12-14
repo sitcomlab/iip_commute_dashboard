@@ -9,6 +9,7 @@ export interface ReactEChartsProps {
   settings?: SetOptionOpts
   loading?: boolean
   theme?: 'light' | 'dark'
+  renderer?: 'svg' | 'canvas'
 }
 
 export function ReactECharts({
@@ -17,6 +18,7 @@ export function ReactECharts({
   settings,
   loading,
   theme,
+  renderer = 'svg',
 }: ReactEChartsProps): JSX.Element {
   const chartRef = useRef<HTMLDivElement>(null)
 
@@ -25,7 +27,7 @@ export function ReactECharts({
     let chart: ECharts | undefined
     if (chartRef.current !== null) {
       chart = init(chartRef.current, theme, {
-        renderer: 'svg',
+        renderer,
       })
     }
 
