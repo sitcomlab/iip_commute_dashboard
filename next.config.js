@@ -17,6 +17,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  output: 'standalone',
   images: {
     remotePatterns: [
       {
