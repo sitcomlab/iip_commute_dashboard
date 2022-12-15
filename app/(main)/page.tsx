@@ -1,9 +1,5 @@
 import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
-import Collapsible from '@/components/Elements/Collapsible'
-import MoreDetails from '@/components/Elements/MoreDetails'
 import { Spacer } from '@/components/Elements/Spacer'
-import StairStepBackground from '@/components/Layout/StairStepBackground'
-import Title from '@/components/Elements/Title'
 import InsightsContainer from '@/components/Insights/InsightsContainer'
 import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
 import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
@@ -20,6 +16,7 @@ import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
 import SurveyTile from '@/components/Tiles/Survey'
 import BusTile from '@/components/Tiles/Mobility/Bus'
 import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
+import SectionHeader from '@/components/Layout/SectionHeader'
 
 export default async function Home() {
   const { data: successStories } = await directus
@@ -42,28 +39,16 @@ export default async function Home() {
 
   return (
     <AnimatedPage>
-      {/* @ts-expect-error Server Component */}
       <InsightsContainer />
-      <StairStepBackground variant="secondary">
-        <Container>
-          <Title size="lg">Daten im Fokus</Title>
-          <Collapsible trigger={<MoreDetails className="mt-4" />}>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde,
-              neque reprehenderit. Unde distinctio ipsa temporibus aliquam
-              minima asperiores perferendis harum vel, vero, impedit ratione ut
-              eligendi, tenetur sed accusantium nesciunt.
-            </div>
-          </Collapsible>
-        </Container>
-      </StairStepBackground>
       <Container>
+        <SectionHeader variant="climate" />
+
         <Columns>
-          <BicycleChartTile />
           <WeatherTile />
           <ClimateDevelopmentTile />
-          <StadtradelnTile />
-          <BusTile />
+        </Columns>
+        <CO2EmissionsTile />
+        <Columns>
           {surveys && surveys[0] && (
             <SurveyTile
               answer={{
@@ -74,17 +59,11 @@ export default async function Home() {
             />
           )}
         </Columns>
-        <CO2EmissionsTile />
-        <Spacer />
-        {successStories && successStories[0] && (
-          <SuccessStoryTile
-            image={directusImage(successStories[0].image)}
-            imagePosition={successStories[0].image_position}
-            link={successStories[0].link}
-            text={successStories[0].text}
-          ></SuccessStoryTile>
-        )}
+        <SectionHeader variant="mobility" />
         <Columns>
+          <BicycleChartTile />
+          <StadtradelnTile />
+          <BusTile />
           {surveys && surveys[1] && (
             <SurveyTile
               answer={{
@@ -95,6 +74,15 @@ export default async function Home() {
             />
           )}
         </Columns>
+        <Spacer />
+        {successStories && successStories[0] && (
+          <SuccessStoryTile
+            image={directusImage(successStories[0].image)}
+            imagePosition={successStories[0].image_position}
+            link={successStories[0].link}
+            text={successStories[0].text}
+          ></SuccessStoryTile>
+        )}
         {successStories && successStories[1] && (
           <SuccessStoryTile
             image={directusImage(successStories[1].image)}
