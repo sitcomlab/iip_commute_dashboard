@@ -1,4 +1,5 @@
 import directus, { insightsCollectionName } from '@/lib/directus'
+import withSuspense from '@/utils/withSuspense'
 import Container from '../Layout/Container'
 import InsightsTile from './InsightsTile'
 
@@ -9,10 +10,11 @@ const getInsightsData = async () => {
     },
     limit: 3,
   })
+
   return data
 }
 
-export default async function InsightsContainer() {
+async function InsightsContainer() {
   const insights = await getInsightsData()
 
   return (
@@ -34,3 +36,17 @@ export default async function InsightsContainer() {
     </div>
   )
 }
+
+const Fallback = (
+  <div className="relative w-full">
+    <Container>
+      <div className="flex w-full flex-col items-center justify-between space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0">
+        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-3xl bg-zinc-100" />
+        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-3xl bg-zinc-100" />
+        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-3xl bg-zinc-100" />
+      </div>
+    </Container>
+  </div>
+)
+
+export default withSuspense(InsightsContainer, Fallback)
