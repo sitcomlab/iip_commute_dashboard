@@ -42,10 +42,10 @@ export default function SuccessStoryTile({
   }
 
   const StoryImage = (
-    <div className="relative min-h-[30rem] w-2/3 overflow-hidden">
+    <div className="relative min-h-[20rem] overflow-hidden md:min-h-[30rem] md:w-2/3">
       <Image
         alt={'Image'}
-        className="object-cover transition-all group-hover:scale-105"
+        className="object-cover object-top transition-all group-hover:scale-105"
         fill
         src={image}
       />

@@ -6,20 +6,23 @@ import { useTransition } from 'react-spring'
 import EmbedOverlay from './EmbedOverlay'
 import TileFooter from './TileFooter'
 
-const baseTileStyle = cva('relative flex h-fit overflow-hidden rounded-3xl', {
-  variants: {
-    variant: {
-      primary: 'bg-primary-light',
-      secondary: 'bg-secondary',
-      mobility: 'bg-mobility-light',
-      successStory: 'bg-primary-light',
-      climate: 'bg-climate-light',
+const baseTileStyle = cva(
+  'relative flex flex-col md:flex-row h-fit overflow-hidden rounded-3xl',
+  {
+    variants: {
+      variant: {
+        primary: 'bg-primary-light',
+        secondary: 'bg-secondary',
+        mobility: 'bg-mobility-light',
+        successStory: 'bg-primary-light',
+        climate: 'bg-climate-light',
+      },
+    },
+    defaultVariants: {
+      variant: 'primary',
     },
   },
-  defaultVariants: {
-    variant: 'primary',
-  },
-})
+)
 
 export type ImageProps =
   | { startImage: React.ReactElement; endImage?: never }

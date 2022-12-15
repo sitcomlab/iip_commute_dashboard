@@ -23,7 +23,7 @@ export default function CO2EmissionsTile() {
         </span>
       }
     >
-      <div className="flex">
+      <div className="flex flex-col md:flex-row">
         <div className="flex-1">
           <div className="flex h-96 flex-col rounded bg-white p-2">
             <div className="flex flex-col justify-between md:flex-row md:px-16 md:pt-4">
@@ -40,7 +40,7 @@ export default function CO2EmissionsTile() {
             </div>
           </div>
         </div>
-        <div className="w-72 flex-none px-4">
+        <div className="w-72 flex-none py-4 md:py-0 md:px-4">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
             officiis quam, velit sed officia dolores debitis quo nesciunt rem
