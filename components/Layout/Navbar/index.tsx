@@ -13,6 +13,7 @@ import {
   EnergyIcon,
   MuensterIcon,
 } from '@/components/Icons'
+import { Bars3Icon } from '@heroicons/react/24/outline'
 
 export default function Navbar() {
   return (
@@ -26,6 +27,46 @@ export default function Navbar() {
       </div>
       <StairStepBackground>
         <Container>
+          <div className="md:hidden">
+            <Collapsible
+              trigger={
+                <div className="w-fit rounded-full border-2 border-primary p-2">
+                  <Bars3Icon className="w-5 stroke-2 text-primary" />
+                </div>
+              }
+            >
+              <div className="my-4 flex flex-col space-y-2">
+                <Link href={'/klima'}>
+                  <Button
+                    startIcon={<MuensterIcon className="h-6 text-primary" />}
+                  >
+                    Klima in Münster
+                  </Button>
+                </Link>
+                <Link href={'/energie'}>
+                  <Button
+                    startIcon={<EnergyIcon className="h-6 text-primary" />}
+                  >
+                    Energien
+                  </Button>
+                </Link>
+                <Link href={'/mobilitaet'}>
+                  <Button
+                    startIcon={<BicycleIcon className="h-6 text-primary" />}
+                  >
+                    Mobilität
+                  </Button>
+                </Link>
+                <Link href={'/gebaeude'}>
+                  <Button
+                    startIcon={<BuildingIcon className="h-6 text-primary" />}
+                  >
+                    Gebäude
+                  </Button>
+                </Link>
+              </div>
+            </Collapsible>
+          </div>
           <div className="flex justify-between">
             <div className="flex-1">
               <Link href={'/'}>
@@ -45,7 +86,7 @@ export default function Navbar() {
                 </div>
               </Collapsible>
             </div>
-            <div className="flex h-fit flex-wrap space-x-2">
+            <div className="hidden h-fit flex-wrap space-x-2 md:flex">
               <Link href={'/klima'}>
                 <Button
                   startIcon={<MuensterIcon className="h-6 text-primary" />}
