@@ -34,28 +34,28 @@ const climateTemperature = climateData.map(e => ({
 
 // use these to calculate monthly averages
 
-// const before1900Data = climateTemperature.filter(e => Number(e.year) < 1900)
+const before1900Data = climateTemperature.filter(e => Number(e.year) < 1900)
 
-// const monthAvg = new Array(12)
-//   .fill(1)
-//   .map((e, i) => i + 1)
-//   .reduce(
-//     (a: any, e) => ({
-//       ...a,
-//       [Number(e)]:
-//         before1900Data
-//           .filter(d => Number(d.month) === e)
-//           .reduce((sum, mv) => sum + mv.value, 0) /
-//         before1900Data.filter(d => Number(d.month) === e).length,
-//     }),
-//     {},
-//   )
+const monthAvg = new Array(12)
+  .fill(1)
+  .map((e, i) => i + 1)
+  .reduce(
+    (a: any, e) => ({
+      ...a,
+      [e]:
+        before1900Data
+          .filter(d => Number(d.month) === e)
+          .reduce((sum, mv) => sum + mv.value, 0) /
+        before1900Data.filter(d => Number(d.month) === e).length,
+    }),
+    {},
+  )
 
 const climateYears = climateTemperature.reduce(
   (
     a: {
       [key: string]: {
-        [key: string]: number
+        [key: number]: number
       }
     },
     o,
@@ -64,7 +64,7 @@ const climateYears = climateTemperature.reduce(
     [o.year]: {
       // @ts-ignore
       ...a[o.year],
-      [Number(o.month)]: o.value,
+      [Number(o.month)]: o.value - monthAvg[Number(o.month)],
     },
   }),
   {},

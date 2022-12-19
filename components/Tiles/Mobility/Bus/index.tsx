@@ -47,7 +47,7 @@ export default function BusTile() {
           >
             <BusCombustionIcon className="w-full pr-2" />
           </div>
-          <div className="flex-1">
+          <div className="flex-1 px-12">
             <BusElectroIcon className="w-full pl-2" />
           </div>
         </div>
