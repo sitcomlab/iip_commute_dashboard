@@ -24,6 +24,7 @@ export default function BicycleChartTile() {
   return (
     <MobilityTile
       dataSource="Stadt Münster - Amt für Mobilität und Tiefbau"
+      embedId="radlerinnen"
       live
       subtitle="im Stadtgebiet"
       title="Radler:innen"

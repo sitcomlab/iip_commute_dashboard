@@ -1,7 +1,7 @@
 import { Spacer } from '@/components/Elements/Spacer'
 import { cva, cx, VariantProps } from 'class-variance-authority'
 import { SVGProps } from 'react'
-import { BaseTile } from './BaseTile'
+import { BaseTile, EmbedTileProps } from './BaseTile'
 import LiveBadge from './LiveBadge'
 
 const iconTileTitleStyle = cva('text-4xl md:text-6xl font-light', {
@@ -24,7 +24,8 @@ export type DataSourceProps = {
 }
 
 export type IconTileProps = VariantProps<typeof iconTileTitleStyle> &
-  DataSourceProps & {
+  DataSourceProps &
+  EmbedTileProps & {
     children: React.ReactElement | React.ReactElement[]
     title: string | React.ReactElement
     icon: (_props: SVGProps<SVGSVGElement>) => JSX.Element
@@ -46,11 +47,13 @@ export default function IconTile({
   variant,
   dataRetrieval,
   dataSource,
+  embedId,
 }: IconTileProps) {
   const Icon = icon
 
   return (
     <BaseTile
+      embedId={embedId}
       footerCenterElement={live ? <LiveBadge variant={variant} /> : undefined}
       variant={variant}
     >

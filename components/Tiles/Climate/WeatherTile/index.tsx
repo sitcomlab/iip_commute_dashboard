@@ -25,6 +25,7 @@ export default function WeatherTile() {
   return (
     <ClimateTile
       dataSource="DWD"
+      embedId={'wetter'}
       live
       title={
         <span>

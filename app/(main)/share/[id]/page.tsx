@@ -1,7 +1,7 @@
 import embedRegistry from '@/utils/embedRegistry'
 import { notFound } from 'next/navigation'
 
-export default async function Embed({
+export default async function Share({
   params,
 }: {
   params: { id: keyof typeof embedRegistry }

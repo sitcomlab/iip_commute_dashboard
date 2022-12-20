@@ -1,12 +1,14 @@
 import { MuensterIcon } from '@/components/Icons'
+import { EmbedTileProps } from '../Base/BaseTile'
 import IconTile, { DataSourceProps } from '../Base/IconTile'
 
-export type ClimateTileProps = DataSourceProps & {
-  children: React.ReactElement | React.ReactElement[]
-  title: string | React.ReactElement
-  subtitle?: string
-  live?: boolean
-}
+export type ClimateTileProps = DataSourceProps &
+  EmbedTileProps & {
+    children: React.ReactElement | React.ReactElement[]
+    title: string | React.ReactElement
+    subtitle?: string
+    live?: boolean
+  }
 
 /**
  * A tile that shows mobility information
@@ -20,11 +22,13 @@ export default function ClimateTile({
   subtitle,
   dataSource,
   dataRetrieval,
+  embedId,
 }: ClimateTileProps) {
   return (
     <IconTile
       dataRetrieval={dataRetrieval}
       dataSource={dataSource}
+      embedId={embedId}
       icon={MuensterIcon}
       live={live}
       subtitle={subtitle}

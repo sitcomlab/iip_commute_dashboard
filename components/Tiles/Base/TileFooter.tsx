@@ -21,6 +21,7 @@ const tileFooterStyle = cva('flex flex-1 space-x-1', {
 
 type TileFooterProps = VariantProps<typeof tileFooterStyle> & {
   onEmbedClick?: () => void
+  onShareClick?: () => void
   children?: React.ReactElement
 }
 
@@ -30,6 +31,7 @@ type TileFooterProps = VariantProps<typeof tileFooterStyle> & {
  */
 export default function TileFooter({
   onEmbedClick,
+  onShareClick,
   children,
   variant,
 }: TileFooterProps) {
@@ -40,9 +42,10 @@ export default function TileFooter({
           className="h-5 cursor-pointer stroke-2"
           onClick={onEmbedClick}
         />
-        <Link href={'#'}>
-          <ShareIcon className="h-5 stroke-2" />
-        </Link>
+        <ShareIcon
+          className="h-5 cursor-pointer stroke-2"
+          onClick={onShareClick}
+        />
         <Link href={'#'}>
           <ArrowDownTrayIcon className="h-5 stroke-2" />
         </Link>

@@ -14,6 +14,7 @@ export default function CO2EmissionsTile() {
     <ClimateTile
       dataRetrieval="01.01.2022"
       dataSource="Stadt Münster - Koordinierungsstelle für Klima und Energie"
+      embedId="CO2"
       title={
         <span className="flex items-center space-x-4">
           <span className="font-medium">CO₂</span>

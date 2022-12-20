@@ -12,6 +12,7 @@ export default function BusTile() {
   return (
     <MobilityTile
       dataSource="Stadtwerke Münster"
+      embedId="bus"
       live
       subtitle="Anzahl im Vergleich zu Bussen mit fossilem Antrieb"
       title="E-Busse"
