@@ -95,3 +95,5 @@ export default async function Home() {
     </AnimatedPage>
   )
 }
+
+export const revalidate = 60

@@ -50,5 +50,3 @@ const Fallback = (
 )
 
 export default withSuspense(InsightsContainer, Fallback)
-
-export const revalidate = 60
