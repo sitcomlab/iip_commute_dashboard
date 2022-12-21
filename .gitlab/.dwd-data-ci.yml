@@ -9,9 +9,7 @@ dwd_climate_indices:
     - pip install -r climate-indices-parser/requirements.txt
 
   script:
-    - cd climate-indices-parser
-    - python index.py https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/historical/monatswerte_KLINDEX_01766_19891001_20211231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/historical/monatswerte_KLINDEX_03404_18910101_19911231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/recent/monatswerte_KLINDEX_01766_akt.zip
-    - mv climate_indices.json ../assets/climate_indices.json
+    - python climate-indices-parser/index.py https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/historical/monatswerte_KLINDEX_01766_19891001_20211231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/historical/monatswerte_KLINDEX_03404_18910101_19911231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/recent/monatswerte_KLINDEX_01766_akt.zip > assets/climate_indices.json
     - git config user.email "f.erdmann@reedu.de"
     - git config user.name "ci-bot"
     - git remote add gitlab_ci_origin https://oauth2:$ACCESS_TOKEN@gitlab.opencode.de/smart-city-muenster/klimadashboard-muenster/klimadashboard-muenster.git
