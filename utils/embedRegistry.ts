@@ -1,3 +1,4 @@
+import ClimateIndicesTile from '@/components/Tiles/Climate/ClimateIndices'
 import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
 import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
 import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
@@ -16,6 +17,7 @@ const embedRegistry = {
   radlerinnen: BicycleChartTile,
   bus: BusTile,
   stadtradeln: StadtradelnTile,
+  klimakenntage: ClimateIndicesTile,
 }
 
 export default embedRegistry

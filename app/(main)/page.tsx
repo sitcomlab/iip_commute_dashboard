@@ -17,6 +17,7 @@ import SurveyTile from '@/components/Tiles/Survey'
 import BusTile from '@/components/Tiles/Mobility/Bus'
 import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
 import SectionHeader from '@/components/Layout/SectionHeader'
+import ClimateIndicesTile from '@/components/Tiles/Climate/ClimateIndices'
 
 export default async function Home() {
   const { data: successStories } = await directus
@@ -48,6 +49,7 @@ export default async function Home() {
           <ClimateDevelopmentTile />
         </Columns>
         <CO2EmissionsTile />
+        <ClimateIndicesTile />
         <Columns>
           {surveys && surveys[0] && (
             <SurveyTile
