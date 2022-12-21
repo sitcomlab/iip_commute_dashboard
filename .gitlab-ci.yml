@@ -1,6 +1,10 @@
 default:
   image: node:16.16.0
 
+# https://gitlab.com/gitlab-org/gitlab-foss/-/issues/64959
+variables:
+  DOCKER_TLS_CERTDIR: ''
+
 deploy_preview:
   stage: deploy
   except:
