@@ -36,14 +36,14 @@ const switchThumbInnerStyle = cva(
 )
 
 const switchBorderStyle = cva(
-  'w-12 rounded-full bg-white p-1 outline outline-2',
+  'w-[3.25rem] p-1 rounded-full bg-white border-2',
   {
     variants: {
       variant: {
-        primary: 'outline-primary',
-        mobility: 'outline-mobility',
-        successStory: 'outline-secondary',
-        climate: 'outline-climate',
+        primary: 'border-primary',
+        mobility: 'border-mobility',
+        successStory: 'border-secondary',
+        climate: 'border-climate',
       },
     },
     defaultVariants: {
