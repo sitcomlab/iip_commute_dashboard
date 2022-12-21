@@ -1,9 +1,14 @@
 default:
   image: node:16.16.0
 
-# https://gitlab.com/gitlab-org/gitlab-foss/-/issues/64959
+# https://stackoverflow.com/a/70813945
+services:
+  - docker:dind
+
 variables:
+  DOCKER_HOST: tcp://docker:2375
   DOCKER_TLS_CERTDIR: ''
+  DOCKER_DRIVER: overlay2
 
 deploy_preview:
   stage: deploy
