@@ -2083,10 +2083,10 @@ fraction.js@^4.2.0:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.2.0.tgz#448e5109a313a3527f5a3ab2119ec4cf0e0e2950"
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
-framer-motion@^7.10.2:
-  version "7.10.2"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-7.10.2.tgz#e89d17ba98737355b09334c579e2317e0d4c171f"
-  integrity sha512-2OAII9hjpMNz2Nbl2w09uKo7A0bD6xRtGnCZbPzuGGueucWgmSBLjAwzPhXwzCQWMpL3LU8jmXHjxAwIyjslxg==
+framer-motion@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-8.0.1.tgz#73b3e9b49e11434dfe7ca387e90ca214bc0b6ef9"
+  integrity sha512-rr9Sb97cGM5BWU0jMsmTi9x5w8hF90p6wRUlXto5IFejxMVS8YUxT8Ljjy8RspQKPEGOQUZDIZNvlcLBhs0tMw==
   dependencies:
     "@motionone/dom" "^10.15.3"
     hey-listen "^1.0.8"
@@ -3664,10 +3664,10 @@ share-api-polyfill@^1.1.1:
   resolved "https://registry.yarnpkg.com/share-api-polyfill/-/share-api-polyfill-1.1.1.tgz#373bacac2f02828a3ee1bd7d9a2b72c60580080e"
   integrity sha512-5GxXomFRth4lBpHWN136cxpv8KOo+uutljXqgO1RsptDQ5X1raRQWqLi+LoWZ/h02/TgV1STJwuMXcP/0b1vpQ==
 
-sharp@^0.31.2:
-  version "0.31.2"
-  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.31.2.tgz#a8411c80512027f5a452b76d599268760c4e5dfa"
-  integrity sha512-DUdNVEXgS5A97cTagSLIIp8dUZ/lZtk78iNVZgHdHbx1qnQR7JAHY0BnXnwwH39Iw+VKhO08CTYhIg0p98vQ5Q==
+sharp@^0.31.3:
+  version "0.31.3"
+  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.31.3.tgz#60227edc5c2be90e7378a210466c99aefcf32688"
+  integrity sha512-XcR4+FCLBFKw1bdB+GEhnUNXNXvnt0tDo4WsBsraKymuo/IAuPuCBVAL2wIkUw2r/dwFW5Q5+g66Kwl2dgDFVg==
   dependencies:
     color "^4.2.3"
     detect-libc "^2.0.1"
