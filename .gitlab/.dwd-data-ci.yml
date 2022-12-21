@@ -1,41 +1,23 @@
-default:
-  image: node:16.16.0
-
-deploy_preview:
-  stage: deploy
-  except:
-    - main
-  script:
-    - npm install --location=global vercel
-    - npx next telemetry disable
-    - vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
-    - vercel build --token=$VERCEL_TOKEN
-    - vercel deploy --prebuilt  --token=$VERCEL_TOKEN
-
-deploy_production:
-  stage: deploy
-  only:
-    - main
-  script:
-    - npm install --location=global vercel
-    - npx next telemetry disable
-    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
-    - vercel build --prod --token=$VERCEL_TOKEN
-    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
-
-build:
+dwd_climate_indices:
+  image: python:3.11
   stage: build
-  image:
-    name: gcr.io/kaniko-project/executor:v1.9.0-debug
-    entrypoint: ['']
+  only:
+    - schedules
+    - web
+  before_script:
+    - git clone https://gitlab.opencode.de/smart-city-muenster/klimadashboard-muenster/climate-indices-parser.git
+    - pip install -r climate-indices-parser/requirements.txt
+
   script:
-    - /kaniko/executor
-      --snapshotMode=redo
-      --context "${CI_PROJECT_DIR}"
-      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}"
-  rules:
-    - if: $CI_COMMIT_TAG
+    - cd climate-indices-parser
+    - python index.py https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/historical/monatswerte_KLINDEX_01766_19891001_20211231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/historical/monatswerte_KLINDEX_03404_18910101_19911231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/recent/monatswerte_KLINDEX_01766_akt.zip
+    - mv climate_indices.json ../assets/climate_indices.json
+    - git config user.email "f.erdmann@reedu.de"
+    - git config user.name "ci-bot"
+    - git remote add gitlab_ci_origin https://oauth2:$ACCESS_TOKEN@gitlab.opencode.de/smart-city-muenster/klimadashboard-muenster/klimadashboard-muenster.git
+    - git add assets/*
+    - "git commit -m 'ci: update climate indices'"
+    - git push gitlab_ci_origin HEAD:main
 
 cron_fetch_dwd_climate_data:
   image: ubuntu:20.04
