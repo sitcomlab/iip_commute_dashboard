@@ -1,8 +1,5 @@
-import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
 import { Spacer } from '@/components/Elements/Spacer'
 import InsightsContainer from '@/components/Insights/InsightsContainer'
-import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
-import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
 import Container from '@/components/Layout/Container'
 import Columns from '@/components/Layout/Columns'
 import SuccessStoryTile from '@/components/Tiles/SuccessStory'
@@ -12,12 +9,9 @@ import directus, {
   surveyCollectionName,
 } from '@/lib/directus'
 import AnimatedPage from '@/components/Layout/AnimatedPage'
-import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
 import SurveyTile from '@/components/Tiles/Survey'
-import BusTile from '@/components/Tiles/Mobility/Bus'
-import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
-import SectionHeader from '@/components/Layout/SectionHeader'
-import ClimateIndicesTile from '@/components/Tiles/Climate/ClimateIndices'
+import ClimateView from '@/components/Views/ClimateView'
+import MobilityView from '@/components/Views/MobilityView'
 
 export default async function Home() {
   const { data: successStories } = await directus
@@ -42,14 +36,8 @@ export default async function Home() {
     <AnimatedPage>
       <InsightsContainer />
       <Container>
-        <SectionHeader variant="climate" />
+        <ClimateView />
 
-        <Columns>
-          <WeatherTile />
-          <ClimateDevelopmentTile />
-        </Columns>
-        <CO2EmissionsTile />
-        <ClimateIndicesTile />
         <Columns>
           {surveys && surveys[0] && (
             <SurveyTile
@@ -61,11 +49,10 @@ export default async function Home() {
             />
           )}
         </Columns>
-        <SectionHeader variant="mobility" />
+
+        <MobilityView />
+
         <Columns>
-          <BicycleChartTile />
-          <StadtradelnTile />
-          <BusTile />
           {surveys && surveys[1] && (
             <SurveyTile
               answer={{
