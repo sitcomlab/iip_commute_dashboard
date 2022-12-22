@@ -3,15 +3,13 @@
 import { ReactECharts } from '@/components/Charts/ReactECharts'
 import { useEffect, useState } from 'react'
 
-export default function RadarChart({
-  data,
-}: {
-  data: {
-    [x: string]: {
-      [key: number]: number
-    }
+export type AvgTempData = {
+  [x: string]: {
+    [key: number]: number
   }
-}) {
+}
+
+export default function RadarChart({ data }: { data: AvgTempData }) {
   const [years, setYears] = useState<string[]>([])
   const [seriesData, setSeriesData] = useState<any[]>([])
   const [counter, setCounter] = useState(0)

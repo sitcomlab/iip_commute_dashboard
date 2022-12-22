@@ -1,74 +1,29 @@
 import ClimateTile from '../ClimateTile'
+import RadarChart, { AvgTempData } from './RadarChart'
+import climateHistoryData from '@/assets/data/climate_history.json'
 
-//@ts-ignore
-import rawClimateData from '@/assets/data/climate_muenster.csv'
-import RadarChart from './RadarChart'
-
-type DWDMonthlyClimateMeasurement = {
-  STATIONS_ID: number
-  MESS_DATUM_BEGINN: number
-  MESS_DATUM_ENDE: number
-  QN_4: number
-  MO_N: number
-  MO_TT: number
-  MO_TX: number
-  MO_TN: number
-  MO_FK: number
-  MX_TX: number
-  MX_FX: number
-  MX_TN: number
-  MO_SD_S: number
-  QN_6: number
-  MO_RR: number
-  MX_RS: number
-  eor: string
+type ClimateHistoryRecord = {
+  observation_type: string
+  dwd_station_id: number
+  wmo_station_id: any
+  timestamp: string
+  monthly_temperature: number
+  temperature_deviation: number
 }
 
-const climateData = rawClimateData as DWDMonthlyClimateMeasurement[]
+const data = climateHistoryData as ClimateHistoryRecord[]
 
-const climateTemperature = climateData.map(e => ({
-  year: e.MESS_DATUM_BEGINN.toString().substring(0, 4),
-  month: e.MESS_DATUM_BEGINN.toString().substring(4, 6),
-  value: e.MO_TT,
-}))
-
-// use these to calculate monthly averages
-
-const before1900Data = climateTemperature.filter(e => Number(e.year) < 1900)
-
-const monthAvg = new Array(12)
-  .fill(1)
-  .map((e, i) => i + 1)
-  .reduce(
-    (a: any, e) => ({
-      ...a,
-      [e]:
-        before1900Data
-          .filter(d => Number(d.month) === e)
-          .reduce((sum, mv) => sum + mv.value, 0) /
-        before1900Data.filter(d => Number(d.month) === e).length,
-    }),
-    {},
-  )
-
-const climateYears = climateTemperature.reduce(
-  (
-    a: {
-      [key: string]: {
-        [key: number]: number
-      }
-    },
-    o,
-  ) => ({
+const climateYears = data.reduce((a: AvgTempData, o) => {
+  const year = new Date(o.timestamp).getFullYear()
+  const month = new Date(o.timestamp).getMonth()
+  return {
     ...a,
-    [o.year]: {
-      // @ts-ignore
-      ...a[o.year],
-      [Number(o.month)]: o.value - monthAvg[Number(o.month)],
+    [year]: {
+      ...a[year],
+      [month]: o.temperature_deviation,
     },
-  }),
-  {},
-)
+  }
+}, {})
 
 export default function ClimateDevelopmentTile() {
   return (
