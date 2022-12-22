@@ -7,7 +7,6 @@ dwd_climate_indices:
   before_script:
     - git clone https://gitlab.opencode.de/smart-city-muenster/klimadashboard-muenster/climate-indices-parser.git
     - pip install -r climate-indices-parser/requirements.txt
-
   script:
     - python climate-indices-parser/index.py https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/historical/monatswerte_KLINDEX_01766_19891001_20211231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/historical/monatswerte_KLINDEX_03404_18910101_19911231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/recent/monatswerte_KLINDEX_01766_akt.zip > assets/data/climate_indices.json
     - git config user.email "f.erdmann@reedu.de"
@@ -17,37 +16,20 @@ dwd_climate_indices:
     - "git commit -m 'ci: update climate indices'"
     - git push gitlab_ci_origin HEAD:main
 
-cron_fetch_dwd_climate_data:
-  image: ubuntu:20.04
+dwd_climate_data:
+  image: python:3.11
   stage: build
   only:
     - schedules
     - web
-
   before_script:
-    - apt-get update
-    - apt-get install --yes curl miller unzip git
-
+    - git clone https://gitlab.opencode.de/smart-city-muenster/klimadashboard-muenster/climate-history-parser.git
+    - pip install -r climate-history-parser/requirements.txt
   script:
-    - mkdir tmp
-    - cd tmp
-    - curl https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/monatswerte_KL_03404_18530101_19911231_hist.zip >> dwd_history_03404.zip
-    - unzip -o dwd_history_03404.zip
-    - mv produkt_klima_monat_18530101_19911231_03404.txt klima_history_03404.csv
-    - curl https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/monatswerte_KL_01766_19891001_20211231_hist.zip >> dwd_history_01766.zip
-    - unzip -o dwd_history_01766.zip
-    - mv produkt_klima_monat_19891001_20211231_01766.txt klima_history_01766.csv
-    - curl https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/recent/monatswerte_KL_01766_akt.zip >> dwd_recent_01766.zip
-    - unzip -o dwd_recent_01766.zip
-    - mv produkt_klima_monat_20210501_20221130_01766.txt klima_recent_01766.csv
-    - mlr --csv cat *.csv > klima_merge.csv
-    - mlr --csv --ifs ';' --ofs ',' sort -n MESS_DATUM_BEGINN klima_merge.csv > klima_sorted.csv
-    - awk -F, '{key = $2 FS $3} !seen[key]++' klima_sorted.csv > klima_without_dupl.csv
-    - cd ..
-    - mv tmp/klima_without_dupl.csv assets/data/climate_muenster.csv
+    - python climate-history-parser/index.py https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/monatswerte_KL_03404_18530101_19911231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/monatswerte_KL_01766_19891001_20211231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/recent/monatswerte_KL_01766_akt.zip > assets/data/climate_history.json
     - git config user.email "f.erdmann@reedu.de"
     - git config user.name "ci-bot"
     - git remote add gitlab_ci_origin https://oauth2:$ACCESS_TOKEN@gitlab.opencode.de/smart-city-muenster/klimadashboard-muenster/klimadashboard-muenster.git
     - git add assets/*
-    - "git commit -m 'ci: update climate csv file'"
+    - "git commit -m 'ci: update climate history data'"
     - git push gitlab_ci_origin HEAD:main
