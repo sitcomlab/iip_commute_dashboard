@@ -5,8 +5,8 @@ import { cva, cx, VariantProps } from 'class-variance-authority'
 import { useState } from 'react'
 import { useTransition } from 'react-spring'
 import EmbedOverlay from './EmbedOverlay'
+import ShareOverlay from './ShareOverlay'
 import TileFooter from './TileFooter'
-// import 'share-api-polyfill'
 
 const baseTileStyle = cva(
   'relative flex flex-col md:flex-row h-fit overflow-hidden rounded-3xl',
@@ -41,6 +41,12 @@ export type BaseTileProps = VariantProps<typeof baseTileStyle> &
     footerCenterElement?: React.ReactElement
   }
 
+const transitionOpts = {
+  from: { opacity: 0 },
+  enter: { opacity: 1 },
+  leave: { opacity: 0 },
+}
+
 /**
  * A basic configruable tile
  * @param BaseTileProps basic properties of the tile
@@ -55,45 +61,27 @@ export function BaseTile({
   footerCenterElement,
   embedId,
 }: BaseTileProps) {
-  const [showOverlay, setShowOverlay] = useState(false)
+  const [showEmbedOverlay, setShowEmbedOverlay] = useState(false)
+  const [showShareOverlay, setShowShareOverlay] = useState(false)
 
-  const transitions = useTransition(showOverlay, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-  })
+  const embedTransitions = useTransition(showEmbedOverlay, transitionOpts)
+  const shareTransitions = useTransition(showShareOverlay, transitionOpts)
 
   const openShareDialog = async () => {
-    // if (typeof navigator === 'undefined') {
-    //   return
-    // }
-    // try {
-    //   await navigator.share(
-    //     {
-    //       title: 'Web Share API Polyfill',
-    //       text: 'A polyfill for the Share API. Use it to share in both desktops and mobile devices.',
-    //       url: `${window.location.origin}/share/${embedId}`,
-    //     },
-    //     // @ts-ignore
-    //     {
-    //       language: 'de',
-    //       copy: true,
-    //       email: true,
-    //       print: false,
-    //       sms: false,
-    //       messenger: false,
-    //       facebook: false,
-    //       whatsapp: false,
-    //       twitter: false,
-    //       linkedin: false,
-    //       telegram: false,
-    //       skype: false,
-    //       pinterest: false,
-    //     },
-    //   )
-    // } catch (e) {
-    //   console.log('Could not share', e)
-    // }
+    if (navigator && navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Klimadashboard Münster',
+          url: `${window.location.origin}/share/${embedId}`,
+        })
+      } catch (e) {
+        console.log('Could not share', e)
+      } finally {
+        return
+      }
+    }
+
+    setShowShareOverlay(true)
   }
 
   return (
@@ -103,7 +91,7 @@ export function BaseTile({
         <div className="flex w-full flex-col justify-between p-6 md:p-12">
           <div>{children}</div>
           <TileFooter
-            onEmbedClick={() => setShowOverlay(true)}
+            onEmbedClick={() => setShowEmbedOverlay(true)}
             onShareClick={openShareDialog}
             variant={variant === 'secondary' ? 'inverse' : 'primary'}
           >
@@ -112,12 +100,23 @@ export function BaseTile({
         </div>
         {endImage}
         {embedId &&
-          transitions(
+          embedTransitions(
             (styles, render) =>
               render && (
                 <EmbedOverlay
                   embedId={embedId}
-                  onClose={() => setShowOverlay(false)}
+                  onClose={() => setShowEmbedOverlay(false)}
+                  style={styles}
+                />
+              ),
+          )}
+        {embedId &&
+          shareTransitions(
+            (styles, render) =>
+              render && (
+                <ShareOverlay
+                  embedId={embedId}
+                  onClose={() => setShowShareOverlay(false)}
                   style={styles}
                 />
               ),

@@ -6,10 +6,6 @@ import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTi
 import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
 import BusTile from '@/components/Tiles/Mobility/Bus'
 
-type EmbedRegistry = {
-  [key: string]: () => JSX.Element | Promise<JSX.Element>
-}
-
 const embedRegistry = {
   wetter: WeatherTile,
   klima: ClimateDevelopmentTile,

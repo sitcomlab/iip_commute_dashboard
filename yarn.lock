@@ -3659,11 +3659,6 @@ semver@^7.3.4, semver@^7.3.5, semver@^7.3.7, semver@^7.3.8:
   dependencies:
     lru-cache "^6.0.0"
 
-share-api-polyfill@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/share-api-polyfill/-/share-api-polyfill-1.1.1.tgz#373bacac2f02828a3ee1bd7d9a2b72c60580080e"
-  integrity sha512-5GxXomFRth4lBpHWN136cxpv8KOo+uutljXqgO1RsptDQ5X1raRQWqLi+LoWZ/h02/TgV1STJwuMXcP/0b1vpQ==
-
 sharp@^0.31.3:
   version "0.31.3"
   resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.31.3.tgz#60227edc5c2be90e7378a210466c99aefcf32688"
