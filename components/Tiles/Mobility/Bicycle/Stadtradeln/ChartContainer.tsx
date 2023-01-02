@@ -6,6 +6,7 @@ import Chart from './Chart'
 import stadtradelnData from '@/assets/data/stadtradeln.json'
 import { animated, useSpring } from 'react-spring'
 import { ProgressCircle } from '@/components/Charts/Progress/ProgressCircle'
+import AnimatedRollingElement from '@/components/Elements/AnimatedRollingElement'
 
 type StadtradelnData = {
   name: string
@@ -97,9 +98,13 @@ export default function ChartContainer() {
         />
         {otherData && (
           <>
-            <div className="flex items-center space-x-4">
-              <div className="h-1 w-12 rounded bg-buildings" />
-              <p className="text-primary">{otherData.name}</p>
+            <div className="relative h-6 w-full">
+              <AnimatedRollingElement>
+                <div className="flex items-center space-x-4">
+                  <div className="h-1 w-12 rounded bg-buildings" />
+                  <p>{otherData.name}</p>
+                </div>
+              </AnimatedRollingElement>
             </div>
             <AnimatedProgressCircle {...springs} />
           </>
