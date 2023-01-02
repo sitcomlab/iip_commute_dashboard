@@ -1,4 +1,4 @@
-import AnimatedNumber from '@/components/Elements/AnimatedNumber'
+import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import BicycleProgress from './BicycleProgress'
 
 type BicycleRowProps = {

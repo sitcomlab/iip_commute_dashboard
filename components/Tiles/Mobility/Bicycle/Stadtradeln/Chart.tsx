@@ -1,4 +1,3 @@
-import stadtradelnData from '@/assets/data/stadtradeln.json'
 import { ReactECharts } from '@/components/Charts/ReactECharts'
 import { Spinner } from '@/components/Elements/Spinner'
 import {
@@ -13,22 +12,7 @@ import tailwindConfig from '@/tailwind.config.js'
 
 const { theme } = resolveConfig(tailwindConfig)
 
-type StadtradelnData = {
-  [key: string]: {
-    name: string
-    data: {
-      year: number
-      km: number
-    }[]
-  }
-}
-
-const colors: {
-  [key: keyof StadtradelnData]: {
-    color: string
-    symbol: string
-  }
-} = {
+const colors = {
   muenster: {
     // @ts-ignore
     color: theme?.colors?.mobility.DEFAULT || '#34c17b',
@@ -36,29 +20,32 @@ const colors: {
       require('@/assets/icons/Bicycle/BicycleIconGreen.svg').default.src
     }`,
   },
-  konstanz: {
+  other: {
     // @ts-ignore
     color: theme?.colors?.buildings.DEFAULT || '#6060d6',
     symbol: `image://${
       require('@/assets/icons/Bicycle/BicycleIconPurple.svg').default.src
     }`,
   },
-  mannheim: {
-    // @ts-ignore
-    color: theme?.colors?.energy.DEFAULT || '#f28443',
-    symbol: `image://${
-      require('@/assets/icons/Bicycle/BicycleIconOrange.svg').default.src
-    }`,
-  },
+}
+
+type StadtradelnData = {
+  name: string
+  data: {
+    year: number
+    km: number
+  }[]
 }
 
 type ChartProps = {
   compare: boolean
+  data: StadtradelnData
+  other?: StadtradelnData
 }
 
-const getSeries = (data: StadtradelnData) => {
-  const lineSeries: LineSeriesOption[] = Object.keys(data).map(k => ({
-    data: data[k].data.map(({ year, km }) => [year, km]),
+const getSeries = (data: StadtradelnData, color: string, symbol: string) => {
+  const lineSeries: LineSeriesOption = {
+    data: data.data.map(({ year, km }) => [year, km]),
     type: 'line',
     areaStyle: {
       color: '#34c17b',
@@ -70,15 +57,15 @@ const getSeries = (data: StadtradelnData) => {
     symbol: 'none',
     itemStyle: {},
     smooth: 0.2,
-  }))
+  }
 
-  const barSeries: BarSeriesOption[] = Object.keys(data).map(k => ({
-    data: data[k].data.map(({ year, km }) => [year, km]),
+  const barSeries: BarSeriesOption = {
+    data: data.data.map(({ year, km }) => [year, km]),
     type: 'bar',
     barWidth: 3,
     zlevel: 10,
     itemStyle: {
-      color: colors[k].color,
+      color: color,
       borderRadius: [2, 2, 0, 0],
     },
     barGap: 2,
@@ -87,12 +74,12 @@ const getSeries = (data: StadtradelnData) => {
       formatter: () => 'X',
       position: 'top',
     },
-  }))
+  }
 
-  const barIcons: PictorialBarSeriesOption[] = Object.keys(data).map(k => ({
-    data: data[k].data.map(({ year, km }) => [year, km]),
+  const barIcons: PictorialBarSeriesOption = {
+    data: data.data.map(({ year, km }) => [year, km]),
     type: 'pictorialBar',
-    symbol: colors[k].symbol,
+    symbol: symbol,
     symbolSize: [32, 32],
     symbolOffset: [0, -30],
     symbolRotate: 15,
@@ -101,30 +88,33 @@ const getSeries = (data: StadtradelnData) => {
     symbolPosition: 'end',
     xAxisIndex: 1,
     zlevel: 20,
-  }))
+  }
 
-  return [...lineSeries, ...barSeries, ...barIcons]
+  return [lineSeries, barSeries, barIcons]
 }
 
-export default function Chart({ compare }: ChartProps) {
-  const [data, setData] = useState<StadtradelnData>()
+export default function Chart({ data, other }: ChartProps) {
   const [series, setSeries] = useState<SeriesOption[]>()
-
-  useEffect(() => {
-    if (compare) {
-      setData(stadtradelnData)
-    } else {
-      setData({ muenster: stadtradelnData.muenster })
-    }
-  }, [compare])
 
   useEffect(() => {
     if (!data) {
       return
     }
 
-    setSeries(getSeries(data))
+    setSeries(getSeries(data, colors.muenster.color, colors.muenster.symbol))
   }, [data])
+
+  useEffect(() => {
+    if (!other) {
+      setSeries(getSeries(data, colors.muenster.color, colors.muenster.symbol))
+      return
+    }
+
+    setSeries([
+      ...getSeries(data, colors.muenster.color, colors.muenster.symbol),
+      ...getSeries(other, colors.other.color, colors.other.symbol),
+    ])
+  }, [other])
 
   if (!data) {
     return <Spinner />
