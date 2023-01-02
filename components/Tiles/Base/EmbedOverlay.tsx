@@ -1,6 +1,6 @@
 'use client'
 
-import AnimatedCopyIcon from '@/components/Elements/AnimatedCopyIcon'
+import AnimatedCopyIcon from '@/components/Elements/Animated/AnimatedCopyIcon'
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import embedRegistry from '@/utils/embedRegistry'
