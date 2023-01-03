@@ -21,6 +21,7 @@ const tileFooterStyle = cva('flex flex-1 space-x-1', {
 
 type TileFooterProps = VariantProps<typeof tileFooterStyle> & {
   onEmbedClick?: () => void
+  onMoreInfoClick?: () => void
   onShareClick?: () => void
   children?: React.ReactElement
 }
@@ -31,6 +32,7 @@ type TileFooterProps = VariantProps<typeof tileFooterStyle> & {
  */
 export default function TileFooter({
   onEmbedClick,
+  onMoreInfoClick,
   onShareClick,
   children,
   variant,
@@ -51,7 +53,7 @@ export default function TileFooter({
         </Link>
       </div>
       <div className="flex flex-1 justify-center">{children}</div>
-      <div className="flex flex-1 justify-end">
+      <div className="flex flex-1 justify-end" onClick={onMoreInfoClick}>
         <MoreDetails link="#" variant={variant} />
       </div>
     </div>
