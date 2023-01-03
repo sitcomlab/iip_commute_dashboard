@@ -40,6 +40,7 @@ export type BaseTileProps = VariantProps<typeof baseTileStyle> &
     children: React.ReactElement | React.ReactElement[]
     className?: string
     footerCenterElement?: React.ReactElement
+    moreInfo?: React.ReactNode
   }
 
 const transitionOpts = {
@@ -61,6 +62,7 @@ export function BaseTile({
   endImage,
   footerCenterElement,
   embedId,
+  moreInfo,
 }: BaseTileProps) {
   const [showEmbedOverlay, setShowEmbedOverlay] = useState(false)
   const [showShareOverlay, setShowShareOverlay] = useState(false)
@@ -126,17 +128,17 @@ export function BaseTile({
                 />
               ),
           )}
-        {embedId &&
-          moreInfoTransitions(
-            (styles, render) =>
-              render && (
-                <MoreInfoOverlay
-                  embedId={embedId}
-                  onClose={() => setShowMoreInfo(false)}
-                  style={styles}
-                ></MoreInfoOverlay>
-              ),
-          )}
+        {moreInfoTransitions(
+          (styles, render) =>
+            render && (
+              <MoreInfoOverlay
+                onClose={() => setShowMoreInfo(false)}
+                style={styles}
+              >
+                {moreInfo}
+              </MoreInfoOverlay>
+            ),
+        )}
       </div>
     </div>
   )
