@@ -5,6 +5,7 @@ import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
 import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
 import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
 import BusTile from '@/components/Tiles/Mobility/Bus'
+import ExtremeWeatherTile from '@/components/Tiles/Climate/ExtremeWeatherTile'
 
 const embedRegistry = {
   wetter: WeatherTile,
@@ -14,6 +15,7 @@ const embedRegistry = {
   bus: BusTile,
   stadtradeln: StadtradelnTile,
   klimakenntage: ClimateIndicesTile,
+  extremwetter: ExtremeWeatherTile,
 }
 
 export default embedRegistry

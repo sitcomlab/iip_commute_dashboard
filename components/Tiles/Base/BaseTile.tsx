@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { useTransition } from 'react-spring'
 import EmbedOverlay from './EmbedOverlay'
 import ShareOverlay from './ShareOverlay'
+import MoreInfoOverlay from './MoreInfoOverlay'
 import TileFooter from './TileFooter'
 
 const baseTileStyle = cva(
@@ -63,9 +64,16 @@ export function BaseTile({
 }: BaseTileProps) {
   const [showEmbedOverlay, setShowEmbedOverlay] = useState(false)
   const [showShareOverlay, setShowShareOverlay] = useState(false)
+  const [showMoreInfo, setShowMoreInfo] = useState(false)
 
   const embedTransitions = useTransition(showEmbedOverlay, transitionOpts)
   const shareTransitions = useTransition(showShareOverlay, transitionOpts)
+
+  const transition = useTransition(showMoreInfo, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+  })
 
   const openShareDialog = async () => {
     if (navigator && navigator.share) {
@@ -92,6 +100,7 @@ export function BaseTile({
           <div>{children}</div>
           <TileFooter
             onEmbedClick={() => setShowEmbedOverlay(true)}
+            onMoreInfoClick={() => setShowMoreInfo(true)}
             onShareClick={openShareDialog}
             variant={variant === 'secondary' ? 'inverse' : 'primary'}
           >
@@ -117,6 +126,17 @@ export function BaseTile({
                 <ShareOverlay
                   embedId={embedId}
                   onClose={() => setShowShareOverlay(false)}
+                  style={styles}
+                />
+              ),
+          )}
+        {embedId &&
+          transition(
+            (styles, render) =>
+              render && (
+                <MoreInfoOverlay
+                  embedId={embedId}
+                  onClose={() => setShowMoreInfo(false)}
                   style={styles}
                 />
               ),
