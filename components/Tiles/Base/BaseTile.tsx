@@ -69,11 +69,7 @@ export function BaseTile({
   const embedTransitions = useTransition(showEmbedOverlay, transitionOpts)
   const shareTransitions = useTransition(showShareOverlay, transitionOpts)
 
-  const transition = useTransition(showMoreInfo, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-  })
+  const moreInfoTransitions = useTransition(showMoreInfo, transitionOpts)
 
   const openShareDialog = async () => {
     if (navigator && navigator.share) {
@@ -131,7 +127,7 @@ export function BaseTile({
               ),
           )}
         {embedId &&
-          transition(
+          moreInfoTransitions(
             (styles, render) =>
               render && (
                 <MoreInfoOverlay
