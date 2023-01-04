@@ -5,7 +5,7 @@ import IconTile, { DataSourceProps } from '../Base/IconTile'
 export type MobilityTileProps = DataSourceProps &
   EmbedTileProps & {
     children: React.ReactElement | React.ReactElement[]
-    title: string
+    title: string | React.ReactElement
     subtitle?: string
     live?: boolean
   }
