@@ -1,6 +1,6 @@
 import { ReactECharts } from '@/components/Charts/ReactECharts'
 import useKmData from '@/hooks/useKmData'
-// import stadtlogo from'@/assets/data/logos/stadtlogo-muenster.png'
+import lastenrad from '@/assets/images/lastenrad.jpg'
 
 export default function KmChart() {
   const colors = ['#FF8800', '#59ABE3', '#26C281', '#8800FF']
@@ -60,9 +60,10 @@ export default function KmChart() {
                   rich: {
                     Sunny: {
                       height: 30,
+                      width: 30,
                       align: 'left',
                       backgroundColor: {
-                        image: '',
+                        image: lastenrad.src,
                       },
                     },
                     percent: {
@@ -92,9 +93,10 @@ export default function KmChart() {
                   rich: {
                     Sunny: {
                       height: 30,
+                      width: 30,
                       align: 'left',
                       backgroundColor: {
-                        image: '',
+                        image: lastenrad.src,
                       },
                     },
                     percent: {
@@ -124,9 +126,10 @@ export default function KmChart() {
                   rich: {
                     Sunny: {
                       height: 30,
+                      width: 30,
                       align: 'left',
                       backgroundColor: {
-                        image: '',
+                        image: lastenrad.src,
                       },
                     },
                     percent: {
@@ -155,10 +158,11 @@ export default function KmChart() {
                   rich: {
                     Sunny: {
                       height: 30,
+                      width: 30,
                       align: 'left',
                       padding: [5, 0, 0, 0],
                       backgroundColor: {
-                        image: '',
+                        image: lastenrad.src,
                       },
                     },
                     percent: {
