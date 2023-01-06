@@ -1,3 +1,8 @@
+export { default as ModalsplitAuto } from './ModalsplitAuto'
+export { default as ModalsplitBus } from './ModalsplitBus'
+export { default as ModalsplitFahrrad } from './ModalsplitFahrrad'
+export { default as ModalsplitHintergrundgrafik } from './ModalsplitHintergrundgrafik'
+export { default as ModalsplitSchuh } from './ModalsplitSchuh'
 export { default as BicycleEnd } from './BicycleEnd'
 export { default as BicycleIcon } from './BicycleIcon'
 export { default as BicycleStart } from './BicycleStart'

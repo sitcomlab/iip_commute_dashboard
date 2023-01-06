@@ -1,6 +1,12 @@
 import { ReactECharts } from '@/components/Charts/ReactECharts'
 import useKmData from '@/hooks/useKmData'
-import lastenrad from '@/assets/images/lastenrad.jpg'
+import {
+  ModalsplitAuto,
+  ModalsplitBus,
+  ModalsplitFahrrad,
+  ModalsplitHintergrundgrafik,
+  ModalsplitSchuh,
+} from '@/components/Icons/'
 
 export default function KmChart() {
   const colors = ['#FF8800', '#59ABE3', '#26C281', '#8800FF']
@@ -40,6 +46,18 @@ export default function KmChart() {
   return (
     <ReactECharts
       option={{
+        title: {
+          text: total.toLocaleString('de-DE') + ' km',
+          left: 'center',
+          top: 'center',
+          textStyle: {
+            fontWeight: 'bold',
+            fontSize: 14,
+          },
+        },
+        backgroundColor: {
+          image: ModalsplitHintergrundgrafik.toString(),
+        },
         series: [
           {
             type: 'pie',
@@ -53,17 +71,17 @@ export default function KmChart() {
                 name: 'KFZ',
                 label: {
                   formatter: [
-                    '  {Sunny|}',
+                    '  {Auto|}',
                     ' {name|{b}} ',
                     ' {percent|{c}%}',
                   ].join('\n'),
                   rich: {
-                    Sunny: {
+                    Auto: {
                       height: 30,
                       width: 30,
                       align: 'left',
                       backgroundColor: {
-                        image: lastenrad.src,
+                        image: ModalsplitAuto.toString(),
                       },
                     },
                     percent: {
@@ -86,17 +104,17 @@ export default function KmChart() {
                 name: 'ÖPNV',
                 label: {
                   formatter: [
-                    '  {Sunny|}',
+                    '  {Bus|}',
                     ' {name|{b}} ',
                     ' {percent|{c}%}',
                   ].join('\n'),
                   rich: {
-                    Sunny: {
+                    Bus: {
                       height: 30,
                       width: 30,
                       align: 'left',
                       backgroundColor: {
-                        image: lastenrad.src,
+                        image: ModalsplitBus.toString(),
                       },
                     },
                     percent: {
@@ -119,17 +137,17 @@ export default function KmChart() {
                 name: 'Fahrrad',
                 label: {
                   formatter: [
-                    '  {Sunny|}',
+                    '  {Rad|}',
                     ' {name|{b}} ',
                     ' {percent|{c}%}',
                   ].join('\n'),
                   rich: {
-                    Sunny: {
+                    Rad: {
                       height: 30,
                       width: 30,
                       align: 'left',
                       backgroundColor: {
-                        image: lastenrad.src,
+                        image: ModalsplitFahrrad.toString(),
                       },
                     },
                     percent: {
@@ -151,18 +169,18 @@ export default function KmChart() {
                 name: 'Fußgänger:innen',
                 label: {
                   formatter: [
-                    '  {Sunny|}',
+                    '  {Schuh|}',
                     ' {name|{b}} ',
                     ' {percent|{c}%}',
                   ].join('\n'),
                   rich: {
-                    Sunny: {
+                    Schuh: {
                       height: 30,
                       width: 30,
                       align: 'left',
                       padding: [5, 0, 0, 0],
                       backgroundColor: {
-                        image: lastenrad.src,
+                        image: ModalsplitSchuh.toString(),
                       },
                     },
                     percent: {
