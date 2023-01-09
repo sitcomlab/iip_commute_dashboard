@@ -21,16 +21,12 @@ export default function KmTile() {
       }
     >
       <div className="flex flex-col md:flex-row">
-        <div className="flex-1">
-          <div className="flex h-96 flex-col rounded bg-white p-2">
-            <div className="absolute m-60px w-1/2">
-              <ModalsplitHintergrundgrafik className="relative left-24 h-320px"></ModalsplitHintergrundgrafik>
-            </div>
-            <div className="flex flex-col justify-between md:flex-row md:px-16 md:pt-4"></div>
-            <div className="w-full flex-1">
-              <ModalSplitChart />
-            </div>
-            <div></div>
+        <div className="relative flex h-96 flex-1 flex-col rounded bg-white p-2">
+          <div className="absolute top-0 left-0 h-full w-full p-1">
+            <ModalsplitHintergrundgrafik className="h-full w-full" />
+          </div>
+          <div className="w-full flex-1">
+            <ModalSplitChart />
           </div>
         </div>
         <div className="w-72 flex-none py-4 md:py-0 md:px-4">

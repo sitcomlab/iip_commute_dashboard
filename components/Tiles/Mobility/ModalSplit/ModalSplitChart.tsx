@@ -79,7 +79,7 @@ export default function KmChart() {
         series: [
           {
             type: 'pie',
-            radius: ['60%', '50%'],
+            radius: ['75%', '68%'],
             labelLine: {
               length: 200,
               lineStyle: {

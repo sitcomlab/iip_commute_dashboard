@@ -28,12 +28,6 @@ module.exports = {
           light: '#f2f2fa',
         },
       },
-      margin: {
-        '60px': '60px',
-      },
-      height: {
-        '320px': '320px',
-      },
     },
   },
 }
