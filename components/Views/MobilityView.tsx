@@ -3,7 +3,7 @@ import SectionHeader from '../Layout/SectionHeader'
 import BicycleChartTile from '../Tiles/Mobility/Bicycle/BicycleChartTile'
 import StadtradelnTile from '../Tiles/Mobility/Bicycle/Stadtradeln'
 import BusTile from '../Tiles/Mobility/Bus'
-import KmTile from '../Tiles/Mobility/ModalSplit'
+import ModalSplitTile from '../Tiles/Mobility/ModalSplit'
 
 export default function MobilityView() {
   return (
@@ -14,7 +14,7 @@ export default function MobilityView() {
         <StadtradelnTile />
         <BusTile />
       </Columns>
-      <KmTile />
+      <ModalSplitTile />
     </>
   )
 }
