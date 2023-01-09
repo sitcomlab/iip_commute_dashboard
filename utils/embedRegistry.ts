@@ -5,7 +5,7 @@ import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
 import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
 import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
 import BusTile from '@/components/Tiles/Mobility/Bus'
-import KmTile from '@/components/Tiles/Mobility/Km'
+import KmTile from '@/components/Tiles/Mobility/ModalSplit'
 
 const embedRegistry = {
   wetter: WeatherTile,

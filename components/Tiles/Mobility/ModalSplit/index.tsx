@@ -1,7 +1,7 @@
 'use client'
 
 import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
-import KmChart from './KmChart'
+import ModalSplitChart from './ModalSplitChart'
 
 export default function KmTile() {
   return (
@@ -24,7 +24,7 @@ export default function KmTile() {
           <div className="flex h-96 flex-col rounded bg-white p-2">
             <div className="flex flex-col justify-between md:flex-row md:px-16 md:pt-4"></div>
             <div className="w-full flex-1">
-              <KmChart />
+              <ModalSplitChart />
             </div>
           </div>
         </div>
