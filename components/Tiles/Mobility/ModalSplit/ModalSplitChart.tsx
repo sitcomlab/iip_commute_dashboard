@@ -1,5 +1,7 @@
 import { ReactECharts } from '@/components/Charts/ReactECharts'
 import useModalSplitData from '@/hooks/useModalSplitData'
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from '@/tailwind.config'
 // import {
 //   ModalsplitAuto,
 //   ModalsplitBus,
@@ -7,9 +9,19 @@ import useModalSplitData from '@/hooks/useModalSplitData'
 //   ModalsplitHintergrundgrafik,
 //   ModalsplitSchuh,
 // } from '@/components/Icons/'
+const { theme } = resolveConfig(tailwindConfig)
 
 export default function KmChart() {
-  const colors = ['#FF8800', '#59ABE3', '#26C281', '#8800FF']
+  const colors = [
+    //@ts-ignore
+    theme?.colors?.energy.DEFAULT || '#f28443',
+    //@ts-ignore
+    theme?.colors?.climate.DEFAULT || '#14b3d9',
+    //@ts-ignore
+    theme?.colors?.mobility.DEFAULT || '#34c17b',
+    //@ts-ignore
+    theme?.colors?.buildings.DEFAULT || '#6060d6',
+  ]
   const data = useModalSplitData()
 
   const totalFuß: number = data
@@ -98,14 +110,16 @@ export default function KmChart() {
                       },
                     },
                     percent: {
-                      color: '#FF8800',
+                      // @ts-ignore
+                      color: theme?.colors?.energy.DEFAULT || '#f28443',
                       align: 'center',
                       padding: [10, 0, 0, 5],
                       fontWeight: 'bold',
                       fontSize: 18,
                     },
                     name: {
-                      color: 'darkblue',
+                      //@ts-ignore
+                      color: theme?.colors?.primary.DEFAULT || '#005b79',
                       // align: 'center',
                       padding: [5, 0, 0, 10],
                     },
@@ -134,14 +148,17 @@ export default function KmChart() {
                       },
                     },
                     percent: {
-                      color: '#59ABE3',
+                      //@ts-ignore
+                      color: theme?.colors?.climate.DEFAULT || '#14b3d9',
+
                       align: 'center',
                       padding: [5, 0, 0, 0],
                       fontWeight: 'bold',
                       fontSize: 18,
                     },
                     name: {
-                      color: 'darkblue',
+                      //@ts-ignore
+                      color: theme?.colors?.primary.DEFAULT || '#005b79',
                       align: 'left',
                       padding: [0, 0, 0, 5],
                     },
@@ -170,14 +187,16 @@ export default function KmChart() {
                       },
                     },
                     percent: {
-                      color: '#26C281',
+                      // @ts-ignore
+                      color: theme?.colors?.mobility.DEFAULT || '#34c17b',
                       align: 'left',
                       padding: [5, 0, 0, 0],
                       fontWeight: 'bold',
                       fontSize: 18,
                     },
                     name: {
-                      color: 'darkblue',
+                      //@ts-ignore
+                      color: theme?.colors?.primary.DEFAULT || '#005b79',
                       padding: [0, 0, 0, 10],
                     },
                   },
@@ -207,14 +226,16 @@ export default function KmChart() {
                       },
                     },
                     percent: {
-                      color: '#8800FF',
+                      //@ts-ignore
+                      color: theme?.colors?.buildings.DEFAULT || '#6060d6',
                       align: 'left',
                       padding: [10, 0, 0, 0],
                       fontWeight: 'bold',
                       fontSize: 18,
                     },
                     name: {
-                      color: 'darkblue',
+                      //@ts-ignore
+                      color: theme?.colors?.primary.DEFAULT || '#005b79',
                       // align: 'center',
                       padding: [0, 0, 0, 50],
                     },
