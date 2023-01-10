@@ -11,7 +11,7 @@ import tailwindConfig from '@/tailwind.config'
 // } from '@/components/Icons/'
 const { theme } = resolveConfig(tailwindConfig)
 
-export default function KmChart() {
+export default function ModalSplitChart() {
   const colors = [
     //@ts-ignore
     theme?.colors?.energy.DEFAULT || '#f28443',
@@ -24,36 +24,68 @@ export default function KmChart() {
   ]
   const data = useModalSplitData()
 
-  const totalFuß: number = data
-    .map(d => d.Fuß)
-    .reduce((acc, cur) => {
-      return acc + cur
-    }, 0)
+  const calculatePercentage = (data: number) => {
+    return parseInt(((data / total) * 100).toFixed(0))
+  }
 
-  const totalKFZ: number = data
-    .map(d => d.MIV)
-    .reduce((acc, cur) => {
-      return acc + cur
-    }, 0)
+  const totals = {
+    Rad: 0,
+    MIV: 0,
+    ÖPNV: 0,
+    Fuß: 0,
+  }
 
-  const totalRad: number = data
-    .map(d => d.Rad)
-    .reduce((acc, cur) => {
-      return acc + cur
-    }, 0)
+  Object.keys(data[0]).forEach(key => {
+    totals[key as keyof typeof totals] = data
+      .map(d => d[key as keyof typeof totals])
+      .reduce((acc, cur) => {
+        return acc + cur
+      }, 0)
+  })
 
-  const totalÖPNV: number = data
-    .map(d => d.ÖPNV)
-    .reduce((acc, cur) => {
-      return acc + cur
-    }, 0)
+  const total = Object.values(totals).reduce((acc, cur) => {
+    return acc + cur
+  }, 0)
 
-  const total: number = totalÖPNV + totalFuß + totalKFZ + totalRad
-
-  const KfzData: number = parseInt(((totalKFZ / total) * 100).toFixed(0))
-  const RadData: number = parseInt(((totalRad / total) * 100).toFixed(0))
-  const ÖPNVData: number = parseInt(((totalÖPNV / total) * 100).toFixed(0))
-  const FußData: number = parseInt(((totalFuß / total) * 100).toFixed(0))
+  // const chartData: any[] | undefined = []
+  // Object.keys(totals).forEach(key => {
+  //   chartData.push({
+  //     value: calculatePercentage(totals[key as keyof typeof totals]),
+  //     name: key,
+  //     label: {
+  //       alignTo: 'labelLine',
+  //       formatter: [`  {${key}|}`, ' {name|{b}} ', ' {percent|{c}%}'].join(
+  //         '\n',
+  //       ),
+  //       rich: {
+  //         [key]: {
+  //           height: 50,
+  //           width: 50,
+  //           backgroundColor: {
+  //             image: `${
+  //               require('@/assets/icons/ModalSplit/ModalsplitCar.svg').default
+  //                 .src
+  //             }`,
+  //           },
+  //         },
+  //         percent: {
+  //           // @ts-ignore
+  //           color: theme?.colors?.energy.DEFAULT || '#f28443',
+  //           align: 'center',
+  //           padding: [10, 0, 0, 5],
+  //           fontWeight: 'bold',
+  //           fontSize: 18,
+  //         },
+  //         name: {
+  //           //@ts-ignore
+  //           color: theme?.colors?.primary.DEFAULT || '#005b79',
+  //           fontWeight: 'bold',
+  //           padding: [5, 0, 0, 10],
+  //         },
+  //       },
+  //     },
+  //   })
+  // })
 
   return (
     <ReactECharts
@@ -65,7 +97,10 @@ export default function KmChart() {
           padding: 4,
           textStyle: {
             fontWeight: 'bold',
-            fontSize: 18,
+            fontSize: 22,
+            fontFamily: '',
+            // @ts-ignore
+            color: theme?.colors?.primary.DEFAULT || '#005b79',
           },
         },
         // backgroundColor: {
@@ -88,7 +123,7 @@ export default function KmChart() {
             },
             data: [
               {
-                value: KfzData,
+                value: calculatePercentage(totals.MIV),
                 name: 'KFZ',
                 label: {
                   alignTo: 'labelLine',
@@ -104,7 +139,7 @@ export default function KmChart() {
                       // align: 'left',
                       backgroundColor: {
                         image: `${
-                          require('@/assets/icons/ModalSplit/ModalsplitAuto.svg')
+                          require('@/assets/icons/ModalSplit/ModalsplitCar.svg')
                             .default.src
                         }`,
                       },
@@ -113,21 +148,21 @@ export default function KmChart() {
                       // @ts-ignore
                       color: theme?.colors?.energy.DEFAULT || '#f28443',
                       align: 'center',
-                      padding: [10, 0, 0, 5],
-                      fontWeight: 'bold',
-                      fontSize: 18,
+                      padding: [5, 0, 0, 5],
+                      // fontWeight: 'bold',
+                      fontSize: 22,
                     },
                     name: {
                       //@ts-ignore
                       color: theme?.colors?.primary.DEFAULT || '#005b79',
-                      // align: 'center',
+                      fontWeight: 'bold',
                       padding: [5, 0, 0, 10],
                     },
                   },
                 },
               },
               {
-                value: ÖPNVData,
+                value: calculatePercentage(totals.ÖPNV),
                 name: 'ÖPNV',
                 label: {
                   formatter: [
@@ -153,20 +188,20 @@ export default function KmChart() {
 
                       align: 'center',
                       padding: [5, 0, 0, 0],
-                      fontWeight: 'bold',
-                      fontSize: 18,
+                      // fontWeight: 'bold',
+                      fontSize: 22,
                     },
                     name: {
                       //@ts-ignore
                       color: theme?.colors?.primary.DEFAULT || '#005b79',
-                      align: 'left',
+                      fontWeight: 'bold',
                       padding: [0, 0, 0, 5],
                     },
                   },
                 },
               },
               {
-                value: RadData,
+                value: calculatePercentage(totals.Rad),
                 name: 'Fahrrad',
                 label: {
                   formatter: [
@@ -181,7 +216,7 @@ export default function KmChart() {
                       align: 'left',
                       backgroundColor: {
                         image: `${
-                          require('@/assets/icons/ModalSplit/ModalsplitFahrrad.svg')
+                          require('@/assets/icons/ModalSplit/ModalsplitBicycle.svg')
                             .default.src
                         }`,
                       },
@@ -191,19 +226,20 @@ export default function KmChart() {
                       color: theme?.colors?.mobility.DEFAULT || '#34c17b',
                       align: 'left',
                       padding: [5, 0, 0, 0],
-                      fontWeight: 'bold',
-                      fontSize: 18,
+                      // fontWeight: 'bold',
+                      fontSize: 22,
                     },
                     name: {
                       //@ts-ignore
                       color: theme?.colors?.primary.DEFAULT || '#005b79',
                       padding: [0, 0, 0, 10],
+                      fontWeight: 'bold',
                     },
                   },
                 },
               },
               {
-                value: FußData,
+                value: calculatePercentage(totals.Fuß),
                 name: 'Fußgänger:innen',
                 label: {
                   alignTo: 'labelLine',
@@ -220,7 +256,7 @@ export default function KmChart() {
                       padding: [5, 0, 0, 0],
                       backgroundColor: {
                         image: `${
-                          require('@/assets/icons/ModalSplit/ModalsplitSchuh.svg')
+                          require('@/assets/icons/ModalSplit/ModalsplitShoe.svg')
                             .default.src
                         }`,
                       },
@@ -230,14 +266,14 @@ export default function KmChart() {
                       color: theme?.colors?.buildings.DEFAULT || '#6060d6',
                       align: 'left',
                       padding: [10, 0, 0, 0],
-                      fontWeight: 'bold',
-                      fontSize: 18,
+                      // fontWeight: 'bold',
+                      fontSize: 22,
                     },
                     name: {
                       //@ts-ignore
                       color: theme?.colors?.primary.DEFAULT || '#005b79',
-                      // align: 'center',
-                      padding: [0, 0, 0, 50],
+                      fontWeight: 'bold',
+                      align: 'left',
                     },
                   },
                 },

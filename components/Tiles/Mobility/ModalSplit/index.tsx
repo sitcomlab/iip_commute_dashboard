@@ -2,9 +2,9 @@
 
 import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
 import ModalSplitChart from './ModalSplitChart'
-import { ModalsplitHintergrundgrafik } from '@/components/Icons'
+import { MuensterBackground } from '@/components/Icons/'
 
-export default function KmTile() {
+export default function ModalSplitTile() {
   return (
     <MobilityTile
       dataRetrieval="live"
@@ -23,7 +23,7 @@ export default function KmTile() {
       <div className="flex flex-col md:flex-row">
         <div className="relative flex h-96 flex-1 flex-col rounded bg-white p-2">
           <div className="absolute top-0 left-0 h-full w-full p-1">
-            <ModalsplitHintergrundgrafik className="h-full w-full" />
+            <MuensterBackground className="h-full w-full" />
           </div>
           <div className="w-full flex-1">
             <ModalSplitChart />
