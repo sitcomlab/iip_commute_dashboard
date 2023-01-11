@@ -15,7 +15,7 @@ const embedRegistry = {
   bus: BusTile,
   stadtradeln: StadtradelnTile,
   klimakenntage: ClimateIndicesTile,
-  km: ModalSplitTile,
+  modalsplit: ModalSplitTile,
 }
 
 export default embedRegistry

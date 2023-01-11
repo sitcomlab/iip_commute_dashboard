@@ -9,7 +9,7 @@ export default function ModalSplitTile() {
     <MobilityTile
       dataRetrieval="live"
       dataSource="Stadt Münster - Amt für Mobilität"
-      embedId="km"
+      embedId="modalsplit"
       title={
         <span className="flex items-center space-x-4">
           <span className="font-medium">km</span>
