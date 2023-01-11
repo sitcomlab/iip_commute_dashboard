@@ -1,92 +1,44 @@
 import { ReactECharts } from '@/components/Charts/ReactECharts'
-import useModalSplitData from '@/hooks/useModalSplitData'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '@/tailwind.config'
-// import {
-//   ModalsplitAuto,
-//   ModalsplitBus,
-//   ModalsplitFahrrad,
-//   ModalsplitHintergrundgrafik,
-//   ModalsplitSchuh,
-// } from '@/components/Icons/'
+// @ts-ignore
+import ModalSplitData from '@/assets/data/mobilitaetsdaten_cleaned.csv'
+
 const { theme } = resolveConfig(tailwindConfig)
 
+type IModalSplitData = {
+  Fuß: number
+  Rad: number
+  MIV: number
+  ÖPNV: number
+}
+
+const data: IModalSplitData[] = ModalSplitData
+
+const calculatePercentage = (data: number) => {
+  return parseInt(((data / total) * 100).toFixed(0))
+}
+
+const totals = {
+  Rad: 0,
+  MIV: 0,
+  ÖPNV: 0,
+  Fuß: 0,
+}
+
+Object.keys(data[0]).forEach(key => {
+  totals[key as keyof typeof totals] = data
+    .map(d => d[key as keyof typeof totals])
+    .reduce((acc, cur) => {
+      return acc + cur
+    }, 0)
+})
+
+const total = Object.values(totals).reduce((acc, cur) => {
+  return acc + cur
+}, 0)
+
 export default function ModalSplitChart() {
-  const colors = [
-    //@ts-ignore
-    theme?.colors?.energy.DEFAULT || '#f28443',
-    //@ts-ignore
-    theme?.colors?.climate.DEFAULT || '#14b3d9',
-    //@ts-ignore
-    theme?.colors?.mobility.DEFAULT || '#34c17b',
-    //@ts-ignore
-    theme?.colors?.buildings.DEFAULT || '#6060d6',
-  ]
-  const data = useModalSplitData()
-
-  const calculatePercentage = (data: number) => {
-    return parseInt(((data / total) * 100).toFixed(0))
-  }
-
-  const totals = {
-    Rad: 0,
-    MIV: 0,
-    ÖPNV: 0,
-    Fuß: 0,
-  }
-
-  Object.keys(data[0]).forEach(key => {
-    totals[key as keyof typeof totals] = data
-      .map(d => d[key as keyof typeof totals])
-      .reduce((acc, cur) => {
-        return acc + cur
-      }, 0)
-  })
-
-  const total = Object.values(totals).reduce((acc, cur) => {
-    return acc + cur
-  }, 0)
-
-  const chartData: any[] | undefined = []
-  Object.keys(totals).forEach(key => {
-    chartData.push({
-      value: calculatePercentage(totals[key as keyof typeof totals]),
-      name: key,
-      label: {
-        alignTo: 'labelLine',
-        formatter: [`  {${key}|}`, ' {name|{b}} ', ' {percent|{c}%}'].join(
-          '\n',
-        ),
-        rich: {
-          [key]: {
-            height: 50,
-            width: 50,
-            backgroundColor: {
-              image: `${
-                require('@/assets/icons/ModalSplit/ModalsplitCar.svg').default
-                  .src
-              }`,
-            },
-          },
-          percent: {
-            // @ts-ignore
-            color: theme?.colors?.energy.DEFAULT || '#f28443',
-            align: 'center',
-            // padding: [10, 0, 0, 5],
-            fontWeight: 'bold',
-            fontSize: 18,
-          },
-          name: {
-            //@ts-ignore
-            color: theme?.colors?.primary.DEFAULT || '#005b79',
-            fontWeight: 'bold',
-            // padding: [5, 0, 0, 10],
-          },
-        },
-      },
-    })
-  })
-
   return (
     <ReactECharts
       option={{
@@ -96,21 +48,13 @@ export default function ModalSplitChart() {
           top: 'center',
           padding: 4,
           textStyle: {
-            fontWeight: 'bold',
+            fontWeight: 500,
             fontSize: 22,
             fontFamily: '',
             // @ts-ignore
             color: theme?.colors?.primary.DEFAULT || '#005b79',
           },
         },
-        // backgroundColor: {
-        //   imageHeight: 375,
-        //   imageWidth: 720,
-        //   image: `${
-        //     require('@/assets/icons/ModalSplit/ModalsplitHintergrundgrafik.svg')
-        //       .default.src
-        //   }`,
-        // },
         series: [
           {
             type: 'pie',
@@ -127,16 +71,14 @@ export default function ModalSplitChart() {
                 name: 'KFZ',
                 label: {
                   alignTo: 'labelLine',
-                  formatter: [
-                    '  {Auto|}',
-                    ' {name|{b}} ',
-                    ' {percent|{c}%}',
-                  ].join('\n'),
+                  formatter: ['{Auto|}', '{name|{b}} ', '{percent|{c}%}'].join(
+                    '\n',
+                  ),
                   rich: {
                     Auto: {
                       height: 50,
                       width: 50,
-                      // align: 'left',
+                      align: 'left',
                       backgroundColor: {
                         image: `${
                           require('@/assets/icons/ModalSplit/ModalsplitCar.svg')
@@ -147,16 +89,14 @@ export default function ModalSplitChart() {
                     percent: {
                       // @ts-ignore
                       color: theme?.colors?.energy.DEFAULT || '#f28443',
-                      align: 'center',
-                      // padding: [5, 0, 0, 5],
-                      // fontWeight: 'bold',
+                      align: 'left',
                       fontSize: 22,
                     },
                     name: {
                       //@ts-ignore
                       color: theme?.colors?.primary.DEFAULT || '#005b79',
                       fontWeight: 'bold',
-                      // padding: [5, 0, 0, 10],
+                      align: 'left',
                     },
                   },
                 },
@@ -165,11 +105,9 @@ export default function ModalSplitChart() {
                 value: calculatePercentage(totals.ÖPNV),
                 name: 'ÖPNV',
                 label: {
-                  formatter: [
-                    '  {Bus|}',
-                    ' {name|{b}} ',
-                    ' {percent|{c}%}',
-                  ].join('\n'),
+                  formatter: ['{Bus|}', '{name|{b}} ', '{percent|{c}%}'].join(
+                    '\n',
+                  ),
                   rich: {
                     Bus: {
                       height: 50,
@@ -185,17 +123,14 @@ export default function ModalSplitChart() {
                     percent: {
                       //@ts-ignore
                       color: theme?.colors?.climate.DEFAULT || '#14b3d9',
-
-                      align: 'center',
-                      // padding: [5, 0, 0, 0],
-                      // fontWeight: 'bold',
+                      align: 'left',
                       fontSize: 22,
                     },
                     name: {
                       //@ts-ignore
                       color: theme?.colors?.primary.DEFAULT || '#005b79',
                       fontWeight: 'bold',
-                      // padding: [0, 0, 0, 5],
+                      align: 'left',
                     },
                   },
                 },
@@ -204,11 +139,9 @@ export default function ModalSplitChart() {
                 value: calculatePercentage(totals.Rad),
                 name: 'Fahrrad',
                 label: {
-                  formatter: [
-                    '  {Rad|}',
-                    ' {name|{b}} ',
-                    ' {percent|{c}%}',
-                  ].join('\n'),
+                  formatter: ['{Rad|}', '{name|{b}} ', '{percent|{c}%}'].join(
+                    '\n',
+                  ),
                   rich: {
                     Rad: {
                       height: 50,
@@ -225,15 +158,13 @@ export default function ModalSplitChart() {
                       // @ts-ignore
                       color: theme?.colors?.mobility.DEFAULT || '#34c17b',
                       align: 'left',
-                      // padding: [5, 0, 0, 0],
-                      // fontWeight: 'bold',
                       fontSize: 22,
                     },
                     name: {
                       //@ts-ignore
                       color: theme?.colors?.primary.DEFAULT || '#005b79',
-                      // padding: [0, 0, 0, 10],
                       fontWeight: 'bold',
+                      align: 'left',
                     },
                   },
                 },
@@ -243,17 +174,14 @@ export default function ModalSplitChart() {
                 name: 'Fußgänger:innen',
                 label: {
                   alignTo: 'labelLine',
-                  formatter: [
-                    '  {Schuh|}',
-                    ' {name|{b}} ',
-                    ' {percent|{c}%}',
-                  ].join('\n'),
+                  formatter: ['{Schuh|}', '{name|{b}} ', '{percent|{c}%}'].join(
+                    '\n',
+                  ),
                   rich: {
                     Schuh: {
                       height: 50,
                       width: 50,
                       align: 'left',
-                      // padding: [5, 0, 0, 0],
                       backgroundColor: {
                         image: `${
                           require('@/assets/icons/ModalSplit/ModalsplitShoe.svg')
@@ -265,8 +193,6 @@ export default function ModalSplitChart() {
                       //@ts-ignore
                       color: theme?.colors?.buildings.DEFAULT || '#6060d6',
                       align: 'left',
-                      // padding: [10, 0, 0, 0],
-                      // fontWeight: 'bold',
                       fontSize: 22,
                     },
                     name: {
@@ -279,7 +205,16 @@ export default function ModalSplitChart() {
                 },
               },
             ],
-            color: colors,
+            color: [
+              //@ts-ignore
+              theme?.colors?.energy.DEFAULT || '#f28443',
+              //@ts-ignore
+              theme?.colors?.climate.DEFAULT || '#14b3d9',
+              //@ts-ignore
+              theme?.colors?.mobility.DEFAULT || '#34c17b',
+              //@ts-ignore
+              theme?.colors?.buildings.DEFAULT || '#6060d6',
+            ],
           },
         ],
       }}
