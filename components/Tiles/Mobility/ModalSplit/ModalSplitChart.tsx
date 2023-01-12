@@ -226,7 +226,7 @@ export default function ModalSplitChart() {
               title: {
                 text: total.toLocaleString('de-DE') + ' km',
                 left: 'center',
-                top: 'center',
+                top: '50%',
                 padding: 2,
                 textStyle: {
                   fontWeight: 500,
@@ -259,8 +259,8 @@ export default function ModalSplitChart() {
                         ].join('\n'),
                         rich: {
                           Auto: {
-                            height: 15,
-                            width: 15,
+                            height: 25,
+                            width: 25,
                             align: 'left',
                             backgroundColor: {
                               image: `${
@@ -295,8 +295,8 @@ export default function ModalSplitChart() {
                         ].join('\n'),
                         rich: {
                           Bus: {
-                            height: 15,
-                            width: 15,
+                            height: 25,
+                            width: 25,
                             align: 'left',
                             backgroundColor: {
                               image: `${
@@ -331,8 +331,8 @@ export default function ModalSplitChart() {
                         ].join('\n'),
                         rich: {
                           Rad: {
-                            height: 15,
-                            width: 15,
+                            height: 25,
+                            width: 25,
                             align: 'left',
                             backgroundColor: {
                               image: `${
@@ -368,8 +368,8 @@ export default function ModalSplitChart() {
                         ].join('\n'),
                         rich: {
                           Schuh: {
-                            height: 15,
-                            width: 15,
+                            height: 25,
+                            width: 25,
                             align: 'left',
                             backgroundColor: {
                               image: `${
