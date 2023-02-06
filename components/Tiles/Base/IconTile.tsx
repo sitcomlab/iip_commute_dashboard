@@ -1,6 +1,6 @@
 import { Spacer } from '@/components/Elements/Spacer'
 import { cva, cx, VariantProps } from 'class-variance-authority'
-import { SVGProps } from 'react'
+import { ForwardRefExoticComponent, SVGProps } from 'react'
 import { BaseTile, EmbedTileProps } from './BaseTile'
 import LiveBadge from './LiveBadge'
 
@@ -29,7 +29,9 @@ export type IconTileProps = VariantProps<typeof iconTileTitleStyle> &
   EmbedTileProps & {
     children: React.ReactElement | React.ReactElement[]
     title?: string | React.ReactElement
-    icon: (_props: SVGProps<SVGSVGElement>) => JSX.Element
+    icon:
+      | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
+      | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
     subtitle?: string
     live?: boolean
   }
