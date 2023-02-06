@@ -17147,5 +17147,16 @@
         "timestamp": "2022-11-01 00:00:00+00:00",
         "tropennaechte": 0.0,
         "wmo_station_id": null
+    },
+    {
+        "dwd_station_id": 1766.0,
+        "eistage": 2.0,
+        "frosttage": 13.0,
+        "heisse_tage": 0.0,
+        "observation_type": "historical",
+        "sommertage": 0.0,
+        "timestamp": "2022-12-01 00:00:00+00:00",
+        "tropennaechte": 0.0,
+        "wmo_station_id": null
     }
 ]
