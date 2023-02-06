@@ -1,40 +1,16 @@
 import { MuensterIcon } from '@/components/Icons'
-import { EmbedTileProps } from '../Base/BaseTile'
-import IconTile, { DataSourceProps } from '../Base/IconTile'
+import IconTile, { IconTileProps } from '../Base/IconTile'
 
-export type ClimateTileProps = DataSourceProps &
-  EmbedTileProps & {
-    children: React.ReactElement | React.ReactElement[]
-    title: string | React.ReactElement
-    subtitle?: string
-    live?: boolean
-  }
+export type ClimateTileProps = Omit<IconTileProps, 'variant' | 'icon'>
 
 /**
- * A tile that shows mobility information
- * @param MobilityTileProps properties of the mobility tile
- * @returns Mobility Tile
+ * A tile that shows climate information
+ * @param ClimateTileProps properties of the climate tile
+ * @returns Climate Tile
  */
-export default function ClimateTile({
-  children,
-  live,
-  title,
-  subtitle,
-  dataSource,
-  dataRetrieval,
-  embedId,
-}: ClimateTileProps) {
+export default function ClimateTile({ children, ...props }: ClimateTileProps) {
   return (
-    <IconTile
-      dataRetrieval={dataRetrieval}
-      dataSource={dataSource}
-      embedId={embedId}
-      icon={MuensterIcon}
-      live={live}
-      subtitle={subtitle}
-      title={title}
-      variant="climate"
-    >
+    <IconTile {...props} icon={MuensterIcon} variant="climate">
       <>{children}</>
     </IconTile>
   )

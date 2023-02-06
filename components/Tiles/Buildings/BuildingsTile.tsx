@@ -1,10 +1,7 @@
 import { BuildingIcon } from '@/components/Icons'
-import { EmbedTileProps } from '../Base/BaseTile'
-import IconTile, { DataSourceProps, IconTileProps } from '../Base/IconTile'
+import IconTile, { IconTileProps } from '../Base/IconTile'
 
-export type BuildingTileProps = DataSourceProps &
-  EmbedTileProps &
-  Pick<IconTileProps, 'children' | 'title' | 'subtitle' | 'live'>
+export type BuildingTileProps = Omit<IconTileProps, 'variant' | 'icon'>
 
 /**
  * A tile that shows building information
@@ -13,24 +10,10 @@ export type BuildingTileProps = DataSourceProps &
  */
 export default function BuildingTile({
   children,
-  live,
-  title,
-  subtitle,
-  dataSource,
-  dataRetrieval,
-  embedId,
+  ...props
 }: BuildingTileProps) {
   return (
-    <IconTile
-      dataRetrieval={dataRetrieval}
-      dataSource={dataSource}
-      embedId={embedId}
-      icon={BuildingIcon}
-      live={live}
-      subtitle={subtitle}
-      title={title}
-      variant="building"
-    >
+    <IconTile {...props} icon={BuildingIcon} variant="building">
       <>{children}</>
     </IconTile>
   )
