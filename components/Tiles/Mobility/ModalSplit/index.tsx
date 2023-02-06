@@ -21,13 +21,15 @@ export default function ModalSplitTile() {
       }
     >
       <div className="flex flex-col md:flex-row">
-        <div className="relative flex h-96 flex-1 flex-col rounded bg-white p-2 md:h-[32rem]">
-          <div className="absolute top-0 left-0 flex h-full w-full p-1">
-            <MuensterBackground className="h-full w-full flex-1" />
-            <div className="w-14"></div>
-          </div>
-          <div className="w-full flex-1 pb-12">
-            <ModalSplitChart />
+        <div className="flex-1">
+          <div className="relative flex h-96 flex-1 flex-col rounded bg-white p-2 md:h-[32rem]">
+            <div className="absolute top-0 left-0 flex h-full w-full">
+              <MuensterBackground className="h-full w-full flex-1" />
+              <div className="w-14"></div>
+            </div>
+            <div className="w-full flex-1 pb-12">
+              <ModalSplitChart />
+            </div>
           </div>
         </div>
         <div className="w-72 flex-none py-4 md:py-0 md:px-4">
