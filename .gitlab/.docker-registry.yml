@@ -1,0 +1,16 @@
+stages:
+  - build
+
+build:
+  stage: build
+  only:
+    - main
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:stable
+  services:
+    - docker:dind
+  script:
+    - echo starting to build $CI_REGISTRY_IMAGE for $CI_REGISTRY
+    # see https://gitlab.ai.it.hs-worms.de/help/user/project/deploy_tokens/index.md#gitlab-deploy-token
+    - unset http_proxy; docker login -u $CI_DEPLOY_USER -p $CI_DEPLOY_PASSWORD $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE .
+    - docker push $CI_REGISTRY_IMAGE
