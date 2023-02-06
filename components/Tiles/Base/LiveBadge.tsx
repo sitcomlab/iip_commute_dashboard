@@ -9,6 +9,7 @@ const liveBadgeStyle = cva(
         mobility: 'bg-mobility',
         successStory: 'bg-primary',
         climate: 'bg-climate',
+        building: 'bg-buildings',
       },
     },
     defaultVariants: {

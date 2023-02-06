@@ -19,6 +19,7 @@ const baseTileStyle = cva(
         mobility: 'bg-mobility-light',
         successStory: 'bg-primary-light',
         climate: 'bg-climate-light',
+        building: 'bg-buildings-light',
       },
     },
     defaultVariants: {
