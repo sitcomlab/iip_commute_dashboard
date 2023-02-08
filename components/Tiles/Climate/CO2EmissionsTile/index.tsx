@@ -1,8 +1,9 @@
 'use client'
 
+import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
+import { Co2City } from '@/components/Icons'
 import Switch from '@/components/Inputs/Switch'
-import { BeakerIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
 import ClimateTile from '../ClimateTile'
 import CO2Chart from './CO2Chart'
@@ -17,7 +18,7 @@ export default function CO2EmissionsTile() {
       embedId="CO2"
       title={
         <span className="flex items-center space-x-4">
-          <span className="font-medium">CO₂</span>
+          <span>CO₂</span>
           <span className="text-xl font-semibold text-black">
             So viel wird in Münster <br /> ausgestoßen
           </span>
@@ -26,9 +27,11 @@ export default function CO2EmissionsTile() {
     >
       <div className="flex flex-col md:flex-row">
         <div className="flex-1">
-          <div className="flex h-96 flex-col rounded bg-white p-2">
+          <div className="flex h-full flex-col rounded bg-white p-2">
             <div className="flex flex-col justify-between md:flex-row md:px-16 md:pt-4">
-              <Title size={'sm'}>CO₂-Emissionen in 1000t</Title>
+              <Title as={'h6'} variant="dark">
+                CO₂-Emissionen in 1000t
+              </Title>
               <Switch
                 defaultChecked={showFuture}
                 label="Klimaneutral"
@@ -41,14 +44,15 @@ export default function CO2EmissionsTile() {
             </div>
           </div>
         </div>
-        <div className="w-72 flex-none py-4 md:py-0 md:px-4">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-            officiis quam, velit sed officia dolores debitis quo nesciunt rem
-            iste libero, aut ullam sapiente. Soluta quia debitis maiores
-            voluptatum obcaecati!
-          </p>
-          <BeakerIcon className="mx-auto h-12 w-12 text-primary" />
+        <div className="flex w-96 flex-none flex-col items-center justify-between py-4 md:py-0 md:px-8">
+          <Title as="h5" variant={'dark'}>
+            Trotz einer wachsenden Zahl von Einwohner*innen sinkt die Kurve der
+            CO₂-Emissionen in Münster. Das zeigt: Münsteraner*innen setzen mehr
+            und mehr Klimaschutz-Maßnahmen um. Mit dem Ziel der Klimaneutralität
+            bis 2030 soll die Kurve nun nochmals deutlich steiler sinken.
+          </Title>
+          <Spacer />
+          <Co2City className="mx-auto w-40" />
         </div>
       </div>
     </ClimateTile>

@@ -1,7 +1,8 @@
+import Title from '@/components/Elements/Title'
 import { cva, VariantProps } from 'class-variance-authority'
 
 const liveBadgeStyle = cva(
-  'flex w-fit items-center space-x-1 rounded-lg px-2 py-1 text-white',
+  'flex w-fit items-center gap-1 rounded-lg pl-2 pr-3 py-0.5 text-white tracking-wider',
   {
     variants: {
       variant: {
@@ -53,10 +54,12 @@ function PulsatingCircle() {
 export default function LiveBadge({ variant }: LiveBadgeProps) {
   return (
     <div className={liveBadgeStyle({ variant })}>
-      <div className="flex h-4 w-4  items-center justify-center">
+      <div className="flex h-5 w-5 items-center justify-center">
         <PulsatingCircle />
       </div>
-      <p className="text-xs font-semibold">LIVE</p>
+      <Title as="h7" className="font-semibold" variant={'inverse'}>
+        LIVE
+      </Title>
     </div>
   )
 }

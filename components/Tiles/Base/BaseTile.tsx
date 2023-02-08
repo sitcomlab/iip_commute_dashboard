@@ -10,7 +10,7 @@ import MoreInfoOverlay from './MoreInfoOverlay'
 import TileFooter from './TileFooter'
 
 const baseTileStyle = cva(
-  'relative flex flex-col md:flex-row h-fit overflow-hidden rounded-3xl',
+  'relative flex flex-col md:flex-row h-fit overflow-hidden rounded-KD',
   {
     variants: {
       variant: {
@@ -95,7 +95,7 @@ export function BaseTile({
     <div className="pb-4 md:pb-8">
       <div className={cx(baseTileStyle({ variant }), className)}>
         {startImage}
-        <div className="flex w-full flex-col justify-between p-6 md:p-12">
+        <div className="flex w-full flex-col justify-between p-6 md:px-14 md:py-10">
           <div>{children}</div>
           <TileFooter
             onEmbedClick={() => setShowEmbedOverlay(true)}

@@ -43,7 +43,9 @@ export default function SectionHeader({
         >
           <Icon className="mx-auto h-full" />
         </div>
-        <Title>{title}</Title>
+        <Title as="h4" variant={'primary'}>
+          {title}
+        </Title>
       </div>
       <Collapsible
         trigger={

@@ -21,7 +21,7 @@ async function InsightsContainer() {
     <div className="relative w-full">
       <div className="absolute top-0 left-0 -z-10 h-1/3 w-full bg-primary-light"></div>
       <Container>
-        <div className="flex w-full flex-col items-center justify-between space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0">
+        <div className="flex w-full flex-col items-center justify-between gap-6 lg:flex-row ">
           {insights?.map(({ id, title, link, image }) => (
             <div className="flex-1 self-stretch" key={id}>
               <InsightsTile
@@ -40,10 +40,10 @@ async function InsightsContainer() {
 const Fallback = (
   <div className="relative w-full">
     <Container>
-      <div className="flex w-full flex-col items-center justify-between space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0">
-        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-3xl bg-zinc-100" />
-        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-3xl bg-zinc-100" />
-        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-3xl bg-zinc-100" />
+      <div className="flex w-full flex-col items-center justify-between gap-6 lg:flex-row">
+        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-KD bg-zinc-100" />
+        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-KD bg-zinc-100" />
+        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-KD bg-zinc-100" />
       </div>
     </Container>
   </div>

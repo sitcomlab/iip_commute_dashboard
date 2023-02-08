@@ -3,7 +3,6 @@ import StairStepBackground from '../StairStepBackground'
 import MSLogo from '@/assets/logos/stadtlogo-muenster.png'
 import { Button } from '../../Elements/Button'
 import MoreDetails from '../../Elements/MoreDetails'
-import Title from '../../Elements/Title'
 import Link from 'next/link'
 import Collapsible from '../../Elements/Collapsible'
 import Container from '../Container'
@@ -14,6 +13,7 @@ import {
   MuensterIcon,
 } from '@/components/Icons'
 import { Bars3Icon } from '@heroicons/react/24/outline'
+import Title from '@/components/Elements/Title'
 
 export default function Navbar() {
   return (
@@ -70,7 +70,7 @@ export default function Navbar() {
           <div className="flex justify-between">
             <div className="flex-1">
               <Link href={'/'}>
-                <Title size="lg">
+                <Title as="h2" variant={'primary'}>
                   <span>
                     Klimadashboard <br />
                     Münster
