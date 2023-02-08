@@ -1,3 +1,4 @@
+import EcoProfitTile from '@/components/Tiles/Buildings/EcoProfit'
 import ClimateIndicesTile from '@/components/Tiles/Climate/ClimateIndices'
 import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
 import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
@@ -16,6 +17,7 @@ const embedRegistry = {
   stadtradeln: StadtradelnTile,
   klimakenntage: ClimateIndicesTile,
   modalsplit: ModalSplitTile,
+  ecoProfit: EcoProfitTile,
 }
 
 export default embedRegistry

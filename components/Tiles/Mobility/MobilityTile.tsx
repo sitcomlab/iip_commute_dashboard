@@ -1,40 +1,19 @@
-import SvgBicycleIcon from '@/components/Icons/BicycleIcon'
-import { EmbedTileProps } from '../Base/BaseTile'
-import IconTile, { DataSourceProps } from '../Base/IconTile'
+import { MuensterIcon } from '@/components/Icons'
+import IconTile, { IconTileProps } from '../Base/IconTile'
 
-export type MobilityTileProps = DataSourceProps &
-  EmbedTileProps & {
-    children: React.ReactElement | React.ReactElement[]
-    title: string | React.ReactElement
-    subtitle?: string
-    live?: boolean
-  }
+export type MobilityTileProps = Omit<IconTileProps, 'variant' | 'icon'>
 
 /**
- * A tile that shows mobility information
+ * A tile that shows Mobility information
  * @param MobilityTileProps properties of the mobility tile
  * @returns Mobility Tile
  */
 export default function MobilityTile({
   children,
-  live,
-  title,
-  subtitle,
-  dataSource,
-  dataRetrieval,
-  embedId,
+  ...props
 }: MobilityTileProps) {
   return (
-    <IconTile
-      dataRetrieval={dataRetrieval}
-      dataSource={dataSource}
-      embedId={embedId}
-      icon={SvgBicycleIcon}
-      live={live}
-      subtitle={subtitle}
-      title={title}
-      variant="mobility"
-    >
+    <IconTile {...props} icon={MuensterIcon} variant="mobility">
       <>{children}</>
     </IconTile>
   )

@@ -12,6 +12,7 @@ import AnimatedPage from '@/components/Layout/AnimatedPage'
 import SurveyTile from '@/components/Tiles/Survey'
 import ClimateView from '@/components/Views/ClimateView'
 import MobilityView from '@/components/Views/MobilityView'
+import BuildingsView from '@/components/Views/BuildingsView'
 
 export default async function Home() {
   const { data: successStories } = await directus
@@ -37,7 +38,6 @@ export default async function Home() {
       <InsightsContainer />
       <Container>
         <ClimateView />
-
         <Columns>
           {surveys && surveys[0] && (
             <SurveyTile
@@ -72,6 +72,8 @@ export default async function Home() {
             text={successStories[0].text}
           ></SuccessStoryTile>
         )}
+
+        <BuildingsView />
         {successStories && successStories[1] && (
           <SuccessStoryTile
             image={directusImage(successStories[1].image)}

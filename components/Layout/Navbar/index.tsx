@@ -35,7 +35,7 @@ export default function Navbar() {
                 </div>
               }
             >
-              <div className="my-4 flex flex-col space-y-2">
+              <div className="my-4 flex flex-col gap-2">
                 <Link href={'/klima'}>
                   <Button
                     startIcon={<MuensterIcon className="h-6 text-primary" />}
@@ -86,7 +86,7 @@ export default function Navbar() {
                 </div>
               </Collapsible>
             </div>
-            <div className="hidden h-fit flex-wrap space-x-2 md:flex">
+            <div className="hidden h-fit flex-wrap gap-2 md:flex">
               <Link href={'/klima'}>
                 <Button
                   startIcon={<MuensterIcon className="h-6 text-primary" />}

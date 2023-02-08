@@ -1,6 +1,6 @@
 import { Spacer } from '@/components/Elements/Spacer'
 import { cva, cx, VariantProps } from 'class-variance-authority'
-import { SVGProps } from 'react'
+import { ForwardRefExoticComponent, SVGProps } from 'react'
 import { BaseTile, EmbedTileProps } from './BaseTile'
 import LiveBadge from './LiveBadge'
 
@@ -11,6 +11,7 @@ const iconTileTitleStyle = cva('text-4xl md:text-6xl font-light', {
       mobility: 'text-mobility',
       successStory: 'text-primary',
       climate: 'text-climate',
+      building: 'text-buildings',
     },
   },
   defaultVariants: {
@@ -27,15 +28,17 @@ export type IconTileProps = VariantProps<typeof iconTileTitleStyle> &
   DataSourceProps &
   EmbedTileProps & {
     children: React.ReactElement | React.ReactElement[]
-    title: string | React.ReactElement
-    icon: (_props: SVGProps<SVGSVGElement>) => JSX.Element
+    title?: string | React.ReactElement
+    icon:
+      | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
+      | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
     subtitle?: string
     live?: boolean
   }
 
 /**
- * A tile that shows mobility information
- * @param MobilityTileProps properties of the mobility tile
+ * A tile that has an icon on top right
+ * @param IconTileProps properties of the Icon tile
  * @returns Mobility Tile
  */
 export default function IconTile({
@@ -57,14 +60,29 @@ export default function IconTile({
       footerCenterElement={live ? <LiveBadge variant={variant} /> : undefined}
       variant={variant}
     >
-      <div
-        className={cx('flex justify-between', iconTileTitleStyle({ variant }))}
-      >
-        <span>{title}</span>
-        <Icon className="h-10 w-12" />
-      </div>
-      <span className="text-lg md:text-xl">{subtitle}</span>
-      <Spacer />
+      <>
+        {title && (
+          <div
+            className={cx(
+              'flex justify-between',
+              iconTileTitleStyle({ variant }),
+            )}
+          >
+            <span>{title}</span>
+            <Icon className="h-10 w-12" />
+          </div>
+        )}
+        {subtitle && <span className="text-lg md:text-xl">{subtitle}</span>}
+        {(title || subtitle) && <Spacer />}
+      </>
+      <>
+        {!title && !subtitle && (
+          <div className={cx('relative', iconTileTitleStyle({ variant }))}>
+            <Icon className=" absolute top-0 right-0 h-10 w-12" />
+          </div>
+        )}
+      </>
+
       <>{children}</>
       <Spacer />
       <div className="flex space-x-2 text-xs text-primary">
