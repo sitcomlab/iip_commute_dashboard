@@ -3,8 +3,13 @@ module.exports = {
   content: ['./app/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      container: {
+        screens: {
+          '2xl': '1756px',
+        },
+      },
       borderRadius: {
-        KD: '3rem'
+        KD: '3rem',
       },
       colors: {
         primary: {

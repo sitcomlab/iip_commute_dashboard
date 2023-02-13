@@ -39,12 +39,20 @@ export default function SurveyTile({ question, answer }: SurveyTileProps) {
           Bürgerumfrage 2022
         </Title>
         <Spacer />
-        <div className="relative min-h-[12rem]">
+        <div className="relative h-fit">
+          <div className="opacity-0">
+            <Title as="h3" className="font-medium" variant={'inverse'}>
+              {question}
+            </Title>
+          </div>
           {transitions((styles, renderAnswer) =>
             renderAnswer ? (
               <SurveyAnswer {...answer} {...styles} />
             ) : (
-              <animated.div className="absolute top-0 left-0" style={styles}>
+              <animated.div
+                className="absolute top-0 left-0 h-full w-full"
+                style={styles}
+              >
                 <Title as="h3" className="font-medium" variant={'inverse'}>
                   {question}
                 </Title>
