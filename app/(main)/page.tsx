@@ -13,6 +13,7 @@ import SurveyTile from '@/components/Tiles/Survey'
 import ClimateView from '@/components/Views/ClimateView'
 import MobilityView from '@/components/Views/MobilityView'
 import BuildingsView from '@/components/Views/BuildingsView'
+import EnergyView from '@/components/Views/EnergyView'
 
 export default async function Home() {
   const { data: successStories } = await directus
@@ -82,6 +83,7 @@ export default async function Home() {
             text={successStories[1].text}
           ></SuccessStoryTile>
         )}
+        <EnergyView />
       </Container>
     </AnimatedPage>
   )

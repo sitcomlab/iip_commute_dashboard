@@ -14,7 +14,7 @@ export default function Slider({ labels, ...props }: SliderProps) {
         className="relative flex w-full items-center"
         {...props}
       >
-        <SliderPrimitive.Track className="relative h-4 flex-1 rounded-full bg-gray-500 opacity-30 mix-blend-color-burn" />
+        <SliderPrimitive.Track className="relative h-4 flex-1 rounded-full bg-gray-500 mix-blend-color-burn" />
         <SliderPrimitive.Thumb className="block h-6 w-6 touch-pan-x rounded-full bg-primary shadow shadow-primary" />
       </SliderPrimitive.Root>
       {labels && (

@@ -13,6 +13,7 @@ const iconTileTitleStyle = cva('', {
       successStory: 'text-primary',
       climate: 'text-climate',
       building: 'text-buildings',
+      energy: 'text-energy',
     },
   },
   defaultVariants: {

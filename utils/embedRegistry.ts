@@ -3,6 +3,7 @@ import ClimateIndicesTile from '@/components/Tiles/Climate/ClimateIndices'
 import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
 import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
 import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
+import PhotovoltTile from '@/components/Tiles/Energy/PhotovoltTile'
 import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
 import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
 import BusTile from '@/components/Tiles/Mobility/Bus'
@@ -18,6 +19,7 @@ const embedRegistry = {
   klimakenntage: ClimateIndicesTile,
   modalsplit: ModalSplitTile,
   ecoProfit: EcoProfitTile,
+  photovolt: PhotovoltTile,
 }
 
 export default embedRegistry

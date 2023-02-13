@@ -20,6 +20,7 @@ const TitleStyle = cva('block', {
       successStory: 'text-primary',
       climate: 'text-climate',
       building: 'text-buildings',
+      energy: 'text-energy',
       inverse: 'text-white',
       dark: 'text-zinc-900',
     },
