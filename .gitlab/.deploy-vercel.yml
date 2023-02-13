@@ -1,11 +1,8 @@
 default:
   image: node:16.16.0
 
-stages:
-  - deploy
-
 deploy_preview:
-  stage: deploy
+  stage: build
   except:
     - main
   script:
@@ -16,7 +13,7 @@ deploy_preview:
     - vercel deploy --prebuilt  --token=$VERCEL_TOKEN
 
 deploy_production:
-  stage: deploy
+  stage: build
   only:
     - main
   script:
