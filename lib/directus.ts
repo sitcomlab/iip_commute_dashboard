@@ -3,16 +3,21 @@ import { Directus, ID } from '@directus/sdk'
 const directusUrl =
   process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055'
 
-export const insightsCollectionName = 'klima_insights'
+export const collectionsName = 'collections'
 export const successStoriesCollectionName = 'klima_success_stories'
 export const surveyCollectionName = 'klima_survey'
 
-export type Insights = {
+export type Collection = {
   id: ID
   status: 'draft' | 'archived' | 'published'
   title: string
-  link: string
+  description?: string
   image: string
+  tiles: {
+    id: ID
+    collections_id: ID
+    tiles_id: string
+  }[]
 }
 
 export type SuccessStory = {
@@ -35,7 +40,7 @@ export type Survey = {
 // Map your collections to its respective types. The SDK will
 // infer its types based on usage later.
 type DirectusCollection = {
-  klima_insights: Insights
+  collections: Collection
   klima_success_stories: SuccessStory
   klima_survey: Survey
 }
