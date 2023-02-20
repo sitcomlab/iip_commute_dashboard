@@ -4,8 +4,9 @@ const directusUrl =
   process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055'
 
 export const collectionsName = 'collections'
+export const tileCollectionName = 'tiles'
 export const successStoriesCollectionName = 'klima_success_stories'
-export const surveyCollectionName = 'klima_survey'
+export const surveyCollectionName = 'survey'
 
 export type Collection = {
   id: ID
@@ -18,6 +19,18 @@ export type Collection = {
     collections_id: ID
     tiles_id: string
   }[]
+  surveys: {
+    id: ID
+    collections_id: ID
+    survey_id: string
+  }[]
+}
+
+export type Tile = {
+  id: ID
+  name: string
+  group: any
+  full_width: boolean
 }
 
 export type SuccessStory = {
@@ -41,8 +54,9 @@ export type Survey = {
 // infer its types based on usage later.
 type DirectusCollection = {
   collections: Collection
+  tiles: Tile
   klima_success_stories: SuccessStory
-  klima_survey: Survey
+  survey: Survey
 }
 
 const directus = new Directus<DirectusCollection>(directusUrl)
