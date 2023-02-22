@@ -11,7 +11,7 @@ import { notFound } from 'next/navigation'
 // ISR
 export async function generateStaticParams() {
   const { data } = await directus.items(collectionsName).readByQuery({
-    fields: ['id'],
+    fields: ['slug'],
     filter: {
       status: 'published',
     },
@@ -21,16 +21,19 @@ export async function generateStaticParams() {
     return
   }
 
-  return data.map(({ id }) => ({
-    id,
+  return data.map(({ slug }) => ({
+    slug,
   }))
 }
 
 // revalidate each minute
 export const revalidate = 60
 
-const getCollection = async (collectionId: string) => {
-  const data = await directus.items(collectionsName).readOne(collectionId, {
+const getCollection = async (collectionSlug: string) => {
+  const { data } = await directus.items(collectionsName).readByQuery({
+    filter: {
+      slug: collectionSlug,
+    },
     fields: ['title', 'description'],
   })
 
@@ -42,21 +45,21 @@ export default async function Layout({
   params,
 }: {
   children: React.ReactNode
-  params: { id: string }
+  params: { slug: string }
 }) {
-  const { id } = params
+  const { slug } = params
 
-  if (!id) {
+  if (!slug) {
     return notFound()
   }
 
-  const collection = await getCollection(id)
+  const collection = await getCollection(slug)
 
   if (!collection) {
     return notFound()
   }
 
-  const { title, description } = collection
+  const { title, description } = collection[0]
 
   return (
     <div className="flex h-screen flex-col">

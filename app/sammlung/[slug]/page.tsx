@@ -12,7 +12,7 @@ import { notFound } from 'next/navigation'
 // ISR
 export async function generateStaticParams() {
   const { data } = await directus.items(collectionsName).readByQuery({
-    fields: ['id'],
+    fields: ['slug'],
     filter: {
       status: 'published',
     },
@@ -22,16 +22,19 @@ export async function generateStaticParams() {
     return
   }
 
-  return data.map(({ id }) => ({
-    id,
+  return data.map(({ slug }) => ({
+    slug,
   }))
 }
 
 // revalidate each minute
 export const revalidate = 60
 
-const getCollection = async (collectionId: string) => {
-  const data = await directus.items(collectionsName).readOne(collectionId, {
+const getCollection = async (collectionSlug: string) => {
+  const { data } = await directus.items(collectionsName).readByQuery({
+    filter: {
+      slug: collectionSlug,
+    },
     fields: ['title', 'description', 'tiles.tiles_id', 'surveys.*'],
   })
 
@@ -57,21 +60,21 @@ const getSurvey = async (surveyID: string) => {
 export default async function Collection({
   params,
 }: {
-  params: { id: string }
+  params: { slug: string }
 }) {
-  const { id } = params
+  const { slug } = params
 
-  if (!id) {
+  if (!slug) {
     return notFound()
   }
 
-  const collection = await getCollection(id)
+  const collection = await getCollection(slug)
 
-  if (!collection) {
+  if (!collection || !collection[0]) {
     return notFound()
   }
 
-  const { tiles, surveys } = collection
+  const { tiles, surveys } = collection[0]
 
   const tileIDs = tiles.map(({ tiles_id }) => tiles_id)
   const surveyIDs = surveys.map(({ survey_id }) => survey_id)

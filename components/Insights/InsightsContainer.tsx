@@ -5,7 +5,7 @@ import InsightsTile from './InsightsTile'
 
 const getInsightsData = async () => {
   const { data } = await directus.items(collectionsName).readByQuery({
-    fields: ['id', 'title', 'image'],
+    fields: ['slug', 'title', 'image'],
     filter: {
       status: 'published',
     },
@@ -15,14 +15,6 @@ const getInsightsData = async () => {
   return data
 }
 
-// const getTile = async (relationId: number) => {
-//   const { data } = await directus.items(tileCollectionRelation).readByQuery({
-//     f
-//   })
-
-//   return data
-// }
-
 async function InsightsContainer() {
   const insights = await getInsightsData()
 
@@ -31,11 +23,11 @@ async function InsightsContainer() {
       <div className="absolute top-0 left-0 -z-10 h-1/3 w-full bg-primary-light"></div>
       <Container>
         <div className="flex w-full flex-col items-center justify-between gap-6 lg:flex-row ">
-          {insights?.map(({ id, title, image }) => (
-            <div className="flex-1 self-stretch" key={id}>
+          {insights?.map(({ slug, title, image }) => (
+            <div className="flex-1 self-stretch" key={slug}>
               <InsightsTile
                 image={`${process.env.NEXT_PUBLIC_DIRECTUS_URL}/assets/${image}`}
-                link={`/sammlung/${id}`}
+                link={`/sammlung/${slug}`}
                 title={title}
               />
             </div>

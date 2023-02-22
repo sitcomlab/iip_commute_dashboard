@@ -14,6 +14,7 @@ export type Collection = {
   title: string
   description?: string
   image: string
+  slug?: string
   tiles: {
     id: ID
     collections_id: ID
