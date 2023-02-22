@@ -1,13 +1,11 @@
 import Columns from '@/components/Layout/Columns'
 import SurveyTile from '@/components/Tiles/Survey'
-import directus, {
-  collectionsName,
-  surveyCollectionName,
-  tileCollectionName,
-} from '@/lib/directus'
+import directus, { collectionsName, surveyCollectionName } from '@/lib/directus'
 import embedRegistry from '@/utils/embedRegistry'
 import { tileIdRegistry } from '@/utils/tileIdRegistry'
+import { ID } from '@directus/sdk'
 import { notFound } from 'next/navigation'
+import getTilesBucket, { BaseTile } from '@/utils/fullWidthBucket'
 
 // ISR
 export async function generateStaticParams() {
@@ -29,32 +27,57 @@ export async function generateStaticParams() {
 
 // revalidate each minute
 export const revalidate = 60
+export const dynamicParams = false
 
 const getCollection = async (collectionSlug: string) => {
   const { data } = await directus.items(collectionsName).readByQuery({
     filter: {
       slug: collectionSlug,
     },
-    fields: ['title', 'description', 'tiles.tiles_id', 'surveys.*'],
+    fields: ['tiles.*'],
+    deep: {
+      tiles: {},
+    },
   })
 
   return data
 }
 
-const isFullWidth = async (tileId: string) => {
-  const data = await directus.items(tileCollectionName).readOne(tileId, {
-    fields: ['full_width'],
-  })
-
-  return data?.full_width === true
+const getTileComponent = async (tile: BaseTile) => {
+  if (tile.collection === 'survey') {
+    return await getSurveyTile(tile.item)
+  }
+  const Tile = getDataTile(tile.item)
+  return <Tile key={tile.item} />
 }
 
-const getTileComponent = (tileID: keyof typeof tileIdRegistry) => {
+const getTileComponents = async (tiles: BaseTile[]) => {
+  return Promise.all(
+    tiles.map(async t => {
+      return await getTileComponent(t)
+    }),
+  )
+}
+
+const getDataTile = (tileID: keyof typeof tileIdRegistry) => {
   return embedRegistry[tileIdRegistry[tileID]]
 }
 
-const getSurvey = async (surveyID: string) => {
-  return await directus.items(surveyCollectionName).readOne(surveyID)
+const getSurveyTile = async (surveyID: ID) => {
+  const data = await directus.items(surveyCollectionName).readOne(surveyID)
+  if (!data) {
+    return <div key={surveyID} />
+  }
+  return (
+    <SurveyTile
+      answer={{
+        percent: data.answer_percent,
+        text: data.answer_text,
+      }}
+      key={surveyID}
+      question={data.question}
+    ></SurveyTile>
+  )
 }
 
 export default async function Collection({
@@ -74,78 +97,24 @@ export default async function Collection({
     return notFound()
   }
 
-  const { tiles, surveys } = collection[0]
+  const { tiles } = collection[0]
 
-  const tileIDs = tiles.map(({ tiles_id }) => tiles_id)
-  const surveyIDs = surveys.map(({ survey_id }) => survey_id)
+  const sortedTiles = tiles.sort((a, b) => a.sort - b.sort)
 
-  // super complex and probably overkill function to seperate fill width from normal tiles
-  type TilesBucket = {
-    tiles: string[]
-    isFullWidth: boolean
-  }
-  let bucketIndex = 0
-  const fullWidthIndex = await tileIDs.reduce(async function (aP, e) {
-    const a = await aP
-    if (!a[bucketIndex]) {
-      a[bucketIndex] = {
-        tiles: [],
-        isFullWidth: false,
-      }
-    }
-    if (!(await isFullWidth(e))) {
-      a[bucketIndex].tiles.push(e)
-    } else {
-      bucketIndex++
-      a[bucketIndex] = {
-        tiles: [],
-        isFullWidth: true,
-      }
-      a[bucketIndex].tiles.push(e)
-      bucketIndex++
-    }
-    return a
-  }, Promise.resolve<TilesBucket[]>([]))
+  // sort tiles into buckets indicating full width display or column display
+  const tileBuckets = await getTilesBucket(sortedTiles)
 
   return (
-    <>
-      {fullWidthIndex.map(({ tiles, isFullWidth }, i) => {
-        if (isFullWidth) {
-          return tiles.map(t => {
-            const Tile = getTileComponent(t)
-            return <Tile key={t} />
-          })
-        }
+    <div>
+      {await Promise.all(
+        tileBuckets.map(async ({ tiles, isFullWidth }, i) => {
+          if (isFullWidth) {
+            return await getTileComponents(tiles)
+          }
 
-        return (
-          <Columns key={i}>
-            {tiles.map(t => {
-              const Tile = getTileComponent(t)
-              return <Tile key={t} />
-            })}
-          </Columns>
-        )
-      })}
-      <Columns>
-        {await Promise.all(
-          surveyIDs.map(async sID => {
-            const data = await getSurvey(sID)
-            if (!data) {
-              return <></>
-            }
-            return (
-              <SurveyTile
-                answer={{
-                  percent: data.answer_percent,
-                  text: data.answer_text,
-                }}
-                key={sID}
-                question={data.question}
-              ></SurveyTile>
-            )
-          }),
-        )}
-      </Columns>
-    </>
+          return <Columns key={i}>{await getTileComponents(tiles)}</Columns>
+        }),
+      )}
+    </div>
   )
 }

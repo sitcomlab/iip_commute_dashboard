@@ -5,12 +5,14 @@ const directusUrl =
 
 export const collectionsName = 'collections'
 export const tileCollectionName = 'tiles'
-export const successStoriesCollectionName = 'klima_success_stories'
 export const surveyCollectionName = 'survey'
+export const successStoriesCollectionName = 'klima_success_stories'
+
+export type DirectusStatus = 'draft' | 'archived' | 'published'
 
 export type Collection = {
   id: ID
-  status: 'draft' | 'archived' | 'published'
+  status: DirectusStatus
   title: string
   description?: string
   image: string
@@ -18,12 +20,9 @@ export type Collection = {
   tiles: {
     id: ID
     collections_id: ID
-    tiles_id: string
-  }[]
-  surveys: {
-    id: ID
-    collections_id: ID
-    survey_id: string
+    item: ID
+    collection: typeof tileCollectionName | typeof surveyCollectionName
+    sort: number
   }[]
 }
 
@@ -36,7 +35,7 @@ export type Tile = {
 
 export type SuccessStory = {
   id: ID
-  status: 'draft' | 'archived' | 'published'
+  status: DirectusStatus
   text: string
   link: string
   image?: string
@@ -45,7 +44,7 @@ export type SuccessStory = {
 
 export type Survey = {
   id: ID
-  status: 'draft' | 'archived' | 'published'
+  status: DirectusStatus
   question: string
   answer_percent: number
   answer_text: string
