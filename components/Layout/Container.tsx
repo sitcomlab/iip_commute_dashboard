@@ -1,7 +1,19 @@
-export type ContainerProps = {
-  children: React.ReactNode | React.ReactNode[]
-}
+import { cx } from 'class-variance-authority'
+import { HTMLAttributes } from 'react'
 
-export default function Container({ children }: ContainerProps) {
-  return <div className="container mx-auto p-4 md:p-12">{children}</div>
+export type ContainerProps = HTMLAttributes<HTMLDivElement>
+
+export default function Container({
+  className,
+  children,
+  ...props
+}: ContainerProps) {
+  return (
+    <div
+      className={cx('container mx-auto px-4 py-2 md:px-20 md:py-10', className)}
+      {...props}
+    >
+      {children}
+    </div>
+  )
 }

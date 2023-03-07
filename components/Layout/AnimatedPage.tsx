@@ -9,6 +9,8 @@ export default function AnimatedPage({
   children: React.ReactNode
 }) {
   const pathname = usePathname()
+  console.log(pathname)
+
   return (
     <motion.div
       animate={{ y: 0, opacity: 1 }}

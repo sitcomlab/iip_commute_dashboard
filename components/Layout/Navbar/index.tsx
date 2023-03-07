@@ -18,7 +18,7 @@ import Title from '@/components/Elements/Title'
 export default function Navbar() {
   return (
     <div className="pt-8">
-      <div className="translate-y-4 px-8">
+      <div className="container mx-auto translate-y-1/2 px-4 md:px-12">
         <Image
           alt="Logo der Stadt Münster"
           className="ml-auto h-12 w-auto"

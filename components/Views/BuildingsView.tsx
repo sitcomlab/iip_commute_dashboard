@@ -1,15 +1,13 @@
 import Columns from '../Layout/Columns'
-import SectionHeader from '../Layout/SectionHeader'
 import EcoProfitTile from '../Tiles/Buildings/EcoProfit'
+import BaseView from './BaseView'
 
 export default function BuildingsView() {
   return (
-    <>
-      <SectionHeader variant="building" />
-
+    <BaseView type="building">
       <Columns>
         <EcoProfitTile />
       </Columns>
-    </>
+    </BaseView>
   )
 }

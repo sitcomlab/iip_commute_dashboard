@@ -1,20 +1,19 @@
 import Columns from '../Layout/Columns'
-import SectionHeader from '../Layout/SectionHeader'
 import BicycleChartTile from '../Tiles/Mobility/Bicycle/BicycleChartTile'
 import StadtradelnTile from '../Tiles/Mobility/Bicycle/Stadtradeln'
 import BusTile from '../Tiles/Mobility/Bus'
 import ModalSplitTile from '../Tiles/Mobility/ModalSplit'
+import BaseView from './BaseView'
 
 export default function MobilityView() {
   return (
-    <>
-      <SectionHeader variant="mobility" />
+    <BaseView type="mobility">
       <Columns>
         <BicycleChartTile />
         <StadtradelnTile />
         <BusTile />
       </Columns>
       <ModalSplitTile />
-    </>
+    </BaseView>
   )
 }

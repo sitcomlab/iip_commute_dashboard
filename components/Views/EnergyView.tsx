@@ -1,17 +1,15 @@
 import Columns from '../Layout/Columns'
-import SectionHeader from '../Layout/SectionHeader'
 import PhotovoltTile from '../Tiles/Energy/PhotovoltTile'
 import WindEnergyTile from '../Tiles/Energy/WindEnergyTile'
+import BaseView from './BaseView'
 
 export default function EnergyView() {
   return (
-    <>
-      <SectionHeader variant="energy" />
-
+    <BaseView type="energy">
       <Columns>
         <PhotovoltTile />
         <WindEnergyTile />
       </Columns>
-    </>
+    </BaseView>
   )
 }

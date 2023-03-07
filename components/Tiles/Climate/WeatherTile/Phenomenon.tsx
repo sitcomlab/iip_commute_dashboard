@@ -1,9 +1,9 @@
 import { CloudIcon } from '@heroicons/react/24/outline'
-import type { VariantProps } from 'class-variance-authority'
-import { cva } from 'class-variance-authority'
 import { Sun, Temperature, Water, Wind } from '@/components/Icons'
 import { ForwardRefExoticComponent, SVGProps } from 'react'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
+import Title from '@/components/Elements/Title'
+import { cx } from 'class-variance-authority'
 
 type PhenomenaType = {
   [key: string]: {
@@ -46,21 +46,10 @@ const phenomena: PhenomenaType = {
   },
 }
 
-const phenomenonStyle = cva('text-climate', {
-  variants: {
-    size: {
-      md: 'text-lg md:text-2xl',
-      xl: 'text-2xl md:text-5xl',
-    },
-  },
-  defaultVariants: {
-    size: 'md',
-  },
-})
-
-type PhenomenonProps = VariantProps<typeof phenomenonStyle> & {
+type PhenomenonProps = {
   phenomenon: keyof typeof phenomena
   value: number
+  size?: 'md' | 'xl'
 }
 
 export default function Phenomenon({
@@ -70,20 +59,26 @@ export default function Phenomenon({
 }: PhenomenonProps) {
   const { title, unit, icon, decimals } = phenomena[phenomenon]
 
+  const valueSize: 'h1' | 'h3' = size === 'xl' ? 'h1' : 'h3'
+
   const Icon = icon
   return (
-    <div className="my-2 flex items-center space-x-2">
-      <Icon className="h-10 w-8 text-primary" />
+    <div className="my-2 flex items-center gap-3">
+      <Icon
+        className={cx(
+          size === 'md' ? 'aspect-square' : 'w-6',
+          'h-14 text-primary',
+        )}
+      />
       <div>
-        <p
-          className="text-sm font-semibold text-primary"
+        <Title
+          as={'h5'}
           dangerouslySetInnerHTML={{ __html: title }}
-        ></p>
-        <span className={phenomenonStyle({ size })}>
-          <>
-            <AnimatedNumber decimals={decimals}>{value}</AnimatedNumber> {unit}
-          </>
-        </span>
+          variant={'primary'}
+        ></Title>
+        <Title as={valueSize} variant="climate">
+          <AnimatedNumber decimals={decimals}>{value}</AnimatedNumber> {unit}
+        </Title>
       </div>
     </div>
   )

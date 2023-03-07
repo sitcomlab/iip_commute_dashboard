@@ -64,15 +64,13 @@ export default async function Layout({
   return (
     <div className="flex h-screen flex-col">
       <CollectionNavbar description={description || ''} title={title} />
-      <div className="flex-1">
+      <Container className="flex-1">
         <Providers>
-          <Container>
-            <Back />
-            <Spacer />
-            <AnimatedPage>{children}</AnimatedPage>
-          </Container>
+          <Back />
+          <Spacer />
+          <AnimatedPage>{children}</AnimatedPage>
         </Providers>
-      </div>
+      </Container>
       <Footer />
     </div>
   )

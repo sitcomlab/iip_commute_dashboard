@@ -12,6 +12,10 @@ const button = cva(
         primary: 'border-primary text-primary',
         inverse: 'text-white hover:bg-white hover:text-secondary border-white',
         danger: 'bg-red-600 text-white hover:bg-red-50:text-red-600',
+        goToClimate: 'border-climate text-primary',
+        goToMobility: 'border-mobility text-primary',
+        goToEnergy: 'border-energy text-primary',
+        goToBuildings: 'border-buildings text-primary',
       },
       size: {
         sm: 'py-1 px-3 text-sm',
@@ -53,7 +57,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     return (
       <button
-        className={cx(button({ variant, size }), className)}
+        className={cx(className, button({ variant, size }))}
         ref={ref}
         type={type}
         {...props}

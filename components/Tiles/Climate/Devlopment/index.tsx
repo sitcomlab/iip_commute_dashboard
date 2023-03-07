@@ -28,7 +28,7 @@ const climateYears = data.reduce((a: AvgTempData, o) => {
 export default function ClimateDevelopmentTile() {
   return (
     <ClimateTile dataSource="DWD" embedId="klima" live title={'Klima'}>
-      <div className="h-96 w-full">
+      <div className="h-[600px] w-full">
         <div className="h-full w-full">
           <RadarChart data={climateYears} />
         </div>
