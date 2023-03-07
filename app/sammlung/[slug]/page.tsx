@@ -17,7 +17,7 @@ export async function generateStaticParams() {
   })
 
   if (!data) {
-    return
+    return [{ slug: undefined }]
   }
 
   return data.map(({ slug }) => ({
@@ -83,8 +83,12 @@ const getSurveyTile = async (surveyID: ID) => {
 export default async function Collection({
   params,
 }: {
-  params: { slug: string }
+  params?: { slug: string }
 }) {
+  if (!params) {
+    return notFound()
+  }
+
   const { slug } = params
 
   if (!slug) {

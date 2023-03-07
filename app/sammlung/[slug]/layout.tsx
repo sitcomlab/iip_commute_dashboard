@@ -18,7 +18,7 @@ export async function generateStaticParams() {
   })
 
   if (!data) {
-    return
+    return [{ slug: undefined }]
   }
 
   return data.map(({ slug }) => ({
@@ -45,8 +45,12 @@ export default async function Layout({
   params,
 }: {
   children: React.ReactNode
-  params: { slug: string }
+  params?: { slug: string }
 }) {
+  if (!params) {
+    return notFound()
+  }
+
   const { slug } = params
 
   if (!slug) {
