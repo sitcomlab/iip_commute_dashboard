@@ -1,13 +1,33 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import directus, { collectionsName } from '@/lib/directus'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
-  name: string
+  msg: string
 }
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<Data>,
 ) {
-  res.status(200).json({ name: 'John Doe' })
+  const { data } = await directus.items(collectionsName).readByQuery({
+    fields: ['slug'],
+    filter: {
+      status: 'published',
+    },
+  })
+
+  if (!data) {
+    return res.status(200).json({ msg: 'No data' })
+  }
+
+  const revalidatedPaths: string[] = []
+
+  data.forEach(({ slug }) => {
+    const path = `/sammlung/${slug}`
+    revalidatedPaths.push(path)
+    res.revalidate(path)
+  })
+
+  res.status(200).json({ msg: 'Revalidated ' + revalidatedPaths.join(', ') })
 }
