@@ -2,13 +2,12 @@ stages:
   - build
 
 build:
-  image: $CI_REGISTRY/group/project/docker:20.10.16
-  services:
-    - name: $CI_REGISTRY/group/project/docker:20.10.16-dind
-      alias: docker
   stage: build
   only:
     - main
+  image: docker:20.10.16
+  services:
+    - docker:dind
   script:
     - echo starting to build $CI_REGISTRY_IMAGE for $CI_REGISTRY
     # see https://gitlab.ai.it.hs-worms.de/help/user/project/deploy_tokens/index.md#gitlab-deploy-token
