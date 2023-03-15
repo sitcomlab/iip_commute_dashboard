@@ -2,6 +2,7 @@
 
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { Spacer } from '@/components/Elements/Spacer'
+import Title from '@/components/Elements/Title'
 import { BusCombustionIcon, BusElectroIcon } from '@/components/Icons'
 import { useBusData } from '@/hooks/useBusData'
 import MobilityTile from '../MobilityTile'
@@ -53,13 +54,13 @@ export default function BusTile() {
           </div>
         </div>
         <Spacer />
-        <p className="font-medium text-primary">
+        <Title as="h5">
           Busfahren ist Klimaschutz. Damit die Umweltbilanz des Nahverkehrs noch
           besser wird, setzen wir immer stärker auf Elektrobusse mit Ökostrom im
           Tank. In Münster sind die leisen und abgasfreien Busse bereits seit
           2015 unterwegs und gehören längst zum Stadtbild. Und jedes Jahr werden
           es mehr! Bis 2029 soll unsere Busflotte komplett elektrisch fahren.
-        </p>
+        </Title>
       </div>
     </MobilityTile>
   )

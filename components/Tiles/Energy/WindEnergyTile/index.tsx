@@ -18,7 +18,7 @@ export default function WindEnergyTile() {
       }
     >
       <div>
-        <Title as={'h5'}>
+        <Title as={'subtitle'}>
           Haben die Müsteraner:innen bereits mit ca.{' '}
           <span className="text-energy">28 Windkraftanlagen</span> in Münster
           produziert. In diesem Moment werden{' '}

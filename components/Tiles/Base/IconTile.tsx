@@ -31,10 +31,10 @@ export type IconTileProps = VariantProps<typeof iconTileTitleStyle> &
   EmbedTileProps & {
     children: React.ReactElement | React.ReactElement[]
     title?: string | React.ReactElement
+    subtitle?: string | React.ReactElement
     icon:
       | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
       | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
-    subtitle?: string
     live?: boolean
   }
 
@@ -47,8 +47,8 @@ export default function IconTile({
   children,
   live,
   title,
-  icon,
   subtitle,
+  icon,
   variant,
   dataRetrieval,
   dataSource,
@@ -64,17 +64,29 @@ export default function IconTile({
     >
       <>
         {title && (
-          <div
-            className={cx(
-              'flex justify-between',
-              iconTileTitleStyle({ variant }),
-            )}
-          >
-            <Title as={'h1'}>{title}</Title>
-            <Icon className="h-10 w-12" />
+          <div className={'flex justify-between'}>
+            <div className="flex flex-wrap items-center justify-start gap-4">
+              <Title
+                as={'h1'}
+                className={cx('min-w-max', iconTileTitleStyle({ variant }))}
+              >
+                {title}
+              </Title>
+              {subtitle && (
+                <Title
+                  as={'subtitle'}
+                  className="2xl:max-w-[50%]"
+                  color={'dark'}
+                >
+                  {subtitle}
+                </Title>
+              )}
+            </div>
+            <Icon
+              className={cx('h-10 w-12', iconTileTitleStyle({ variant }))}
+            />
           </div>
         )}
-        {subtitle && <span className="text-lg md:text-xl">{subtitle}</span>}
         {(title || subtitle) && <Spacer />}
       </>
       <>

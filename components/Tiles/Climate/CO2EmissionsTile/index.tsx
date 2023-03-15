@@ -16,14 +16,8 @@ export default function CO2EmissionsTile() {
       dataRetrieval="01.01.2022"
       dataSource="Stadt Münster - Koordinierungsstelle für Klima und Energie"
       embedId="CO2"
-      title={
-        <span className="flex items-center space-x-4">
-          <span>CO₂</span>
-          <span className="text-xl font-semibold text-black">
-            So viel wird in Münster <br /> ausgestoßen
-          </span>
-        </span>
-      }
+      subtitle="So viel wird in Münster ausgestoßen"
+      title={'CO₂'}
     >
       <div className="flex flex-col md:flex-row">
         <div className="flex-1">
