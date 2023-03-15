@@ -1,4 +1,4 @@
-import directus, { collectionsName } from '@/lib/directus'
+import directus, { collectionsName, directusImage } from '@/lib/directus'
 import withSuspense from '@/utils/withSuspense'
 import Container from '../Layout/Container'
 import InsightsTile from './InsightsTile'
@@ -26,7 +26,7 @@ async function InsightsContainer() {
           {insights?.map(({ slug, title, image }) => (
             <div className="flex-1 self-stretch" key={slug}>
               <InsightsTile
-                image={`${process.env.NEXT_PUBLIC_DIRECTUS_URL}/assets/${image}`}
+                image={directusImage(image)}
                 link={`/sammlung/${slug}`}
                 title={title}
               />

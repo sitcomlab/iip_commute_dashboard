@@ -1,3 +1,4 @@
+import { TileType } from '@/utils/TileFactory'
 import { Directus, ID } from '@directus/sdk'
 
 const directusUrl =
@@ -6,7 +7,7 @@ const directusUrl =
 export const collectionsName = 'collections'
 export const tileCollectionName = 'tiles'
 export const surveyCollectionName = 'survey'
-export const successStoriesCollectionName = 'klima_success_stories'
+export const successStoriesCollectionName = 'successStory'
 
 export type DirectusStatus = 'draft' | 'archived' | 'published'
 
@@ -31,6 +32,7 @@ export type Tile = {
   name: string
   group: any
   full_width: boolean
+  tile_id: TileType
 }
 
 export type SuccessStory = {
@@ -55,7 +57,7 @@ export type Survey = {
 type DirectusCollection = {
   collections: Collection
   tiles: Tile
-  klima_success_stories: SuccessStory
+  successStory: SuccessStory
   survey: Survey
 }
 
@@ -63,10 +65,6 @@ const directus = new Directus<DirectusCollection>(directusUrl)
 
 export default directus
 
-export function directusImage(image?: string) {
-  if (!image) {
-    return undefined
-  }
-
+export function directusImage(image: string) {
   return `${process.env.NEXT_PUBLIC_DIRECTUS_URL}/assets/${image}`
 }
