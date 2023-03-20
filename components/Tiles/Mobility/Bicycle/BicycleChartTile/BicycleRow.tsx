@@ -1,4 +1,5 @@
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
+import Title from '@/components/Elements/Title'
 import BicycleProgress from './BicycleProgress'
 
 type BicycleRowProps = {
@@ -24,12 +25,14 @@ export default function BicycleRow({ name, count, min, max }: BicycleRowProps) {
   const progress = mapBetween(count, min * 0.9, max * 1.1)
 
   return (
-    <div className="my-2 flex w-full items-center">
+    <div className="my-2 flex w-full items-end">
       <div className="w-28 flex-none md:w-40">
-        <p className="text-sm text-primary md:text-base">{name}</p>
-        <AnimatedNumber className="text-lg text-mobility md:text-3xl">
-          {count}
-        </AnimatedNumber>
+        <Title as={'h5'} variant={'primary'}>
+          {name}
+        </Title>
+        <Title as={'h3'} variant={'mobility'}>
+          <AnimatedNumber>{count}</AnimatedNumber>
+        </Title>
       </div>
       <div className="flex-1">
         <BicycleProgress progress={progress} />

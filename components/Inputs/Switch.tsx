@@ -2,6 +2,7 @@ import * as SwitchPrimitive from '@radix-ui/react-switch'
 import { useState } from 'react'
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
+import Title from '../Elements/Title'
 
 const switchThumbStyle = cva(
   'flex h-5 w-5 items-center justify-center rounded-full transition-all',
@@ -78,7 +79,11 @@ export default function Switch({ label, variant, ...props }: SwitchProps) {
           </div>
         </SwitchPrimitive.Thumb>
       </SwitchPrimitive.Root>
-      {label && <label className="text-primary">{label}</label>}
+      {label && (
+        <Title as={'h5'} variant={'primary'}>
+          {label}
+        </Title>
+      )}
     </div>
   )
 }

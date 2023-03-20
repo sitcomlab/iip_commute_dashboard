@@ -1,3 +1,4 @@
+import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
 import ChartContainer from './ChartContainer'
@@ -12,6 +13,7 @@ export default function StadtradelnTile() {
       title="Stadtradeln"
     >
       <ChartContainer />
+      <Spacer />
       <Title as="h5">
         Auf die Leeze, fertig, los! Für mehr Radverkehr, Klimaschutz und
         Lebensqualität in die Pedale treten: Seit 2020 beteiligt sich die Stadt

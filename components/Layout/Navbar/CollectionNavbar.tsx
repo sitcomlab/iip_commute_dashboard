@@ -112,7 +112,7 @@ export default function CollectionNavbar({ title, description }: Props) {
               </Link>
             </div>
           </div>
-          <Spacer size={'lg'} />
+          <Spacer size={'xl'} />
           <div className="flex w-full flex-col-reverse gap-2 md:flex-row">
             <Title as={'h5'} className="flex-[2_2_0%]" variant="primary">
               {description}

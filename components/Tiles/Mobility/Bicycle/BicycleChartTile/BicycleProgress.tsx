@@ -4,13 +4,13 @@ import * as ProgressPrimitive from '@radix-ui/react-progress'
 export default function BicycleProgress({ progress }: { progress: number }) {
   return (
     <div className="flex w-full">
-      <BicycleStart className="h-8 w-8 translate-x-[2px] translate-y-[0.7px]" />
+      <BicycleStart className="h-12 translate-x-1 -translate-y-[3px]" />
       <ProgressPrimitive.Root className="w-[calc(100%-4rem)]" value={progress}>
         <ProgressPrimitive.Indicator
-          className="relative mt-2 flex h-2 rounded-b-sm bg-mobility transition-all"
+          className="relative mt-2 flex h-3 bg-mobility transition-all"
           style={{ width: `${progress}%` }}
         >
-          <BicycleEnd className="absolute top-0 -right-8 h-8 w-8 -translate-y-[7.5px] -translate-x-[5px]" />
+          <BicycleEnd className="absolute top-0 -right-8 h-12 -translate-y-[11.3px] translate-x-0" />
         </ProgressPrimitive.Indicator>
       </ProgressPrimitive.Root>
     </div>

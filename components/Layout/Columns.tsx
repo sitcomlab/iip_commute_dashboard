@@ -3,5 +3,5 @@ export type ColumnsProps = {
 }
 
 export default function Columns({ children }: ColumnsProps) {
-  return <div className="gap-3 md:gap-5 lg:columns-2">{children}</div>
+  return <div className="gap-3 md:gap-6 lg:columns-2">{children}</div>
 }

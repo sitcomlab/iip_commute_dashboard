@@ -36,6 +36,7 @@ export type IconTileProps = VariantProps<typeof iconTileTitleStyle> &
       | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
       | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
     live?: boolean
+    moreInfo?: string
   }
 
 /**
@@ -53,6 +54,7 @@ export default function IconTile({
   dataRetrieval,
   dataSource,
   embedId,
+  moreInfo,
 }: IconTileProps) {
   const Icon = icon
 
@@ -60,12 +62,13 @@ export default function IconTile({
     <BaseTile
       embedId={embedId}
       footerCenterElement={live ? <LiveBadge variant={variant} /> : undefined}
+      moreInfo={moreInfo}
       variant={variant}
     >
       <>
         {title && (
           <div className={'flex justify-between'}>
-            <div className="flex flex-wrap items-center justify-start gap-4">
+            <div className="flex flex-wrap items-center justify-start gap-x-4">
               <Title
                 as={'h1'}
                 className={cx('min-w-max', iconTileTitleStyle({ variant }))}
@@ -83,7 +86,10 @@ export default function IconTile({
               )}
             </div>
             <Icon
-              className={cx('h-10 w-12', iconTileTitleStyle({ variant }))}
+              className={cx(
+                'h-[50px] w-auto flex-shrink-0 opacity-40',
+                iconTileTitleStyle({ variant }),
+              )}
             />
           </div>
         )}
@@ -92,7 +98,7 @@ export default function IconTile({
       <>
         {!title && !subtitle && (
           <div className={cx('relative', iconTileTitleStyle({ variant }))}>
-            <Icon className=" absolute top-0 right-0 h-10 w-12" />
+            <Icon className=" absolute top-0 right-0 h-[50px] w-auto opacity-40" />
           </div>
         )}
       </>

@@ -14,7 +14,7 @@ export default function BaseView({ type, children }: ViewProps) {
       {children}
       <Spacer size={'sm'} />
       <GoToButton type={type} />
-      <Spacer size={'lg'} />
+      <Spacer size={'xl'} />
     </>
   )
 }

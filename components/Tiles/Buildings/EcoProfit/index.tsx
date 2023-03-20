@@ -47,7 +47,7 @@ export default function EcoProfitTile() {
         </span>{' '}
         eingespart.
       </Title>
-      <Spacer size={'lg'} />
+      <Spacer size={'xl'} />
       <Title as={'h1'} variant={'building'}>
         <AnimatedNumber className="font-medium">
           {companiesStartupConsulting}

@@ -5,10 +5,11 @@ import { cva } from 'class-variance-authority'
 const spacer = cva('', {
   variants: {
     size: {
-      xs: 'my-2',
-      sm: 'my-4',
-      md: 'my-8',
-      lg: 'my-16',
+      xs: 'h-2',
+      sm: 'h-4',
+      md: 'h-8',
+      lg: 'h-12',
+      xl: 'h-16',
     },
   },
   defaultVariants: {

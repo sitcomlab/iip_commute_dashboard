@@ -80,8 +80,8 @@ const getSeries = (data: StadtradelnData, color: string, symbol: string) => {
     data: data.data.map(({ year, km }) => [year, km]),
     type: 'pictorialBar',
     symbol: symbol,
-    symbolSize: [32, 32],
-    symbolOffset: [0, -30],
+    symbolSize: [61, 61],
+    symbolOffset: [0, -60],
     symbolRotate: 15,
     barWidth: 3,
     barGap: 2,
@@ -124,10 +124,10 @@ export default function Chart({ data, other }: ChartProps) {
     <ReactECharts
       option={{
         grid: {
-          left: '15%',
+          left: '20%',
           right: '10%',
-          top: '10%',
-          bottom: '5%',
+          top: '20%',
+          bottom: '10%',
         },
         xAxis: [
           {

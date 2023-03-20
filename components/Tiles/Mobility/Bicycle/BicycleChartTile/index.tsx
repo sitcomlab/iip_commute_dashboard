@@ -47,7 +47,6 @@ export default function BicycleChartTile() {
               />
             ))}
         </div>
-        <Spacer size="sm" />
         {lastDays.length > 0 && (
           <Slider
             defaultValue={[lastDays.length - 1]}
@@ -59,7 +58,7 @@ export default function BicycleChartTile() {
             }}
           />
         )}
-        <Spacer size={'sm'} />
+        <Spacer size={'lg'} />
         <Title as="h5">
           An verschiedenen Zählstellen in der Stadt wird die Anzahl an
           vorbeiradelnden Radfahrer*innen gemessen. Seit Jahren werden es stetig

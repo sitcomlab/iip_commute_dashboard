@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       container: {
         screens: {
-          '2xl': '1756px',
+          '2xl': '1920px',
         },
       },
       borderRadius: {

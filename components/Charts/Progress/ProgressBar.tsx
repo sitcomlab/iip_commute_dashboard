@@ -26,7 +26,7 @@ function ProgressBar({ progress, variant }: ProgressBarProps) {
   return (
     <div className="rounded-full border-2 border-primary p-[.25rem]">
       <ProgressPrimitive.Root
-        className="h-3 w-full overflow-hidden rounded-full bg-primary"
+        className="h-5 w-full overflow-hidden rounded-full bg-primary"
         value={progress}
       >
         <ProgressPrimitive.Indicator

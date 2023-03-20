@@ -10,7 +10,10 @@ export default function Container({
 }: ContainerProps) {
   return (
     <div
-      className={cx('container mx-auto px-4 py-2 md:px-20 md:py-10', className)}
+      className={cx(
+        'container mx-auto px-4 py-2 md:px-[82px] md:py-10',
+        className,
+      )}
       {...props}
     >
       {children}
