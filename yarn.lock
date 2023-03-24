@@ -38,14 +38,14 @@
   dependencies:
     regenerator-runtime "^0.13.11"
 
-"@commitlint/cli@^17.4.4":
-  version "17.4.4"
-  resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-17.4.4.tgz#36df08bfa31dbb9a2b6b1d7187a31e578f001a06"
-  integrity sha512-HwKlD7CPVMVGTAeFZylVNy14Vm5POVY0WxPkZr7EXLC/os0LH/obs6z4HRvJtH/nHCMYBvUBQhGwnufKfTjd5g==
+"@commitlint/cli@^17.5.0":
+  version "17.5.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-17.5.0.tgz#045bf46fc38bb4246da30b462d8db66f48c28f9a"
+  integrity sha512-yNW3+M7UM1ioK28LKTrryIVB5qGpXlEv8+rJQiWPMZNayy9/1XR5+lL8qBTNlgopYtZWWnIm5RETcAN29ZTL/A==
   dependencies:
     "@commitlint/format" "^17.4.4"
     "@commitlint/lint" "^17.4.4"
-    "@commitlint/load" "^17.4.4"
+    "@commitlint/load" "^17.5.0"
     "@commitlint/read" "^17.4.4"
     "@commitlint/types" "^17.4.4"
     execa "^5.0.0"
@@ -112,10 +112,10 @@
     "@commitlint/rules" "^17.4.4"
     "@commitlint/types" "^17.4.4"
 
-"@commitlint/load@^17.4.4":
-  version "17.4.4"
-  resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-17.4.4.tgz#13fcb553572f265339801cde6dd10ee5eea07f5e"
-  integrity sha512-z6uFIQ7wfKX5FGBe1AkOF4l/ShOQsaa1ml/nLMkbW7R/xF8galGS7Zh0yHvzVp/srtfS0brC+0bUfQfmpMPFVQ==
+"@commitlint/load@^17.5.0":
+  version "17.5.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-17.5.0.tgz#be45dbbb50aaf5eb7e8e940e1e0d6171d1426bab"
+  integrity sha512-l+4W8Sx4CD5rYFsrhHH8HP01/8jEP7kKf33Xlx2Uk2out/UKoKPYMOIRcDH5ppT8UXLMV+x6Wm5osdRKKgaD1Q==
   dependencies:
     "@commitlint/config-validator" "^17.4.4"
     "@commitlint/execute-rule" "^17.4.0"
@@ -130,7 +130,7 @@
     lodash.uniq "^4.5.0"
     resolve-from "^5.0.0"
     ts-node "^10.8.1"
-    typescript "^4.6.4"
+    typescript "^4.6.4 || ^5.0.0"
 
 "@commitlint/message@^17.4.2":
   version "17.4.2"
@@ -206,10 +206,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@directus/sdk@^10.3.1":
-  version "10.3.1"
-  resolved "https://registry.yarnpkg.com/@directus/sdk/-/sdk-10.3.1.tgz#094db8e994073b4152d394a0e693cadf2a5da709"
-  integrity sha512-+FUs1kQ27dmrHbAxO+FmCmmAHZrzyyZn+cXZMCtixkeBD8KYBFM7sUKtesQskSmsp5wUksrq2L9Cm+Z93G/ONg==
+"@directus/sdk@^10.3.2":
+  version "10.3.2"
+  resolved "https://registry.yarnpkg.com/@directus/sdk/-/sdk-10.3.2.tgz#2e4f6e307c268c92cdd5f93feeeb51eb1eeca0c6"
+  integrity sha512-ycg9960TSbQ66zK1RLhjZALpEmGQkx69PXRC7TKXMw9y9UxInBvX0bb4QnlqKlotV7Hc+emOhj5qJ8Z3A6Ptvw==
   dependencies:
     axios "^0.27.2"
 
@@ -910,10 +910,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.19.tgz#35e26df9ec441ab99d73e99e9aca82935eea216d"
   integrity sha512-YUgMWAQBWLObABqrvx8qKO1enAvBUdjZOAWQ5grBAkp5LQv45jBvYKZ3oFS9iKRCQyFjqw6iuEa1vmFqtxYLZw==
 
-"@types/node@18.15.3":
-  version "18.15.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.15.3.tgz#f0b991c32cfc6a4e7f3399d6cb4b8cf9a0315014"
-  integrity sha512-p6ua9zBxz5otCmbpb5D3U4B5Nanw6Pk3PPyX05xnxbB/fRv71N7CPmORg7uAD5P70T0xmx1pzAx/FUfa5X+3cw==
+"@types/node@18.15.7":
+  version "18.15.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.15.7.tgz#33514fca9bdf136f77027358850c0fb9cd93c669"
+  integrity sha512-LFmUbFunqmBn26wJZgZPYZPrDR1RwGOu2v79Mgcka1ndO6V0/cwjivPTc4yoK6n9kmw4/ls1r8cLrvh2iMibFA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -1750,13 +1750,13 @@ eastasianwidth@^0.2.0:
   resolved "https://registry.yarnpkg.com/eastasianwidth/-/eastasianwidth-0.2.0.tgz#696ce2ec0aa0e6ea93a397ffcf24aa7840c827cb"
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
-echarts@^5.4.1:
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/echarts/-/echarts-5.4.1.tgz#d7f65a584d78beff62568d878b16151b3381811c"
-  integrity sha512-9ltS3M2JB0w2EhcYjCdmtrJ+6haZcW6acBolMGIuf01Hql1yrIV01L1aRj7jsaaIULJslEP9Z3vKlEmnJaWJVQ==
+echarts@^5.4.2:
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/echarts/-/echarts-5.4.2.tgz#9f38781c9c6ae323e896956178f6956952c77a48"
+  integrity sha512-2W3vw3oI2tWJdyAz+b8DuWS0nfXtSDqlDmqgin/lfzbkB01cuMEN66KWBlmur3YMp5nEDEEt5s23pllnAzB4EA==
   dependencies:
     tslib "2.3.0"
-    zrender "5.4.1"
+    zrender "5.4.3"
 
 electron-to-chromium@^1.4.284:
   version "1.4.330"
@@ -1876,10 +1876,10 @@ eslint-config-next@13.2.4:
     eslint-plugin-react "^7.31.7"
     eslint-plugin-react-hooks "^4.5.0"
 
-eslint-config-prettier@^8.7.0:
-  version "8.7.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.7.0.tgz#f1cc58a8afebc50980bd53475451df146c13182d"
-  integrity sha512-HHVXLSlVUhMSmyW4ZzEuvjpwqamgmlfkutD53cYXLikh4pt/modINRcCIApJ84czDxM4GZInwUrromsDdTImTA==
+eslint-config-prettier@^8.8.0:
+  version "8.8.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.8.0.tgz#bfda738d412adc917fd7b038857110efe98c9348"
+  integrity sha512-wLbQiFre3tdGgpDv67NQKnJuTlcUVYHas3k+DZCc2U2BadthoEY4B7hLPvAxaqdyOGCzuLfii2fqGph10va7oA==
 
 eslint-import-resolver-node@^0.3.6:
   version "0.3.6"
@@ -2228,10 +2228,10 @@ fraction.js@^4.2.0:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.2.0.tgz#448e5109a313a3527f5a3ab2119ec4cf0e0e2950"
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
-framer-motion@^10.6.1:
-  version "10.6.1"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.6.1.tgz#c55972e8bd1f120dc848e5b9249dfcbc36180600"
-  integrity sha512-e1o4JKJ98/pfUkYkze+23A+r5SW6JujDSAEzIKWq6jsrVIE+QSwpu4U7L8+maOXcTnfAZlI930MfpvA/+zaa5g==
+framer-motion@^10.8.5:
+  version "10.8.5"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.8.5.tgz#3fc236a186913b8fbd4a61e70034168b668161c7"
+  integrity sha512-qwvUAIwCc6fEZhg7ST+/z+f7Vt882jJvLiWZUHNdq2oZ/Y7gM6mLlpKi9xQg+pLu6DQVypikcKQ+MKnoFoXAJg==
   dependencies:
     tslib "^2.4.0"
   optionalDependencies:
@@ -3523,10 +3523,10 @@ prettier-plugin-tailwindcss@^0.2.5:
   resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.2.5.tgz#fb9f07f22d0658fdedbf4d83254bf907656f7500"
   integrity sha512-vZ/iKieyCx0WTxHbkf5E1rBlv/ybFk8WTT4hL5W2jlVxum2Zbe0jMUpuQdDrpa4z2vnPiJ5KIWCqL/kd16fKYg==
 
-prettier@^2.8.5:
-  version "2.8.5"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.5.tgz#3dd8ae1ebddc4f6aa419c9b64d8c8319a7e0d982"
-  integrity sha512-3gzuxrHbKUePRBB4ZeU08VNkUcqEHaUaouNt0m7LGP4Hti/NuB07C7PPTM/LkWqXoJYJn2McEo5+kxPNrtQkLQ==
+prettier@^2.8.7:
+  version "2.8.7"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.7.tgz#bb79fc8729308549d28fe3a98fce73d2c0656450"
+  integrity sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==
 
 prop-types@^15.8.1:
   version "15.8.1"
@@ -4295,15 +4295,10 @@ type-fest@^0.8.1:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
 
-typescript@5.0.2:
+typescript@5.0.2, "typescript@^4.6.4 || ^5.0.0":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.2.tgz#891e1a90c5189d8506af64b9ef929fca99ba1ee5"
   integrity sha512-wVORMBGO/FAs/++blGNeAVdbNKtIh1rbBL2EyQ1+J9lClJ93KiiKe8PmFIVdXhHcyv44SL9oglmfeSsndo0jRw==
-
-typescript@^4.6.4:
-  version "4.9.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.3.tgz#3aea307c1746b8c384435d8ac36b8a2e580d85db"
-  integrity sha512-CIfGzTelbKNEnLpLdGFgdyKhG23CKdKgQPOBc+OUNrkJ2vr+KSzsSV5kq5iWhEQbok+quxgGzrAtGWCyU7tHnA==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
@@ -4477,9 +4472,9 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-zrender@5.4.1:
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/zrender/-/zrender-5.4.1.tgz#892f864b885c71e1dc25dcb3c7a4ba42678d3f11"
-  integrity sha512-M4Z05BHWtajY2241EmMPHglDQAJ1UyHQcYsxDNzD9XLSkPDqMq4bB28v9Pb4mvHnVQ0GxyTklZ/69xCFP6RXBA==
+zrender@5.4.3:
+  version "5.4.3"
+  resolved "https://registry.yarnpkg.com/zrender/-/zrender-5.4.3.tgz#41ffaf835f3a3210224abd9d6964b48ff01e79f5"
+  integrity sha512-DRUM4ZLnoaT0PBVvGBDO9oWIDBKFdAVieNWxWwK0niYzJCMwGchRk21/hsE+RKkIveH3XHCyvXcJDkgLVvfizQ==
   dependencies:
     tslib "2.3.0"
