@@ -24,6 +24,11 @@ const TitleStyle = cva('block', {
       energy: 'text-energy',
       inverse: 'text-white',
       dark: 'text-zinc-900',
+      eistage: 'text-climate',
+      frosttage: 'text-primary',
+      heisse_tage: 'text-energy',
+      sommertage: 'text-mobility',
+      tropennaechte: 'text-buildings',
     },
   },
 })

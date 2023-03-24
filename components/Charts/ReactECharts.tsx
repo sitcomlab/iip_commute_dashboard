@@ -48,6 +48,9 @@ export function ReactECharts({
   }, [theme])
 
   useEffect(() => {
+    console.log('option change', option)
+    console.log('chartref', chartRef.current)
+
     // Update chart
     if (chartRef.current !== null) {
       const chart = getInstanceByDom(chartRef.current)
@@ -58,6 +61,7 @@ export function ReactECharts({
         },
         ...option,
       }
+      console.log('myOption', myOption)
       chart!.setOption(myOption, settings)
     }
   }, [option, settings, theme]) // Whenever theme changes we need to add option and setting due to it being deleted in cleanup function

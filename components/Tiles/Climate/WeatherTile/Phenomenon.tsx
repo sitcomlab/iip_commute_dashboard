@@ -21,7 +21,7 @@ const phenomena: PhenomenaType = {
     title: 'Temperatur',
     unit: '°C',
     icon: Temperature,
-    decimals: 1,
+    decimals: 0,
   },
   precipitation: {
     title: 'Niederschlag',

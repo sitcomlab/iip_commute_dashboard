@@ -13,6 +13,11 @@ const switchThumbStyle = cva(
         mobility: 'bg-mobility',
         successStory: 'bg-secondary',
         climate: 'bg-climate',
+        eistage: 'bg-climate',
+        frosttage: 'bg-primary',
+        heisse_tage: 'bg-energy',
+        sommertage: 'bg-mobility',
+        tropennaechte: 'bg-buildings',
       },
       checked: {
         true: 'translate-x-full',
@@ -45,6 +50,11 @@ const switchBorderStyle = cva(
         mobility: 'border-mobility',
         successStory: 'border-secondary',
         climate: 'border-climate',
+        eistage: 'border-climate',
+        frosttage: 'border-primary',
+        heisse_tage: 'border-energy',
+        sommertage: 'border-mobility',
+        tropennaechte: 'border-buildings',
       },
     },
     defaultVariants: {
