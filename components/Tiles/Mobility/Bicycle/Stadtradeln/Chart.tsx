@@ -47,10 +47,6 @@ const getSeries = (data: StadtradelnData, color: string, symbol: string) => {
   const lineSeries: LineSeriesOption = {
     data: data.data.map(({ year, km }) => [year, km]),
     type: 'line',
-    areaStyle: {
-      color: '#34c17b',
-      opacity: 0.08,
-    },
     lineStyle: {
       opacity: 0,
     },

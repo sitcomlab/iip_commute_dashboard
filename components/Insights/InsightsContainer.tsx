@@ -21,11 +21,8 @@ async function InsightsContainer() {
   return (
     <div className="relative w-full">
       <div className="absolute top-0 left-0 -z-10 h-1/3 w-full bg-primary-light"></div>
-      <Container className="px-0 md:px-0">
+      <Container className="px-0 sm:px-0 md:px-0 lg:px-0 xl:px-0 2xl:px-0">
         {insights && <InsightsCarousel insights={insights} />}
-        {/* <div className="flex w-full flex-col items-center justify-between gap-6 lg:flex-row ">
-
-        </div> */}
       </Container>
     </div>
   )

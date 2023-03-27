@@ -35,7 +35,7 @@ export default function InsightsCarousel({
     <Splide
       options={{
         arrows: false,
-        gap: '2rem',
+        gap: '1.5rem',
         padding: padding[device],
         pagination: false,
         perPage: pages[device],
