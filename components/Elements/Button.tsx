@@ -10,6 +10,7 @@ const button = cva(
     variants: {
       variant: {
         primary: 'border-primary text-primary',
+        secondary: 'border-secondary text-secondary',
         inverse: 'text-white hover:bg-white hover:text-secondary border-white',
         danger: 'bg-red-600 text-white hover:bg-red-50:text-red-600',
         goToClimate: 'border-climate text-primary',

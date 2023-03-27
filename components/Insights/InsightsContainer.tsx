@@ -1,7 +1,7 @@
-import directus, { collectionsName, directusImage } from '@/lib/directus'
+import directus, { collectionsName } from '@/lib/directus'
 import withSuspense from '@/utils/withSuspense'
 import Container from '../Layout/Container'
-import InsightsTile from './InsightsTile'
+import InsightsCarousel from './InsightsCarousel'
 
 const getInsightsData = async () => {
   const { data } = await directus.items(collectionsName).readByQuery({
@@ -21,18 +21,11 @@ async function InsightsContainer() {
   return (
     <div className="relative w-full">
       <div className="absolute top-0 left-0 -z-10 h-1/3 w-full bg-primary-light"></div>
-      <Container>
-        <div className="flex w-full flex-col items-center justify-between gap-6 lg:flex-row ">
-          {insights?.map(({ slug, title, image }) => (
-            <div className="flex-1 self-stretch" key={slug}>
-              <InsightsTile
-                image={directusImage(image)}
-                link={`/sammlung/${slug}`}
-                title={title}
-              />
-            </div>
-          ))}
-        </div>
+      <Container className="px-0 md:px-0">
+        {insights && <InsightsCarousel insights={insights} />}
+        {/* <div className="flex w-full flex-col items-center justify-between gap-6 lg:flex-row ">
+
+        </div> */}
       </Container>
     </div>
   )
