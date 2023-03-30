@@ -9,7 +9,7 @@ interface IconFactoryProps
     | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
 }
 
-const iconStyle = cva('stroke-[4]', {
+const iconStyle = cva('', {
   variants: {
     variant: {
       primary: 'stroke-primary text-primary',

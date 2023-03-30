@@ -5,11 +5,9 @@ import climateIndicesData from '@/assets/data/climate_indices.json'
 import { LineSeriesOption } from 'echarts'
 import { parse } from 'date-fns'
 import Switch from '@/components/Inputs/Switch'
-import { Sun, Temperature } from '@/components/Icons'
+import { Eis, Frost, Heiss, Sommer, Tropen } from '@/components/Icons'
 import Title from '@/components/Elements/Title'
-import { Cog6ToothIcon, MoonIcon } from '@heroicons/react/24/outline'
 import { ForwardRefExoticComponent, SVGProps, useState } from 'react'
-import IconFactory from '@/components/Elements/IconFactory'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '@/tailwind.config.js'
 
@@ -55,7 +53,7 @@ const indices: Record<
 > = {
   heisse_tage: {
     title: 'Heiße Tage (>= 30°C)',
-    icon: Temperature,
+    icon: Heiss,
     seriesOption: {
       name: 'Heiße Tage',
       data: getSeries('heisse_tage'),
@@ -65,7 +63,7 @@ const indices: Record<
   },
   sommertage: {
     title: 'Sommertage (>= 25°C)',
-    icon: Sun,
+    icon: Sommer,
     seriesOption: {
       name: 'Sommertage',
       data: getSeries('sommertage'),
@@ -75,7 +73,7 @@ const indices: Record<
   },
   tropennaechte: {
     title: 'Tropennächte (>= 20°C)',
-    icon: MoonIcon,
+    icon: Tropen,
     seriesOption: {
       name: 'Tropennächte',
       data: getSeries('tropennaechte'),
@@ -91,11 +89,11 @@ const indices: Record<
       // @ts-ignore
       color: theme?.colors?.primary.DEFAULT || '#6060d6',
     },
-    icon: Temperature,
+    icon: Frost,
   },
   eistage: {
     title: 'Eistage (max. < 0°C)',
-    icon: Cog6ToothIcon,
+    icon: Eis,
     seriesOption: {
       name: 'Eistage',
       data: getSeries('eistage'),
@@ -122,7 +120,7 @@ function ClimateIndiceToggle({
   return (
     <div className="flex w-fit items-center gap-4">
       <Switch onCheckedChange={onChange} variant={type} />
-      <IconFactory className="aspect-square h-8" icon={Icon} variant={type} />
+      <Icon className="aspect-square h-8" />
       <Title as="h5" variant={type}>
         {indices[type].title}
       </Title>
