@@ -42,7 +42,7 @@ const switchThumbInnerStyle = cva(
 )
 
 const switchBorderStyle = cva(
-  'w-[3.25rem] p-1 rounded-full bg-white border-2',
+  'w-[3.25rem] p-1 rounded-full bg-white border-2 shadow-inner',
   {
     variants: {
       variant: {
