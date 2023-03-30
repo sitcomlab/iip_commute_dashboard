@@ -3,7 +3,7 @@
 import { ReactECharts } from '@/components/Charts/ReactECharts'
 import climateIndicesData from '@/assets/data/climate_indices.json'
 import { LineSeriesOption } from 'echarts'
-import { parse } from 'date-fns'
+import { differenceInYears, parse } from 'date-fns'
 import Switch from '@/components/Inputs/Switch'
 import { Eis, Frost, Heiss, Sommer, Tropen } from '@/components/Icons'
 import Title from '@/components/Elements/Title'
@@ -31,12 +31,22 @@ type ClimateIndex = {
   tropennaechte: number
 }
 
+const TIME_DELTA_IN_YEARS = 20
+
 const data = climateIndicesData as ClimateIndex[]
 const getSeries = (property: keyof ClimateIndex) =>
-  data.map(e => [
-    parse(e.timestamp, 'yyyy-MM-dd HH:mm:ssXXX', new Date()),
-    e[property],
-  ])
+  data
+    .filter(
+      e =>
+        differenceInYears(
+          new Date(),
+          parse(e.timestamp, 'yyyy-MM-dd HH:mm:ssXXX', new Date()),
+        ) <= TIME_DELTA_IN_YEARS,
+    )
+    .map(e => [
+      parse(e.timestamp, 'yyyy-MM-dd HH:mm:ssXXX', new Date()),
+      e[property],
+    ])
 
 /**
  * All the indices that are on the chart
@@ -118,7 +128,7 @@ function ClimateIndiceToggle({
 }) {
   const Icon = indices[type].icon
   return (
-    <div className="flex w-fit items-center gap-4">
+    <div className="flex w-max items-center gap-4">
       <Switch onCheckedChange={onChange} variant={type} />
       <Icon className="aspect-square h-8" />
       <Title as="h5" variant={type}>
@@ -154,7 +164,7 @@ export default function ClimateIndicesChart() {
     }))
 
   return (
-    <div className="flex h-full w-full items-center gap-4 p-5">
+    <div className="flex h-full w-full items-center p-5">
       <div className="h-full flex-1">
         <Title as="h7">Anzahl der Tage</Title>
         <ReactECharts
