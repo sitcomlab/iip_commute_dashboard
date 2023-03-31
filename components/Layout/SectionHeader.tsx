@@ -1,4 +1,3 @@
-import SortTiles from '../Elements/SortTiles'
 import SectionTitle from './SectionTitle'
 
 export default function SectionHeader({
@@ -9,7 +8,7 @@ export default function SectionHeader({
   return (
     <div className="my-4 flex w-full items-center justify-between">
       <SectionTitle variant={variant} />
-      <SortTiles />
+      {/* <SortTiles /> */}
     </div>
   )
 }
