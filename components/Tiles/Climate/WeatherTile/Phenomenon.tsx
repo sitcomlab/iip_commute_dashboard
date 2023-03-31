@@ -12,6 +12,12 @@ type PhenomenaType = {
     icon:
       | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
       | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
+      | React.ForwardRefExoticComponent<
+          Omit<React.SVGProps<SVGSVGElement>, 'ref'> & {
+            title?: string | undefined
+            titleId?: string | undefined
+          } & React.RefAttributes<SVGSVGElement>
+        >
     decimals?: number
   }
 }
