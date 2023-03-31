@@ -86,28 +86,32 @@ export default function ChartContainer() {
           other={otherData}
         />
       </div>
-      <div className="flex items-center space-x-4 p-4">
-        <div className="h-1 w-12 rounded bg-mobility" />
+      <div className="flex items-center space-x-10 p-4 pl-8">
+        <div className="h-1 w-[52px] rounded bg-mobility" />
         <Title as={'h5'} variant={'primary'}>
           geradelte Kilometer in Münster
         </Title>
       </div>
-      <div className="flex w-full flex-col items-center justify-between rounded border border-dashed border-primary p-4 lg:flex-row lg:space-x-2">
-        <div className="flex-shrink-0">
+      <div className="flex w-full flex-col items-center justify-between rounded border border-dashed border-primary p-4 pl-8 md:flex-row md:space-x-4">
+        <div className="flex flex-shrink-0 items-center gap-10">
           <Switch
             defaultChecked={compare}
-            label="Städtevergleich"
             onCheckedChange={setCompare}
             variant={'mobility'}
           />
+          <Title as={'h5'} variant={'primary'}>
+            Städtevergleich
+          </Title>
         </div>
         {otherData && (
           <div className="flex flex-1 items-center">
             <div className="relative h-6 flex-1">
               <AnimatedRollingElement>
                 <div className="flex items-center space-x-4">
-                  <div className="h-1 w-12 rounded bg-buildings" />
-                  <Title as="h5">{otherData.name}</Title>
+                  <div className="h-1 w-[52px] rounded bg-buildings" />
+                  <Title as="h5" variant={'primary'}>
+                    {otherData.name}
+                  </Title>
                 </div>
               </AnimatedRollingElement>
             </div>

@@ -3,7 +3,7 @@
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import { BusCombustionIcon, BusElectroIcon } from '@/components/Icons'
+import { BusCombustion, BusElectro } from '@/components/Icons'
 import { useBusData } from '@/hooks/useBusData'
 import MobilityTile from '../MobilityTile'
 
@@ -47,10 +47,10 @@ export default function BusTile() {
               }%`,
             }}
           >
-            <BusCombustionIcon className="w-full pr-2" />
+            <BusCombustion className="w-full" />
           </div>
-          <div className="flex-1 px-12">
-            <BusElectroIcon className="w-full pl-2" />
+          <div className="flex-1">
+            <BusElectro className="w-full" />
           </div>
         </div>
         <Spacer />
