@@ -1,5 +1,3 @@
-import Back from '@/components/Elements/Back'
-import { Spacer } from '@/components/Elements/Spacer'
 import AnimatedPage from '@/components/Layout/AnimatedPage'
 import Container from '@/components/Layout/Container'
 import Footer from '@/components/Layout/Footer'
@@ -71,8 +69,6 @@ export default async function Layout({
       <CollectionNavbar description={description || ''} title={title} />
       <Container className="flex-1">
         <Providers>
-          <Back />
-          <Spacer />
           <AnimatedPage>{children}</AnimatedPage>
         </Providers>
       </Container>

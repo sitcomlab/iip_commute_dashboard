@@ -19,8 +19,7 @@ async function InsightsContainer() {
   const insights = await getInsightsData()
 
   return (
-    <div className="relative w-full">
-      <div className="absolute top-0 left-0 -z-10 h-1/3 w-full bg-primary-light"></div>
+    <div className="w-full">
       <Container className="px-0 sm:px-0 md:px-0 lg:px-0 xl:px-0 2xl:px-0">
         {insights && <InsightsCarousel insights={insights} />}
       </Container>
@@ -29,7 +28,7 @@ async function InsightsContainer() {
 }
 
 const Fallback = (
-  <div className="relative w-full">
+  <div className="w-full">
     <Container>
       <div className="flex w-full flex-col items-center justify-between gap-6 lg:flex-row">
         <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-KD bg-zinc-100" />
