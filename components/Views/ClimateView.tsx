@@ -2,6 +2,7 @@ import Columns from '../Layout/Columns'
 import ClimateIndicesTile from '../Tiles/Climate/ClimateIndices'
 import CO2EmissionsTile from '../Tiles/Climate/CO2EmissionsTile'
 import ClimateDevelopmentTile from '../Tiles/Climate/Devlopment'
+import GarbageTile from '../Tiles/Climate/Garbage'
 import WeatherTile from '../Tiles/Climate/WeatherTile'
 import BaseView from './BaseView'
 
@@ -14,6 +15,7 @@ export default function ClimateView() {
       </Columns>
       <CO2EmissionsTile />
       <ClimateIndicesTile />
+      <GarbageTile />
     </BaseView>
   )
 }

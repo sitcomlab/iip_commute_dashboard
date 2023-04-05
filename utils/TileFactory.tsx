@@ -2,6 +2,7 @@ import EcoProfitTile from '@/components/Tiles/Buildings/EcoProfit'
 import ClimateIndicesTile from '@/components/Tiles/Climate/ClimateIndices'
 import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
 import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
+import GarbageTile from '@/components/Tiles/Climate/Garbage'
 import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
 import PhotovoltTile from '@/components/Tiles/Energy/PhotovoltTile'
 import WindEnergyTile from '@/components/Tiles/Energy/WindEnergyTile'
@@ -15,7 +16,7 @@ import SuccessStoryTile, {
 import SurveyTile, { SurveyTileProps } from '@/components/Tiles/Survey'
 
 type TileTypePrefix = 'climate' | 'mobility' | 'energy' | 'building'
-type ClimateTypes = 'weather' | 'co2' | 'indices' | 'development'
+type ClimateTypes = 'weather' | 'co2' | 'indices' | 'development' | 'garbage'
 type MobilityTypes = 'bicycle' | 'stadtradeln' | 'bus' | 'modalSplit'
 type BuildingsTypes = 'ecoProfit'
 type EnergyTypes = 'PV' | 'wind'
@@ -51,6 +52,8 @@ export default function TileFactory({ type, ...props }: TileFactoryProps) {
       return <ClimateIndicesTile />
     case 'climate-development':
       return <ClimateDevelopmentTile />
+    case 'climate-garbage':
+      return <GarbageTile />
 
     // ---- BUILDINGS ----
     case 'building-ecoProfit':

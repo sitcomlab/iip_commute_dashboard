@@ -2,6 +2,7 @@ import EcoProfitTile from '@/components/Tiles/Buildings/EcoProfit'
 import ClimateIndicesTile from '@/components/Tiles/Climate/ClimateIndices'
 import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
 import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
+import GarbageTile from '@/components/Tiles/Climate/Garbage'
 import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
 import PhotovoltTile from '@/components/Tiles/Energy/PhotovoltTile'
 import WindEnergyTile from '@/components/Tiles/Energy/WindEnergyTile'
@@ -22,6 +23,7 @@ const embedRegistry = {
   ecoProfit: EcoProfitTile,
   photovolt: PhotovoltTile,
   windenergy: WindEnergyTile,
+  garbage: GarbageTile,
 }
 
 export default embedRegistry
