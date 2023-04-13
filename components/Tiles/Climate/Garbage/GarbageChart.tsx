@@ -103,6 +103,7 @@ export default function GarbageChart() {
               onValueChange={([e]) => {
                 setYearIndex(e)
               }}
+              variant={'climate'}
             />
           </div>
         </div>

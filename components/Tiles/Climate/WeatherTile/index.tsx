@@ -80,6 +80,7 @@ export default function WeatherTile() {
           onValueChange={([e]) => {
             setTimestamp(nextHours[e])
           }}
+          variant={'climate'}
         />
       </div>
     </ClimateTile>
