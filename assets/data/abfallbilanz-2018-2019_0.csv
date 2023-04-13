@@ -1,0 +1,181 @@
+﻿JAHR;KATEGORIE;MERKMAL;WERT;EINHEIT
+2019;Gesamtaufkommen Siedlungsabfälle;Hausmüll;115071;t
+2019;Gesamtaufkommen Siedlungsabfälle;Sperrmüll;17730;t
+2019;Gesamtaufkommen Siedlungsabfälle;Gewerbe- und Baustellenabfälle;32279;t
+2019;Gesamtaufkommen Siedlungsabfälle;Straßenkehricht und Papierkorbabfälle;6323;t
+2019;Abfälle aus Privathaushalten;Hausmüll ohne Wertstoffe;37710;t
+2019;Abfälle aus Privathaushalten;Papier;20999;t
+2019;Abfälle aus Privathaushalten;Grünabfälle;15538;t
+2019;Abfälle aus Privathaushalten;Bioabfälle;15357;t
+2019;Abfälle aus Privathaushalten;Sperrmüll ohne Wertstoffe;12716;t
+2019;Abfälle aus Privathaushalten;Verpackungen;9719;t
+2019;Abfälle aus Privathaushalten;Glas;7435;t
+2019;Abfälle aus Privathaushalten;Altholz;3961;t
+2019;Abfälle aus Privathaushalten;Elektronikgeräte;2006;t
+2019;Abfälle aus Privathaushalten;Altmetall;1269;t
+2019;Abfälle aus Privathaushalten;Sonstige Wertstoffe;1433;t
+2019;Abfälle aus Privathaushalten;Altkleider;1422;t
+2018;Gesamtaufkommen Siedlungsabfälle;Hausmüll;117736;t
+2018;Gesamtaufkommen Siedlungsabfälle;Sperrmüll;18367;t
+2018;Gesamtaufkommen Siedlungsabfälle;Gewerbe- und Baustellenabfälle;23670;t
+2018;Gesamtaufkommen Siedlungsabfälle;Straßenkehricht und Papierkorbabfälle;6129;t
+2018;Abfälle aus Privathaushalten;Hausmüll ohne Wertstoffe;37907;t
+2018;Abfälle aus Privathaushalten;Papier;21892;t
+2018;Abfälle aus Privathaushalten;Grünabfälle;15906;t
+2018;Abfälle aus Privathaushalten;Bioabfälle;15495;t
+2018;Abfälle aus Privathaushalten;Sperrmüll ohne Wertstoffe;12009;t
+2018;Abfälle aus Privathaushalten;Verpackungen;9709;t
+2018;Abfälle aus Privathaushalten;Glas;7499;t
+2018;Abfälle aus Privathaushalten;Altholz;4158;t
+2018;Abfälle aus Privathaushalten;Elektronikgeräte;2020;t
+2018;Abfälle aus Privathaushalten;Altmetall;1312;t
+2018;Abfälle aus Privathaushalten;Sonstige Wertstoffe;1302;t
+2018;Abfälle aus Privathaushalten;Altkleider;1348;t
+2019;Jahresvergleich;Gesamtabfall- und Wertstoffaufkommen;171403;t
+2019;Jahresvergleich;Haus- und Sperrmüllaufkommen;129565;t
+2019;Jahresvergleich;Abfallaufkommen pro Einwohner;417;kg
+2019;Jahresvergleich;Sammlung über Holsysteme;96968;t
+2019;Jahresvergleich;Wertstoffsammlung Recyclinghöfe;20221;t
+2019;Jahresvergleich;Restabfallsammlung Recyclinghöfe;7013;t
+2019;Jahresvergleich;Sammlung über Depotcontainer;8979;t
+2019;Jahresvergleich;Input Restabfallbehandlungsanlage;59426;t
+2018;Jahresvergleich;Gesamtabfall- und Wertstoffaufkommen;165903;t
+2018;Jahresvergleich;Haus- und Sperrmüllaufkommen;130557;t
+2018;Jahresvergleich;Abfallaufkommen pro Einwohner;421;kg
+2018;Jahresvergleich;Sammlung über Holsysteme;97300;t
+2018;Jahresvergleich;Wertstoffsammlung Recyclinghöfe;20470;t
+2018;Jahresvergleich;Restabfallsammlung Recyclinghöfe;6575;t
+2018;Jahresvergleich;Sammlung über Depotcontainer;8955;t
+2018;Jahresvergleich;Input Restabfallbehandlungsanlage;60933;t
+2017;Jahresvergleich;Gesamtabfall- und Wertstoffaufkommen;177025;t
+2017;Jahresvergleich;Haus- und Sperrmüllaufkommen;131775;t
+2017;Jahresvergleich;Abfallaufkommen pro Einwohner;428;kg
+2017;Jahresvergleich;Sammlung über Holsysteme;93154;t
+2017;Jahresvergleich;Wertstoffsammlung Recyclinghöfe;20943;t
+2017;Jahresvergleich;Restabfallsammlung Recyclinghöfe;6425;t
+2017;Jahresvergleich;Sammlung über Depotcontainer;8844;t
+2017;Jahresvergleich;Input Restabfallbehandlungsanlage;59019;t
+2016;Jahresvergleich;Gesamtabfall- und Wertstoffaufkommen;176834;t
+2016;Jahresvergleich;Haus- und Sperrmüllaufkommen;132690;t
+2016;Jahresvergleich;Abfallaufkommen pro Einwohner;435;kg
+2016;Jahresvergleich;Sammlung über Holsysteme;97458;t
+2016;Jahresvergleich;Wertstoffsammlung Recyclinghöfe;21465;t
+2016;Jahresvergleich;Restabfallsammlung Recyclinghöfe;6437;t
+2016;Jahresvergleich;Sammlung über Depotcontainer;8886;t
+2016;Jahresvergleich;Input Restabfallbehandlungsanlage;58313;t
+2015;Jahresvergleich;Gesamtabfall- und Wertstoffaufkommen;168550;t
+2015;Jahresvergleich;Haus- und Sperrmüllaufkommen;130118;t
+2015;Jahresvergleich;Abfallaufkommen pro Einwohner;426;kg
+2015;Jahresvergleich;Sammlung über Holsysteme;97045;t
+2015;Jahresvergleich;Wertstoffsammlung Recyclinghöfe;19610;t
+2015;Jahresvergleich;Restabfallsammlung Recyclinghöfe;6481;t
+2015;Jahresvergleich;Sammlung über Depotcontainer;8758;t
+2015;Jahresvergleich;Input Restabfallbehandlungsanlage;64888;t
+2006;Abfallaufkommen in kg pro Einwohner/Jahr Gesamt;;476;kg
+2007;Abfallaufkommen in kg pro Einwohner/Jahr Gesamt;;485;kg
+2008;Abfallaufkommen in kg pro Einwohner/Jahr Gesamt;;478;kg
+2009;Abfallaufkommen in kg pro Einwohner/Jahr Gesamt;;475;kg
+2010;Abfallaufkommen in kg pro Einwohner/Jahr Gesamt;;468;kg
+2011;Abfallaufkommen in kg pro Einwohner/Jahr Gesamt;;459;kg
+2012;Abfallaufkommen in kg pro Einwohner/Jahr Gesamt;;438;kg
+2013;Abfallaufkommen in kg pro Einwohner/Jahr Gesamt;;431;kg
+2014;Abfallaufkommen in kg pro Einwohner/Jahr Gesamt;;479;kg
+2015;Abfallaufkommen in kg pro Einwohner/Jahr Gesamt;;426;kg
+2016;Abfallaufkommen in kg pro Einwohner/Jahr Gesamt;;435;kg
+2017;Abfallaufkommen in kg pro Einwohner/Jahr Gesamt;;428;kg
+2018;Abfallaufkommen in kg pro Einwohner/Jahr Gesamt;;421;kg
+2019;Abfallaufkommen in kg pro Einwohner/Jahr Gesamt;;417;kg
+2006;Wertstoffe in kg pro Einwohner/Jahr;;298;kg
+2007;Wertstoffe in kg pro Einwohner/Jahr;;305;kg
+2008;Wertstoffe in kg pro Einwohner/Jahr;;301;kg
+2009;Wertstoffe in kg pro Einwohner/Jahr;;303;kg
+2010;Wertstoffe in kg pro Einwohner/Jahr;;295;kg
+2011;Wertstoffe in kg pro Einwohner/Jahr;;289;kg
+2012;Wertstoffe in kg pro Einwohner/Jahr;;277;kg
+2013;Wertstoffe in kg pro Einwohner/Jahr;;272;kg
+2014;Wertstoffe in kg pro Einwohner/Jahr;;284;kg
+2015;Wertstoffe in kg pro Einwohner/Jahr;;266;kg
+2016;Wertstoffe in kg pro Einwohner/Jahr;;270;kg
+2017;Wertstoffe in kg pro Einwohner/Jahr;;266;kg
+2018;Wertstoffe in kg pro Einwohner/Jahr;;260;kg
+2019;Wertstoffe in kg pro Einwohner/Jahr;;255;kg
+2006;Anteil Wertstoffe am Abfallaufkommen in %;;63;%
+2007;Anteil Wertstoffe am Abfallaufkommen in %;;63;%
+2008;Anteil Wertstoffe am Abfallaufkommen in %;;63;%
+2009;Anteil Wertstoffe am Abfallaufkommen in %;;64;%
+2010;Anteil Wertstoffe am Abfallaufkommen in %;;63;%
+2011;Anteil Wertstoffe am Abfallaufkommen in %;;63;%
+2012;Anteil Wertstoffe am Abfallaufkommen in %;;63;%
+2013;Anteil Wertstoffe am Abfallaufkommen in %;;63;%
+2014;Anteil Wertstoffe am Abfallaufkommen in %;;59;%
+2015;Anteil Wertstoffe am Abfallaufkommen in %;;62;%
+2016;Anteil Wertstoffe am Abfallaufkommen in %;;62;%
+2017;Anteil Wertstoffe am Abfallaufkommen in %;;62;%
+2018;Anteil Wertstoffe am Abfallaufkommen in %;;62;%
+2019;Anteil Wertstoffe am Abfallaufkommen in %;;61;%
+2006;Restabfall in kg pro Einwohner/Jahr;;178;kg
+2007;Restabfall in kg pro Einwohner/Jahr;;180;kg
+2008;Restabfall in kg pro Einwohner/Jahr;;177;kg
+2009;Restabfall in kg pro Einwohner/Jahr;;172;kg
+2010;Restabfall in kg pro Einwohner/Jahr;;173;kg
+2011;Restabfall in kg pro Einwohner/Jahr;;170;kg
+2012;Restabfall in kg pro Einwohner/Jahr;;161;kg
+2013;Restabfall in kg pro Einwohner/Jahr;;159;kg
+2014;Restabfall in kg pro Einwohner/Jahr;;195;kg
+2015;Restabfall in kg pro Einwohner/Jahr;;160;kg
+2016;Restabfall in kg pro Einwohner/Jahr;;165;kg
+2017;Restabfall in kg pro Einwohner/Jahr;;162;kg
+2018;Restabfall in kg pro Einwohner/Jahr;;161;kg
+2019;Restabfall in kg pro Einwohner/Jahr;;162;kg
+2019;Problemabfälle;Dispersionsfarbe;127;t
+2019;Problemabfälle;Altlacke und Löse-, Holzschutz- und Klebemittel;86;t
+2019;Problemabfälle;Altöl;41;t
+2019;Problemabfälle;ölhaltige Abfälle;45;t
+2019;Problemabfälle;sonstige Problemabfälle;38;t
+2019;Problemabfälle;Batterien inkl Knopfzellen;37;t
+2019;Problemabfälle;Autobatterien;26;t
+2019;Sammlung über Holsysteme;Restabfalltonne;35956;t
+2019;Sammlung über Holsysteme;Papiertonne;18069;t
+2019;Sammlung über Holsysteme;Biotonne;15357;t
+2019;Sammlung über Holsysteme;Verpackungen (DSD);8972;t
+2019;Sammlung über Holsysteme;Sperrgutabfuhr;7700;t
+2019;Sammlung über Holsysteme;Grüngutabfuhr;4923;t
+2018;Sammlung über Holsysteme;Restabfalltonne;36263;t
+2018;Sammlung über Holsysteme;Papiertonne;19145;t
+2018;Sammlung über Holsysteme;Biotonne;15495;t
+2018;Sammlung über Holsysteme;Verpackungen (DSD);8963;t
+2018;Sammlung über Holsysteme;Sperrgutabfuhr;7396;t
+2018;Sammlung über Holsysteme;Grüngutabfuhr;5106;t
+2019;Wertstoffsammlung über Recyclinghöfe;Grünabfälle;8475;t
+2019;Wertstoffsammlung über Recyclinghöfe;Altholz, behandeltes Holz;3828;t
+2019;Wertstoffsammlung über Recyclinghöfe;Papier;2930;t
+2019;Wertstoffsammlung über Recyclinghöfe;Metalle, Kabelabfälle;1269;t
+2019;Wertstoffsammlung über Recyclinghöfe;Elektronikgeräte;1014;t
+2019;Wertstoffsammlung über Recyclinghöfe;Verpackungsabfälle (DSD);746;t
+2019;Wertstoffsammlung über Recyclinghöfe;Bauschutt;429;t
+2019;Wertstoffsammlung über Recyclinghöfe;Kühlgeräte;247;t
+2019;Wertstoffsammlung über Recyclinghöfe;Problemabfälle;368;t
+2019;Wertstoffsammlung über Recyclinghöfe;Elektronikgroßgeräte;357;t
+2019;Wertstoffsammlung über Recyclinghöfe;Hartkunststoffe;289;t
+2019;Wertstoffsammlung über Recyclinghöfe;Altreifen;166;t
+2019;Wertstoffsammlung über Recyclinghöfe;Flachglas;103;t
+2018;Wertstoffsammlung über Recyclinghöfe;Grünabfälle;8.614;t
+2018;Wertstoffsammlung über Recyclinghöfe;Altholz, behandeltes Holz;4.158;t
+2018;Wertstoffsammlung über Recyclinghöfe;Papier;2.747;t
+2018;Wertstoffsammlung über Recyclinghöfe;Metalle, Kabelabfälle;1.312;t
+2018;Wertstoffsammlung über Recyclinghöfe;Elektronikgeräte;1.051;t
+2018;Wertstoffsammlung über Recyclinghöfe;Verpackungsabfälle (DSD);746;t
+2018;Wertstoffsammlung über Recyclinghöfe;Bauschutt;301;t
+2018;Wertstoffsammlung über Recyclinghöfe;Kühlgeräte;229;t
+2018;Wertstoffsammlung über Recyclinghöfe;Problemabfälle;346;t
+2018;Wertstoffsammlung über Recyclinghöfe;Elektronikgroßgeräte;314;t
+2018;Wertstoffsammlung über Recyclinghöfe;Hartkunststoffe;284;t
+2018;Wertstoffsammlung über Recyclinghöfe;Altreifen;189;t
+2018;Wertstoffsammlung über Recyclinghöfe;Flachglas;180;t
+2018;Problemabfälle;Dispersionsfarbe;125;t
+2018;Problemabfälle;Altlacke und Löse-, Holzschutz- und Klebemittel;81;t
+2018;Problemabfälle;Altöl;36;t
+2018;Problemabfälle;ölhaltige Abfälle;39;t
+2018;Problemabfälle;sonstige Problemabfälle;35;t
+2018;Problemabfälle;Batterien inkl. Knopfzellen;30;t
+2018;Problemabfälle;Autobatterien;22;t

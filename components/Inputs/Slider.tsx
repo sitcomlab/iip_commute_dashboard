@@ -2,12 +2,30 @@
 
 import * as SliderPrimitive from '@radix-ui/react-slider'
 import Title from '../Elements/Title'
+import { cva, VariantProps } from 'class-variance-authority'
 
-export type SliderProps = SliderPrimitive.SliderProps & {
-  labels?: string[]
-}
+const sliderStyle = cva('relative h-5 flex-1 rounded-full bg-opacity-20', {
+  variants: {
+    variant: {
+      primary: 'bg-primary',
+      mobility: 'bg-mobility',
+      successStory: 'bg-secondary',
+      climate: 'bg-climate',
+      energy: 'bg-energy',
+      buildungs: 'bg-buildings',
+    },
+  },
+  defaultVariants: {
+    variant: 'primary',
+  },
+})
 
-export default function Slider({ labels, ...props }: SliderProps) {
+export type SliderProps = SliderPrimitive.SliderProps &
+  VariantProps<typeof sliderStyle> & {
+    labels?: string[]
+  }
+
+export default function Slider({ labels, variant, ...props }: SliderProps) {
   return (
     <div>
       <SliderPrimitive.Root
@@ -15,7 +33,7 @@ export default function Slider({ labels, ...props }: SliderProps) {
         className="relative flex w-full items-center"
         {...props}
       >
-        <SliderPrimitive.Track className="relative h-5 flex-1 rounded-full bg-gray-500 mix-blend-color-burn" />
+        <SliderPrimitive.Track className={sliderStyle({ variant })} />
         <SliderPrimitive.Thumb className="block aspect-square h-9 touch-pan-x rounded-full bg-primary shadow shadow-primary" />
       </SliderPrimitive.Root>
       {labels && (

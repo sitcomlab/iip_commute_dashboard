@@ -54,6 +54,7 @@ export default function PhotovoltTile() {
               labels={['2005', '2010', '2015', '2020', 'jetzt']}
               max={4}
               min={0}
+              variant={'energy'}
             />
           </div>
         </div>

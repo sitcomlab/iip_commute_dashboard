@@ -56,6 +56,7 @@ export default function BicycleChartTile() {
             onValueChange={([e]) => {
               setDate(lastDays[e])
             }}
+            variant={'mobility'}
           />
         )}
         <Spacer size={'lg'} />
