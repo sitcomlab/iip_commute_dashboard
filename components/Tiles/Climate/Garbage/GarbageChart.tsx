@@ -17,7 +17,6 @@ function getSeries(name: string, data: any[], color: string): SeriesOption {
   return {
     name,
     type: 'line',
-    stack: 'Total',
     areaStyle: {
       color,
       opacity: 0.23,
@@ -61,16 +60,16 @@ export default function GarbageChart() {
           option={{
             series: [
               getSeries(
-                'Wertstoffe',
-                wertstoffeData.map(e => e.WERT),
-                // @ts-ignore
-                theme?.colors?.energy.DEFAULT || '#f28443',
-              ),
-              getSeries(
                 'Gesamt',
                 totalData.map(e => e.WERT),
                 // @ts-ignore
                 theme?.colors?.mobility.DEFAULT || '#34c17b',
+              ),
+              getSeries(
+                'Wertstoffe',
+                wertstoffeData.map(e => e.WERT),
+                // @ts-ignore
+                theme?.colors?.energy.DEFAULT || '#f28443',
               ),
             ],
             xAxis: [
