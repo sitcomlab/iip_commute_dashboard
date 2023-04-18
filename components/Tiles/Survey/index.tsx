@@ -50,7 +50,7 @@ export default function SurveyTile({ question, answer }: SurveyTileProps) {
               <SurveyAnswer {...answer} {...styles} />
             ) : (
               <animated.div
-                className="absolute top-0 left-0 h-full w-full"
+                className="absolute left-0 top-0 h-full w-full"
                 style={styles}
               >
                 <Title as="h3" className="font-medium" variant={'inverse'}>

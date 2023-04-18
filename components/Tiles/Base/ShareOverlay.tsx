@@ -3,14 +3,14 @@
 import AnimatedCopyIcon from '@/components/Elements/Animated/AnimatedCopyIcon'
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import embedRegistry from '@/utils/embedRegistry'
 import { ComponentPropsWithRef } from 'react'
 import { AnimatedProps } from 'react-spring'
 import BaseOverlay from './BaseOverlay'
+import { TileType } from '@/utils/TileFactory'
 
 type ShareOverlayProps = AnimatedProps<ComponentPropsWithRef<'div'>> & {
   onClose?: () => void
-  embedId: keyof typeof embedRegistry
+  embedId: TileType
 }
 
 export default function ShareOverlay({

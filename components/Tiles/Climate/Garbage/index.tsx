@@ -1,5 +1,3 @@
-'use client'
-
 import ClimateTile from '../ClimateTile'
 import GarbageChart from './GarbageChart'
 
@@ -8,7 +6,7 @@ export default function GarbageTile() {
     <ClimateTile
       dataRetrieval={'01.01.2022'}
       dataSource="awm"
-      embedId="garbage"
+      embedId="climate-garbage"
       subtitle={
         'So viel KG Abfall wurden bisher in Münster pro Einwohner:in produziert'
       }

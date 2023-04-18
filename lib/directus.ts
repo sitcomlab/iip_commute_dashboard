@@ -33,6 +33,8 @@ export type Tile = {
   group: any
   full_width: boolean
   tile_id: TileType
+  details: string
+  data_url: string
 }
 
 export type SuccessStory = {
