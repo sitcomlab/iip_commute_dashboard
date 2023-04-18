@@ -6,24 +6,6 @@ import Providers from '@/components/Layout/Providers'
 import directus, { collectionsName } from '@/lib/directus'
 import { notFound } from 'next/navigation'
 
-// ISR
-export async function generateStaticParams() {
-  const { data } = await directus.items(collectionsName).readByQuery({
-    fields: ['slug'],
-    filter: {
-      status: 'published',
-    },
-  })
-
-  if (!data) {
-    return [{ slug: undefined }]
-  }
-
-  return data.map(({ slug }) => ({
-    slug,
-  }))
-}
-
 // revalidate each minute
 export const revalidate = 60
 export const dynamicParams = false

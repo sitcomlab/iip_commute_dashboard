@@ -1,24 +1,12 @@
-import embedRegistry from '@/utils/embedRegistry'
+import TileFactory, { TileType } from '@/utils/TileFactory'
 import { notFound } from 'next/navigation'
 
-export default async function Share({
-  params,
-}: {
-  params: { id: keyof typeof embedRegistry }
-}) {
+export default async function Share({ params }: { params: { id: TileType } }) {
   const { id } = params
 
   if (!id) {
     return notFound()
   }
 
-  const EmbedComponent: () => JSX.Element | Promise<JSX.Element> | undefined =
-    embedRegistry[id]
-
-  if (!EmbedComponent) {
-    return notFound()
-  }
-
-  // @ts-expect-error Server Component
-  return <EmbedComponent />
+  return <TileFactory type={id} />
 }

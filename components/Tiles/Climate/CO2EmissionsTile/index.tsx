@@ -1,45 +1,23 @@
-'use client'
-
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import { Co2City } from '@/components/Icons'
-import Switch from '@/components/Inputs/Switch'
-import { useState } from 'react'
 import ClimateTile from '../ClimateTile'
-import CO2Chart from './CO2Chart'
+import CO2EmissionsContent from './CO2EmissionsContent'
 
 export default function CO2EmissionsTile() {
-  const [showFuture, setShowFuture] = useState(true)
-
   return (
     <ClimateTile
       dataRetrieval="01.01.2022"
       dataSource="Stadt Münster - Koordinierungsstelle für Klima und Energie"
-      embedId="CO2"
-      moreInfo="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dol."
+      embedId="climate-co2"
       subtitle="So viel wird in Münster ausgestoßen"
       title={'CO₂'}
     >
       <div className="flex flex-col md:flex-row">
         <div className="flex-1">
-          <div className="flex h-full flex-col rounded bg-white p-2">
-            <div className="flex flex-col justify-between md:flex-row md:px-16 md:pt-4">
-              <Title as={'h6'} variant="dark">
-                CO₂-Emissionen in 1000t
-              </Title>
-              <Switch
-                defaultChecked={showFuture}
-                label="Klimaneutral"
-                onCheckedChange={setShowFuture}
-                variant="climate"
-              />
-            </div>
-            <div className="w-full flex-1">
-              <CO2Chart showFuture={showFuture} />
-            </div>
-          </div>
+          <CO2EmissionsContent />
         </div>
-        <div className="flex w-96 flex-none flex-col items-center justify-between py-4 md:py-0 md:px-8">
+        <div className="flex w-96 flex-none flex-col items-center justify-between py-4 md:px-8 md:py-0">
           <Title as="h5" variant={'dark'}>
             Trotz einer wachsenden Zahl von Einwohner*innen sinkt die Kurve der
             CO₂-Emissionen in Münster. Das zeigt: Münsteraner*innen setzen mehr

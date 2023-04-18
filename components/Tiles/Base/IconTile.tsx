@@ -1,9 +1,12 @@
+import 'server-only'
+
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import { cva, cx, VariantProps } from 'class-variance-authority'
 import { ForwardRefExoticComponent, SVGProps } from 'react'
 import { BaseTile, EmbedTileProps } from './BaseTile'
 import LiveBadge from './LiveBadge'
+import directus, { tileCollectionName } from '@/lib/directus'
 
 const iconTileTitleStyle = cva('', {
   variants: {
@@ -36,15 +39,24 @@ export type IconTileProps = VariantProps<typeof iconTileTitleStyle> &
       | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
       | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
     live?: boolean
-    moreInfo?: string
   }
+
+async function getTileData(id: string) {
+  const { data } = await directus.items(tileCollectionName).readByQuery({
+    filter: {
+      tile_id: id,
+    },
+  })
+
+  return data?.[0]
+}
 
 /**
  * A tile that has an icon on top right
  * @param IconTileProps properties of the Icon tile
  * @returns Mobility Tile
  */
-export default function IconTile({
+export default async function IconTile({
   children,
   live,
   title,
@@ -54,15 +66,17 @@ export default function IconTile({
   dataRetrieval,
   dataSource,
   embedId,
-  moreInfo,
 }: IconTileProps) {
   const Icon = icon
+
+  const data = await getTileData(embedId!)
 
   return (
     <BaseTile
       embedId={embedId}
       footerCenterElement={live ? <LiveBadge variant={variant} /> : undefined}
-      moreInfo={moreInfo}
+      moreInfo={data?.details}
+      source={data?.data_url}
       variant={variant}
     >
       <>
@@ -98,7 +112,7 @@ export default function IconTile({
       <>
         {!title && !subtitle && (
           <div className={cx('relative', iconTileTitleStyle({ variant }))}>
-            <Icon className=" absolute top-0 right-0 h-[50px] w-auto opacity-40" />
+            <Icon className=" absolute right-0 top-0 h-[50px] w-auto opacity-40" />
           </div>
         )}
       </>

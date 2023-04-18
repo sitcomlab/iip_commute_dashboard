@@ -13,6 +13,7 @@ export default function BuildingTile({
   ...props
 }: BuildingTileProps) {
   return (
+    // @ts-expect-error Server Component
     <IconTile {...props} icon={BuildingIcon} variant="building">
       <>{children}</>
     </IconTile>

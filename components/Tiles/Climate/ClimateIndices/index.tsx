@@ -1,5 +1,3 @@
-'use client'
-
 import { format } from 'date-fns'
 import ClimateTile from '../ClimateTile'
 import ClimateIndicesChart from './ClimateIndicesChart'
@@ -9,7 +7,7 @@ export default function ClimateIndicesTile() {
     <ClimateTile
       dataRetrieval={format(new Date(), '01.MM.yyyy')}
       dataSource="DWD"
-      embedId="klimakenntage"
+      embedId="climate-indices"
       subtitle={
         'Häufigkeit von Temperaturkenntagen in Münster im Zeitraum der letzten 20 Jahre'
       }

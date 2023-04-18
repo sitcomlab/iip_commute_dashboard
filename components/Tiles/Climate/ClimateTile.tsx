@@ -10,6 +10,7 @@ export type ClimateTileProps = Omit<IconTileProps, 'variant' | 'icon'>
  */
 export default function ClimateTile({ children, ...props }: ClimateTileProps) {
   return (
+    // @ts-expect-error Server Component
     <IconTile {...props} icon={MuensterIcon} variant="climate">
       <>{children}</>
     </IconTile>

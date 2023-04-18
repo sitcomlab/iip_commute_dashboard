@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useRef } from 'react'
 import { getInstanceByDom, init } from 'echarts'
 import type { CSSProperties } from 'react'

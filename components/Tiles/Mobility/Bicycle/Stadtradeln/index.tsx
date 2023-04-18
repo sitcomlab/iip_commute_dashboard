@@ -8,7 +8,7 @@ export default function StadtradelnTile() {
     <MobilityTile
       dataRetrieval="01.01.2022"
       dataSource="Stadtradeln"
-      embedId="stadtradeln"
+      embedId="mobility-stadtradeln"
       subtitle="auf der Überholspur"
       title="Stadtradeln"
     >
