@@ -43,12 +43,23 @@ export default function Navbar() {
   )
 
   const InfoText = (
-    <div className="w-1/3">
+    <div className="lg:w-2/3 2xl:w-1/3">
       <Title as={'h5'} variant={'inverse'}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis qui
-        omnis ad repellat illum hic. Repellendus numquam, sit eos maxime
-        voluptatum eaque totam laborum provident beatae minima mollitia
-        consequuntur esse?
+        Wo steht die Stadt Münster auf ihrem Weg zur Klimaneutralität? Wie
+        erkennen wir Fortschritte im kommunalen Klimaschutz und worin genau
+        zeigen sich die Folgen des Klimawandels, die wir schon jetzt in Münster
+        spüren? Antworten auf diese Fragen zu finden, ist wichtig, denn sie
+        können die Basis bilden, auf deren Grundlage wichtige Weichenstellungen
+        im Klimaschutz und in der Klimafolgenanpassung entschieden werden. Das
+        Klimadashboard zeigt den aktuellen Datenstand zu verschiedenen
+        Indikatoren im Klimaschutz in der Klimaanpassung und schafft so einen
+        Beitrag für mehr Transparenz in der gesamtstädtischen Klimaarbeit.
+        Manche Daten, die für obenstehenden Fragen spannend sind, stehen heute
+        noch nicht zu Verfügung. Dies kann sich jedoch ändern und so wird das
+        Klimadashboard wachsen und sich weiterentwickeln. Entwickelt wurde das
+        Klimadashboard von Smart City und der Stabstelle Klima der Stadt Münster
+        in Zusammenarbeit mit den Stadtwerken Münster und der
+        Wirtschaftsförderung Münster.
       </Title>
     </div>
   )
@@ -76,10 +87,10 @@ export default function Navbar() {
     return (
       <div className="relative">
         <BaseNavbar actionComponent={ActionComponent}>
-          <div className="opacity-0">{InfoText}</div>
+          <div className="h-40" />
         </BaseNavbar>
         {showOverlay && (
-          <div className="absolute top-0 left-0 z-10 h-full w-full">
+          <div className="absolute left-0 top-0 z-10 h-full w-full">
             {OverlayNavbar}
           </div>
         )}
