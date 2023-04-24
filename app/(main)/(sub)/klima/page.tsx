@@ -12,8 +12,11 @@ export default function Climate() {
         <WeatherTile />
         <ClimateDevelopmentTile />
       </Columns>
+      {/* @ts-expect-error Server Component */}
       <CO2EmissionsTile />
+      {/* @ts-expect-error Server Component */}
       <ClimateIndicesTile />
+      {/* @ts-expect-error Server Component */}
       <GarbageTile />
     </>
   )

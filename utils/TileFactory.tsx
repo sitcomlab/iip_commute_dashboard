@@ -47,12 +47,15 @@ export default function TileFactory({ type, ...props }: TileFactoryProps) {
     case 'climate-weather':
       return <WeatherTile />
     case 'climate-co2':
+      // @ts-expect-error Server Component
       return <CO2EmissionsTile />
     case 'climate-indices':
+      // @ts-expect-error Server Component
       return <ClimateIndicesTile />
     case 'climate-development':
       return <ClimateDevelopmentTile />
     case 'climate-garbage':
+      // @ts-expect-error Server Component
       return <GarbageTile />
 
     // ---- BUILDINGS ----
