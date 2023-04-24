@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation'
 import BaseNavbar from './BaseNavbar'
 import { useState } from 'react'
 import SectionTitle from '../SectionTitle'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const routeToType: {
   [key: string]: 'climate' | 'mobility' | 'energy' | 'building'
@@ -89,11 +90,18 @@ export default function Navbar() {
         <BaseNavbar actionComponent={ActionComponent}>
           <div className="h-40" />
         </BaseNavbar>
-        {showOverlay && (
-          <div className="absolute left-0 top-0 z-10 h-full w-full">
-            {OverlayNavbar}
-          </div>
-        )}
+        <AnimatePresence>
+          {showOverlay && (
+            <motion.div
+              animate={{ opacity: 1 }}
+              className="absolute left-0 top-0 z-10 h-full w-full"
+              exit={{ opacity: 0 }}
+              initial={{ opacity: 0 }}
+            >
+              {OverlayNavbar}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     )
   }
