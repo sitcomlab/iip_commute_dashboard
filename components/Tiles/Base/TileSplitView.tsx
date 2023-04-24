@@ -6,9 +6,7 @@ export function TileSplitView(props: HTMLAttributes<HTMLDivElement>) {
 }
 
 TileSplitView.Left = function LeftView(props: HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div {...props} className={cx(props.className, 'min-h-[30rem] flex-1')} />
-  )
+  return <div {...props} className={cx(props.className, 'flex-1')} />
 }
 
 TileSplitView.Right = function Rightiew(props: HTMLAttributes<HTMLDivElement>) {
