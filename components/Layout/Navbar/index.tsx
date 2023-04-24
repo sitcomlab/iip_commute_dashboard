@@ -101,10 +101,25 @@ export default function Navbar() {
   const [_, route] = pathname?.split('/')
 
   if (['klima', 'energie', 'mobilitaet', 'gebaeude'].includes(route)) {
+    const sectionText: Record<string, string> = {
+      klima:
+        'Schon jetzt sind die Auswirkungen der Klimakrise in Münster nicht nur spür- sondern auch messbar. Münster will klimaneutral und klimaangepasst werden und ihrer Verantwortung für ein „gutes Morgen“ gerecht werden. Dafür braucht es die gesamte Stadtgesellschaft!',
+      energie:
+        'Egal ob Zuhause, im Unternehmen oder als Kommune, diese Grundsätze liegen einer erfolgreichen Energiewende zugrunde: Die Vermeidung von Energieverbrauch hat oberste Priorität. Der nicht-vermeidbare Energiebedarf wird mit effizienter Technik verringert. Der dann noch verbleibende Energiebedarf wird durch erneuerbare Energieträger gedeckt.',
+      mobilitaet:
+        'Das Ziel einer funktionierenden, klimafreundlichen Mobilität stellt eine wachsende Stadt wie Münster vor eine große Herausforderung. Wenn die gesamte Stadtgesellschaft bereit ist, neue Wege zu gehen, kann sie gemeistert werden.',
+      gebaeude:
+        'Für das Ziel einer klimaneutralen und klimaangepassten Stadt kann die Rolle von Gebäuden kaum überschätzt werden. Nicht nur das Einsparpotential von CO2 ist in diesem Bereich besonders hoch. Auch können Gebäudeeigentümer:innen durch gezielte Maßnahmen Energiekosten sparen und ihr Gebäude vor Extremwetter schützen.',
+    }
+
     return (
       <BaseNavbar actionComponent={ActionComponent}>
-        <div className="flex">
-          <div className="flex-1"></div>
+        <div className="flex flex-col gap-2 lg:flex-row lg:gap-0">
+          <div className="flex-1">
+            <Title as="h5" variant="primary">
+              {sectionText[route]}
+            </Title>
+          </div>
           <div className="flex flex-1 justify-end">
             <SectionTitle large variant={routeToType[route]} />
           </div>
