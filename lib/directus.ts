@@ -35,6 +35,7 @@ export type Tile = {
   tile_id: TileType
   details: string
   data_url: string
+  info: string
 }
 
 export type SuccessStory = {

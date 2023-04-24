@@ -6,7 +6,7 @@ import { cva, cx, VariantProps } from 'class-variance-authority'
 import { ForwardRefExoticComponent, SVGProps } from 'react'
 import { BaseTile, EmbedTileProps } from './BaseTile'
 import LiveBadge from './LiveBadge'
-import directus, { tileCollectionName } from '@/lib/directus'
+import getTileData from '@/lib/api/getTileData'
 
 const iconTileTitleStyle = cva('', {
   variants: {
@@ -40,16 +40,6 @@ export type IconTileProps = VariantProps<typeof iconTileTitleStyle> &
       | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
     live?: boolean
   }
-
-async function getTileData(id: string) {
-  const { data } = await directus.items(tileCollectionName).readByQuery({
-    filter: {
-      tile_id: id,
-    },
-  })
-
-  return data?.[0]
-}
 
 /**
  * A tile that has an icon on top right

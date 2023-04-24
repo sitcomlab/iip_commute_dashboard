@@ -2,6 +2,7 @@ import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
 import ModalSplitChart from './ModalSplitChart'
 import { MuensterBackground } from '@/components/Icons/'
 import Title from '@/components/Elements/Title'
+import { TileSplitView } from '../../Base/TileSplitView'
 
 export default function ModalSplitTile() {
   return (
@@ -12,8 +13,8 @@ export default function ModalSplitTile() {
       subtitle="Jahresvergleich aller 2019 zurückgelegten Kilometer in Münster (PKW, Fahrrad & co)"
       title={'km'}
     >
-      <div className="flex flex-col md:flex-row">
-        <div className="flex-1">
+      <TileSplitView>
+        <TileSplitView.Left>
           <div className="relative flex h-96 flex-1 flex-col rounded bg-white p-2 md:h-[32rem]">
             <div className="absolute left-0 top-0 flex h-full w-full">
               <MuensterBackground className="h-full w-full flex-1" />
@@ -23,16 +24,16 @@ export default function ModalSplitTile() {
               <ModalSplitChart />
             </div>
           </div>
-        </div>
-        <div className="w-72 flex-none py-4 md:px-4 md:py-0">
+        </TileSplitView.Left>
+        <TileSplitView.Right>
           <Title as="h5" variant={'dark'}>
             Trotz einer wachsenden Zahl von Einwohner*innen sinkt die Kurve der
             CO₂-Emissionen in Münster. Das zeigt: Münsteraner*innen setzen mehr
             und mehr Klimaschutz-Maßnahmen um. Mit dem Ziel der Klimaneutralität
             bis 2030 soll die Kurve nun nochmals deutlich steiler sinken.
           </Title>
-        </div>
-      </div>
+        </TileSplitView.Right>
+      </TileSplitView>
     </MobilityTile>
   )
 }
