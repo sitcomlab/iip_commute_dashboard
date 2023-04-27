@@ -16118,5 +16118,37 @@
         "timestamp":"2022-11-01",
         "monthly_temperature":7.94,
         "temperature_deviation":3.470212766
+    },
+    {
+        "observation_type":"historical",
+        "dwd_station_id":1766.0,
+        "wmo_station_id":null,
+        "timestamp":"2022-12-01",
+        "monthly_temperature":3.25,
+        "temperature_deviation":1.559787234
+    },
+    {
+        "observation_type":"historical",
+        "dwd_station_id":1766.0,
+        "wmo_station_id":null,
+        "timestamp":"2023-01-01",
+        "monthly_temperature":5.2,
+        "temperature_deviation":4.2438297872
+    },
+    {
+        "observation_type":"historical",
+        "dwd_station_id":1766.0,
+        "wmo_station_id":null,
+        "timestamp":"2023-02-01",
+        "monthly_temperature":4.89,
+        "temperature_deviation":2.9370212766
+    },
+    {
+        "observation_type":"historical",
+        "dwd_station_id":1766.0,
+        "wmo_station_id":null,
+        "timestamp":"2023-03-01",
+        "monthly_temperature":6.45,
+        "temperature_deviation":2.3378723404
     }
 ]
