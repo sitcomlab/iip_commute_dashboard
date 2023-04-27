@@ -7,7 +7,7 @@ dwd_climate_indices:
   script:
     - git clone https://gitlab.opencode.de/smart-city-muenster/klimadashboard-muenster/climate-indices-parser.git
     - pip install -r climate-indices-parser/requirements.txt
-    - python climate-indices-parser/index.py https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/historical/monatswerte_KLINDEX_01766_19891001_20211231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/historical/monatswerte_KLINDEX_03404_18910101_19911231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/recent/monatswerte_KLINDEX_01766_akt.zip > assets/data/climate_indices.json
+    - python climate-indices-parser/index.py https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/historical/monatswerte_KLINDEX_01766_19891001_20221231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/historical/monatswerte_KLINDEX_03404_18910101_19911231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/climate_indices/kl/recent/monatswerte_KLINDEX_01766_akt.zip > assets/data/climate_indices.json
     - git config user.email "f.erdmann@reedu.de"
     - git config user.name "ci-bot"
     - git remote remove gitlab_ci_origin || true # Local repo state may be cached
