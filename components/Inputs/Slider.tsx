@@ -12,7 +12,7 @@ const sliderStyle = cva('relative h-5 flex-1 rounded-full bg-opacity-20', {
       successStory: 'bg-secondary',
       climate: 'bg-climate',
       energy: 'bg-energy',
-      buildungs: 'bg-buildings',
+      buildings: 'bg-buildings',
     },
   },
   defaultVariants: {

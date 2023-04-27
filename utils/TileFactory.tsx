@@ -1,4 +1,5 @@
 import EcoProfitTile from '@/components/Tiles/Buildings/EcoProfit'
+import EnergyComsumptionTile from '@/components/Tiles/Buildings/EnergyConsumption'
 import ClimateIndicesTile from '@/components/Tiles/Climate/ClimateIndices'
 import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
 import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
@@ -18,7 +19,7 @@ import SurveyTile, { SurveyTileProps } from '@/components/Tiles/Survey'
 type TileTypePrefix = 'climate' | 'mobility' | 'energy' | 'building'
 type ClimateTypes = 'weather' | 'co2' | 'indices' | 'development' | 'garbage'
 type MobilityTypes = 'bicycle' | 'stadtradeln' | 'bus' | 'modalSplit'
-type BuildingsTypes = 'ecoProfit'
+type BuildingsTypes = 'ecoProfit' | 'energyConsumption'
 type EnergyTypes = 'PV' | 'wind'
 
 type TileTypeSuffix =
@@ -61,6 +62,9 @@ export default function TileFactory({ type, ...props }: TileFactoryProps) {
     // ---- BUILDINGS ----
     case 'building-ecoProfit':
       return <EcoProfitTile />
+    case 'building-energyConsumption':
+      // @ts-expect-error Server Component
+      return <EnergyComsumptionTile />
 
     // ---- ENERGY ----
     case 'energy-PV':
