@@ -4,10 +4,9 @@ building_energy_data:
   only:
     - schedules
     - web
-  before_script:
+  script:
     - git clone https://gitlab.opencode.de/smart-city-muenster/klimadashboard-muenster/ms-buildings-parser.git
     - pip install -r ms-buildings-parser/requirements.txt
-  script:
     - python ms-buildings-parser/index.py assets/data
     - git config user.email "f.erdmann@reedu.de"
     - git config user.name "ci-bot"
