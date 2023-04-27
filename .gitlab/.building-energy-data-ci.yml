@@ -13,5 +13,5 @@ building_energy_data:
     - git remote remove gitlab_ci_origin || true # Local repo state may be cached
     - git remote add gitlab_ci_origin https://oauth2:$ACCESS_TOKEN@gitlab.opencode.de/smart-city-muenster/klimadashboard-muenster/klimadashboard-muenster.git
     - git add assets/*
-    - "git commit -m 'ci: update buildings energy data'"
+    - "git commit -m 'ci: update buildings energy data' --no-verify"
     - git push -f gitlab_ci_origin HEAD:main
