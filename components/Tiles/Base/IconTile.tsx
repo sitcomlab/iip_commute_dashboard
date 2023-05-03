@@ -70,8 +70,16 @@ export default async function IconTile({
       variant={variant}
     >
       <>
+        <div className="flex w-full justify-end md:hidden">
+          <Icon
+            className={cx(
+              'h-[29px] w-auto flex-shrink-0 opacity-40  md:h-[50px]',
+              iconTileTitleStyle({ variant }),
+            )}
+          />
+        </div>
         {title && (
-          <div className={'flex justify-between'}>
+          <div className="flex items-center justify-between">
             <div className="flex flex-wrap items-center justify-start gap-x-4">
               <Title
                 as={'h1'}
@@ -89,9 +97,10 @@ export default async function IconTile({
                 </Title>
               )}
             </div>
+
             <Icon
               className={cx(
-                'h-[50px] w-auto flex-shrink-0 opacity-40',
+                'hidden h-[29px] w-auto flex-shrink-0 opacity-40 md:block md:h-[50px]',
                 iconTileTitleStyle({ variant }),
               )}
             />

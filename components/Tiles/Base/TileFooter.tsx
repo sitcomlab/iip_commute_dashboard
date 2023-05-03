@@ -41,8 +41,8 @@ export default function TileFooter({
   dataURL,
   hasMoreDetails,
 }: TileFooterProps) {
-  return (
-    <div className="mt-6 flex w-full items-center justify-between">
+  function IconButtons() {
+    return (
       <div className={tileFooterStyle({ variant })}>
         <SquaresPlusIcon
           className="h-6 cursor-pointer stroke-2"
@@ -58,13 +58,37 @@ export default function TileFooter({
           </Link>
         )}
       </div>
-      <div className="flex flex-[2_2_0%] justify-center">{children}</div>
-      {hasMoreDetails && (
-        <div className="flex flex-1 justify-end" onClick={onMoreInfoClick}>
-          <MoreDetails variant={variant} />
+    )
+  }
+
+  return (
+    <div className="mt-6 flex w-full flex-col justify-between gap-2 md:flex-row md:items-center">
+      <div className="hidden md:block">
+        <IconButtons />
+        <div className="flex flex-[2_2_0%] justify-center">{children}</div>
+        {hasMoreDetails && (
+          <div className="flex flex-1 justify-end" onClick={onMoreInfoClick}>
+            <MoreDetails variant={variant} />
+          </div>
+        )}
+        {!hasMoreDetails && <div className="flex flex-1 justify-end"></div>}
+      </div>
+      <div className="flex flex-col gap-2 md:hidden">
+        <IconButtons />
+
+        <div className="flex w-full items-center justify-between">
+          {hasMoreDetails && (
+            <div
+              className="flex flex-1 justify-start"
+              onClick={onMoreInfoClick}
+            >
+              <MoreDetails variant={variant} />
+            </div>
+          )}
+          {!hasMoreDetails && <div className="flex flex-1 justify-start"></div>}
+          <div className="flex flex-1 justify-end">{children}</div>
         </div>
-      )}
-      {!hasMoreDetails && <div className="flex flex-1 justify-end"></div>}
+      </div>
     </div>
   )
 }
