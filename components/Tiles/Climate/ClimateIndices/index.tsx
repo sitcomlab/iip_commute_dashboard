@@ -21,7 +21,7 @@ export default async function ClimateIndicesTile() {
     >
       <TileSplitView>
         <TileSplitView.Left>
-          <div className="h-80 rounded bg-white">
+          <div className="rounded bg-white">
             <ClimateIndicesChart />
           </div>
         </TileSplitView.Left>

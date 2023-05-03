@@ -121,19 +121,27 @@ const indices: Record<
  */
 function ClimateIndiceToggle({
   type,
+  defaultChecked,
   onChange,
 }: {
   type: IndicesTypes
+  defaultChecked?: boolean
   onChange?: (_checked: boolean) => void
 }) {
   const Icon = indices[type].icon
   return (
-    <div className="flex w-max items-center gap-4">
-      <Switch onCheckedChange={onChange} variant={type} />
-      <Icon className="aspect-square h-8" />
-      <Title as="h5" variant={type}>
-        {indices[type].title}
-      </Title>
+    <div className="flex w-full flex-row-reverse items-center justify-between gap-2 lg:flex-row lg:justify-normal lg:gap-4">
+      <Switch
+        defaultChecked={defaultChecked}
+        onCheckedChange={onChange}
+        variant={type}
+      />
+      <div className="flex items-center gap-2 md:w-max md:gap-4">
+        <Icon className="aspect-square h-5 md:h-8" />
+        <Title as="h5" variant={type}>
+          {indices[type].title}
+        </Title>
+      </div>
     </div>
   )
 }
@@ -148,7 +156,7 @@ export default function ClimateIndicesChart() {
   >({
     eistage: false,
     frosttage: false,
-    heisse_tage: false,
+    heisse_tage: true,
     sommertage: false,
     tropennaechte: false,
   })
@@ -164,46 +172,53 @@ export default function ClimateIndicesChart() {
     }))
 
   return (
-    <div className="flex h-full w-full items-center p-5">
-      <div className="h-full flex-1">
+    <div className="flex h-full w-full flex-col items-center p-5 lg:flex-row">
+      <div className="h-full w-full flex-1">
         <Title as="h7">Anzahl der Tage</Title>
-        <ReactECharts
-          option={{
-            series,
-            xAxis: {
-              type: 'time',
-            },
-            yAxis: {
-              type: 'value',
-              interval: 5,
-            },
-            animation: true,
-          }}
-          settings={{
-            notMerge: true,
-          }}
-        />
+        <div className="h-[235px] w-full md:h-[440px]">
+          <ReactECharts
+            option={{
+              series,
+              xAxis: {
+                type: 'time',
+              },
+              yAxis: {
+                type: 'value',
+                interval: 5,
+              },
+              animation: true,
+            }}
+            settings={{
+              notMerge: true,
+            }}
+          />
+        </div>
       </div>
-      <div className="flex h-full flex-col justify-evenly">
+      <div className="flex h-full flex-col justify-evenly gap-1">
         <ClimateIndiceToggle
+          defaultChecked={seriesVisible.heisse_tage}
           onChange={c => setSeriesVisible({ ...seriesVisible, heisse_tage: c })}
           type="heisse_tage"
         />
         <ClimateIndiceToggle
+          defaultChecked={seriesVisible.sommertage}
           onChange={c => setSeriesVisible({ ...seriesVisible, sommertage: c })}
           type="sommertage"
         />
         <ClimateIndiceToggle
+          defaultChecked={seriesVisible.tropennaechte}
           onChange={c =>
             setSeriesVisible({ ...seriesVisible, tropennaechte: c })
           }
           type="tropennaechte"
         />
         <ClimateIndiceToggle
+          defaultChecked={seriesVisible.frosttage}
           onChange={c => setSeriesVisible({ ...seriesVisible, frosttage: c })}
           type="frosttage"
         />
         <ClimateIndiceToggle
+          defaultChecked={seriesVisible.eistage}
           onChange={c => setSeriesVisible({ ...seriesVisible, eistage: c })}
           type="eistage"
         />

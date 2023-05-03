@@ -5,7 +5,7 @@ import { cva } from 'class-variance-authority'
 import Title from '../Elements/Title'
 
 const switchThumbStyle = cva(
-  'flex h-5 w-5 items-center justify-center rounded-full transition-all',
+  'flex h-3 w-3 md:h-5 md:w-5 items-center justify-center rounded-full transition-all',
   {
     variants: {
       variant: {
@@ -30,7 +30,7 @@ const switchThumbStyle = cva(
 )
 
 const switchThumbInnerStyle = cva(
-  'h-4 w-4 rounded-full bg-white transition-opacity',
+  'h-[10px] w-[10px] md:h-4 md:w-4 rounded-full bg-white transition-opacity',
   {
     variants: {
       checked: {
@@ -42,7 +42,7 @@ const switchThumbInnerStyle = cva(
 )
 
 const switchBorderStyle = cva(
-  'w-[3.25rem] p-1 rounded-full bg-white border-2 shadow-inner',
+  'w-[2.25rem] md:w-[3.25rem] p-1 rounded-full bg-white border-[1px] md:border-2 shadow-inner',
   {
     variants: {
       variant: {
