@@ -62,8 +62,8 @@ export default function TileFooter({
   }
 
   return (
-    <div className="mt-6 flex w-full flex-col justify-between gap-2 md:flex-row md:items-center">
-      <div className="hidden md:block">
+    <div className="mt-6  ">
+      <div className="hidden w-full flex-row items-center justify-between gap-2 md:flex">
         <IconButtons />
         <div className="flex flex-[2_2_0%] justify-center">{children}</div>
         {hasMoreDetails && (

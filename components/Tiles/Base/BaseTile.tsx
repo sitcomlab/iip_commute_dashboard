@@ -98,7 +98,7 @@ export function BaseTile({
   }
 
   return (
-    <div className="pb-3 md:pb-5">
+    <div className="pb-5">
       <div className={cx(baseTileStyle({ variant }), className)}>
         {startImage}
         <div className="flex w-full flex-col justify-between p-8 md:p-16">
