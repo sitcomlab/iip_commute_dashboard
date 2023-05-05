@@ -17,6 +17,7 @@ import {
   Stadtbibliothek,
   Stadtweinhaus,
 } from '@/components/Icons'
+import Carousel from '@/components/Elements/Carousel'
 
 type DataType = {
   Datum: number
@@ -85,33 +86,20 @@ export default function EnergyConsumptionContent() {
   const [mode, setMode] = useState<'strom' | 'waerme'>('strom')
   const [yearIndex, setYearIndex] = useState<number>(years.length - 1)
 
-  return (
-    <>
-      <div className="relative h-full w-full rounded bg-white p-5 pt-8">
-        <div className="absolute -top-6 right-0">
-          <ToggleGroup
-            items={[
-              {
-                element: 'Strom',
-                value: 'strom',
-              },
-              {
-                element: 'Wärme',
-                value: 'waerme',
-              },
-            ]}
-            onChange={value => setMode(value as 'strom' | 'waerme')}
-            variant={'building'}
-          ></ToggleGroup>
-        </div>
-
+  function DesktopView() {
+    return (
+      <>
         <div className="flex h-full w-full justify-between gap-8">
           {Object.keys(buildings).map(building => (
             <div className="flex-1 p-2" key={building}>
               <div className="mx-auto mb-3 flex h-[200px] w-[200px] justify-center">
                 {getBuildingIcon(building as keyof Building)}
               </div>
-              <Title as="h4" className="h-20 text-center" variant="building">
+              <Title
+                as="h4"
+                className="min-h-[5rem] text-center"
+                variant="building"
+              >
                 {buildings[building as keyof Building]}
               </Title>
             </div>
@@ -135,7 +123,10 @@ export default function EnergyConsumptionContent() {
         <Spacer size={'sm'}></Spacer>
         <div className="flex h-full w-full justify-between gap-8">
           {Object.keys(buildings).map(building => (
-            <div className="flex w-full gap-1 p-2" key={building}>
+            <div
+              className="flex w-full justify-center gap-1 p-2"
+              key={building}
+            >
               <Title as="h3" className="font-medium" variant="building">
                 <AnimatedNumber decimals={0}>
                   {getYearSum(
@@ -150,6 +141,85 @@ export default function EnergyConsumptionContent() {
               </Title>
             </div>
           ))}
+        </div>
+      </>
+    )
+  }
+
+  function MobileView() {
+    return (
+      <Carousel
+        arrows
+        options={{
+          gap: '4rem',
+        }}
+        pagination
+      >
+        {Object.keys(buildings).map(building => (
+          <div key={building}>
+            <div className="flex gap-2">
+              <Title as="h4" className="h-20 flex-1" variant="building">
+                {buildings[building as keyof Building]}
+              </Title>
+              <div className="mx-auto flex h-[80px] w-[80px] justify-end">
+                {getBuildingIcon(building as keyof Building)}
+              </div>
+            </div>
+            <LabelSeperator>Monatlicher Verbrauch</LabelSeperator>
+            <div className="h-40 w-full">
+              <EnergyConsumptionChart
+                data={getData(
+                  mode,
+                  building as keyof Building,
+                  years[yearIndex],
+                )}
+              />
+            </div>
+            <LabelSeperator>Jahresverbrauch</LabelSeperator>
+            <div className="flex w-full gap-1 p-2">
+              <Title as="h3" className="font-medium" variant="building">
+                <AnimatedNumber decimals={0}>
+                  {getYearSum(
+                    mode,
+                    building as keyof Building,
+                    years[yearIndex],
+                  )}
+                </AnimatedNumber>
+              </Title>
+              <Title as="h3" className="font-regular" variant="building">
+                kWh
+              </Title>
+            </div>
+          </div>
+        ))}
+      </Carousel>
+    )
+  }
+
+  return (
+    <>
+      <div className="relative h-full w-full rounded bg-white p-5 pt-8">
+        <div className="absolute -top-4 right-0 w-full md:-top-6 md:w-auto">
+          <ToggleGroup
+            items={[
+              {
+                element: 'Strom',
+                value: 'strom',
+              },
+              {
+                element: 'Wärme',
+                value: 'waerme',
+              },
+            ]}
+            onChange={value => setMode(value as 'strom' | 'waerme')}
+            variant={'building'}
+          ></ToggleGroup>
+        </div>
+        <div className="hidden xl:block">
+          <DesktopView />
+        </div>
+        <div className="block xl:hidden">
+          <MobileView />
         </div>
       </div>
       <Slider

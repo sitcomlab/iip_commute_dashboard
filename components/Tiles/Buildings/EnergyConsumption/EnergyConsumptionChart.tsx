@@ -9,6 +9,12 @@ export default function EnergyConsumptionChart({ data }: Props) {
   return (
     <ReactECharts
       option={{
+        grid: {
+          left: 0,
+          top: 5,
+          right: 0,
+          bottom: 20,
+        },
         xAxis: {
           type: 'category',
           data: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
