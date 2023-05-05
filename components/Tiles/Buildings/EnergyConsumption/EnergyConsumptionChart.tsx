@@ -13,7 +13,7 @@ export default function EnergyConsumptionChart({ data }: Props) {
           left: 0,
           top: 5,
           right: 0,
-          bottom: 20,
+          bottom: 22,
         },
         xAxis: {
           type: 'category',
