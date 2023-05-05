@@ -1,10 +1,9 @@
 'use client'
 
-import { Splide, SplideSlide } from '@splidejs/react-splide'
 import InsightsTile from './InsightsTile'
 import { directusImage } from '@/lib/directus'
-import '@splidejs/react-splide/css'
 import useDevice from '@/hooks/useDevice'
+import Carousel from '../Elements/Carousel'
 
 const pages = {
   desktop: 3,
@@ -32,24 +31,21 @@ export default function InsightsCarousel({
   const device = useDevice()
 
   return (
-    <Splide
+    <Carousel
       options={{
-        arrows: false,
         gap: '1.5rem',
         padding: padding[device],
-        pagination: false,
         perPage: pages[device],
       }}
     >
       {insights?.map(({ slug, title, image }) => (
-        <SplideSlide key={slug}>
-          <InsightsTile
-            image={directusImage(image)}
-            link={`/sammlung/${slug}`}
-            title={title}
-          />
-        </SplideSlide>
+        <InsightsTile
+          image={directusImage(image)}
+          key={slug}
+          link={`/sammlung/${slug}`}
+          title={title}
+        />
       ))}
-    </Splide>
+    </Carousel>
   )
 }
