@@ -5,12 +5,18 @@ import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import waermeData from '@/assets/data/waerme.json'
 import stromData from '@/assets/data/strom.json'
 import Title from '@/components/Elements/Title'
-import { useState } from 'react'
+import { SVGProps, useState } from 'react'
 import Slider from '@/components/Inputs/Slider'
 import EnergyConsumptionChart from './EnergyConsumptionChart'
 import LabelSeperator from './LabelSeperator'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { Spacer } from '@/components/Elements/Spacer'
+import {
+  Ratsgymnasium,
+  SentruperHoehe,
+  Stadtbibliothek,
+  Stadtweinhaus,
+} from '@/components/Icons'
 
 type DataType = {
   Datum: number
@@ -23,10 +29,28 @@ type DataType = {
 type Building = Omit<DataType, 'Datum'>
 
 const buildings: Record<keyof Building, string> = {
+  rathaus: 'Rathaus / Stadtweinhaus',
   stadtbuecherei: 'Stadtbücherei',
   sentruper: 'Sportantlage Sentruper Höhe',
-  rathaus: 'Rathaus / Stadtweinhaus',
   'freiherr-von-stein': 'Freiherr-von-Stein-Gymnasium',
+}
+
+const buildingIcon: Record<
+  keyof Building,
+  (_props: SVGProps<SVGSVGElement>) => JSX.Element
+> = {
+  stadtbuecherei: Stadtbibliothek,
+  sentruper: SentruperHoehe,
+  rathaus: Stadtweinhaus,
+  'freiherr-von-stein': Ratsgymnasium,
+}
+
+function getBuildingIcon(
+  building: keyof Building,
+  props?: SVGProps<SVGSVGElement>,
+) {
+  const Icon = buildingIcon[building]
+  return <Icon {...props} />
 }
 
 function getData(
@@ -63,7 +87,7 @@ export default function EnergyConsumptionContent() {
 
   return (
     <>
-      <div className="relative h-full w-full rounded bg-white p-5">
+      <div className="relative h-full w-full rounded bg-white p-5 pt-8">
         <div className="absolute -top-6 right-0">
           <ToggleGroup
             items={[
@@ -81,17 +105,20 @@ export default function EnergyConsumptionContent() {
           ></ToggleGroup>
         </div>
 
-        <div className="flex h-full w-full justify-between">
+        <div className="flex h-full w-full justify-between gap-8">
           {Object.keys(buildings).map(building => (
             <div className="flex-1 p-2" key={building}>
-              <Title as="h4" className="h-20" variant="building">
+              <div className="mx-auto mb-3 flex h-[200px] w-[200px] justify-center">
+                {getBuildingIcon(building as keyof Building)}
+              </div>
+              <Title as="h4" className="h-20 text-center" variant="building">
                 {buildings[building as keyof Building]}
               </Title>
             </div>
           ))}
         </div>
         <LabelSeperator>Monatlicher Verbrauch</LabelSeperator>
-        <div className="flex h-full w-full justify-between">
+        <div className="flex h-full w-full justify-between gap-8">
           {Object.keys(buildings).map(building => (
             <div className="h-72 w-full" key={building}>
               <EnergyConsumptionChart
@@ -106,9 +133,9 @@ export default function EnergyConsumptionContent() {
         </div>
         <LabelSeperator>Jahresverbrauch</LabelSeperator>
         <Spacer size={'sm'}></Spacer>
-        <div className="flex h-full w-full justify-between">
+        <div className="flex h-full w-full justify-between gap-8">
           {Object.keys(buildings).map(building => (
-            <div className="flex w-full gap-1" key={building}>
+            <div className="flex w-full gap-1 p-2" key={building}>
               <Title as="h3" className="font-medium" variant="building">
                 <AnimatedNumber decimals={0}>
                   {getYearSum(
