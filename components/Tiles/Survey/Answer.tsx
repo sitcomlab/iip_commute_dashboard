@@ -1,7 +1,7 @@
 'use client'
 
 import { ComponentPropsWithRef, useEffect } from 'react'
-import { animated, AnimatedProps, useSpring } from 'react-spring'
+import { animated, AnimatedProps, useSpring } from '@react-spring/web'
 
 export type SurveyAnswerProps = AnimatedProps<ComponentPropsWithRef<'div'>> & {
   percent: number
@@ -20,7 +20,7 @@ export default function SurveyAnswer({
   }, [percent])
 
   return (
-    <animated.div className="absolute top-0 left-0 w-full" style={{ ...props }}>
+    <animated.div className="absolute left-0 top-0 w-full" style={{ ...props }}>
       <div className="flex w-full flex-col space-y-4 md:flex-row md:space-x-4">
         <span className="text-5xl font-medium md:text-7xl">
           <animated.span>

@@ -18,6 +18,11 @@ export default function EnergyConsumptionChart({ data }: Props) {
           axisTick: {
             show: false,
           },
+          axisLabel: {
+            overflow: 'truncate', // or 'break' to continue in a new line
+            interval: 0,
+            color: '#6060d6',
+          },
         },
         yAxis: {
           type: 'value',
@@ -29,6 +34,9 @@ export default function EnergyConsumptionChart({ data }: Props) {
             type: 'bar',
             color: '#837ef4',
             barWidth: '11px',
+            itemStyle: {
+              opacity: 0.77,
+            },
           },
         ],
       }}
