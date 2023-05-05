@@ -4,7 +4,7 @@ import { Button } from '@/components/Elements/Button'
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import { useState } from 'react'
-import { animated, useTransition } from 'react-spring'
+import { animated, useTransition } from '@react-spring/web'
 import { BaseTile } from '../Base/BaseTile'
 import SurveyAnswer, { SurveyAnswerProps } from './Answer'
 

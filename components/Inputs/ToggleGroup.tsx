@@ -9,6 +9,7 @@ type variants = {
   mobility: string
   successStory: string
   climate: string
+  building: string
 }
 
 const toggleGroupStyle = cva<{
@@ -20,6 +21,7 @@ const toggleGroupStyle = cva<{
       mobility: 'border-mobility',
       successStory: 'border-secondary',
       climate: 'border-climate',
+      building: 'border-buildings',
     },
   },
   defaultVariants: {
@@ -39,6 +41,7 @@ const toggleGroupBackgroundStyle = cva<{
       mobility: 'bg-mobility',
       successStory: 'bg-secondary',
       climate: 'bg-climate',
+      building: 'bg-buildings',
     },
     isLast: {
       true: 'border-r-2',
@@ -65,6 +68,11 @@ const toggleGroupBackgroundStyle = cva<{
       isLast: true,
       className: 'border-r-climate',
     },
+    {
+      variant: 'building',
+      isLast: true,
+      className: 'border-r-buildings',
+    },
   ],
   defaultVariants: {
     variant: 'primary',
@@ -78,6 +86,7 @@ const selectedStyle = cva('px-4 transition-all duration-300 md:py-2 md:px-8', {
       mobility: null,
       successStory: null,
       climate: null,
+      building: null,
     },
     selected: {
       true: 'bg-opacity-100 text-white',
@@ -105,6 +114,11 @@ const selectedStyle = cva('px-4 transition-all duration-300 md:py-2 md:px-8', {
       variant: 'climate',
       className: 'text-climate',
     },
+    {
+      selected: false,
+      variant: 'building',
+      className: 'text-buildings',
+    },
   ],
   defaultVariants: {
     variant: 'primary',
@@ -117,9 +131,14 @@ type ToggleGroupProps = VariantProps<typeof toggleGroupStyle> & {
     element: string | React.ReactElement
     value: string
   }[]
+  onChange?: (_value: string) => void
 }
 
-export default function ToggleGroup({ items, variant }: ToggleGroupProps) {
+export default function ToggleGroup({
+  items,
+  variant,
+  onChange,
+}: ToggleGroupProps) {
   const [value, setValue] = useState(items[0].value)
 
   return (
@@ -128,6 +147,7 @@ export default function ToggleGroup({ items, variant }: ToggleGroupProps) {
       onValueChange={value => {
         if (value) {
           setValue(value)
+          onChange && onChange(value)
         }
       }}
       type="single"

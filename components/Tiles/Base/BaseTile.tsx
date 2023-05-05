@@ -2,7 +2,7 @@
 
 import { cva, cx, VariantProps } from 'class-variance-authority'
 import { useState } from 'react'
-import { useTransition } from 'react-spring'
+import { useTransition } from '@react-spring/web'
 import EmbedOverlay from './EmbedOverlay'
 import ShareOverlay from './ShareOverlay'
 import MoreInfoOverlay from './MoreInfoOverlay'
