@@ -1,6 +1,6 @@
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { ComponentPropsWithRef } from 'react'
-import { animated, AnimatedProps } from 'react-spring'
+import { animated, AnimatedProps } from '@react-spring/web'
 
 type BaseOverlayProps = AnimatedProps<ComponentPropsWithRef<'div'>> & {
   children: React.ReactNode | React.ReactNode[]
@@ -15,7 +15,7 @@ export default function BaseOverlay({
   return (
     <animated.div
       {...props}
-      className="absolute top-0 left-0 z-20 h-full w-full bg-primary bg-opacity-90 p-8 backdrop-blur md:p-12"
+      className="absolute left-0 top-0 z-20 h-full w-full bg-primary bg-opacity-90 p-8 backdrop-blur md:p-12"
     >
       <div className="flex w-full justify-end">
         <XMarkIcon

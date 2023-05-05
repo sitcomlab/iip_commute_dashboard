@@ -1,4 +1,4 @@
-import { animated, useTransition } from 'react-spring'
+import { animated, useTransition } from '@react-spring/web'
 
 type AnimatedRollingElementProps = {
   children: React.ReactElement | React.ReactElement[]
