@@ -8,9 +8,7 @@ import EnergyConsumptionContent from './EnergyConsumptionContent'
 
 export default async function EnergyComsumptionTile() {
   const data = await getTileData('building-energyConsumption')
-  const infoText =
-    data?.info ??
-    '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore doloremque temporibus labore facilis beatae ipsum nostrum nam vero, ipsam quos dolore. Corrupti ipsa facere ab soluta, nulla veritatis consectetur doloribus.  '
+  const infoText = data?.info ?? ''
 
   return (
     <BuildingTile
