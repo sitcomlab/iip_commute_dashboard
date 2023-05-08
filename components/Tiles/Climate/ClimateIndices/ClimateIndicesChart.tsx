@@ -172,12 +172,21 @@ export default function ClimateIndicesChart() {
     }))
 
   return (
-    <div className="flex h-full w-full flex-col items-center p-5 lg:flex-row">
+    <div className="flex h-full w-full flex-col items-center p-5 2xl:flex-row">
       <div className="h-full w-full flex-1">
-        <Title as="h7">Anzahl der Tage</Title>
+        <Title as="h7" variant={'primary'}>
+          Anzahl <br />
+          der Tage
+        </Title>
         <div className="h-[235px] w-full md:h-[440px]">
           <ReactECharts
             option={{
+              grid: {
+                top: 20,
+                bottom: 40,
+                left: 40,
+                right: 40,
+              },
               series,
               xAxis: {
                 type: 'time',
