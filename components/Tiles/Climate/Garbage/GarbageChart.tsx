@@ -60,7 +60,7 @@ export default function GarbageChart() {
   const [yearIndex, setYearIndex] = useState(0)
 
   return (
-    <div className="flex h-full w-full flex-col items-center 2xl:flex-row">
+    <div className="flex h-full w-full flex-col-reverse items-center 2xl:flex-row">
       <div className="flex h-full w-full flex-1 flex-col">
         <div className="h-full w-full flex-1">
           <ReactECharts
@@ -107,7 +107,7 @@ export default function GarbageChart() {
             }}
           />
         </div>
-        <div className="mt-4 flex w-full gap-12 py-4 pl-4 pr-16">
+        <div className="mt-4 flex w-full gap-4 py-4 md:gap-12 md:pl-4 md:pr-16">
           <Title as={'h5'} variant={'primary'}>
             Jahr
           </Title>
@@ -139,9 +139,9 @@ export default function GarbageChart() {
           </div>
         </div>
       </div>
-      <div className="flex h-full flex-row justify-evenly 2xl:flex-col">
-        <div className="flex h-fit w-48 items-center gap-2">
-          <TrashGesamt className="h-14" />
+      <div className="flex h-full flex-row justify-evenly gap-4 md:gap-0 2xl:flex-col">
+        <div className="flex h-fit items-center gap-2 md:w-48">
+          <TrashGesamt className="h-10 md:h-14" />
           <div>
             <Title as={'h5'} variant={'primary'}>
               Gesamt
@@ -155,8 +155,8 @@ export default function GarbageChart() {
             </Title>
           </div>
         </div>
-        <div className="flex h-fit w-48 items-center gap-2">
-          <TrashWertstoffe className="h-14 text-energy" />
+        <div className="flex h-fit items-center gap-2 md:w-48">
+          <TrashWertstoffe className="h-10 text-energy md:h-14" />
           <div>
             <Title as={'h5'} variant={'primary'}>
               Wertstoffe

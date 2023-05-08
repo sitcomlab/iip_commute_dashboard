@@ -34,7 +34,7 @@ export default function BicycleRow({ name, count, min, max }: BicycleRowProps) {
           <AnimatedNumber>{count}</AnimatedNumber>
         </Title>
       </div>
-      <div className="flex-1">
+      <div className="mb-2 flex-1 md:mb-0">
         <BicycleProgress progress={progress} />
       </div>
     </div>
