@@ -1,5 +1,4 @@
-import { CloudIcon } from '@heroicons/react/24/outline'
-import { Sun, Temperature, Water, Wind } from '@/components/Icons'
+import { Cloud, Sun, Temperature, Water, Wind } from '@/components/Icons'
 import { ForwardRefExoticComponent, SVGProps } from 'react'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import Title from '@/components/Elements/Title'
@@ -37,7 +36,7 @@ const phenomena: PhenomenaType = {
   cloudcover: {
     title: 'Wolken&shy;bedeckung',
     unit: '%',
-    icon: CloudIcon,
+    icon: Cloud,
   },
   windspeed: {
     title: 'Wind&shy;geschwindigkeit',
