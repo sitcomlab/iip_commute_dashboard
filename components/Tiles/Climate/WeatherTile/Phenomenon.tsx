@@ -3,10 +3,12 @@ import { ForwardRefExoticComponent, SVGProps } from 'react'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import Title from '@/components/Elements/Title'
 import { cx } from 'class-variance-authority'
+import useDevice from '@/hooks/useDevice'
 
 type PhenomenaType = {
   [key: string]: {
     title: string
+    shortTitle?: string
     unit: string
     icon:
       | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
@@ -35,11 +37,13 @@ const phenomena: PhenomenaType = {
   },
   cloudcover: {
     title: 'Wolken&shy;bedeckung',
+    shortTitle: 'Wolkenbed.',
     unit: '%',
     icon: Cloud,
   },
   windspeed: {
     title: 'Wind&shy;geschwindigkeit',
+    shortTitle: 'Windgeschw.',
     unit: 'km/h',
     icon: Wind,
     decimals: 1,
@@ -62,23 +66,27 @@ export default function Phenomenon({
   value,
   size = 'md',
 }: PhenomenonProps) {
-  const { title, unit, icon, decimals } = phenomena[phenomenon]
+  const { title, unit, icon, decimals, shortTitle } = phenomena[phenomenon]
 
-  const valueSize: 'h1' | 'h3' = size === 'xl' ? 'h1' : 'h3'
+  const valueSize: 'h1' | 'h4' = size === 'xl' ? 'h1' : 'h4'
+
+  const device = useDevice()
 
   const Icon = icon
   return (
-    <div className="my-2 flex items-center gap-3">
+    <div className="my-1 flex items-center gap-3 md:my-2">
       <Icon
         className={cx(
           size === 'md' ? 'aspect-square' : 'w-6',
-          'h-14 text-primary',
+          'h-10 fill-primary stroke-primary text-primary md:h-14',
         )}
       />
       <div>
         <Title
           as={'h5'}
-          dangerouslySetInnerHTML={{ __html: title }}
+          dangerouslySetInnerHTML={{
+            __html: device === 'mobile' && shortTitle ? shortTitle : title,
+          }}
           variant={'primary'}
         ></Title>
         <Title as={valueSize} variant="climate">

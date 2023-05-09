@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { SVGProps } from 'react'
-function SvgTemperature(props: SVGProps<SVGSVGElement>) {
+function SvgTemperature2(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 23.837 64.378"
@@ -13,8 +13,10 @@ function SvgTemperature(props: SVGProps<SVGSVGElement>) {
           data-name="Pfad 182"
           style={{
             fill: 'none',
+            stroke: '#005b79',
             strokeLinecap: 'round',
             strokeLinejoin: 'round',
+            strokeWidth: '2.5px',
           }}
           transform="translate(-600 -581)"
         />
@@ -26,8 +28,10 @@ function SvgTemperature(props: SVGProps<SVGSVGElement>) {
           ry={4.513}
           style={{
             fill: 'none',
+            stroke: '#005b79',
             strokeLinecap: 'round',
             strokeLinejoin: 'round',
+            strokeWidth: '2.5px',
           }}
           transform="translate(6.566 46.774)"
         />
@@ -35,4 +39,4 @@ function SvgTemperature(props: SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
-export default SvgTemperature
+export default SvgTemperature2

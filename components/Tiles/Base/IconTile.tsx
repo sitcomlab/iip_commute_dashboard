@@ -83,14 +83,17 @@ export default async function IconTile({
             <div className="flex flex-wrap items-center justify-start gap-x-4">
               <Title
                 as={'h1'}
-                className={cx('min-w-max', iconTileTitleStyle({ variant }))}
+                className={cx(
+                  'min-w-fit font-normal',
+                  iconTileTitleStyle({ variant }),
+                )}
               >
                 {title}
               </Title>
               {subtitle && (
                 <Title
                   as={'subtitle'}
-                  className="2xl:max-w-[50%]"
+                  className="2xl:max-w-[60%]"
                   color={'dark'}
                 >
                   {subtitle}
@@ -122,7 +125,9 @@ export default async function IconTile({
         <Title as="h7" className="font-semibold">
           Datenstand: {dataRetrieval ?? (live ? 'live' : 'undefined')}
         </Title>
-        <Title as="h7">Quelle: {dataSource}</Title>
+        <Title as="h7" className="font-normal">
+          Quelle: {dataSource}
+        </Title>
       </div>
     </BaseTile>
   )

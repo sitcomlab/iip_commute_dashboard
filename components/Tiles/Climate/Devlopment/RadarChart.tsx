@@ -10,17 +10,17 @@ export type AvgTempData = {
   }
 }
 
-const zero = {
-  value: new Array(12).fill(0),
-  name: '0',
-  lineStyle: {
-    color: '#14b3d9',
-    width: 4,
-  },
-  itemStyle: {
-    opacity: 0,
-  },
-}
+// const zero = {
+//   value: new Array(12).fill(0),
+//   name: '0',
+//   lineStyle: {
+//     color: '#14b3d9',
+//     width: 4,
+//   },
+//   itemStyle: {
+//     opacity: 0,
+//   },
+// }
 
 export default function RadarChart({ data }: { data: AvgTempData }) {
   const [years, setYears] = useState<string[]>([])
@@ -72,7 +72,7 @@ export default function RadarChart({ data }: { data: AvgTempData }) {
   return (
     <div className="relative h-full w-full">
       <div className="absolute flex h-full w-full items-center justify-center">
-        <Title as={'h3'} className="z-10 text-2xl">
+        <Title as={'h4'} className="z-10 text-2xl">
           {years[years.length - 1]}
         </Title>
       </div>
@@ -118,7 +118,10 @@ export default function RadarChart({ data }: { data: AvgTempData }) {
             {
               name: 'Climate',
               type: 'radar',
-              data: [zero, ...seriesData],
+              data: [
+                // zero,
+                ...seriesData,
+              ],
             },
           ],
         }}
