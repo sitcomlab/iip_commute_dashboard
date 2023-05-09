@@ -1,13 +1,10 @@
 import Link from 'next/link'
-import {
-  ArrowDownTrayIcon,
-  ShareIcon,
-  SquaresPlusIcon,
-} from '@heroicons/react/24/outline'
+
 import MoreDetails from '@/components/Elements/MoreDetails'
 import { cva, VariantProps } from 'class-variance-authority'
+import { Download, Share, SquaresPlus } from '@/components/Icons'
 
-const tileFooterStyle = cva('flex flex-1 space-x-1', {
+const tileFooterStyle = cva('flex flex-1 gap-2', {
   variants: {
     variant: {
       primary: 'text-primary',
@@ -44,17 +41,14 @@ export default function TileFooter({
   function IconButtons() {
     return (
       <div className={tileFooterStyle({ variant })}>
-        <SquaresPlusIcon
+        <SquaresPlus
           className="h-6 cursor-pointer stroke-2"
           onClick={onEmbedClick}
         />
-        <ShareIcon
-          className="h-6 cursor-pointer stroke-2"
-          onClick={onShareClick}
-        />
+        <Share className="h-6 cursor-pointer stroke-2" onClick={onShareClick} />
         {dataURL && (
           <Link href={dataURL} target="_blank">
-            <ArrowDownTrayIcon className="h-6 stroke-2" />
+            <Download className="h-6 stroke-2" />
           </Link>
         )}
       </div>
