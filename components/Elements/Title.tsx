@@ -2,7 +2,7 @@ import { cx, VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 import { HTMLAttributes } from 'react'
 
-const TitleStyle = cva('block', {
+const TitleStyle = cva('block font-medium', {
   variants: {
     as: {
       h1: 'text-[40px] md:text-[80px] md:leading-[5.5rem]',
@@ -11,7 +11,7 @@ const TitleStyle = cva('block', {
       h4: 'text-[20px] md:text-3xl md:leading-[36px]',
       h5: 'text-base md:text-xl md:leading-6 md:tracking-wide',
       h6: 'text-base md:text-lg md:tracking-wide',
-      h7: 'text-base leading-7 tracking-wide',
+      h7: 'text-base leading-7 tracking-wide font-semibold',
       subtitle: 'text-xl md:text-3xl',
     },
     variant: {

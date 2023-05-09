@@ -25,31 +25,45 @@ export default function WeatherTileContent() {
   return (
     <div>
       {weather && (
-        <div className="mb-8 flex gap-4">
-          <div className="flex flex-1 flex-col justify-between gap-2">
+        <div className="mb-8 flex flex-col gap-4 md:flex-row">
+          <div className="flex flex-1 items-center gap-6 md:flex-col md:items-start md:justify-between md:gap-2">
             <span>
-              <SunLarge className="h-36 text-primary" />
+              <SunLarge className="h-20 text-primary md:h-36" />
             </span>
-            <Title as={'h4'} className="my-4 w-3/4">
+            <Title as={'h4'} className="my-4 w-1/3 md:w-3/4">
               In Münster ist es gerade{' '}
               <span className="text-climate">
                 {conditionMapping[weather?.condition]}
               </span>
             </Title>
-            <Phenomenon
-              phenomenon="temperature"
-              size="xl"
-              value={weather?.temperature}
-            />
+            <div className="hidden md:block">
+              <Phenomenon
+                phenomenon="temperature"
+                size="xl"
+                value={weather?.temperature}
+              />
+            </div>
           </div>
-          <div className="flex flex-1 flex-col justify-between gap-6">
-            <Phenomenon
-              phenomenon="precipitation"
-              value={weather?.precipitation}
-            />
-            <Phenomenon phenomenon="cloudcover" value={weather?.cloud_cover} />
-            <Phenomenon phenomenon="windspeed" value={weather?.wind_speed} />
-            {/* <Phenomenon phenomenon="sunhours" value={weather?.sunshine} /> */}
+          <div className="flex flex-1">
+            <div className="flex-1 md:hidden">
+              <Phenomenon
+                phenomenon="temperature"
+                size="xl"
+                value={weather?.temperature}
+              />
+            </div>
+            <div className="flex h-full w-full flex-1 flex-col justify-between gap-2.5 md:gap-6">
+              <Phenomenon
+                phenomenon="precipitation"
+                value={weather?.precipitation}
+              />
+              <Phenomenon
+                phenomenon="cloudcover"
+                value={weather?.cloud_cover}
+              />
+              <Phenomenon phenomenon="windspeed" value={weather?.wind_speed} />
+              {/* <Phenomenon phenomenon="sunhours" value={weather?.sunshine} /> */}
+            </div>
           </div>
         </div>
       )}
