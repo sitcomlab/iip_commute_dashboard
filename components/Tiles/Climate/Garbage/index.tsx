@@ -16,10 +16,14 @@ export default async function GarbageTile() {
       subtitle={
         'So viel KG Abfall wurden bisher in Münster pro Einwohner:in produziert'
       }
-      title="Abfall pro Kopf"
+      title={
+        <Title as={'h1'} className="text-climate">
+          <span className="font-medium">Abfall</span> pro Kopf
+        </Title>
+      }
     >
       <TileSplitView>
-        <TileSplitView.Left className="h-[30rem] rounded bg-white">
+        <TileSplitView.Left className="h-[30rem] rounded bg-white p-5">
           <GarbageChart />
         </TileSplitView.Left>
         <TileSplitView.Right>

@@ -79,7 +79,7 @@ export default function ChartContainer() {
 
   return (
     <div className="rounded bg-white p-2">
-      <div className="flex h-[500px] w-full items-center justify-center">
+      <div className="flex h-[350px] w-full items-center justify-center md:h-[500px]">
         <Chart
           compare={compare}
           data={stadtradelnData.muenster}
@@ -92,8 +92,8 @@ export default function ChartContainer() {
           geradelte Kilometer in Münster
         </Title>
       </div>
-      <div className="flex w-full flex-col items-center justify-between rounded border border-dashed border-primary p-4 pl-8 md:flex-row md:space-x-4">
-        <div className="flex flex-shrink-0 items-center gap-10">
+      <div className="flex w-full flex-row items-center justify-between gap-2 rounded border border-dashed border-primary p-2 pl-8 md:space-x-4 md:p-4">
+        <div className="flex flex-shrink-0 items-center gap-4 md:gap-10">
           <Switch
             defaultChecked={compare}
             onCheckedChange={setCompare}

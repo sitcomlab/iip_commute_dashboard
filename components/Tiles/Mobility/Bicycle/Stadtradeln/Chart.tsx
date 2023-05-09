@@ -6,10 +6,10 @@ import {
   PictorialBarSeriesOption,
   SeriesOption,
 } from 'echarts'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '@/tailwind.config.js'
-import Title from '@/components/Elements/Title'
+import useDevice from '@/hooks/useDevice'
 
 const { theme } = resolveConfig(tailwindConfig)
 
@@ -44,54 +44,59 @@ type ChartProps = {
   other?: StadtradelnData
 }
 
-const getSeries = (data: StadtradelnData, color: string, symbol: string) => {
-  const lineSeries: LineSeriesOption = {
-    data: data.data.map(({ year, km }) => [year, km]),
-    type: 'line',
-    lineStyle: {
-      opacity: 0,
-    },
-    symbol: 'none',
-    itemStyle: {},
-    smooth: 0.2,
-  }
-
-  const barSeries: BarSeriesOption = {
-    data: data.data.map(({ year, km }) => [year, km]),
-    type: 'bar',
-    barWidth: 3,
-    zlevel: 10,
-    itemStyle: {
-      color: color,
-      borderRadius: [2, 2, 0, 0],
-    },
-    barGap: 2,
-    xAxisIndex: 1,
-    label: {
-      formatter: () => 'X',
-      position: 'top',
-    },
-  }
-
-  const barIcons: PictorialBarSeriesOption = {
-    data: data.data.map(({ year, km }) => [year, km]),
-    type: 'pictorialBar',
-    symbol: symbol,
-    symbolSize: [61, 61],
-    symbolOffset: [0, -60],
-    symbolRotate: 15,
-    barWidth: 3,
-    barGap: 2,
-    symbolPosition: 'end',
-    xAxisIndex: 1,
-    zlevel: 20,
-  }
-
-  return [lineSeries, barSeries, barIcons]
-}
-
 export default function Chart({ data, other }: ChartProps) {
   const [series, setSeries] = useState<SeriesOption[]>()
+
+  const device = useDevice()
+
+  const getSeries = useCallback(
+    (data: StadtradelnData, color: string, symbol: string) => {
+      const lineSeries: LineSeriesOption = {
+        data: data.data.map(({ year, km }) => [year, km]),
+        type: 'line',
+        lineStyle: {
+          opacity: 0,
+        },
+        symbol: 'none',
+        itemStyle: {},
+        smooth: 0.2,
+      }
+
+      const barSeries: BarSeriesOption = {
+        data: data.data.map(({ year, km }) => [year, km]),
+        type: 'bar',
+        barWidth: 3,
+        zlevel: 10,
+        itemStyle: {
+          color: color,
+          borderRadius: [2, 2, 0, 0],
+        },
+        barGap: 2,
+        xAxisIndex: 1,
+        label: {
+          formatter: () => 'X',
+          position: 'top',
+        },
+      }
+
+      const barIcons: PictorialBarSeriesOption = {
+        data: data.data.map(({ year, km }) => [year, km]),
+        type: 'pictorialBar',
+        symbol: symbol,
+        symbolSize: device === 'desktop' ? [61, 61] : [30, 30],
+        symbolOffset: device === 'desktop' ? [0, -60] : [0, -30],
+        symbolRotate: 15,
+        barWidth: 3,
+        barGap: 2,
+        symbolPosition: 'end',
+        xAxisIndex: 1,
+        zlevel: 20,
+      }
+
+      return [lineSeries, barSeries, barIcons]
+    },
+    [],
+  )
 
   useEffect(() => {
     if (!data) {
@@ -119,10 +124,7 @@ export default function Chart({ data, other }: ChartProps) {
 
   return (
     <div className="relative h-full w-full">
-      <Title as="h5" className="absolute top-[3rem] left-[6.7rem]">
-        km
-      </Title>
-      <div className="absolute top-0 left-0 h-full w-full">
+      <div className="absolute left-0 top-0 h-full w-full">
         <ReactECharts
           option={{
             grid: {

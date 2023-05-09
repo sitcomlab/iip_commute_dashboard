@@ -31,6 +31,7 @@ export default function ClimateDevelopmentTile() {
       dataSource="DWD"
       embedId="climate-development"
       live
+      subtitle={'Temperaturentwicklung Münsters seit 1982'}
       title={'Klima'}
     >
       <div className="h-[528px] w-full">
