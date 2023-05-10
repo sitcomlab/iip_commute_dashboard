@@ -12,7 +12,6 @@ import MobileSlider from '@/components/Inputs/MobileSlider'
 import { useWindowSize } from 'react-use'
 import Slider from '@/components/Inputs/Slider'
 import { ReactECharts } from '@/components/Charts/ReactECharts'
-import useDevice from '@/hooks/useDevice'
 
 const { theme } = resolveConfig(tailwindConfig)
 
@@ -46,7 +45,6 @@ export default function GarbageChart() {
   const data = useGarbageData()
 
   const { width } = useWindowSize()
-  const device = useDevice()
 
   const totalData = data.filter(
     e => e.KATEGORIE === 'Abfallaufkommen in kg pro Einwohner/Jahr Gesamt',
@@ -62,7 +60,7 @@ export default function GarbageChart() {
   return (
     <div className="flex h-full w-full flex-col-reverse items-center 2xl:flex-row">
       <div className="flex h-full w-full flex-1 flex-col">
-        <div className="h-full w-full flex-1">
+        <div className="flex h-full w-full flex-1 items-center">
           <ReactECharts
             option={{
               grid: {
@@ -102,7 +100,7 @@ export default function GarbageChart() {
               notMerge: true,
             }}
             style={{
-              height: ['tablet', 'mobile'].includes(device) ? '200px' : '100%',
+              height: width < 1024 ? '200px' : '100%',
               width: '100%',
             }}
           />
@@ -139,7 +137,7 @@ export default function GarbageChart() {
           </div>
         </div>
       </div>
-      <div className="flex h-full flex-row justify-evenly gap-4 md:gap-0 2xl:flex-col">
+      <div className="flex h-fit flex-row justify-evenly gap-4 overflow-hidden pb-8 pt-2 md:gap-0 2xl:h-full 2xl:flex-col 2xl:pb-0 2xl:pt-0">
         <div className="flex h-fit items-center gap-2 md:w-48">
           <TrashGesamt className="h-10 md:h-14" />
           <div>

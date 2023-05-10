@@ -23,7 +23,7 @@ export default async function GarbageTile() {
       }
     >
       <TileSplitView>
-        <TileSplitView.Left className="h-[30rem] rounded bg-white p-5">
+        <TileSplitView.Left className="rounded bg-white p-5">
           <GarbageChart />
         </TileSplitView.Left>
         <TileSplitView.Right>
