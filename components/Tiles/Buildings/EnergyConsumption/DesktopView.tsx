@@ -115,12 +115,12 @@ export default function DesktopView({ mode, yearIndex }: DesktopViewProps) {
       <div className="flex h-full w-full justify-between gap-8">
         {Object.keys(buildings).map(building => (
           <div className="flex w-full justify-center gap-1 p-2" key={building}>
-            <Title as="h3" className="font-medium" variant="building">
+            <Title as="h3" variant="building">
               <AnimatedNumber decimals={0}>
                 {getYearSum(mode, building as keyof Building, years[yearIndex])}
               </AnimatedNumber>
             </Title>
-            <Title as="h3" className="font-regular" variant="building">
+            <Title as="h3" font="normal" variant="building">
               kWh
             </Title>
           </div>

@@ -41,7 +41,7 @@ export default function SurveyTile({ question, answer }: SurveyTileProps) {
         <Spacer />
         <div className="relative h-fit">
           <div className="opacity-0">
-            <Title as="h3" className="font-medium" variant={'inverse'}>
+            <Title as="h3" variant={'inverse'}>
               {question}
             </Title>
           </div>
@@ -53,7 +53,7 @@ export default function SurveyTile({ question, answer }: SurveyTileProps) {
                 className="absolute left-0 top-0 h-full w-full"
                 style={styles}
               >
-                <Title as="h3" className="font-medium" variant={'inverse'}>
+                <Title as="h3" variant={'inverse'}>
                   {question}
                 </Title>
               </animated.div>

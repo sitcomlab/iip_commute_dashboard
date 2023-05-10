@@ -29,7 +29,7 @@ export default function MoreDetails({
   const Details = (
     <div className={cx(style({ variant }), className)}>
       <InformationCircleIcon className="h-6" />
-      <Title as="h6" className="font-medium underline">
+      <Title as="h6" className="underline">
         Mehr Details
       </Title>
     </div>

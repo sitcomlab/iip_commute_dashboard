@@ -13,17 +13,17 @@ export default function BusContent() {
     <div>
       <div className="flex justify-between">
         <div>
-          <p className="font-medium text-primary">
+          <Title as="h5" variant={'primary'}>
             Fahrzeuge mit fossilem Antrieb
-          </p>
+          </Title>
           <AnimatedNumber className="text-2xl text-mobility">
             {combustionCount}
           </AnimatedNumber>
         </div>
         <div className="flex flex-col items-end">
-          <p className="font-medium text-primary">
+          <Title as="h5" variant={'primary'}>
             Fahrzeuge mit Elektroantrieb
-          </p>
+          </Title>
           <AnimatedNumber className="text-2xl text-mobility">
             {electroCount}
           </AnimatedNumber>

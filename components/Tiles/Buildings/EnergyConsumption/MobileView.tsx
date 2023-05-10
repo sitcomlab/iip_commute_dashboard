@@ -108,12 +108,12 @@ export default function MobileView({ mode, yearIndex }: MobileViewProps) {
           </div>
           <LabelSeperator>Jahresverbrauch</LabelSeperator>
           <div className="flex w-full gap-1 p-2">
-            <Title as="h3" className="font-medium" variant="building">
+            <Title as="h3" variant="building">
               <AnimatedNumber decimals={0}>
                 {getYearSum(mode, building as keyof Building, years[yearIndex])}
               </AnimatedNumber>
             </Title>
-            <Title as="h3" className="font-regular" variant="building">
+            <Title as="h3" font="normal" variant="building">
               kWh
             </Title>
           </div>
