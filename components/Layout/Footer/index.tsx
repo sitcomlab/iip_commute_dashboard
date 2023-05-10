@@ -3,6 +3,13 @@ import StairStepBackground from '../StairStepBackground'
 import Script from 'next/script'
 import Title from '@/components/Elements/Title'
 import Container from '../Container'
+import Image from 'next/image'
+
+import SmartCityMSLogo from '@/assets/logos/smart_city_ms.png'
+import MuensterKlima2030 from '@/assets/logos/muenter_unser_klima_2030.png'
+import StadtwerkeLogo from '@/assets/logos/Stadtwerke_Muenster_Logo.png'
+import BMWSBLogo from '@/assets/logos/BMWSB.png'
+import KFW from '@/assets/logos/kfw.png'
 
 export default function Footer() {
   return (
@@ -37,17 +44,29 @@ export default function Footer() {
               Ein Projekt von
             </Title>
             <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
-              <div className="h-28 w-full bg-red-300 md:h-36">
-                {/* TODO: ADD IMAGE */}
+              <div className="relative h-28 w-full md:h-36">
+                <Image
+                  alt="Stadtwerke Münster Logo"
+                  className="object-contain"
+                  fill
+                  src={SmartCityMSLogo}
+                />
               </div>
-              <div className="h-28 w-full bg-red-300 md:h-36">
-                {/* TODO: ADD IMAGE */}
+              <div className="relative h-28 w-full md:h-36">
+                <Image
+                  alt="Stadtwerke Münster Logo"
+                  className="object-contain"
+                  fill
+                  src={MuensterKlima2030}
+                />
               </div>
-              <div className="h-28 w-full bg-red-300 md:h-36">
-                {/* TODO: ADD IMAGE */}
-              </div>
-              <div className="h-28 w-full bg-red-300 md:h-36">
-                {/* TODO: ADD IMAGE */}
+              <div className="relative h-28 w-full md:h-36">
+                <Image
+                  alt="Stadtwerke Münster Logo"
+                  className="object-contain"
+                  fill
+                  src={StadtwerkeLogo}
+                />
               </div>
             </div>
           </div>
@@ -56,11 +75,21 @@ export default function Footer() {
               Gefördert durch
             </Title>
             <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
-              <div className="h-28 w-full bg-red-300 md:h-36">
-                {/* TODO: ADD IMAGE */}
+              <div className="relative h-28 w-full md:h-36">
+                <Image
+                  alt="Stadtwerke Münster Logo"
+                  className="object-contain"
+                  fill
+                  src={BMWSBLogo}
+                />
               </div>
-              <div className="h-28 w-full bg-red-300 md:h-36">
-                {/* TODO: ADD IMAGE */}
+              <div className="relative h-28 w-full md:h-36">
+                <Image
+                  alt="Stadtwerke Münster Logo"
+                  className="object-contain"
+                  fill
+                  src={KFW}
+                />
               </div>
             </div>
           </div>
