@@ -174,7 +174,7 @@ export default function ClimateIndicesChart() {
   return (
     <div className="flex h-full w-full flex-col items-center p-5 2xl:flex-row">
       <div className="h-full w-full flex-1">
-        <Title as="h7" variant={'primary'}>
+        <Title as="h7" font="semibold" variant={'primary'}>
           Anzahl <br />
           der Tage
         </Title>

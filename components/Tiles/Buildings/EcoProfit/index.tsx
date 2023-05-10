@@ -30,10 +30,7 @@ export default function EcoProfitTile() {
       embedId={'building-ecoProfit'}
     >
       <Title as={'h1'} variant={'building'}>
-        <AnimatedNumber className="font-medium">
-          {companiesTotal}
-        </AnimatedNumber>{' '}
-        Unternehmen
+        <AnimatedNumber>{companiesTotal}</AnimatedNumber> Unternehmen
       </Title>
       <Spacer />
       <Title as="subtitle">
@@ -49,9 +46,7 @@ export default function EcoProfitTile() {
       </Title>
       <Spacer size={'xl'} />
       <Title as={'h1'} variant={'building'}>
-        <AnimatedNumber className="font-medium">
-          {companiesStartupConsulting}
-        </AnimatedNumber>{' '}
+        <AnimatedNumber>{companiesStartupConsulting}</AnimatedNumber>{' '}
         Unternehmen
       </Title>
       <Spacer />

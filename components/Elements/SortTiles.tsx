@@ -11,7 +11,7 @@ export default function SortTiles() {
       trigger={
         <div className="flex cursor-pointer items-center gap-1 text-primary">
           <ArrowsUpDownIcon className="h-6" />
-          <Title as="h6" className="font-medium underline">
+          <Title as="h6" className="underline">
             Kacheln sortieren
           </Title>
         </div>
@@ -21,7 +21,7 @@ export default function SortTiles() {
         <Menu.Item>
           <Title
             as="h6"
-            className="cursor-pointer rounded py-2 px-4 font-medium hover:bg-zinc-100"
+            className="cursor-pointer rounded px-4 py-2 hover:bg-zinc-100"
             variant={'primary'}
           >
             Nach Kategorie
@@ -30,7 +30,7 @@ export default function SortTiles() {
         <Menu.Item>
           <Title
             as="h6"
-            className="cursor-pointer rounded py-2 px-4 font-medium hover:bg-zinc-100"
+            className="cursor-pointer rounded px-4 py-2 hover:bg-zinc-100"
             variant={'primary'}
           >
             Neueste zuerst

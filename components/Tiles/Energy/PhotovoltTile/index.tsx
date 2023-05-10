@@ -12,24 +12,23 @@ export default function PhotovoltTile() {
       embedId="energy-PV"
       live
       title={
-        <span>
+        <>
           <span className="font-medium">88</span> MW
-        </span>
+        </>
       }
     >
       <div>
         <Title as={'subtitle'}>
           Haben die Müsteraner:innen bereits mit ca.{' '}
           <span className="text-energy">5.000 PV-Anlagen</span> in Münster
-          produziert. In diesem Moment werden{' '}
-          <span className="text-energy">XX MW</span> produziert.
+          produziert.
         </Title>
         <div className="mt-8 flex items-center justify-between gap-8">
           <PvIcon className="w-40" />
           <div className="w-full flex-1">
             <div className="flex  items-center justify-between">
               <div>
-                <Title as="h7" variant={'energy'}>
+                <Title as="h7" font="semibold" variant={'energy'}>
                   Bereits installiert
                 </Title>
                 <Title as="h4" variant={'energy'}>
@@ -37,7 +36,7 @@ export default function PhotovoltTile() {
                 </Title>
               </div>
               <div className="flex flex-col items-end">
-                <Title as="h7" variant={'primary'}>
+                <Title as="h7" font="semibold" variant={'primary'}>
                   Angestrebtes Ziel bis 2030
                 </Title>
                 <Title as="h4" variant={'primary'}>
