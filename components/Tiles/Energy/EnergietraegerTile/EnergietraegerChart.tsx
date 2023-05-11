@@ -10,6 +10,9 @@ import Title from '@/components/Elements/Title'
 import StromerzeugungBereitstellung from '@/assets/data/Stromerzeugung_bereitstellung.csv'
 // @ts-ignore
 import Stromemissionen from '@/assets/data/stromemissionen.csv'
+import { Spacer } from '@/components/Elements/Spacer'
+import MobileSlider from '@/components/Inputs/MobileSlider'
+import { useWindowSize } from 'react-use'
 
 type StromDataType = {
   Jahr: number
@@ -35,36 +38,66 @@ export default function EnergietraegerChart() {
   const data: StromDataType[] =
     mode === 'stromerzeugung' ? StromerzeugungBereitstellung : Stromemissionen
 
+  const unit = mode === 'stromerzeugung' ? 'MWh' : 't'
+
+  const { width } = useWindowSize()
+
   return (
     <div className="flex h-full flex-col">
-      <ToggleGroup
-        items={[
-          {
-            element: (
-              <Title as="h5" className="md:mx-auto md:w-max">
-                Anteilige Stromerzeugung
-              </Title>
-            ),
-            value: 'stromerzeugung',
-          },
-          {
-            element: (
-              <Title as="h5" className="md:mx-auto md:w-max">
-                CO₂ pro Energieträger
-              </Title>
-            ),
-            value: 'co2',
-          },
-        ]}
-        onChange={val => setMode(val as typeof mode)}
-        variant={'primary'}
-      />
-      <div className="flex h-full w-full flex-1 flex-col">
+      <div className="z-10 w-full">
+        <ToggleGroup
+          items={[
+            {
+              element: (
+                <Title as="h5" className="2xl:mx-auto">
+                  Anteilige Stromerzeugung
+                </Title>
+              ),
+              value: 'stromerzeugung',
+            },
+            {
+              element: (
+                <Title as="h5" className="2xl:mx-auto">
+                  CO₂ pro Energieträger
+                </Title>
+              ),
+              value: 'co2',
+            },
+          ]}
+          onChange={val => setMode(val as typeof mode)}
+          variant={'primary'}
+        />
+      </div>
+      <div className="flex h-full w-full flex-1 -translate-y-4 flex-col">
         <div className="flex-1">
           <ReactECharts
             option={{
+              // @ts-ignore
+              tooltip: {
+                formatter: params => {
+                  const percent =
+                    // @ts-ignore
+                    params.value / params.treeAncestors[0].value
+
+                  if (percent === 1) {
+                    return undefined
+                  }
+
+                  // @ts-ignore
+                  return `<p>${params.name}<p>
+                  <p>${new Intl.NumberFormat('de-DE', {
+                    maximumFractionDigits: 0,
+                    // @ts-ignore
+                  }).format(params.value)}${unit}<p>
+                  <p>${(percent * 100).toFixed(1)}%<p>`
+                },
+              },
               series: [
                 {
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
                   type: 'treemap',
                   breadcrumb: {
                     show: false,
@@ -128,14 +161,27 @@ export default function EnergietraegerChart() {
             }}
           />
         </div>
-        <Slider
-          defaultValue={[0]}
-          labels={data.map(e => e.Jahr.toString())}
-          max={data.length - 1}
-          min={0}
-          onValueChange={([index]) => setYearIndex(index)}
-          variant={'energy'}
-        />
+        <Spacer size={'xs'} />
+        {width < 1800 && (
+          <MobileSlider
+            defaultValue={[0]}
+            labels={data.map(e => e.Jahr.toString())}
+            max={data.length - 1}
+            min={0}
+            onValueChange={([index]) => setYearIndex(index)}
+            variant={'energy'}
+          />
+        )}
+        {width >= 1800 && (
+          <Slider
+            defaultValue={[0]}
+            labels={data.map(e => e.Jahr.toString())}
+            max={data.length - 1}
+            min={0}
+            onValueChange={([index]) => setYearIndex(index)}
+            variant={'energy'}
+          />
+        )}
       </div>
     </div>
   )
