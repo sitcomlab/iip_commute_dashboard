@@ -10,6 +10,7 @@ import Title from '@/components/Elements/Title'
 import { ForwardRefExoticComponent, SVGProps, useState } from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '@/tailwind.config.js'
+import useDevice from '@/hooks/useDevice'
 
 const { theme } = resolveConfig(tailwindConfig)
 
@@ -151,6 +152,8 @@ function ClimateIndiceToggle({
  * @returns The Climate Indices Chart
  */
 export default function ClimateIndicesChart() {
+  const device = useDevice()
+
   const [seriesVisible, setSeriesVisible] = useState<
     Record<IndicesTypes, boolean>
   >({
@@ -190,10 +193,16 @@ export default function ClimateIndicesChart() {
               series,
               xAxis: {
                 type: 'time',
+                axisLabel: {
+                  fontSize: device === 'mobile' ? 12 : 20,
+                },
               },
               yAxis: {
                 type: 'value',
                 interval: 5,
+                axisLabel: {
+                  fontSize: device === 'mobile' ? 12 : 20,
+                },
               },
               animation: true,
             }}

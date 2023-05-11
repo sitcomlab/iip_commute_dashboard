@@ -88,11 +88,17 @@ export default function GarbageChart() {
                   type: 'category',
                   data: wertstoffeData.map(e => e.JAHR),
                   show: false,
+                  axisLabel: {
+                    fontSize: 20,
+                  },
                 },
               ],
               yAxis: {
                 type: 'value',
                 interval: 100,
+                axisLabel: {
+                  fontSize: 20,
+                },
               },
               animation: true,
             }}

@@ -108,6 +108,7 @@ export default function Footer() {
                   Datenschutz
                 </Title>
               </Link>
+              {/* https://www.math.uni-hamburg.de/it/dienste/encryptma.html */}
               <a href="javascript:linkTo_UnCryptMailto('nbjmup;gffecbdlAlmjnbebticpbse/nt');">
                 <Title as="h5" className="underline" variant={'primary'}>
                   Sie haben Feedback für uns?
