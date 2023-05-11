@@ -41,7 +41,7 @@ export default function EnergietraegerChart() {
         items={[
           {
             element: (
-              <Title as="h5" className="mx-auto w-max">
+              <Title as="h5" className="md:mx-auto md:w-max">
                 Anteilige Stromerzeugung
               </Title>
             ),
@@ -49,7 +49,7 @@ export default function EnergietraegerChart() {
           },
           {
             element: (
-              <Title as="h5" className="mx-auto w-max">
+              <Title as="h5" className="md:mx-auto md:w-max">
                 CO₂ pro Energieträger
               </Title>
             ),
