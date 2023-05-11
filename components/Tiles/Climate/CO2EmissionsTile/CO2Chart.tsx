@@ -119,12 +119,15 @@ export default function CO2Chart({ showFuture = false, mode }: CO2ChartProps) {
             },
             xAxis: {
               type: 'time',
-              show: true,
               max: parse('01-01-2030', 'dd-MM-yyyy', new Date()).getTime(),
+              axisLabel: {
+                fontSize: device === 'mobile' ? 12 : 20,
+              },
             },
             yAxis: {
               type: 'value',
               axisLabel: {
+                fontSize: device === 'mobile' ? 12 : 20,
                 formatter: (val: any) => {
                   if (val === 0) {
                     return ''

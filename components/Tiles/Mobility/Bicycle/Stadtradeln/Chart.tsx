@@ -148,6 +148,9 @@ export default function Chart({ data, other }: ChartProps) {
                 axisTick: undefined,
                 position: 'bottom',
                 name: 'Jahr',
+                axisLabel: {
+                  fontSize: device === 'mobile' ? 12 : 20,
+                },
               },
             ],
             yAxis: {
@@ -155,6 +158,7 @@ export default function Chart({ data, other }: ChartProps) {
               interval: 250_000,
               max: 2_000_000,
               axisLabel: {
+                fontSize: device === 'mobile' ? 12 : 20,
                 formatter: (value: number) =>
                   value.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.'),
               },

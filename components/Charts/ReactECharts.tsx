@@ -5,7 +5,7 @@ import { getInstanceByDom, init } from 'echarts'
 import type { CSSProperties } from 'react'
 import type { ECharts, EChartsOption, SetOptionOpts } from 'echarts'
 
-import './chart-style.css'
+import useDevice from '@/hooks/useDevice'
 
 export interface ReactEChartsProps {
   option: EChartsOption
@@ -25,6 +25,8 @@ export function ReactECharts({
   renderer = 'svg',
 }: ReactEChartsProps): JSX.Element {
   const chartRef = useRef<HTMLDivElement>(null)
+
+  const device = useDevice()
 
   useEffect(() => {
     // Initialize chart
@@ -55,8 +57,10 @@ export function ReactECharts({
       const chart = getInstanceByDom(chartRef.current)
       const myOption: EChartsOption = {
         textStyle: {
-          fontFamily: 'var(--font-inter)',
+          ...option.textStyle,
+          fontFamily: 'Inter, sans-serif',
           color: '#005b79',
+          fontSize: device === 'mobile' ? 12 : 20,
         },
         ...option,
       }

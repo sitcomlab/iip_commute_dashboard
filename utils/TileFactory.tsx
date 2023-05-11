@@ -5,6 +5,7 @@ import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
 import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
 import GarbageTile from '@/components/Tiles/Climate/Garbage'
 import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
+import EnergietraegerTile from '@/components/Tiles/Energy/EnergietraegerTile'
 import PhotovoltTile from '@/components/Tiles/Energy/PhotovoltTile'
 import WindEnergyTile from '@/components/Tiles/Energy/WindEnergyTile'
 import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
@@ -20,7 +21,7 @@ type TileTypePrefix = 'climate' | 'mobility' | 'energy' | 'building'
 type ClimateTypes = 'weather' | 'co2' | 'indices' | 'development' | 'garbage'
 type MobilityTypes = 'bicycle' | 'stadtradeln' | 'bus' | 'modalSplit'
 type BuildingsTypes = 'ecoProfit' | 'energyConsumption'
-type EnergyTypes = 'PV' | 'wind'
+type EnergyTypes = 'PV' | 'wind' | 'energietraeger'
 
 type TileTypeSuffix =
   | ClimateTypes
@@ -71,6 +72,8 @@ export default function TileFactory({ type, ...props }: TileFactoryProps) {
       return <PhotovoltTile />
     case 'energy-wind':
       return <WindEnergyTile />
+    case 'energy-energietraeger':
+      return <EnergietraegerTile />
 
     // ---- MOBILITY ----
     case 'mobility-bicycle':

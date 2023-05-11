@@ -1,4 +1,5 @@
 import Columns from '../Layout/Columns'
+import EnergietraegerTile from '../Tiles/Energy/EnergietraegerTile'
 import PhotovoltTile from '../Tiles/Energy/PhotovoltTile'
 import WindEnergyTile from '../Tiles/Energy/WindEnergyTile'
 import BaseView from './BaseView'
@@ -9,6 +10,7 @@ export default function EnergyView() {
       <Columns>
         <PhotovoltTile />
         <WindEnergyTile />
+        <EnergietraegerTile />
       </Columns>
     </BaseView>
   )
