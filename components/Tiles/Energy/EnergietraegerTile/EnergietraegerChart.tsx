@@ -73,8 +73,30 @@ export default function EnergietraegerChart() {
                     gapWidth: 4,
                   },
                   label: {
-                    position: 'insideBottomLeft',
+                    position: ['0%', '100%'],
+                    offset: [0 + 8, -70 - 8],
                     distance: 10,
+                    formatter(params) {
+                      const percent =
+                        // @ts-ignore
+                        params.value / params.treeAncestors[0].value
+
+                      if (percent < 0.05) {
+                        return ''
+                      }
+
+                      return `{name|${params.name}}\n{value|${(
+                        percent * 100
+                      ).toFixed(0)}%}`
+                    },
+                    rich: {
+                      name: {
+                        padding: [0, 0, 4, 0],
+                      },
+                      value: {
+                        fontSize: 40,
+                      },
+                    },
                   },
                   roam: false,
                   nodeClick: undefined,

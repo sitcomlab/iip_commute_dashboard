@@ -7,7 +7,7 @@ import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import Title from '@/components/Elements/Title'
 import { Transition } from '@headlessui/react'
 
-function Toggle({ onChange }: { onChange: (val: string) => void }) {
+function Toggle({ onChange }: { onChange: (_val: string) => void }) {
   return (
     <ToggleGroup
       items={[
