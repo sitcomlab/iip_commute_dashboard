@@ -1,5 +1,7 @@
 // @ts-ignore
 import CO2Data from '@/assets/data/CO2_Emissionen_Sektoren.csv'
+// @ts-ignore
+import Endenergieverbrauch from '@/assets/data/endenergieverbrauch.csv'
 
 type CO2Data = {
   Jahr: number
@@ -10,6 +12,9 @@ type CO2Data = {
   Gesamt: number
 }
 
-export default function useCO2Data(): CO2Data[] {
+export default function useCO2Data(series: 'endenergie' | 'co2'): CO2Data[] {
+  if (series === 'endenergie') {
+    return Endenergieverbrauch
+  }
   return CO2Data
 }
