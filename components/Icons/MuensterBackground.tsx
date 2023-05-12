@@ -131,7 +131,7 @@ function SvgModalsplitHintergrundgrafik(props: SVGProps<SVGSVGElement>) {
             />
           </g>
         </g>
-        <g data-name="Gruppe 56" fill="none" stroke="#005b79" strokeWidth={2}>
+        {/* <g data-name="Gruppe 56" fill="none" stroke="#005b79" strokeWidth={2}>
           <path d="M447.342 268.724h43.3" data-name="Pfad 57" />
           <path
             d="M449.238 268.724v-49.993l6.055-4.965 5.655 4.965v21.91"
@@ -145,7 +145,7 @@ function SvgModalsplitHintergrundgrafik(props: SVGProps<SVGSVGElement>) {
             d="M457.065 268.724v-24.693l12.072-10.273 12.38 10.273v24.693"
             data-name="Pfad 60"
           />
-        </g>
+        </g> */}
       </g>
     </svg>
   )

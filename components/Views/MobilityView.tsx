@@ -13,6 +13,7 @@ export default function MobilityView() {
         <StadtradelnTile />
         <BusTile />
       </Columns>
+      {/* @ts-expect-error Server Component */}
       <ModalSplitTile />
     </BaseView>
   )
