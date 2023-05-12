@@ -173,7 +173,9 @@ export default function ToggleGroup({
           value={e.value}
         >
           {typeof e.element === 'string' ? (
-            <Title as="h5">{e.element}</Title>
+            <Title as="h5" style={{ hyphens: 'unset' }}>
+              {e.element}
+            </Title>
           ) : (
             e.element
           )}
