@@ -84,6 +84,7 @@ export default function TileFactory({ type, ...props }: TileFactoryProps) {
     case 'mobility-bus':
       return <BusTile />
     case 'mobility-modalSplit':
+      // @ts-expect-error Server Component
       return <ModalSplitTile />
 
     // ---- SURVEY ----

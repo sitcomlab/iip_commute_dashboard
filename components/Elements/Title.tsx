@@ -57,7 +57,7 @@ export default function Title({
     <span
       {...props}
       className={cx(TitleStyle({ as, variant, font }), className)}
-      style={{ hyphens: 'auto' }}
+      style={{ hyphens: 'auto', ...props.style }}
     >
       {children}
     </span>

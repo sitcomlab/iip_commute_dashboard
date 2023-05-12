@@ -2,20 +2,40 @@
 
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 import { Splide, SplideProps, SplideSlide } from '@splidejs/react-splide'
-import { cx } from 'class-variance-authority'
+import { cva, cx, VariantProps } from 'class-variance-authority'
 import { useEffect, useRef, useState } from 'react'
 import '@splidejs/react-splide/css'
 
-interface CarouselProps extends SplideProps {
+interface CarouselProps extends SplideProps, VariantProps<typeof arrowStyle> {
   children: React.ReactElement[]
   arrows?: boolean
   pagination?: boolean
 }
 
+const arrowStyle = cva('h-6', {
+  variants: {
+    variant: {
+      primary: 'text-primary',
+      secondary: 'text-secondary',
+      mobility: 'text-mobility',
+      successStory: 'text-primary',
+      climate: 'text-climate',
+      building: 'text-buildings',
+      energy: 'text-energy',
+      inverse: 'text-white',
+      dark: 'text-zinc-900',
+    },
+  },
+  defaultVariants: {
+    variant: 'primary',
+  },
+})
+
 export default function Carousel({
   children,
   arrows = false,
   pagination = false,
+  variant,
   ...props
 }: CarouselProps) {
   const splideRef = useRef<Splide>(null)
@@ -46,7 +66,7 @@ export default function Carousel({
         <div className="flex w-full items-center justify-between">
           {arrows && (
             <ChevronLeftIcon
-              className="h-6 text-buildings"
+              className={arrowStyle({ variant })}
               onClick={() => splideRef.current?.splide?.go('<')}
             />
           )}
@@ -66,7 +86,7 @@ export default function Carousel({
           )}
           {arrows && (
             <ChevronRightIcon
-              className="h-6 text-buildings"
+              className={arrowStyle({ variant })}
               onClick={() => splideRef.current?.splide?.go('>')}
             />
           )}
