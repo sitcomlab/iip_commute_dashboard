@@ -10,6 +10,7 @@ export default function MobilityView() {
     <BaseView type="mobility">
       <Columns>
         <BicycleChartTile />
+        {/* @ts-expect-error Server Component */}
         <StadtradelnTile />
         <BusTile />
       </Columns>
