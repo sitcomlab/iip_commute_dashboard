@@ -12,6 +12,7 @@ export default function Climate() {
         <StadtradelnTile />
         <BusTile />
       </Columns>
+      {/* @ts-expect-error Server Component */}
       <ModalSplitTile />
     </>
   )
