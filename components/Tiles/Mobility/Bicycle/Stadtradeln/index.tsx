@@ -2,8 +2,12 @@ import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
 import ChartContainer from './ChartContainer'
+import getTileData from '@/lib/api/getTileData'
 
-export default function StadtradelnTile() {
+export default async function StadtradelnTile() {
+  const data = await getTileData('mobility-stadtradeln')
+  const infoText = data?.info ?? ''
+
   return (
     <MobilityTile
       dataRetrieval="01.01.2022"
@@ -14,12 +18,7 @@ export default function StadtradelnTile() {
     >
       <ChartContainer />
       <Spacer />
-      <Title as="h5">
-        Auf die Leeze, fertig, los! Für mehr Radverkehr, Klimaschutz und
-        Lebensqualität in die Pedale treten: Seit 2020 beteiligt sich die Stadt
-        Münster an der jährlich stattfindenden, dreiwöchigen bundesweiten Aktion
-        „Stadtradeln“ des globalen Netzwerks „Klima-Bündnis“.
-      </Title>
+      <Title as="h5">{infoText}</Title>
     </MobilityTile>
   )
 }

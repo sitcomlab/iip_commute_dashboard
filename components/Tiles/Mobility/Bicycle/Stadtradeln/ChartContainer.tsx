@@ -86,14 +86,14 @@ export default function ChartContainer() {
           other={otherData}
         />
       </div>
-      <div className="flex items-center space-x-10 p-4 pl-8">
-        <div className="h-1 w-[52px] rounded bg-mobility" />
+      <div className="flex items-center gap-2 p-4 md:gap-10 md:pl-8">
+        <div className="h-1 w-8 rounded bg-mobility md:w-[52px]" />
         <Title as={'h5'} variant={'primary'}>
           geradelte Kilometer in Münster
         </Title>
       </div>
-      <div className="flex w-full flex-row items-center justify-between gap-2 rounded border border-dashed border-primary p-2 pl-8 md:space-x-4 md:p-4">
-        <div className="flex flex-shrink-0 items-center gap-4 md:gap-10">
+      <div className="flex w-full flex-col justify-between gap-2 rounded border border-dashed border-primary p-2 md:flex-row md:items-center md:space-x-4 md:p-4 md:pl-8">
+        <div className="flex flex-shrink-0 items-center gap-2 md:gap-10">
           <Switch
             defaultChecked={compare}
             onCheckedChange={setCompare}
@@ -107,14 +107,15 @@ export default function ChartContainer() {
           <div className="flex flex-1 items-center">
             <div className="relative h-6 flex-1">
               <AnimatedRollingElement>
-                <div className="flex items-center space-x-4">
-                  <div className="h-1 w-[52px] rounded bg-buildings" />
+                <div className="flex items-center gap-2 md:gap-4">
+                  <div className="h-1 w-9 rounded bg-buildings md:w-[52px]" />
                   <Title as="h5" variant={'primary'}>
                     {otherData.name}
                   </Title>
                 </div>
               </AnimatedRollingElement>
             </div>
+
             <AnimatedProgressCircle {...springs} />
           </div>
         )}

@@ -80,6 +80,7 @@ export default function TileFactory({ type, ...props }: TileFactoryProps) {
     case 'mobility-bicycle':
       return <BicycleChartTile />
     case 'mobility-stadtradeln':
+      // @ts-expect-error Server Component
       return <StadtradelnTile />
     case 'mobility-bus':
       return <BusTile />
