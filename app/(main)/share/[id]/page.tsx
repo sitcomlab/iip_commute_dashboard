@@ -8,5 +8,6 @@ export default async function Share({ params }: { params: { id: TileType } }) {
     return notFound()
   }
 
+  // @ts-expect-error Server Component
   return <TileFactory type={id} />
 }

@@ -20,6 +20,10 @@ const isFullWidth = async (tile: BaseTile) => {
     return true
   }
 
+  if (tile.collection === 'survey') {
+    return false
+  }
+
   const data = await directus.items(tile.collection).readOne(tile.item, {
     fields: ['full_width'],
   })

@@ -7,8 +7,8 @@ import { Download, Share, SquaresPlus } from '@/components/Icons'
 const tileFooterStyle = cva('flex flex-1 gap-2', {
   variants: {
     variant: {
-      primary: 'text-primary',
-      inverse: 'text-white',
+      primary: 'text-primary fill-primary',
+      inverse: 'text-white fill-white',
     },
   },
   defaultVariants: {

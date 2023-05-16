@@ -8,6 +8,7 @@ import BaseView from './BaseView'
 
 export default function ClimateView() {
   return (
+    // @ts-expect-error Server Component
     <BaseView type="climate">
       <Columns>
         <WeatherTile />

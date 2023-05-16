@@ -1,4 +1,9 @@
-export type TileTypePrefix = 'climate' | 'mobility' | 'energy' | 'building'
+export type TileTypePrefix =
+  | 'climate'
+  | 'mobility'
+  | 'energy'
+  | 'building'
+  | 'survey'
 
 export type ClimateTypes =
   | 'weather'

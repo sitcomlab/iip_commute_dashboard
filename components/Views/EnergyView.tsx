@@ -6,6 +6,7 @@ import BaseView from './BaseView'
 
 export default function EnergyView() {
   return (
+    // @ts-expect-error Server Component
     <BaseView type="energy">
       <Columns>
         <PhotovoltTile />

@@ -7,12 +7,14 @@ import { useState } from 'react'
 import { animated, useTransition } from '@react-spring/web'
 import { BaseTile } from '../Base/BaseTile'
 import SurveyAnswer, { SurveyAnswerProps } from './Answer'
+import { ID } from '@directus/sdk'
 
 export type SurveyTileProps = {
   question: string
   answer: SurveyAnswerProps
+  id: string | ID
 }
-export default function SurveyTile({ question, answer }: SurveyTileProps) {
+export default function SurveyTile({ question, answer, id }: SurveyTileProps) {
   const [showAnswer, setShowAnswer] = useState(false)
 
   const transitions = useTransition(showAnswer, {
@@ -32,9 +34,13 @@ export default function SurveyTile({ question, answer }: SurveyTileProps) {
     </Button>
   )
   return (
-    <BaseTile footerCenterElement={RevealAnswerButton} variant="secondary">
+    <BaseTile
+      embedId={`survey-${id}`}
+      footerCenterElement={RevealAnswerButton}
+      variant="secondary"
+    >
       <div className="text-white">
-        <Title as="h5" variant={'inverse'}>
+        <Title as="h5" font={'normal'} variant={'inverse'}>
           <span className="font-semibold">Befragungsergebnisse:</span>{' '}
           Bürgerumfrage 2022
         </Title>

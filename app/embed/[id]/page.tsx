@@ -8,5 +8,6 @@ export default async function Embed({ params }: { params: { id: TileType } }) {
     return notFound()
   }
 
+  // @ts-expect-error Server Component
   return <TileFactory type={id} />
 }

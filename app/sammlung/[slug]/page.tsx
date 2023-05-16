@@ -2,7 +2,6 @@ import Columns from '@/components/Layout/Columns'
 import directus, {
   collectionsName,
   successStoriesCollectionName,
-  surveyCollectionName,
   tileCollectionName,
 } from '@/lib/directus'
 import { ID } from '@directus/sdk'
@@ -11,6 +10,7 @@ import getTilesBucket, { BaseTile } from '@/utils/fullWidthBucket'
 import TileFactory, { TileType } from '@/utils/TileFactory'
 import { SurveyTileProps } from '@/components/Tiles/Survey'
 import { SuccessStoryTileProps } from '@/components/Tiles/SuccessStory'
+import { getSurveyData } from '@/lib/api/getSurveyData'
 
 // ISR
 export async function generateStaticParams() {
@@ -67,6 +67,7 @@ const getTileComponent = async (tile: BaseTile) => {
     type = (await getTileType(tile.item as string)) as TileType
   }
 
+  // @ts-expect-error Server Component
   return <TileFactory key={tile.item} type={type} {...props} />
 }
 
@@ -89,16 +90,6 @@ const getSuccessStoryData = async (
     text: data?.text ?? '',
     image: data?.image,
     imagePosition: data?.image_position,
-  }
-}
-const getSurveyData = async (surveyID: ID): Promise<SurveyTileProps> => {
-  const data = await directus.items(surveyCollectionName).readOne(surveyID)
-  return {
-    answer: {
-      text: data?.answer_text ?? '',
-      percent: data?.answer_percent ?? 0,
-    },
-    question: data?.question ?? '',
   }
 }
 

@@ -7,6 +7,7 @@ import BaseView from './BaseView'
 
 export default function MobilityView() {
   return (
+    // @ts-expect-error Server Component
     <BaseView type="mobility">
       <Columns>
         <BicycleChartTile />

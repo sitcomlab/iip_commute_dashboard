@@ -5,6 +5,7 @@ import BaseView from './BaseView'
 
 export default function BuildingsView() {
   return (
+    // @ts-expect-error Server Component
     <BaseView type="building">
       <Columns>
         <EcoProfitTile />

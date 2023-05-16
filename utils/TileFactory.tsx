@@ -16,6 +16,7 @@ import SuccessStoryTile, {
   SuccessStoryTileProps,
 } from '@/components/Tiles/SuccessStory'
 import SurveyTile, { SurveyTileProps } from '@/components/Tiles/Survey'
+import { getSurveyData } from '@/lib/api/getSurveyData'
 import {
   BuildingsTypes,
   ClimateTypes,
@@ -23,12 +24,14 @@ import {
   MobilityTypes,
   TileTypePrefix,
 } from '@/types/tile'
+import { ID } from '@directus/sdk'
 
 type TileTypeSuffix =
   | ClimateTypes
   | MobilityTypes
   | BuildingsTypes
   | EnergyTypes
+  | ID
 
 type SuccessStoryTileType = 'successStory'
 type SurveyTileType = 'survey'
@@ -44,7 +47,22 @@ interface TileFactoryProps {
   surveyData?: SurveyTileProps
 }
 
-export default function TileFactory({ type, ...props }: TileFactoryProps) {
+export default async function TileFactory({
+  type,
+  ...props
+}: TileFactoryProps) {
+  if (type.startsWith('survey')) {
+    const [_, id] = type.split('survey-')
+    if (props.surveyData) {
+      return <SurveyTile {...props.surveyData} />
+    }
+    const data = await getSurveyData(id)
+    if (!data) {
+      return null
+    }
+    return <SurveyTile {...data} />
+  }
+
   switch (type) {
     // ---- WEATHER ----
     case 'climate-weather':
@@ -88,13 +106,6 @@ export default function TileFactory({ type, ...props }: TileFactoryProps) {
     case 'mobility-modalSplit':
       // @ts-expect-error Server Component
       return <ModalSplitTile />
-
-    // ---- SURVEY ----
-    case 'survey':
-      if (!props.surveyData) {
-        return null
-      }
-      return <SurveyTile {...props.surveyData} />
 
     // ---- SUCCESS-STORY ----
     case 'successStory':
