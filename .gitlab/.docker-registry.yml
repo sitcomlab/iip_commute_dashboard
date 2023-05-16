@@ -1,7 +1,3 @@
-stages:
-  - build
-  - release
-
 build:
   stage: build
   only:
@@ -16,14 +12,14 @@ build:
     - docker build -t $CI_REGISTRY_IMAGE .
     - docker push $CI_REGISTRY_IMAGE
 
-  release_tag:
-    stage: tag
-    image: docker:20.10.16
-    services:
-      - docker:dind
-    script:
-      - echo starting to build $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG for $CI_REGISTRY
-      # see https://gitlab.ai.it.hs-worms.de/help/user/project/deploy_tokens/index.md#gitlab-deploy-token
-      - unset http_proxy; docker login -u $CI_DEPLOY_USER -p $CI_DEPLOY_PASSWORD $CI_REGISTRY
-      - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG .
-      - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+release_tag:
+  stage: tag
+  image: docker:20.10.16
+  services:
+    - docker:dind
+  script:
+    - echo starting to build $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG for $CI_REGISTRY
+    # see https://gitlab.ai.it.hs-worms.de/help/user/project/deploy_tokens/index.md#gitlab-deploy-token
+    - unset http_proxy; docker login -u $CI_DEPLOY_USER -p $CI_DEPLOY_PASSWORD $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
