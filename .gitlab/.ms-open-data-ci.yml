@@ -1,4 +1,4 @@
-building_energy_data:
+ms_open_data:
   image: python:3.11
   stage: build
   only:
