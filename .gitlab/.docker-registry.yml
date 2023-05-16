@@ -16,7 +16,7 @@ build:
     - docker build -t $CI_REGISTRY_IMAGE .
     - docker push $CI_REGISTRY_IMAGE
 
-  release-tag:
+  release_tag:
     stage: tag
     image: docker:20.10.16
     services:
