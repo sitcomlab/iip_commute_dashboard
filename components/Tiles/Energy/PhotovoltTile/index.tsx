@@ -1,29 +1,46 @@
-import ProgressBar from '@/components/Charts/Progress/ProgressBar'
-import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import { PvIcon } from '@/components/Icons'
-import Slider from '@/components/Inputs/Slider'
 import EnergyTile from '../EnergyTile'
 
+// @ts-ignore
+import PVData from '@/assets/data/bestand-pv-anlagen.csv'
+import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
+import { format } from 'date-fns'
+
+interface PVDataType {
+  ZEIT: string
+  AnzahlAnlagen: number
+  AnzahlSolarModule: number
+  Bruttoleistung: number
+  Nettonennleistung: number
+}
+
 export default function PhotovoltTile() {
+  const [data] = PVData as PVDataType[]
+
   return (
     <EnergyTile
-      dataSource={'Stadtwerke Münster'}
+      dataRetrieval={format(new Date(data.ZEIT), 'dd.MM.yyyy')}
+      dataSource={'Marktstammdatenregister'}
       embedId="energy-PV"
       live
       title={
         <>
-          <span className="font-medium">88</span> MW
+          <AnimatedNumber className="font-medium" decimals={1}>
+            {data.Nettonennleistung / 1000}
+          </AnimatedNumber>{' '}
+          MW
         </>
       }
     >
       <div>
         <Title as={'subtitle'}>
-          Haben die Müsteraner:innen bereits mit ca.{' '}
-          <span className="text-energy">5.000 PV-Anlagen</span> in Münster
-          produziert.
+          Haben die Müsteraner:innen bereits mit{' '}
+          <span className="text-energy">
+            <AnimatedNumber>{data.AnzahlAnlagen}</AnimatedNumber> PV-Anlagen
+          </span>{' '}
+          in Münster produziert.
         </Title>
-        <div className="mt-8 flex items-center justify-between gap-8">
+        {/* <div className="mt-8 flex items-center justify-between gap-8">
           <PvIcon className="w-40" />
           <div className="w-full flex-1">
             <div className="flex  items-center justify-between">
@@ -55,7 +72,7 @@ export default function PhotovoltTile() {
               variant={'energy'}
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </EnergyTile>
   )

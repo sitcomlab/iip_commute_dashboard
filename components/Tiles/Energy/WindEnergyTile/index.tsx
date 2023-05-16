@@ -1,29 +1,47 @@
-import ProgressBar from '@/components/Charts/Progress/ProgressBar'
-import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import { WindEnergyIcon } from '@/components/Icons'
-import Slider from '@/components/Inputs/Slider'
 import EnergyTile from '../EnergyTile'
 
+// @ts-ignore
+import WindData from '@/assets/data/bestand-windanlagen.csv'
+import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
+import { format } from 'date-fns'
+
+interface WindDataType {
+  ZEIT: string
+  AnzahlAnlagen: number
+  AnzahlSolarModule: number
+  Bruttoleistung: number
+  Nettonennleistung: number
+}
+
 export default function WindEnergyTile() {
+  const [data] = WindData as WindDataType[]
+
   return (
     <EnergyTile
-      dataSource={'Stadtwerke Münster'}
+      dataRetrieval={format(new Date(data.ZEIT), 'dd.MM.yyyy')}
+      dataSource={'Marktstammdatenregister'}
       embedId="energy-wind"
       live
       title={
         <>
-          <span className="font-medium">50</span> MW
+          <AnimatedNumber className="font-medium">
+            {data.Nettonennleistung / 1000}
+          </AnimatedNumber>{' '}
+          MW
         </>
       }
     >
       <div>
         <Title as={'subtitle'}>
-          Haben die Müsteraner:innen bereits mit ca.{' '}
-          <span className="text-energy">28 Windkraftanlagen</span> in Münster
-          produziert.
+          Haben die Müsteraner:innen bereits mit{' '}
+          <span className="text-energy">
+            <AnimatedNumber>{data.AnzahlAnlagen}</AnimatedNumber>{' '}
+            Windkraftanlagen
+          </span>{' '}
+          in Münster produziert.
         </Title>
-        <div className="mt-8 flex items-center justify-between gap-8">
+        {/* <div className="mt-8 flex items-center justify-between gap-8">
           <WindEnergyIcon className="w-40" />
           <div className="w-full flex-1">
             <div className="flex  items-center justify-between">
@@ -55,7 +73,7 @@ export default function WindEnergyTile() {
               variant={'energy'}
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </EnergyTile>
   )
