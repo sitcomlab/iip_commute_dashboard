@@ -16,12 +16,13 @@ import SuccessStoryTile, {
   SuccessStoryTileProps,
 } from '@/components/Tiles/SuccessStory'
 import SurveyTile, { SurveyTileProps } from '@/components/Tiles/Survey'
-
-type TileTypePrefix = 'climate' | 'mobility' | 'energy' | 'building'
-type ClimateTypes = 'weather' | 'co2' | 'indices' | 'development' | 'garbage'
-type MobilityTypes = 'bicycle' | 'stadtradeln' | 'bus' | 'modalSplit'
-type BuildingsTypes = 'ecoProfit' | 'energyConsumption'
-type EnergyTypes = 'PV' | 'wind' | 'energietraeger'
+import {
+  BuildingsTypes,
+  ClimateTypes,
+  EnergyTypes,
+  MobilityTypes,
+  TileTypePrefix,
+} from '@/types/tile'
 
 type TileTypeSuffix =
   | ClimateTypes
