@@ -61,6 +61,14 @@ The data in the Klimadashboard application is sourced from various providers, in
 
 - **Other data providers:** The Klimadashboard application may also source data from other providers as needed.
 
-## License
+## Contributing
 
-The Klimadashboard web application is released under the MIT License. See [LICENSE](LICENSE) for more information.
+Thank you for considering contributing to this project! We appreciate your help in making it better.
+
+### Development Workflow
+
+1. Create a new branch for your feature or bug fix: `git checkout -b feature/your-feature-name`.
+2. Make your changes and ensure they adhere to the project's coding style.
+3. Commit your changes using [Semantic Commit Messages](https://semantic-release.gitbook.io/semantic-release/#commit-message-format) to ensure clear and consistent commit history.
+4. Push your branch to your forked repository: `git push origin feature/your-feature-name`.
+5. Submit a pull request to the main repository's `main` branch, including a clear description of your changes.
