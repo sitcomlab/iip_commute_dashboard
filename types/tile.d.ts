@@ -11,6 +11,6 @@ export type ClimateTypes =
   | 'indices'
   | 'development'
   | 'garbage'
-export type MobilityTypes = 'bicycle' | 'stadtradeln' | 'bus' | 'modalSplit'
+export type MobilityTypes = 'bicycle' | 'stadtradeln' | 'bus' | 'modalSplit' | 'awm'
 export type BuildingsTypes = 'ecoProfit' | 'energyConsumption'
 export type EnergyTypes = 'PV' | 'wind' | 'energietraeger'

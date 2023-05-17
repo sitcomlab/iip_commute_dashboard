@@ -1,4 +1,5 @@
 import Columns from '../Layout/Columns'
+import AWMTile from '../Tiles/Mobility/AWM'
 import BicycleChartTile from '../Tiles/Mobility/Bicycle/BicycleChartTile'
 import StadtradelnTile from '../Tiles/Mobility/Bicycle/Stadtradeln'
 import BusTile from '../Tiles/Mobility/Bus'
@@ -14,6 +15,7 @@ export default function MobilityView() {
         {/* @ts-expect-error Server Component */}
         <StadtradelnTile />
         <BusTile />
+        <AWMTile />
       </Columns>
       {/* @ts-expect-error Server Component */}
       <ModalSplitTile />
