@@ -4,10 +4,69 @@ import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import { BusCombustion, BusElectro } from '@/components/Icons'
-import { useBusData } from '@/hooks/useBusData'
+import BusData from '@/assets/data/stadtwerke-bus-fahrzeuge.csv'
+import { useWindowSize } from 'react-use'
+import { useEffect, useState } from 'react'
+import MobileSlider from '@/components/Inputs/MobileSlider'
+import Slider from '@/components/Inputs/Slider'
+
+type BusDataType = {
+  ZEIT: string
+  'Fahrzeuge Alternative Antriebe Elektro': number
+  'Fahrzeuge Alternative Antriebe Gesamt': number
+  'Fahrzeuge Alternative Antriebe H2': number
+  'Fahrzeuge Alternative Antriebe Hybrid': number
+  'Fahrzeuge SWMS': number
+  'Fahrzeuge Sub': number
+  'Fahrzeuge awm - Alternativer Antrieb': number
+  'Fahrzeuge awm - Verbrenner': number
+}
 
 export default function BusContent() {
-  const { electroCount, combustionCount } = useBusData()
+  // const { electroCount, combustionCount } = useBusData()
+  const { width } = useWindowSize()
+  const [yearIndex, setYearIndex] = useState(0)
+  const [combustionCount, setCombustionCount] = useState(0)
+  const [electroCount, setElectroCount] = useState(0)
+
+  const data: BusDataType[] = BusData
+  const [reducedData, setReducedData] = useState<BusDataType[]>([])
+
+  useEffect(() => {
+    if (!data) {
+      return
+    }
+    const reducedDataLocal: BusDataType[] = []
+    let currentYear = ''
+    data.forEach(item => {
+      if (currentYear === item.ZEIT.toString().substring(0, 4)) {
+        return
+      }
+      currentYear = item.ZEIT.toString().substring(0, 4)
+      const row: BusDataType | undefined = data.findLast(
+        item => item.ZEIT.toString().substring(0, 4) === currentYear,
+      )
+      if (
+        row &&
+        row['Fahrzeuge SWMS'] &&
+        row['Fahrzeuge Alternative Antriebe Elektro']
+      ) {
+        reducedDataLocal.push({ ...row, ZEIT: currentYear })
+      }
+    })
+    setReducedData(reducedDataLocal)
+  }, [data])
+
+  useEffect(() => {
+    if (!reducedData) {
+      return
+    }
+    const row: BusDataType = reducedData[yearIndex]
+    setElectroCount(row['Fahrzeuge Alternative Antriebe Elektro'])
+    setCombustionCount(
+      row['Fahrzeuge SWMS'] - row['Fahrzeuge Alternative Antriebe Elektro'],
+    )
+  }, [yearIndex, reducedData])
 
   return (
     <div>
@@ -44,6 +103,26 @@ export default function BusContent() {
           <BusElectro className="w-full" />
         </div>
       </div>
+      {width < 1800 && (
+        <MobileSlider
+          defaultValue={[0]}
+          labels={reducedData.map(e => e.ZEIT.toString())}
+          max={reducedData.length - 1}
+          min={0}
+          onValueChange={([index]) => setYearIndex(index)}
+          variant={'mobility'}
+        />
+      )}
+      {width >= 1800 && (
+        <Slider
+          defaultValue={[0]}
+          labels={reducedData.map(e => e.ZEIT.toString())}
+          max={reducedData.length - 1}
+          min={0}
+          onValueChange={([index]) => setYearIndex(index)}
+          variant={'mobility'}
+        />
+      )}
       <Spacer />
       <Title as="h5">
         Busfahren ist Klimaschutz. Damit die Umweltbilanz des Nahverkehrs noch

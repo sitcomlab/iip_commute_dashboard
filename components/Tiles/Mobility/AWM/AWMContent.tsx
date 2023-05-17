@@ -3,7 +3,7 @@
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import { BusCombustion, BusElectro } from '@/components/Icons'
+import { MuellautoAbgas, MuellautoStrom } from '@/components/Icons'
 import MobileSlider from '@/components/Inputs/MobileSlider'
 import Slider from '@/components/Inputs/Slider'
 import { useWindowSize } from 'react-use'
@@ -66,10 +66,10 @@ export default function AWMContent() {
             }%`,
           }}
         >
-          <BusCombustion className="w-full" />
+          <MuellautoAbgas className="w-full" />
         </div>
         <div className="flex-1">
-          <BusElectro className="w-full" />
+          <MuellautoStrom className="w-full" />
         </div>
       </div>
       {width < 1800 && (
