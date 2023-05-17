@@ -2,7 +2,6 @@
 
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '@/tailwind.config.js'
-import useGarbageData from '@/hooks/useGarbageData'
 import { SeriesOption } from 'echarts'
 import Title from '@/components/Elements/Title'
 import { useState } from 'react'
@@ -13,7 +12,17 @@ import { useWindowSize } from 'react-use'
 import Slider from '@/components/Inputs/Slider'
 import { ReactECharts } from '@/components/Charts/ReactECharts'
 
+// @ts-ignore
+import GarbageData from '@/assets/data/awm-abfallaufkommen-pro-kopf.csv'
+
 const { theme } = resolveConfig(tailwindConfig)
+
+interface GarbageDataProps {
+  ZEIT: number
+  'Abfallaufkommen pro Kopf in kg - Gesamt': number
+  'Abfallaufkommen pro Kopf in kg - Restmüll': number
+  'Abfallaufkommen pro Kopf in kg - Wertstoffe': number
+}
 
 function getSeries(name: string, data: any[], color: string): SeriesOption {
   return {
@@ -37,23 +46,15 @@ function getSeries(name: string, data: any[], color: string): SeriesOption {
   }
 }
 
+const data = GarbageData as GarbageDataProps[]
+const years = data.map(e => e.ZEIT.toString())
+
 /**
  *
  * @returns The Garbage Chart
  */
 export default function GarbageChart() {
-  const data = useGarbageData()
-
   const { width } = useWindowSize()
-
-  const totalData = data.filter(
-    e => e.KATEGORIE === 'Abfallaufkommen in kg pro Einwohner/Jahr Gesamt',
-  )
-  const wertstoffeData = data.filter(
-    e => e.KATEGORIE === 'Wertstoffe in kg pro Einwohner/Jahr',
-  )
-
-  const years = wertstoffeData.map(e => e.JAHR.toString())
 
   const [yearIndex, setYearIndex] = useState(0)
 
@@ -72,21 +73,29 @@ export default function GarbageChart() {
               series: [
                 getSeries(
                   'Gesamt',
-                  totalData.map(e => e.WERT),
+                  data.map(e => e['Abfallaufkommen pro Kopf in kg - Gesamt']),
                   // @ts-ignore
                   theme?.colors?.mobility.DEFAULT || '#34c17b',
                 ),
                 getSeries(
                   'Wertstoffe',
-                  wertstoffeData.map(e => e.WERT),
+                  data.map(
+                    e => e['Abfallaufkommen pro Kopf in kg - Wertstoffe'],
+                  ),
                   // @ts-ignore
                   theme?.colors?.energy.DEFAULT || '#f28443',
+                ),
+                getSeries(
+                  'Restmüll',
+                  data.map(e => e['Abfallaufkommen pro Kopf in kg - Restmüll']),
+                  // @ts-ignore
+                  theme?.colors?.climate.DEFAULT || '#14b3d9',
                 ),
               ],
               xAxis: [
                 {
                   type: 'category',
-                  data: wertstoffeData.map(e => e.JAHR),
+                  data: years,
                   show: false,
                   axisLabel: {
                     fontSize: 20,
@@ -112,7 +121,7 @@ export default function GarbageChart() {
           />
         </div>
         <div className="mt-4 flex w-full gap-4 py-4 md:gap-12 md:pl-4 md:pr-16">
-          <Title as={'h5'} variant={'primary'}>
+          <Title as={'h5'} className="hidden 2xl:block" variant={'primary'}>
             Jahr
           </Title>
           <div className="flex-1">
@@ -143,7 +152,7 @@ export default function GarbageChart() {
           </div>
         </div>
       </div>
-      <div className="flex h-fit flex-row justify-evenly gap-4 overflow-hidden pb-8 pt-2 md:gap-0 2xl:h-full 2xl:flex-col 2xl:pb-0 2xl:pt-0">
+      <div className="flex h-fit flex-row flex-wrap justify-evenly gap-4 overflow-hidden pb-8 pt-2 md:gap-0 2xl:h-full 2xl:flex-col 2xl:pb-0 2xl:pt-0">
         <div className="flex h-fit items-center gap-2 md:w-48">
           <TrashGesamt className="h-10 md:h-14" />
           <div>
@@ -152,24 +161,41 @@ export default function GarbageChart() {
             </Title>
             <Title as={'h3'} variant={'primary'}>
               <AnimatedNumber>
-                {totalData.find(e => e.JAHR.toString() === years[yearIndex])
-                  ?.WERT ?? 0}
+                {data.find(e => e.ZEIT.toString() === years[yearIndex])?.[
+                  'Abfallaufkommen pro Kopf in kg - Gesamt'
+                ] ?? 0}
               </AnimatedNumber>
               kg
             </Title>
           </div>
         </div>
         <div className="flex h-fit items-center gap-2 md:w-48">
-          <TrashWertstoffe className="h-10 text-energy md:h-14" />
+          <TrashWertstoffe className="h-10 stroke-energy md:h-14" />
           <div>
             <Title as={'h5'} variant={'primary'}>
               Wertstoffe
             </Title>
             <Title as={'h3'} variant={'primary'}>
               <AnimatedNumber>
-                {wertstoffeData.find(
-                  e => e.JAHR.toString() === years[yearIndex],
-                )?.WERT ?? 0}
+                {data.find(e => e.ZEIT.toString() === years[yearIndex])?.[
+                  'Abfallaufkommen pro Kopf in kg - Wertstoffe'
+                ] ?? 0}
+              </AnimatedNumber>
+              kg
+            </Title>
+          </div>
+        </div>
+        <div className="flex h-fit items-center gap-2 md:w-48">
+          <TrashWertstoffe className="h-10 stroke-climate md:h-14" />
+          <div>
+            <Title as={'h5'} variant={'primary'}>
+              Restmüll
+            </Title>
+            <Title as={'h3'} variant={'primary'}>
+              <AnimatedNumber>
+                {data.find(e => e.ZEIT.toString() === years[yearIndex])?.[
+                  'Abfallaufkommen pro Kopf in kg - Restmüll'
+                ] ?? 0}
               </AnimatedNumber>
               kg
             </Title>
