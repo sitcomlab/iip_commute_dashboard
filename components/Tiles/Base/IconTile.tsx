@@ -79,7 +79,7 @@ export default async function IconTile({
           />
         </div>
         {title && (
-          <div className="flex items-center justify-between">
+          <div className="relative flex items-center justify-between">
             <div className="flex flex-wrap items-center justify-start gap-x-4">
               <Title
                 as={'h1'}
@@ -101,7 +101,7 @@ export default async function IconTile({
 
             <Icon
               className={cx(
-                'hidden h-[29px] w-auto flex-shrink-0 opacity-40 md:block md:h-[50px]',
+                'absolute right-0 top-0 hidden h-[29px] w-auto flex-shrink-0 opacity-40 md:block md:h-[50px]',
                 iconTileTitleStyle({ variant }),
               )}
             />
