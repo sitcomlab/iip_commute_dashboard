@@ -21,7 +21,6 @@ export default function LanternsTile() {
       dataRetrieval={format(new Date('2023-05-22T00:00:00.000Z'), 'dd.MM.yyyy')}
       dataSource={'Stadt Münster - Amt für Immobilienmanagement'}
       embedId="energy-lanterns"
-      live
       title={
         <>
           <AnimatedNumber className="font-medium">{5200}</AnimatedNumber>{' '}
