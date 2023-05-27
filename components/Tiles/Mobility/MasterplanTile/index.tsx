@@ -1,22 +1,11 @@
 import Title from '@/components/Elements/Title'
-
 // @ts-ignore
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { format } from 'date-fns'
 import MobilityTile from '../MobilityTile'
 import { Masterplan } from '@/components/Icons'
 
-// interface PVDataType {
-//   ZEIT: string
-//   AnzahlAnlagen: number
-//   AnzahlSolarModule: number
-//   Bruttoleistung: number
-//   Nettonennleistung: number
-// }
-
 export default function MasterplanTile() {
-  // const [data] = PVData as PVDataType[]
-
   return (
     <MobilityTile
       dataRetrieval={format(new Date('2023-05-22T00:00:00.000Z'), 'dd.MM.yyyy')}
@@ -30,8 +19,8 @@ export default function MasterplanTile() {
             Masterplan Mobilität Münster 2035+ wird aktuell entwickelt.
           </span>{' '}
         </Title>
-        <div className="flex flex-row gap-6">
-          <span>
+        <div className="flex flex-row justify-center gap-6">
+          <span className="flex flex-col justify-center">
             <Masterplan className="h-20 text-primary md:h-44" />
           </span>
           <Title as={'subtitle'}>
