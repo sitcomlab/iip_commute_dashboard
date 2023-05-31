@@ -4,7 +4,7 @@ import Title from '@/components/Elements/Title'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { format } from 'date-fns'
 import DataTile from '../DataTile'
-import { Masterplan } from '@/components/Icons'
+import { Daten } from '@/components/Icons'
 
 export default function DataCountTile() {
   return (
@@ -22,7 +22,7 @@ export default function DataCountTile() {
       <div>
         <div className="flex flex-row justify-center gap-6">
           <span className="flex flex-col justify-center">
-            <Masterplan className="h-20 text-primary md:h-44" />
+            <Daten className="h-20 text-primary md:h-44" />
           </span>
           <Title as={'subtitle'}>
             Können Sie momentan zu den verschiedenen Kategorien auf unserem
