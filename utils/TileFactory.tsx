@@ -8,6 +8,7 @@ import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
 import EnergietraegerTile from '@/components/Tiles/Energy/EnergietraegerTile'
 import PhotovoltTile from '@/components/Tiles/Energy/PhotovoltTile'
 import WindEnergyTile from '@/components/Tiles/Energy/WindEnergyTile'
+import AWMTile from '@/components/Tiles/Mobility/AWM'
 import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
 import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
 import BusTile from '@/components/Tiles/Mobility/Bus'
@@ -106,6 +107,8 @@ export default async function TileFactory({
     case 'mobility-modalSplit':
       // @ts-expect-error Server Component
       return <ModalSplitTile />
+    case 'mobility-awm':
+      return <AWMTile />
 
     // ---- SUCCESS-STORY ----
     case 'successStory':
