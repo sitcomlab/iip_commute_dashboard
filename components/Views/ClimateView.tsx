@@ -4,6 +4,7 @@ import CO2EmissionsTile from '../Tiles/Climate/CO2EmissionsTile'
 import ClimateDevelopmentTile from '../Tiles/Climate/Devlopment'
 import GarbageTile from '../Tiles/Climate/Garbage'
 import WeatherTile from '../Tiles/Climate/WeatherTile'
+import DataCountTile from '../Tiles/Data/DataCountTile'
 import BaseView from './BaseView'
 
 export default function ClimateView() {
@@ -20,6 +21,7 @@ export default function ClimateView() {
       <ClimateIndicesTile />
       {/* @ts-expect-error Server Component */}
       <GarbageTile />
+      <DataCountTile />
     </BaseView>
   )
 }

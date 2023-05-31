@@ -24,6 +24,7 @@ const baseTileStyle = cva(
         climate: 'bg-climate-light',
         building: 'bg-buildings-light',
         energy: 'bg-energy-light',
+        data: 'bg-secondary-light',
       },
     },
     defaultVariants: {
