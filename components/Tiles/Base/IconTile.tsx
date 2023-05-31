@@ -17,6 +17,7 @@ const iconTileTitleStyle = cva('', {
       climate: 'text-climate',
       building: 'text-buildings',
       energy: 'text-energy',
+      data: 'text-secondary',
     },
   },
   defaultVariants: {

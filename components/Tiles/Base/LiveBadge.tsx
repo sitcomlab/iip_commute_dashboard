@@ -12,6 +12,7 @@ const liveBadgeStyle = cva(
         climate: 'bg-climate',
         building: 'bg-buildings',
         energy: 'bg-energy',
+        data: 'bg-secondary',
       },
     },
     defaultVariants: {
