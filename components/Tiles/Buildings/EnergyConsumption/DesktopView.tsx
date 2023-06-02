@@ -110,21 +110,42 @@ export default function DesktopView({ mode, yearIndex }: DesktopViewProps) {
           </div>
         ))}
       </div>
-      <LabelSeperator>Jahresverbrauch</LabelSeperator>
+      <LabelSeperator>
+        {years[yearIndex] === new Date().getFullYear()
+          ? 'Jahresverbrauch bisher'
+          : 'Jahresverbrauch'}
+      </LabelSeperator>
       <Spacer size={'sm'}></Spacer>
       <div className="flex h-full w-full justify-between gap-8">
-        {Object.keys(buildings).map(building => (
-          <div className="flex w-full justify-center gap-1 p-2" key={building}>
-            <Title as="h3" variant="building">
-              <AnimatedNumber decimals={0}>
-                {getYearSum(mode, building as keyof Building, years[yearIndex])}
-              </AnimatedNumber>
-            </Title>
-            <Title as="h3" font="normal" variant="building">
-              kWh
-            </Title>
-          </div>
-        ))}
+        {Object.keys(buildings).map(building => {
+          const sum = getYearSum(
+            mode,
+            building as keyof Building,
+            years[yearIndex],
+          )
+
+          return (
+            <div
+              className="flex w-full justify-center gap-1 p-2"
+              key={building}
+            >
+              {sum === 0 ? (
+                <Title as="h4" variant="building">
+                  fehlende Daten
+                </Title>
+              ) : (
+                <>
+                  <Title as="h4" variant="building">
+                    <AnimatedNumber decimals={0}>{sum}</AnimatedNumber>
+                  </Title>
+                  <Title as="h4" font="normal" variant="building">
+                    kWh
+                  </Title>
+                </>
+              )}
+            </div>
+          )
+        })}
       </div>
     </>
   )
