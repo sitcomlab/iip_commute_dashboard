@@ -44,9 +44,9 @@ export default function BusContent() {
         return
       }
       currentYear = item.ZEIT.toString().substring(0, 4)
-      const row: BusDataType | undefined = data.findLast(
-        item => item.ZEIT.toString().substring(0, 4) === currentYear,
-      )
+      const row: BusDataType | undefined = data
+        .reverse()
+        .find(item => item.ZEIT.toString().substring(0, 4) === currentYear)
       if (
         row &&
         row['Fahrzeuge SWMS'] &&
