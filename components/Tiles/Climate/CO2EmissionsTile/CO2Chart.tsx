@@ -23,19 +23,19 @@ export default function CO2Chart({ showFuture = false, mode }: CO2ChartProps) {
   const { width } = useWindowSize()
 
   /**
-   * Adds the future data to the data
-   * @param baseData The base data
-   * @returns The data with the future data
+   * Prepares the data for the chart
+   * @param key The key to prepare
+   * @returns The prepared data
    */
-  const withFuture = (baseData: number[][]) => {
-    const { m, b } = linearRegression(baseData)
-    const x = parse('01-01-2030', 'dd-MM-yyyy', new Date()).getTime()
-
-    const y = showFuture ? m * x + b : 0
-    return [
-      ...baseData,
-      [parse('01-01-2030', 'dd-MM-yyyy', new Date()).getTime(), y],
-    ]
+  const prepareData = (key: keyof (typeof data)[0]) => {
+    const baseData = data.map(e => [
+      parse(`01-01-${e.Jahr}`, 'dd-MM-yyyy', new Date()).getTime(),
+      e[key],
+    ])
+    if (data[data.length - 1].Jahr >= 2030) {
+      baseData.pop()
+    }
+    return baseData
   }
 
   /**
@@ -43,20 +43,29 @@ export default function CO2Chart({ showFuture = false, mode }: CO2ChartProps) {
    * @param key The key to prepare
    * @returns The prepared data
    */
-  const prepareData = (key: keyof (typeof data)[0]) => {
-    if (mode === 'endenergie') {
-      return data.map(e => [
-        parse(`01-01-${e.Jahr}`, 'dd-MM-yyyy', new Date()).getTime(),
-        e[key],
-      ])
+  const prepareFutureData = (key: keyof (typeof data)[0]) => {
+    const baseData = data.map(e => [
+      parse(`01-01-${e.Jahr}`, 'dd-MM-yyyy', new Date()).getTime(),
+      e[key],
+    ])
+    let lastYear = baseData[baseData.length - 1]
+
+    if (data[data.length - 1].Jahr >= 2030) {
+      if (showFuture) {
+        return [baseData[baseData.length - 2], baseData[baseData.length - 1]]
+      }
+      lastYear = baseData[baseData.length - 2]
     }
 
-    return withFuture(
-      data.map(e => [
-        parse(`01-01-${e.Jahr}`, 'dd-MM-yyyy', new Date()).getTime(),
-        e[key],
-      ]),
-    )
+    const { m, b } = linearRegression(baseData)
+    const x = parse('01-01-2030', 'dd-MM-yyyy', new Date()).getTime()
+
+    const y = showFuture ? 0 : m * x + b
+
+    return [
+      lastYear,
+      [parse('01-01-2030', 'dd-MM-yyyy', new Date()).getTime(), y],
+    ]
   }
 
   const series: SeriesOption[] = [
@@ -65,8 +74,7 @@ export default function CO2Chart({ showFuture = false, mode }: CO2ChartProps) {
       name: 'Verkehr',
       data: prepareData('Verkehr'),
       showSymbol: false,
-      // @ts-ignore
-      color: theme?.colors?.mobility.DEFAULT || '#34c17b',
+      color: '#34c17b',
       lineStyle: {
         width: 3,
       },
@@ -76,8 +84,7 @@ export default function CO2Chart({ showFuture = false, mode }: CO2ChartProps) {
       name: 'Industrie',
       data: prepareData('Industrie'),
       showSymbol: false,
-      // @ts-ignore
-      color: theme?.colors?.primary.DEFAULT || '#005b79',
+      color: '#2ABADC',
       lineStyle: {
         width: 3,
       },
@@ -87,8 +94,7 @@ export default function CO2Chart({ showFuture = false, mode }: CO2ChartProps) {
       name: 'Gewerbe und Sonstiges',
       data: prepareData('Gewerbe + Sonstiges'),
       showSymbol: false,
-      // @ts-ignore
-      color: '#f3e500',
+      color: '#F28647',
       lineStyle: {
         width: 3,
       },
@@ -98,12 +104,80 @@ export default function CO2Chart({ showFuture = false, mode }: CO2ChartProps) {
       name: 'Private Haushalte',
       data: prepareData('Private Haushalte'),
       showSymbol: false,
-      // @ts-ignore
-      color: theme?.colors?.energy.DEFAULT || '#f28443',
+      color: '#6060D6',
       lineStyle: {
         width: 3,
       },
     },
+    // Gesamter Verbrauch/Ausstoß
+    // {
+    //   type: 'line',
+    //   name: 'Gesamt',
+    //   data: prepareData('Gesamt'),
+    //   showSymbol: false,
+    //   color: '#f3e500',
+    //   lineStyle: {
+    //     width: 3,
+    //     type: 'solid',
+    //   },
+    // },
+  ]
+
+  const seriesFuture: SeriesOption[] = [
+    {
+      type: 'line',
+      data: prepareFutureData('Verkehr'),
+      showSymbol: false,
+      color: '#34c17b',
+      lineStyle: {
+        width: 3,
+        type: 'dashed',
+      },
+    },
+    {
+      type: 'line',
+      data: prepareFutureData('Industrie'),
+      showSymbol: false,
+      color: '#2ABADC',
+      lineStyle: {
+        width: 3,
+        type: 'dashed',
+      },
+    },
+    {
+      type: 'line',
+      name: 'Gewerbe und Sonstiges (Future)',
+      data: prepareFutureData('Gewerbe + Sonstiges'),
+      showSymbol: false,
+      color: '#F28647',
+      lineStyle: {
+        width: 3,
+        type: 'dashed',
+      },
+    },
+    {
+      type: 'line',
+      name: 'Private Haushalte (Future)',
+      data: prepareFutureData('Private Haushalte'),
+      showSymbol: false,
+      color: '#6060D6',
+      lineStyle: {
+        width: 3,
+        type: 'dashed',
+      },
+    },
+    // Gesamter Verbrauch/Ausstoß
+    // {
+    //   type: 'line',
+    //   name: 'Gesamt (Future)',
+    //   data: prepareFutureData('Gesamt'),
+    //   showSymbol: false,
+    //   color: '#f3e500',
+    //   lineStyle: {
+    //     width: 3,
+    //     type: 'dashed',
+    //   },
+    // },
   ]
 
   return (
@@ -138,7 +212,7 @@ export default function CO2Chart({ showFuture = false, mode }: CO2ChartProps) {
                 },
               },
             },
-            series: series,
+            series: [...series, ...seriesFuture],
             legend: {
               show: false,
             },
@@ -157,7 +231,7 @@ export default function CO2Chart({ showFuture = false, mode }: CO2ChartProps) {
               className="h-1 w-8 rounded-full"
               style={{ backgroundColor: s.color as string }}
             ></div>
-            <Title as="h5" variant={'primary'}>
+            <Title as="h5" className="font-normal" variant={'primary'}>
               {s.name}
             </Title>
           </div>
