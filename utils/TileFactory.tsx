@@ -14,6 +14,7 @@ import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTi
 import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
 import BusTile from '@/components/Tiles/Mobility/Bus'
 import ModalSplitTile from '@/components/Tiles/Mobility/ModalSplit'
+import TrafficloadTile from '@/components/Tiles/Mobility/TrafficloadTile'
 import SuccessStoryTile, {
   SuccessStoryTileProps,
 } from '@/components/Tiles/SuccessStory'
@@ -111,6 +112,9 @@ export default async function TileFactory({
     case 'mobility-modalSplit':
       // @ts-expect-error Server Component
       return <ModalSplitTile />
+    case 'mobility-trafficload':
+      // @ts-expect-error Server Component
+      return <TrafficloadTile />
     case 'mobility-awm':
       // @ts-expect-error Server Component
       return <AWMTile />
