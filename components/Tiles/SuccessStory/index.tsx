@@ -5,12 +5,15 @@ import Image from 'next/image'
 
 import { BaseTile } from '../Base/BaseTile'
 import { directusImage } from '@/lib/directus'
+import { ID } from '@directus/sdk'
 
 export type SuccessStoryTileProps = {
   text: string
   link: string
   image?: string
   imagePosition?: 'left' | 'right'
+  moreInfo?: string
+  id: string | ID
 }
 
 /**
@@ -23,6 +26,8 @@ export default function SuccessStoryTile({
   link,
   image,
   imagePosition = 'left',
+  moreInfo,
+  id,
 }: SuccessStoryTileProps) {
   const Content = (
     <>
@@ -59,14 +64,24 @@ export default function SuccessStoryTile({
 
   if (imagePosition === 'right') {
     return (
-      <BaseTile endImage={StoryImage} variant="successStory">
+      <BaseTile
+        embedId={`successStory-${id}`}
+        endImage={StoryImage}
+        moreInfo={moreInfo}
+        variant="successStory"
+      >
         {Content}
       </BaseTile>
     )
   }
 
   return (
-    <BaseTile startImage={StoryImage} variant="successStory">
+    <BaseTile
+      embedId={`successStory-${id}`}
+      moreInfo={moreInfo}
+      startImage={StoryImage}
+      variant="successStory"
+    >
       {Content}
     </BaseTile>
   )

@@ -90,6 +90,8 @@ const getSuccessStoryData = async (
     text: data?.text ?? '',
     image: data?.image,
     imagePosition: data?.image_position,
+    moreInfo: data?.details,
+    id: data?.id ?? '',
   }
 }
 
