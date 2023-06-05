@@ -45,6 +45,8 @@ export type SuccessStory = {
   link: string
   image?: string
   image_position: 'left' | 'right'
+  category: string
+  details: string
 }
 
 export type Survey = {
