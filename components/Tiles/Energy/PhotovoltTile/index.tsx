@@ -1,10 +1,10 @@
+import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import EnergyTile from '../EnergyTile'
 
 // @ts-ignore
 import PVData from '@/assets/data/bestand-pv-anlagen.csv'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
-import { format } from 'date-fns'
 import { PvIcon } from '@/components/Icons'
 import ProgressBar from '@/components/Charts/Progress/ProgressBar'
 
@@ -21,13 +21,14 @@ export default function PhotovoltTile() {
 
   return (
     <EnergyTile
-      dataRetrieval={format(new Date(data.ZEIT), 'dd.MM.yyyy')}
+      dataRetrieval="05.06.2023"
       dataSource={'Marktstammdatenregister'}
       embedId="energy-PV"
       live
       title={
         <>
-          <AnimatedNumber>{data.Bruttoleistung / 1000}</AnimatedNumber> MW
+          <AnimatedNumber>{data.Bruttoleistung / 10000000000}</AnimatedNumber>{' '}
+          MW
         </>
       }
     >
@@ -48,7 +49,7 @@ export default function PhotovoltTile() {
                   Bereits installiert
                 </Title>
                 <Title as="h4" variant={'energy'}>
-                  {(data.Bruttoleistung / 2500).toFixed(0)}%
+                  {(data.Bruttoleistung / 2500000000000).toFixed(0)}%
                 </Title>
               </div>
               <div className="flex flex-col items-end">
@@ -60,12 +61,12 @@ export default function PhotovoltTile() {
                 </Title>
               </div>
             </div>
+            <Spacer size={'sm'} />
             <ProgressBar
-              progress={parseInt((data.Bruttoleistung / 2500).toFixed(0))}
+              progress={data.Bruttoleistung / 2500000000000}
               variant="energy"
             />
             {/*
-            <Spacer size={'sm'} />
             <Spacer size={'sm'} />
             <Slider
               defaultValue={[0]}

@@ -31,7 +31,7 @@ export default function ClimateDevelopmentTile() {
       dataSource="Deutscher Wetterdienst"
       embedId="climate-development"
       live
-      subtitle={'Abweichungen der Temperaturen von den langjährigen Monatsmitteln (der Jahre 1853 bis 1899)'}
+      subtitle={'Temperaturabweichungen von den langjährigen Monatsmitteln vor 1900'}
       title={'Klima'}
     >
       <div className="h-[316px] w-full md:h-[528px]">
