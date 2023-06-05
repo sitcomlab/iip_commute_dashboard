@@ -22,10 +22,7 @@ export default function PVAnlagenTile() {
       live
       title={
         <>
-          <AnimatedNumber className="font-medium">
-            {data.AnzahlAnlagen}
-          </AnimatedNumber>{' '}
-          PV-Anlagen
+          <AnimatedNumber>{data.AnzahlAnlagen}</AnimatedNumber> PV-Anlagen
         </>
       }
     >

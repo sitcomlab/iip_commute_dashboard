@@ -4,12 +4,25 @@ import { Directus, ID } from '@directus/sdk'
 const directusUrl =
   process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055'
 
+export const mainPageName = 'MainPage'
 export const collectionsName = 'collections'
 export const tileCollectionName = 'tiles'
 export const surveyCollectionName = 'survey'
 export const successStoriesCollectionName = 'successStory'
 
 export type DirectusStatus = 'draft' | 'archived' | 'published'
+
+export type MainPage = {
+  id: ID
+  status: DirectusStatus
+  tiles: {
+    id: ID
+    collections_id: ID
+    item: ID
+    collection: typeof tileCollectionName | typeof surveyCollectionName
+    sort: number
+  }[]
+}
 
 export type Collection = {
   id: ID
@@ -64,6 +77,7 @@ export type Survey = {
 // Map your collections to its respective types. The SDK will
 // infer its types based on usage later.
 type DirectusCollection = {
+  mainPage: MainPage
   collections: Collection
   tiles: Tile
   successStory: SuccessStory
