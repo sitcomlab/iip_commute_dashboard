@@ -71,7 +71,7 @@ export default async function IconTile({
       variant={variant}
     >
       <div className="px-2.5">
-        <div className="flex w-full justify-end md:hidden">
+        <div className="flex w-full justify-end 2xl:hidden">
           <Icon
             className={cx(
               'h-[29px] w-auto flex-shrink-0 opacity-40  md:h-[50px]',
@@ -81,7 +81,7 @@ export default async function IconTile({
         </div>
         {title && (
           <div className="relative flex items-center justify-between">
-            <div className="flex flex-wrap items-center justify-start gap-x-4">
+            <div className="flex flex-wrap items-center justify-start gap-x-4 lg:max-w-[87%]">
               <Title
                 as={'h1'}
                 className={cx('min-w-fit', iconTileTitleStyle({ variant }))}
@@ -102,7 +102,7 @@ export default async function IconTile({
 
             <Icon
               className={cx(
-                'absolute right-0 top-0 hidden h-[29px] w-auto flex-shrink-0 opacity-40 md:block md:h-[50px]',
+                'absolute right-0 top-0 hidden h-[29px] w-auto flex-shrink-0 opacity-40 md:h-[50px] 2xl:block',
                 iconTileTitleStyle({ variant }),
               )}
             />
@@ -113,7 +113,7 @@ export default async function IconTile({
       <>
         {!title && !subtitle && (
           <div className={cx('relative', iconTileTitleStyle({ variant }))}>
-            <Icon className=" absolute right-0 top-0 h-[50px] w-auto opacity-40" />
+            <Icon className=" absolute right-0 top-0 hidden h-[50px] w-auto opacity-40 2xl:block" />
           </div>
         )}
       </>
