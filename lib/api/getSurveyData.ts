@@ -6,6 +6,7 @@ export const getSurveyData = async (surveyID: ID) => {
   try {
     const data = await directus.items(surveyCollectionName).readOne(surveyID)
     const props: SurveyTileProps = {
+      title: data?.title ?? '',
       answer: {
         text: data?.answer_text ?? '',
         percent: data?.answer_percent ?? 0,

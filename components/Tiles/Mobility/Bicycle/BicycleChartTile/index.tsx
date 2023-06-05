@@ -2,8 +2,12 @@ import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
 import BicycleChartContent from './BicycleChartContent'
+import getTileData from '@/lib/api/getTileData'
 
-export default function BicycleChartTile() {
+export default async function BicycleChartTile() {
+  const data = await getTileData('mobility-bicycle')
+  const infoText = data?.info ?? ''
+
   return (
     <MobilityTile
       dataSource="Stadt Münster – Amt für Mobilität und Tiefbau"
@@ -15,12 +19,7 @@ export default function BicycleChartTile() {
       <>
         <BicycleChartContent />
         <Spacer size={'lg'} />
-        <Title as="h5">
-          An verschiedenen Zählstellen in der Stadt wird die Anzahl an
-          vorbeiradelnden Radfahrer*innen gemessen. Seit Jahren werden es stetig
-          mehr. Diese Zahlen sind wichtig für die Stadtplanung und weisen u.a.
-          auf einen Ausbaubedarf bei Radwegen und Velorouten hin.
-        </Title>
+        <Title as="h5">{infoText}</Title>
       </>
     </MobilityTile>
   )

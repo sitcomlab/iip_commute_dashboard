@@ -21,6 +21,7 @@ export default function ClimateView() {
       <ClimateIndicesTile />
       {/* @ts-expect-error Server Component */}
       <GarbageTile />
+      {/* @ts-expect-error Server Component */}
       <DataCountTile />
     </BaseView>
   )

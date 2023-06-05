@@ -13,10 +13,12 @@ export default function MobilityView() {
     // @ts-expect-error Server Component
     <BaseView type="mobility">
       <Columns>
+        {/* @ts-expect-error Server Component */}
         <BicycleChartTile />
         {/* @ts-expect-error Server Component */}
         <StadtradelnTile />
         <BusTile />
+        {/* @ts-expect-error Server Component */}
         <AWMTile />
         <MasterplanTile />
         <PassengerTile />
