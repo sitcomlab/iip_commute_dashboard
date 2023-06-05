@@ -57,8 +57,8 @@ const indices: Record<
   {
     title: string
     icon:
-      | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
-      | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
+    | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
+    | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
     seriesOption: LineSeriesOption
   }
 > = {
@@ -93,7 +93,7 @@ const indices: Record<
     },
   },
   frosttage: {
-    title: 'Frosttage (mind. < 0°C)',
+    title: 'Frosttage (Min. < 0°C)',
     seriesOption: {
       name: 'Frosttage',
       data: getSeries('frosttage'),
@@ -103,7 +103,7 @@ const indices: Record<
     icon: Frost,
   },
   eistage: {
-    title: 'Eistage (max. < 0°C)',
+    title: 'Eistage (Max. < 0°C)',
     icon: Eis,
     seriesOption: {
       name: 'Eistage',

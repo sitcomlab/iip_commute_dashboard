@@ -42,7 +42,7 @@ export default function SurveyTile({ question, answer, id }: SurveyTileProps) {
       <div className="text-white">
         <Title as="h5" font={'normal'} variant={'inverse'}>
           <span className="font-semibold">Befragungsergebnisse:</span>{' '}
-          Bürgerumfrage 2022
+          Bürger*innenumfrage
         </Title>
         <Spacer />
         <div className="relative h-fit">

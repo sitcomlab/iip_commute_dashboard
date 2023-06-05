@@ -6,11 +6,11 @@ import BicycleChartContent from './BicycleChartContent'
 export default function BicycleChartTile() {
   return (
     <MobilityTile
-      dataSource="Stadt Münster - Amt für Mobilität und Tiefbau"
+      dataSource="Stadt Münster – Amt für Mobilität und Tiefbau"
       embedId="mobility-bicycle"
       live
       subtitle="im Stadtgebiet"
-      title="Radler:innen"
+      title="Radler*innen"
     >
       <>
         <BicycleChartContent />
