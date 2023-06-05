@@ -3,7 +3,7 @@
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import { BusCombustion, BusElectro } from '@/components/Icons'
+import { EBus, EBusBrennstoff } from '@/components/Icons'
 // @ts-ignore
 import BusData from '@/assets/data/stadtwerke-bus-fahrzeuge.csv'
 import { useWindowSize } from 'react-use'
@@ -92,7 +92,7 @@ export default function BusContent() {
           </AnimatedNumber>
         </div>
       </div>
-      <div className="flex h-[280px] w-full items-end rounded bg-white p-4">
+      <div className="flex h-[280px] w-full items-end gap-8 rounded bg-white p-4">
         <div
           className="flex-none transition-all"
           style={{
@@ -101,10 +101,10 @@ export default function BusContent() {
             }%`,
           }}
         >
-          <BusCombustion className="w-full" />
+          <EBusBrennstoff className="w-full" />
         </div>
         <div className="flex-1">
-          <BusElectro className="w-full" />
+          <EBus className="w-full" />
         </div>
       </div>
       {width < 1800 && (
