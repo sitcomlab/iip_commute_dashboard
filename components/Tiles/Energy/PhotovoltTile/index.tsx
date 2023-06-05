@@ -26,10 +26,7 @@ export default function PhotovoltTile() {
       live
       title={
         <>
-          <AnimatedNumber className="font-medium">
-            {data.Nettonennleistung / 1000}
-          </AnimatedNumber>{' '}
-          MW
+          <AnimatedNumber>{data.Nettonennleistung / 1000}</AnimatedNumber> MW
         </>
       }
     >

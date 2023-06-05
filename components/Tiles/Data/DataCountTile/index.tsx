@@ -2,23 +2,22 @@ import Title from '@/components/Elements/Title'
 
 // @ts-ignore
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
-import DataTile from '../DataTile'
 import { Daten } from '@/components/Icons'
 import getTileData from '@/lib/api/getTileData'
+import ClimateTile from '../../Climate/ClimateTile'
 
 export default async function DataCountTile() {
   const data = await getTileData('climate-data')
   const infoText = data?.info ?? ''
 
   return (
-    <DataTile
+    <ClimateTile
       dataRetrieval="05.06.2023"
-      dataSource="Stadt Münster &ndash; Stabsstelle Smart City"
+      dataSource={'Stadt Münster &ndash; Stabsstelle Smart City'}
       embedId={'climate-data'}
       title={
         <>
-          <AnimatedNumber className="font-medium">{12}</AnimatedNumber>{' '}
-          Datenkacheln
+          <AnimatedNumber>{12}</AnimatedNumber> Datenkacheln
         </>
       }
     >
@@ -30,6 +29,6 @@ export default async function DataCountTile() {
           <Title as={'subtitle'}>{infoText}</Title>
         </div>
       </div>
-    </DataTile>
+    </ClimateTile>
   )
 }

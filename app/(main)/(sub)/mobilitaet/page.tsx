@@ -1,21 +1,5 @@
-import Columns from '@/components/Layout/Columns'
-import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
-import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
-import BusTile from '@/components/Tiles/Mobility/Bus'
-import ModalSplitTile from '@/components/Tiles/Mobility/ModalSplit'
+import MobilityView from '@/components/Views/MobilityView'
 
 export default function Climate() {
-  return (
-    <>
-      <Columns>
-        {/* @ts-expect-error Server Component */}
-        <BicycleChartTile />
-        {/* @ts-expect-error Server Component */}
-        <StadtradelnTile />
-        <BusTile />
-      </Columns>
-      {/* @ts-expect-error Server Component */}
-      <ModalSplitTile />
-    </>
-  )
+  return <MobilityView />
 }

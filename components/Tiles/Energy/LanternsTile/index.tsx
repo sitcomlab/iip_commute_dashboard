@@ -23,8 +23,7 @@ export default function LanternsTile() {
       embedId="energy-lanterns"
       title={
         <>
-          <AnimatedNumber className="font-medium">{8850}</AnimatedNumber>{' '}
-          LED-Leuchtmittel
+          <AnimatedNumber>{8850}</AnimatedNumber> LED-Leuchtmittel
         </>
       }
     >

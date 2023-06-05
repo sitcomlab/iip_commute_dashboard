@@ -25,7 +25,7 @@ export default function WindEnergyTile() {
       live
       title={
         <>
-          <AnimatedNumber className="font-medium">{62}</AnimatedNumber> MW
+          <AnimatedNumber>{62}</AnimatedNumber> MW
         </>
       }
     >
