@@ -5,6 +5,7 @@ import EnergyTile from '../EnergyTile'
 import PVData from '@/assets/data/bestand-pv-anlagen.csv'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { format } from 'date-fns'
+import { PvIcon } from '@/components/Icons'
 
 interface PVDataType {
   ZEIT: string
@@ -61,7 +62,7 @@ export default function PhotovoltTile() {
                 </Title>
               </div>
             </div>
-            {/* 
+            {/*
             <Spacer size={'sm'} />
             <ProgressBar progress={5} variant="energy" />
             <Spacer size={'sm'} />
