@@ -15,6 +15,8 @@ export default function EnergyView() {
         <WindEnergyTile />
         {/* @ts-expect-error Server Component */}
         <EnergietraegerTile />
+      </Columns>
+      <Columns>
         <LanternsTile />
         <PVAnlagenTile />
       </Columns>
