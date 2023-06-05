@@ -15,8 +15,10 @@ export default async function EnergyComsumptionTile() {
       dataRetrieval={format(new Date(), 'dd.MM.yyyy')}
       dataSource="Stadt Münster &ndash; Amt für Immobilienmanagement"
       embedId={'building-energyConsumption'}
-      subtitle={'So entwickelt sich über das Jahr verteilt der Verbrauch von Wärme und Strom in ausgewählten städtischen Gebäuden'}
       live
+      subtitle={
+        'So entwickelt sich über das Jahr verteilt der Verbrauch von Wärme und Strom in ausgewählten städtischen Gebäuden'
+      }
       title={'Energieverbrauch'}
     >
       <TileSplitView>
