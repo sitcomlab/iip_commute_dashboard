@@ -19,7 +19,11 @@ export default function SurveyAnswer({
     <animated.div className="absolute left-0 top-0 w-full" style={{ ...props }}>
       <div className="flex w-full flex-col gap-4 md:flex-row">
         <Title as="h1">
-          <AnimatedNumber decimals={1}>{percent}</AnimatedNumber>
+          {typeof percent === 'number' ? (
+            <AnimatedNumber decimals={1}>{percent}</AnimatedNumber>
+          ) : (
+            '--'
+          )}
           <span className="font-normal">%</span>
         </Title>
         <Title as="h4">{text}</Title>
