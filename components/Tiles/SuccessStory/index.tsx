@@ -32,7 +32,7 @@ export default function SuccessStoryTile({
   const Content = (
     <>
       <Title as="h5" font={'semibold'} variant={'primary'}>
-        Erfolgsgeschichte
+        Stimmen für Münster
       </Title>
       <Spacer size="sm" />
       <Title as="h3" variant={'primary'}>

@@ -11,7 +11,7 @@ export default async function EnergietraegerTile() {
   return (
     <EnergyTile
       dataRetrieval="02.03.2023"
-      dataSource={'Stadt Münster &ndash; Stabsstelle Klima'}
+      dataSource="Stadt Münster &ndash; Stabsstelle Klima"
       embedId="energy-energietraeger"
       subtitle={'Anteile am Stromverbrauch in Münster'}
       title={'Energieträger'}
