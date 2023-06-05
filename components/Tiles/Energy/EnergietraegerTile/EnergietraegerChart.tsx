@@ -164,7 +164,7 @@ export default function EnergietraegerChart() {
         <Spacer size={'xs'} />
         {width < 1800 && (
           <MobileSlider
-            defaultValue={[0]}
+            defaultValue={[data.length - 1]}
             labels={data.map(e => e.Jahr.toString())}
             max={data.length - 1}
             min={0}
@@ -174,7 +174,7 @@ export default function EnergietraegerChart() {
         )}
         {width >= 1800 && (
           <Slider
-            defaultValue={[0]}
+            defaultValue={[data.length - 1]}
             labels={data.map(e => e.Jahr.toString())}
             max={data.length - 1}
             min={0}
