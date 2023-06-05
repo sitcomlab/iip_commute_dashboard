@@ -19,18 +19,18 @@ function Toggle({ onChange }: { onChange: (_val: string) => void }) {
         {
           element: (
             <Title as="h6" className="2xl:w-max">
-              2010
+              2013
             </Title>
           ),
-          value: '2010',
+          value: '2013',
         },
         {
           element: (
             <Title as="h6" className="2xl:w-max">
-              2015
+              2019
             </Title>
           ),
-          value: '2015',
+          value: '2019',
         },
         {
           element: (
@@ -110,7 +110,7 @@ const getLabel = (value: number, name: string, width: number) => {
 
 export default function TrafficloadContent() {
   const [monthIndex, setMonthIndex] = useState(1)
-  const [mode, setMode] = useState<'2010' | '2015' | 'current'>('current')
+  const [mode, setMode] = useState<'2013' | '2019' | 'current'>('current')
   const { width } = useWindowSize()
 
   let year
