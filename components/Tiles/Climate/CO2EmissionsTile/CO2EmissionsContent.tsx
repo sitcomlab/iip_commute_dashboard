@@ -5,7 +5,6 @@ import CO2Chart from './CO2Chart'
 import Switch from '@/components/Inputs/Switch'
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import Title from '@/components/Elements/Title'
-import { Transition } from '@headlessui/react'
 
 function Toggle({ onChange }: { onChange: (_val: string) => void }) {
   return (
@@ -14,18 +13,18 @@ function Toggle({ onChange }: { onChange: (_val: string) => void }) {
         {
           element: (
             <Title as="h5" className="2xl:w-max">
-              Endenergieverbrauch in GWh
-            </Title>
-          ),
-          value: 'endenergie',
-        },
-        {
-          element: (
-            <Title as="h5" className="2xl:w-max">
               CO₂ Emissionen in 1000 t
             </Title>
           ),
           value: 'co2',
+        },
+        {
+          element: (
+            <Title as="h5" className="2xl:w-max">
+              Endenergieverbrauch in GWh
+            </Title>
+          ),
+          value: 'endenergie',
         },
       ]}
       onChange={onChange}
@@ -35,9 +34,9 @@ function Toggle({ onChange }: { onChange: (_val: string) => void }) {
 }
 
 export default function CO2EmissionsContent() {
-  const [showFuture, setShowFuture] = useState(true)
+  const [showFuture, setShowFuture] = useState(false)
 
-  const [mode, setMode] = useState<'endenergie' | 'co2'>('endenergie')
+  const [mode, setMode] = useState<'endenergie' | 'co2'>('co2')
 
   return (
     <div className="h-full md:pb-10">
@@ -46,22 +45,12 @@ export default function CO2EmissionsContent() {
           <div className="hidden 2xl:block">
             <Toggle onChange={val => setMode(val as typeof mode)} />
           </div>
-          <Transition
-            enter="transition-opacity duration-75"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity duration-150"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-            show={mode === 'co2'}
-          >
-            <Switch
-              defaultChecked={showFuture}
-              label="Klimaneutral"
-              onCheckedChange={setShowFuture}
-              variant="climate"
-            />
-          </Transition>
+          <Switch
+            defaultChecked={showFuture}
+            label="Klimaneutral"
+            onCheckedChange={setShowFuture}
+            variant="climate"
+          />
         </div>
         <div className="h-full w-full">
           <CO2Chart mode={mode} showFuture={showFuture} />
