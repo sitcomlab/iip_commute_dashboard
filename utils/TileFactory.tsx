@@ -8,6 +8,7 @@ import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
 import EnergietraegerTile from '@/components/Tiles/Energy/EnergietraegerTile'
 import PhotovoltTile from '@/components/Tiles/Energy/PhotovoltTile'
 import WindEnergyTile from '@/components/Tiles/Energy/WindEnergyTile'
+import PVAnlagenTile from '@/components/Tiles/Energy/PVAnlagenTile'
 import AWMTile from '@/components/Tiles/Mobility/AWM'
 import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
 import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
@@ -92,6 +93,8 @@ export default async function TileFactory({
       return <PhotovoltTile />
     case 'energy-wind':
       return <WindEnergyTile />
+    case 'energy-PVAnlagen':
+      return <PVAnlagenTile />
     case 'energy-energietraeger':
       // @ts-expect-error Server Component
       return <EnergietraegerTile />
