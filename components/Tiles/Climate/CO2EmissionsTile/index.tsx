@@ -12,8 +12,8 @@ export default async function CO2EmissionsTile() {
 
   return (
     <ClimateTile
-      dataRetrieval="01.01.2022"
-      dataSource="Stadt Münster - Koordinierungsstelle für Klima und Energie"
+      dataRetrieval="02.03.2023"
+      dataSource="Stadt Münster - Stabsstelle Klima"
       embedId="climate-co2"
       subtitle="So viel wird in Münster ausgestoßen"
       title={'CO₂'}

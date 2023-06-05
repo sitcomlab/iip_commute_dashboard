@@ -10,10 +10,10 @@ export default async function ModalSplitTile() {
 
   return (
     <MobilityTile
-      dataRetrieval="2019"
-      dataSource="Stadt Münster - Amt für Mobilität"
+      dataRetrieval="22.05.2023"
+      dataSource="Stadt Münster &ndash; Amt für Mobilität und Tiefbau"
       embedId="mobility-modalSplit"
-      subtitle="Aufteilung der zurückgelegten Wege in Münster"
+      subtitle="Aufteilung der zurückgelegten Wege und Kilometer der Münsteraner*innen"
       title={'Unterwegs'}
     >
       <TileSplitView>

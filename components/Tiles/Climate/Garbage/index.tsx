@@ -10,11 +10,11 @@ export default async function GarbageTile() {
 
   return (
     <ClimateTile
-      dataRetrieval={'01.01.2022'}
+      dataRetrieval={'31.05.2023'}
       dataSource="awm"
       embedId="climate-garbage"
       subtitle={
-        'So viel KG Abfall wurden bisher in Münster pro Einwohner:in produziert'
+        'So viele Kilogramm Abfall wurden bisher durchschnittlich pro Münsteraner*in durch die Abfallwirtschaftsbetriebe Münster (awm) erfasst'
       }
       title={
         <>

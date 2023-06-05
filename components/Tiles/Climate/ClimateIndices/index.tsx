@@ -12,10 +12,10 @@ export default async function ClimateIndicesTile() {
   return (
     <ClimateTile
       dataRetrieval={format(new Date(), '01.MM.yyyy')}
-      dataSource="DWD"
+      dataSource="Deutscher Wetterdienst"
       embedId="climate-indices"
       subtitle={
-        'Häufigkeit von Temperaturkenntagen in Münster im Zeitraum der letzten 20 Jahre'
+        'Häufigkeit von Temperaturkenntagen in Münster'
       }
       title="Klimakenntage"
     >

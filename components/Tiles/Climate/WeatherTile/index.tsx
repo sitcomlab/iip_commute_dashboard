@@ -4,7 +4,7 @@ import WeatherTileContent from './WeatherTileContent'
 export default function WeatherTile() {
   return (
     <ClimateTile
-      dataSource="DWD"
+      dataSource="Deutscher Wetterdienst"
       embedId={'climate-weather'}
       live
       title={

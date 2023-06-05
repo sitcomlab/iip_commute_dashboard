@@ -10,7 +10,7 @@ export default async function StadtradelnTile() {
 
   return (
     <MobilityTile
-      dataRetrieval="01.01.2022"
+      dataRetrieval="31.05.2023"
       dataSource="Stadtradeln"
       embedId="mobility-stadtradeln"
       subtitle="auf der Überholspur"
