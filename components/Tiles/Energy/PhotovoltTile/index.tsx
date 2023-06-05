@@ -6,6 +6,7 @@ import PVData from '@/assets/data/bestand-pv-anlagen.csv'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { format } from 'date-fns'
 import { PvIcon } from '@/components/Icons'
+import ProgressBar from '@/components/Charts/Progress/ProgressBar'
 
 interface PVDataType {
   ZEIT: string
@@ -26,7 +27,7 @@ export default function PhotovoltTile() {
       live
       title={
         <>
-          <AnimatedNumber>{data.Nettonennleistung / 1000}</AnimatedNumber> MW
+          <AnimatedNumber>{data.Bruttoleistung / 1000}</AnimatedNumber> MW
         </>
       }
     >
@@ -47,7 +48,7 @@ export default function PhotovoltTile() {
                   Bereits installiert
                 </Title>
                 <Title as="h4" variant={'energy'}>
-                  {data.Bruttoleistung / 2500}%
+                  {(data.Bruttoleistung / 2500).toFixed(0)}%
                 </Title>
               </div>
               <div className="flex flex-col items-end">
@@ -59,9 +60,12 @@ export default function PhotovoltTile() {
                 </Title>
               </div>
             </div>
+            <ProgressBar
+              progress={parseInt((data.Bruttoleistung / 2500).toFixed(0))}
+              variant="energy"
+            />
             {/*
             <Spacer size={'sm'} />
-            <ProgressBar progress={5} variant="energy" />
             <Spacer size={'sm'} />
             <Slider
               defaultValue={[0]}
