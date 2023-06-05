@@ -57,6 +57,8 @@ export type Survey = {
   answer_percent: number
   answer_text: string
   category: string
+  dataSource: string
+  dataRetrieval: Date
 }
 
 // Map your collections to its respective types. The SDK will

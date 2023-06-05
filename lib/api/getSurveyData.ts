@@ -12,6 +12,8 @@ export const getSurveyData = async (surveyID: ID) => {
         percent: data?.answer_percent ?? 0,
       },
       question: data?.question ?? '',
+      dataSource: data?.dataSource ?? '',
+      dataRetrieval: data?.dataRetrieval ?? new Date(),
       id: data?.id ?? '',
     }
     return props
