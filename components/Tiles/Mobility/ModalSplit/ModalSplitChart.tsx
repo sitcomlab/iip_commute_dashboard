@@ -252,7 +252,7 @@ export default function ModalSplitChart() {
         </Carousel>
       </div>
       <Slider
-        defaultValue={[0]}
+        defaultValue={[data.length - 1]}
         labels={data.map(d => d.ZEIT)}
         max={data.length - 1}
         min={0}

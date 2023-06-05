@@ -73,7 +73,7 @@ export default function AWMContent() {
       </div>
       {width < 1800 && (
         <MobileSlider
-          defaultValue={[0]}
+          defaultValue={[data.length - 1]}
           labels={data.map(e => e.ZEIT.toString())}
           max={data.length - 1}
           min={0}
@@ -83,7 +83,7 @@ export default function AWMContent() {
       )}
       {width >= 1800 && (
         <Slider
-          defaultValue={[0]}
+          defaultValue={[data.length - 1]}
           labels={data.map(e => e.ZEIT.toString())}
           max={data.length - 1}
           min={0}
