@@ -14,6 +14,7 @@ export default async function ClimateIndicesTile() {
       dataRetrieval={format(new Date(), '01.MM.yyyy')}
       dataSource="Deutscher Wetterdienst"
       embedId="climate-indices"
+      live
       subtitle={
         'Häufigkeit von Temperaturkenntagen in Münster'
       }

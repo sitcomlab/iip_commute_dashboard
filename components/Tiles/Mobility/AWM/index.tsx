@@ -10,10 +10,10 @@ export default async function AWMTile() {
 
   return (
     <MobilityTile
-      dataSource="awm Abfallwirtschaftsbetriebe Münster"
+      dataSource="Abfallwirtschaftsbetriebe Münster (awm)"
       embedId="mobility-awm"
       live
-      subtitle="Anzahl der emissionsarm angetriebenen Müllfahrzeuge im Vergleich zu Fahrzeugen mit fossilem Antrieb"
+      subtitle="Anzahl der elektrisch angetriebenen Nutzfahrzeuge der Abfallwirtschaftsbetriebe Münster (awm) im Vergleich zu Fahrzeugen mit fossilem Antrieb"
       title="E-Mobilität awm"
     >
       <AWMContent />
