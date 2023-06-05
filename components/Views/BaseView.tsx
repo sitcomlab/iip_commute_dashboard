@@ -38,6 +38,7 @@ export default async function BaseView({ type, children }: ViewProps) {
               id={survey.id}
               key={survey.id}
               question={survey.question}
+              title={survey.title}
             />
           ))}
         </Columns>

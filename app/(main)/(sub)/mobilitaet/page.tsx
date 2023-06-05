@@ -8,6 +8,7 @@ export default function Climate() {
   return (
     <>
       <Columns>
+        {/* @ts-expect-error Server Component */}
         <BicycleChartTile />
         {/* @ts-expect-error Server Component */}
         <StadtradelnTile />

@@ -52,6 +52,7 @@ export type SuccessStory = {
 export type Survey = {
   id: ID
   status: DirectusStatus
+  title: string
   question: string
   answer_percent: number
   answer_text: string

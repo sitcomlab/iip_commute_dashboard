@@ -5,8 +5,12 @@ import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { format } from 'date-fns'
 import DataTile from '../DataTile'
 import { Daten } from '@/components/Icons'
+import getTileData from '@/lib/api/getTileData'
 
-export default function DataCountTile() {
+export default async function DataCountTile() {
+  const data = await getTileData('climate-data')
+  const infoText = data?.info ?? ''
+
   return (
     <DataTile
       dataRetrieval={format(new Date(), 'dd.MM.yyyy')}
@@ -24,15 +28,7 @@ export default function DataCountTile() {
           <span className="flex flex-col justify-center">
             <Daten className="h-20 text-primary md:h-44" />
           </span>
-          <Title as={'subtitle'}>
-            Können Sie momentan zu den verschiedenen Kategorien auf unserem
-            Dashboard finden. Sie haben Daten?{' '}
-            <span className="text-secondary">
-              <a href="mailto:smartcity@stadt-muenster.de">
-                Schreiben Sie uns!
-              </a>
-            </span>{' '}
-          </Title>
+          <Title as={'subtitle'}>{infoText}</Title>
         </div>
       </div>
     </DataTile>

@@ -98,6 +98,7 @@ export default async function TileFactory({
 
     // ---- MOBILITY ----
     case 'mobility-bicycle':
+      // @ts-expect-error Server Component
       return <BicycleChartTile />
     case 'mobility-stadtradeln':
       // @ts-expect-error Server Component
@@ -108,6 +109,7 @@ export default async function TileFactory({
       // @ts-expect-error Server Component
       return <ModalSplitTile />
     case 'mobility-awm':
+      // @ts-expect-error Server Component
       return <AWMTile />
 
     // ---- SUCCESS-STORY ----
