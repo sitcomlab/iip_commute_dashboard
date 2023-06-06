@@ -12,6 +12,7 @@ const TitleStyle = cva('block', {
       h5: 'text-base md:text-xl md:leading-6 md:tracking-wide',
       h6: 'text-base md:text-lg md:tracking-wide',
       h7: 'text-base leading-7 tracking-wide',
+      h8: 'text-sm leading-5 tracking-wide',
       subtitle: 'text-xl md:text-3xl',
     },
     variant: {

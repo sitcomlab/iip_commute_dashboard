@@ -27,10 +27,16 @@ const sliderStyle = cva(
 export type SliderProps = SliderPrimitive.SliderProps &
   VariantProps<typeof sliderStyle> & {
     labels?: string[]
+    firstValueMobile?: number
   }
 
-export default function Slider({ labels, variant, ...props }: SliderProps) {
-  const [value, setValue] = useState<number>(0)
+export default function Slider({
+  firstValueMobile,
+  labels,
+  variant,
+  ...props
+}: SliderProps) {
+  const [value, setValue] = useState<number>(firstValueMobile || 0)
 
   return (
     <div>
@@ -55,15 +61,24 @@ export default function Slider({ labels, variant, ...props }: SliderProps) {
           <SliderPrimitive.Thumb className="block aspect-square h-6 touch-pan-x rounded-full bg-primary shadow shadow-primary md:h-9" />
         </SliderPrimitive.Root>
       </div>
-      {labels && (
-        <div className="mt-3 hidden w-full justify-between md:flex">
-          {labels.map((l, i) => (
-            <Title as={'h5'} key={i} variant={'primary'}>
-              {l}
-            </Title>
-          ))}
-        </div>
-      )}
+      {labels &&
+        (labels.length != 12 ? (
+          <div className="mt-3 hidden w-full justify-between md:flex">
+            {labels.map((l, i) => (
+              <Title as={'h5'} key={i} variant={'primary'}>
+                {l}
+              </Title>
+            ))}
+          </div>
+        ) : (
+          <div className="mt-3 hidden w-full justify-between md:flex">
+            {labels.map((l, i) => (
+              <Title as={'h8'} key={i} variant={'primary'}>
+                {l}
+              </Title>
+            ))}
+          </div>
+        ))}
     </div>
   )
 }
