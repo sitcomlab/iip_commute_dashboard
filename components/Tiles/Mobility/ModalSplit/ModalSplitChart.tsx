@@ -92,7 +92,7 @@ const data: IModalSplitData[] = ModalSplitData
 export default function ModalSplitChart() {
   const [yearIndex, setYearIndex] = useState<number>(0)
   const [mode, setMode] = useState<'verkehrsmittelwahl' | 'verkehrsleistung'>(
-    'verkehrsmittelwahl',
+    'verkehrsleistung',
   )
 
   const { width } = useWindowSize()
@@ -176,6 +176,12 @@ export default function ModalSplitChart() {
                     data: [
                       getSeries(
                         mode === 'verkehrsleistung'
+                          ? yearData['Modal Split V.leistung - Fuß']
+                          : yearData['Verkehrsmittelwahl Fuß'],
+                        'Fuß',
+                      ),
+                      getSeries(
+                        mode === 'verkehrsleistung'
                           ? yearData['Modal Split V.leistung - Kfz']
                           : yearData['Verkehrsmittelwahl Kfz'],
                         'KFZ',
@@ -192,22 +198,16 @@ export default function ModalSplitChart() {
                           : yearData['Verkehrsmittelwahl Fahrrad'],
                         'Fahrrad',
                       ),
-                      getSeries(
-                        mode === 'verkehrsleistung'
-                          ? yearData['Modal Split V.leistung - Fuß']
-                          : yearData['Verkehrsmittelwahl Fuß'],
-                        'Fuß',
-                      ),
                     ],
                     color: [
+                      //@ts-ignore
+                      theme?.colors?.buildings.DEFAULT || '#6060d6',
                       //@ts-ignore
                       theme?.colors?.energy.DEFAULT || '#f28443',
                       //@ts-ignore
                       theme?.colors?.climate.DEFAULT || '#14b3d9',
                       //@ts-ignore
                       theme?.colors?.mobility.DEFAULT || '#34c17b',
-                      //@ts-ignore
-                      theme?.colors?.buildings.DEFAULT || '#6060d6',
                     ],
                   },
                 ],
