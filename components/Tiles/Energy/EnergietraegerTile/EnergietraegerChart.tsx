@@ -29,14 +29,14 @@ type StromDataType = {
 }
 
 export default function EnergietraegerChart() {
-  const [yearIndex, setYearIndex] = useState(0)
-
   const [mode, setMode] = useState<'stromerzeugung' | 'stromemissionen'>(
     'stromerzeugung',
   )
 
   const data: StromDataType[] =
     mode === 'stromerzeugung' ? StromerzeugungBereitstellung : Stromemissionen
+
+  const [yearIndex, setYearIndex] = useState(data.length - 1)
 
   const unit = mode === 'stromerzeugung' ? 'MWh' : 't'
 
