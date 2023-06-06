@@ -39,7 +39,9 @@ const data: PassengerDataProps[] = [
 export default function PassengerContent() {
   const { width } = useWindowSize()
   const years = data.map(e => e.ZEIT.toString())
-  const [yearIndex, setYearIndex] = useState(0)
+  const [yearIndex, setYearIndex] = useState(
+    years.length > 0 ? years.length - 1 : 0,
+  )
   const [passengerValue, setPassengerValue] = useState(0)
 
   useEffect(() => {

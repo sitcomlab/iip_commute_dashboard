@@ -110,21 +110,21 @@ export default function BusContent() {
       </div>
       {width < 1800 && (
         <MobileSlider
-          defaultValue={[yearIndex]}
           labels={reducedData.map(e => e.ZEIT.toString())}
           max={reducedData.length - 1}
           min={0}
           onValueChange={([index]) => setYearIndex(index)}
+          value={[yearIndex]}
           variant={'mobility'}
         />
       )}
       {width >= 1800 && (
         <Slider
-          defaultValue={[yearIndex]}
           labels={reducedData.map(e => e.ZEIT.toString())}
           max={reducedData.length - 1}
           min={0}
           onValueChange={([index]) => setYearIndex(index)}
+          value={[yearIndex]}
           variant={'mobility'}
         />
       )}
