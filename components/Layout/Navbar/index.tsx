@@ -46,16 +46,17 @@ export default function Navbar() {
   const InfoText = (
     <div className="lg:w-2/3 2xl:w-1/3">
       <Title as={'h5'} variant={'inverse'}>
-      Wo steht Münster auf dem Weg zur Klimaneutralität? Und wo zeigen sich 
-      die Folgen des Klimawandels in Münster schon jetzt? Das Klimadashboard 
-      zeigt den aktuellen Datenstand zu verschiedenen Indikatoren von Klimaschutz 
-      und Anpassung an die Folgen des Klimawandels und schafft so mehr 
-      Transparenz in der gesamtstädtischen Klimaarbeit. Entwickelt wurde das 
-      Klimadashboard von der Stabsstelle Smart City und der Stabsstelle Klima 
-      der Stadt Münster, in Zusammenarbeit mit den Stadtwerken Münster. Wir 
-      arbeiten stetig daran, die Verfügbarkeit der Daten zu verbessern. 
-      Das Klimadashboard wird im Rahmen des Förderprogramms „Modellprojekte Smart Cities“; 
-      gefördert aus Mitteln des Bundesministeriums für Wohnen, Stadtentwicklung und Bauwesen (BMWSB).
+        Wo steht Münster auf dem Weg zur Klimaneutralität? Und wo zeigen sich
+        die Folgen des Klimawandels in Münster schon jetzt? Das Klimadashboard
+        zeigt den aktuellen Datenstand zu verschiedenen Indikatoren von Klimaschutz
+        und Anpassung an die Folgen des Klimawandels und schafft so mehr
+        Transparenz in der gesamtstädtischen Klimaarbeit. Entwickelt wurde das
+        Klimadashboard von der Stabsstelle Smart City und der Stabsstelle Klima
+        der Stadt Münster, in Zusammenarbeit mit den Stadtwerken Münster. Wir
+        arbeiten stetig daran, die Verfügbarkeit der Daten zu verbessern.
+        Das Klimadashboard wird im Rahmen des Förderprogramms „Modellprojekte
+        Smart Cities“ aus Mitteln des Bundesministeriums für Wohnen,
+        Stadtentwicklung und Bauwesen (BMWSB) gefördert.
       </Title>
     </div>
   )
@@ -112,7 +113,7 @@ export default function Navbar() {
       mobilitaet:
         'Das Ziel einer funktionierenden, klimafreundlichen Mobilität stellt eine wachsende Stadt wie Münster vor eine große Herausforderung. Wenn die gesamte Stadtgesellschaft bereit ist, neue Wege zu gehen, kann diese Herausforderung gemeistert werden.',
       gebaeude:
-        'Für das Ziel einer klimaneutralen und klimaangepassten Stadt kann die Rolle der Gebäude in Münster kaum hoch genug eingeschätzt werden. Nicht nur das Einsparpotential von CO<sub>2</sub> ist in diesem Bereich besonders hoch. Auch können Gebäudeeigentümer*innen durch gezielte Maßnahmen Energiekosten sparen und ihr Gebäude vor Extremwetter schützen.',
+        'Für das Ziel einer klimaneutralen und klimaangepassten Stadt kann die Rolle der Gebäude in Münster kaum hoch genug eingeschätzt werden. Nicht nur das Einsparpotential von CO₂ ist in diesem Bereich besonders hoch. Auch können Gebäudeeigentümer*innen durch gezielte Maßnahmen Energiekosten sparen und ihr Gebäude vor Extremwetter schützen.',
     }
 
     return (
