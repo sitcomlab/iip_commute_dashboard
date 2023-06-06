@@ -81,16 +81,28 @@ const colors = {
 }
 
 const nameColumnMapping = {
-  KFZ: 'Modal Split V.leistung - Kfz' | 'Verkehrsmittelwahl Kfz',
-  ÖPNV: 'Modal Split V.leistung - ÖV' | 'Verkehrsmittelwahl ÖV',
-  Fahrrad: 'Modal Split V.leistung - Fahrrad' | 'Verkehrsmittelwahl Fahrrad',
-  Fuß: 'Modal Split V.leistung - Fuß' | 'Verkehrsmittelwahl Fuß',
+  KFZ: {
+    verkehrsleistung: 'Modal Split V.leistung - Kfz',
+    wege: 'Verkehrsmittelwahl Kfz',
+  },
+  ÖPNV: {
+    verkehrsleistung: 'Modal Split V.leistung - ÖV',
+    wege: 'Verkehrsmittelwahl ÖV',
+  },
+  Fahrrad: {
+    verkehrsleistung: 'Modal Split V.leistung - Fahrrad',
+    wege: 'Verkehrsmittelwahl Fahrrad',
+  },
+  Fuß: {
+    verkehrsleistung: 'Modal Split V.leistung - Fuß',
+    wege: 'Verkehrsmittelwahl Fuß',
+  },
 }
 
 const data: IModalSplitData[] = ModalSplitData
 
 export default function ModalSplitChart() {
-  const [yearIndex, setYearIndex] = useState<number>(0)
+  const [yearIndex, setYearIndex] = useState<number>(1)
   const [mode, setMode] = useState<'verkehrsmittelwahl' | 'verkehrsleistung'>(
     'verkehrsleistung',
   )
@@ -146,10 +158,15 @@ export default function ModalSplitChart() {
         <div className="absolute -top-4 left-0 z-10 w-full md:-top-6 md:w-auto">
           <Toggle onChange={val => setMode(val as typeof mode)} />
         </div>
-        <div className="absolute left-[45%] top-[50%] z-10  font-bold text-black ">
-          {mode === 'verkehrsleistung'
-            ? yearData.Absolut + ' km'
-            : yearData['Wege/Tag']}
+        <div className="absolute left-[40%] top-[50%] z-10 text-lg font-bold text-[#005b79] ">
+          <div className="flex">
+            <AnimatedNumber>
+              {mode === 'verkehrsleistung'
+                ? yearData.Absolut
+                : yearData['Wege/Tag']}
+            </AnimatedNumber>
+            <p className="ml-1"> {mode === 'verkehrsleistung' ? 'km' : ''}</p>
+          </div>
         </div>
         <div className="absolute left-0 top-0 flex h-full w-full">
           <MuensterBackground className="h-full w-full flex-1" />
@@ -241,7 +258,7 @@ export default function ModalSplitChart() {
                     }}
                   >
                     <AnimatedNumber decimals={1}>
-                      {yearData[nameColumnMapping[key]]}
+                      {yearData[nameColumnMapping[key][mode]]}
                     </AnimatedNumber>
                     %
                   </Title>
