@@ -13,11 +13,11 @@ export default async function TrafficloadTile() {
 
   return (
     <MobilityTile
-      dataRetrieval="live"
-      dataSource="Stadt Münster - Amt für Mobilität"
+      dataSource="Stadt Münster - Amt für Mobilität und Tiefbau"
       embedId="mobility-trafficload"
-      subtitle="Monatsmittel der in der Autoverkehrszählung gezählten Fahrzeuge an Knotenpunkten Münsters"
-      title={'Verkehrsbelastung'}
+      live
+      subtitle="Anzahl gezählter Fahrzeuge an Werktagen"
+      title={'Kfz-Verkehrsbelastung'}
     >
       <TileSplitView>
         <TileSplitView.Left>

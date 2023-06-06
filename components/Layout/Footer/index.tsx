@@ -109,7 +109,7 @@ export default function Footer() {
                 </Title>
               </Link>
               {/* https://www.math.uni-hamburg.de/it/dienste/encryptma.html */}
-              <a href="javascript:linkTo_UnCryptMailto('nbjmup;gffecbdlAlmjnbebticpbse/nt');">
+              <a href="javascript:linkTo_UnCryptMailto('nbjmup;lmjnbAtubeu.nvfotufs/ef');">
                 <Title as="h5" className="underline" variant={'primary'}>
                   Sie haben Feedback für uns?
                 </Title>
@@ -128,7 +128,7 @@ export default function Footer() {
               Datenschutz
             </Title>
           </Link>
-          <a href="javascript:linkTo_UnCryptMailto('nbjmup;gffecbdlAlmjnbebticpbse/nt');">
+          <a href="javascript:linkTo_UnCryptMailto('nbjmup;lmjnbAtubeu.nvfotufs/ef');">
             <Title as="h5" className="underline" variant={'primary'}>
               Sie haben Feedback für uns?
             </Title>
