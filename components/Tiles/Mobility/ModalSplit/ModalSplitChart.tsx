@@ -121,8 +121,8 @@ export default function ModalSplitChart() {
         formatter: ['{Icon|}', '{name|{b}} ', '{percent|{c}%}'].join('\n'),
         rich: {
           Icon: {
-            height: 50,
-            width: width <= 1600 ? 50 : 80,
+            height: 35,
+            width: width <= 1600 ? 35 : 50,
             align: 'left',
             backgroundColor: {
               image: `${icons[name]}`,
@@ -165,7 +165,10 @@ export default function ModalSplitChart() {
                 ? yearData.Absolut
                 : yearData['Wege/Tag']}
             </AnimatedNumber>
-            <p className="ml-1"> {mode === 'verkehrsleistung' ? 'km' : ''}</p>
+            <p className="ml-1">
+              {' '}
+              {mode === 'verkehrsleistung' ? 'km' : 'Wege'}
+            </p>
           </div>
         </div>
         <div className="absolute left-0 top-0 flex h-full w-full">
@@ -270,6 +273,7 @@ export default function ModalSplitChart() {
       </div>
       <Slider
         defaultValue={[data.length - 1]}
+        firstValueMobile={data.length - 1}
         labels={data.map(d => d.ZEIT)}
         max={data.length - 1}
         min={0}
