@@ -25,7 +25,6 @@ export default function WindEnergyTile() {
       dataRetrieval="05.06.2023"
       dataSource="Stadt Münster &ndash; Stadtplanungsamt"
       embedId="energy-wind"
-      live
       title={
         <>
           <AnimatedNumber>{62}</AnimatedNumber> MW

@@ -1,6 +1,5 @@
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import Link from 'next/link'
 import Image from 'next/image'
 
 import { BaseTile } from '../Base/BaseTile'
@@ -39,11 +38,6 @@ export default function SuccessStoryTile({
         {text}
       </Title>
       <Spacer />
-      <Link href={link}>
-        <Title as="h6" className="underline" variant={'primary'}>
-          Hier können Sie aktiv werden
-        </Title>
-      </Link>
     </>
   )
 
