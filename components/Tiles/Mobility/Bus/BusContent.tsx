@@ -130,11 +130,9 @@ export default function BusContent() {
       )}
       <Spacer />
       <Title as="h5">
-        Busfahren ist Klimaschutz. Damit die Umweltbilanz des Nahverkehrs noch
-        besser wird, setzen wir immer stärker auf Elektrobusse mit Ökostrom im
-        Tank. In Münster sind die leisen und abgasfreien Busse bereits seit 2015
-        unterwegs und gehören längst zum Stadtbild. Und jedes Jahr werden es
-        mehr! Bis 2029 soll unsere Busflotte komplett elektrisch fahren.
+        Busfahren ist Klimaschutz. Damit die Umweltbilanz noch besser wird,
+        setzen die Stadtwerke auf Elektrobusse mit Ökostrom. Bis 2029 soll die
+        Stadtwerke-Flotte komplett elektrisch fahren.
       </Title>
     </div>
   )

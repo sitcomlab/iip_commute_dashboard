@@ -17,22 +17,22 @@ import { Spacer } from '@/components/Elements/Spacer'
 
 const links: LinkProps[] = [
   {
-    title: 'Klima in Münster',
+    title: 'zu den Klimadaten',
     icon: MuensterIcon,
     link: '/klima',
   },
   {
-    title: 'Energie',
+    title: 'zu den Energiedaten',
     icon: EnergyIcon,
     link: '/energie',
   },
   {
-    title: 'Mobilität',
+    title: 'zu den Mobilitätsdaten',
     icon: BicycleIcon,
     link: '/mobilitaet',
   },
   {
-    title: 'Gebäude',
+    title: 'zu den Gebäudedaten',
     icon: BuildingIcon,
     link: '/gebaeude',
   },
