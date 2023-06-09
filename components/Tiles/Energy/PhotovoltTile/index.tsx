@@ -26,7 +26,7 @@ export default function PhotovoltTile() {
       embedId="energy-PV"
       title={
         <>
-          <AnimatedNumber>{data.Bruttoleistung / 1000}</AnimatedNumber> MW
+          <AnimatedNumber>{data.Bruttoleistung / 1000}</AnimatedNumber> MWp
         </>
       }
     >
@@ -47,7 +47,7 @@ export default function PhotovoltTile() {
                   Bereits installiert
                 </Title>
                 <Title as="h4" variant={'energy'}>
-                  {((data.Bruttoleistung / 1000 / 2500) * 100).toFixed(0)}%
+                  {((data.Bruttoleistung / 1000 / 2400) * 100).toFixed(0)}%
                 </Title>
               </div>
               <div className="flex flex-col items-end">
@@ -55,13 +55,13 @@ export default function PhotovoltTile() {
                   Angestrebtes Ziel bis 2030
                 </Title>
                 <Title as="h4" variant={'primary'}>
-                  2.500 MW
+                  2.400 MWp
                 </Title>
               </div>
             </div>
             <Spacer size={'sm'} />
             <ProgressBar
-              progress={(data.Bruttoleistung / 1000 / 2500) * 100}
+              progress={(data.Bruttoleistung / 1000 / 2400) * 100}
               variant="energy"
             />
             {/*
