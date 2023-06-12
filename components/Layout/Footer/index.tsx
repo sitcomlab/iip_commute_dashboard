@@ -98,12 +98,12 @@ export default function Footer() {
               Impressum
             </Title>
             <div className="flex flex-1 flex-col justify-between gap-8">
-              <Link href="https://www.stadt-muenster.de/impressum">
+              <Link href="/impressum">
                 <Title as="h5" className="underline" variant={'primary'}>
                   Impressum
                 </Title>
               </Link>
-              <Link href="https://www.stadt-muenster.de/datenschutz">
+              <Link href="/datenschutz">
                 <Title as="h5" className="underline" variant={'primary'}>
                   Datenschutz
                 </Title>

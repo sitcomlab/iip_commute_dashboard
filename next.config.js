@@ -10,7 +10,10 @@ const nextConfig = {
         skipEmptyLines: true,
       },
     })
-
+    config.module.rules.push({
+      test: /\.md$/,
+      type: 'asset/source',
+    })
     return config
   },
   output: 'standalone',
