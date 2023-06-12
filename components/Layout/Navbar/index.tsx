@@ -12,12 +12,20 @@ import SectionTitle from '../SectionTitle'
 import { AnimatePresence, motion } from 'framer-motion'
 
 const routeToType: {
-  [key: string]: 'climate' | 'mobility' | 'energy' | 'building'
+  [key: string]:
+    | 'climate'
+    | 'mobility'
+    | 'energy'
+    | 'building'
+    | 'impressum'
+    | 'datenschutz'
 } = {
   klima: 'climate',
   mobilitaet: 'mobility',
   energie: 'energy',
   gebaeude: 'building',
+  impressum: 'impressum',
+  datenschutz: 'datenschutz',
 }
 
 export default function Navbar() {
@@ -30,6 +38,7 @@ export default function Navbar() {
   }
 
   const isIndexPage = pathname === '/'
+  const [_, route] = pathname?.split('/')
 
   const ActionComponent = isIndexPage ? (
     <Button
@@ -40,7 +49,11 @@ export default function Navbar() {
       <Title as="h5">So helfen Daten dem Klima</Title>
     </Button>
   ) : (
-    <Back />
+    <Back
+      variant={
+        ['impressum', 'datenschutz'].includes(route) ? 'inverse' : 'primary'
+      }
+    />
   )
 
   const InfoText = (
@@ -48,12 +61,12 @@ export default function Navbar() {
       <Title as={'h5'} variant={'inverse'}>
         Wo steht Münster auf dem Weg zur Klimaneutralität? Und wo zeigen sich
         die Folgen des Klimawandels in Münster schon jetzt? Das Klimadashboard
-        zeigt den aktuellen Datenstand zu verschiedenen Indikatoren von Klimaschutz
-        und Anpassung an die Folgen des Klimawandels und schafft so mehr
-        Transparenz in der gesamtstädtischen Klimaarbeit. Entwickelt wurde das
-        Klimadashboard von der Stabsstelle Smart City und der Stabsstelle Klima
-        der Stadt Münster, in Zusammenarbeit mit den Stadtwerken Münster. Wir
-        arbeiten stetig daran, die Verfügbarkeit der Daten zu verbessern.
+        zeigt den aktuellen Datenstand zu verschiedenen Indikatoren von
+        Klimaschutz und Anpassung an die Folgen des Klimawandels und schafft so
+        mehr Transparenz in der gesamtstädtischen Klimaarbeit. Entwickelt wurde
+        das Klimadashboard von der Stabsstelle Smart City und der Stabsstelle
+        Klima der Stadt Münster, in Zusammenarbeit mit den Stadtwerken Münster.
+        Wir arbeiten stetig daran, die Verfügbarkeit der Daten zu verbessern.
         Das Klimadashboard wird im Rahmen des Förderprogramms „Modellprojekte
         Smart Cities“ aus Mitteln des Bundesministeriums für Wohnen,
         Stadtentwicklung und Bauwesen (BMWSB) gefördert.
@@ -102,9 +115,16 @@ export default function Navbar() {
     )
   }
 
-  const [_, route] = pathname?.split('/')
-
-  if (['klima', 'energie', 'mobilitaet', 'gebaeude'].includes(route)) {
+  if (
+    [
+      'klima',
+      'energie',
+      'mobilitaet',
+      'gebaeude',
+      'impressum',
+      'datenschutz',
+    ].includes(route)
+  ) {
     const sectionText: Record<string, string> = {
       klima:
         'Die Auswirkungen des Klimawandels in Münster sind spür- und messbar. Münster will klimaneutral und klimaangepasst und so der Verantwortung für ein „gutes Morgen“ gerecht werden. Dafür braucht es die gesamte Stadtgesellschaft!',
@@ -117,7 +137,12 @@ export default function Navbar() {
     }
 
     return (
-      <BaseNavbar actionComponent={ActionComponent}>
+      <BaseNavbar
+        actionComponent={ActionComponent}
+        variant={
+          ['impressum', 'datenschutz'].includes(route) ? 'overlay' : 'primary'
+        }
+      >
         <div className="flex flex-col gap-2 lg:flex-row lg:gap-0">
           <div className="flex-1">
             <Title as="h5" variant="primary">
