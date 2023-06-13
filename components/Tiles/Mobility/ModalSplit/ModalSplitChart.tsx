@@ -15,6 +15,7 @@ import Carousel from '@/components/Elements/Carousel'
 import Title from '@/components/Elements/Title'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
+import SvgMuensterDom from '@/components/Icons/MuensterDom'
 
 const { theme } = resolveConfig(tailwindConfig)
 
@@ -158,25 +159,12 @@ export default function ModalSplitChart() {
         <div className="absolute -top-4 left-0 z-10 w-full md:-top-6 md:w-auto">
           <Toggle onChange={val => setMode(val as typeof mode)} />
         </div>
-        <div className="absolute left-[40%] top-[50%] z-10 text-lg font-bold text-[#005b79] ">
-          <div className="flex">
-            <AnimatedNumber>
-              {mode === 'verkehrsleistung'
-                ? yearData.Absolut
-                : yearData['Wege/Tag']}
-            </AnimatedNumber>
-            <p className="ml-1">
-              {' '}
-              {mode === 'verkehrsleistung' ? 'km' : 'Wege'}
-            </p>
-          </div>
-        </div>
         <div className="absolute left-0 top-0 flex h-full w-full">
           <MuensterBackground className="h-full w-full flex-1" />
           <div className="sm:w-14"></div>
         </div>
         <div className="w-full flex-1 pb-12">
-          <div className=" h-full w-full">
+          <div className="relative h-full w-full">
             <ReactECharts
               option={{
                 series: [
@@ -233,9 +221,23 @@ export default function ModalSplitChart() {
                 ],
               }}
             />
+            <div className="absolute left-0 top-0 mt-4 flex h-full w-full flex-col items-center justify-center">
+              <SvgMuensterDom className="h-10 stroke-2" />
+              <Title as={width > 1260 ? 'h4' : 'h5'} variant="primary">
+                <AnimatedNumber>
+                  {mode === 'verkehrsleistung'
+                    ? yearData.Absolut
+                    : yearData['Wege/Tag']}
+                </AnimatedNumber>
+                <span className="ml-1">
+                  {mode === 'verkehrsleistung' ? 'km' : 'Wege'}
+                </span>
+              </Title>
+            </div>
           </div>
         </div>
       </div>
+      {/* mobile view */}
       <div className="bg-white px-4 pb-4 lg:hidden">
         <Carousel arrows variant={'mobility'}>
           {Object.keys(icons).map((key, index) => {
