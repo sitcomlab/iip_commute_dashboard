@@ -8,9 +8,6 @@ module.exports = {
           '2xl': '1920px',
         },
       },
-      borderRadius: {
-        KD: '3rem',
-      },
       colors: {
         primary: {
           DEFAULT: '#005b79',
@@ -18,7 +15,7 @@ module.exports = {
         },
         secondary: {
           DEFAULT: '#aab315',
-          light: '#fbfbf3'
+          light: '#fbfbf3',
         },
         climate: {
           DEFAULT: '#14b3d9',
