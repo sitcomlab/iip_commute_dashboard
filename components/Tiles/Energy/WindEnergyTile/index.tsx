@@ -33,7 +33,7 @@ export default function WindEnergyTile() {
     >
       <div>
         <Title as={'subtitle'}>
-          haben die Münsteraner*innen bereits mit{' '}
+          haben Organisationen bereits mit{' '}
           <span className="text-energy">
             {/* <AnimatedNumber>{data.AnzahlAnlagen}</AnimatedNumber>{' '} */}
             32 Windkraftanlagen
@@ -63,7 +63,7 @@ export default function WindEnergyTile() {
               </div>
             </div>
             <Spacer size={'sm'} />
-            {/* should be thhe followind, once some organisation reliable is able to count windraeder ...
+            {/* should be the following, once some organisation is reliably able to count windraeder ...
                 data.Bruttoleistung}/90
             */}
             <ProgressBar progress={69} variant="energy" />
