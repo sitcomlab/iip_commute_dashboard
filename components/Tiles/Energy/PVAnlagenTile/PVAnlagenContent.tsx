@@ -22,7 +22,7 @@ export default function PVAnlagenContent() {
             sind im Moment auf Gebäuden der Stadtverwaltung installiert. Das
             entspricht einer Leistung von{' '}
             <span className="text-energy">
-              <AnimatedNumber decimals={2}>{data.Leistung}</AnimatedNumber> MWp.
+              <AnimatedNumber decimals={0}>{data.Leistung}</AnimatedNumber> kWp.
             </span>{' '}
           </Title>
         </div>
