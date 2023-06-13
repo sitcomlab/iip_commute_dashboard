@@ -13,7 +13,6 @@ export default function MobilityTile({
   ...props
 }: MobilityTileProps) {
   return (
-    // @ts-expect-error Server Component
     <IconTile {...props} icon={BicycleIcon} variant="mobility">
       <>{children}</>
     </IconTile>

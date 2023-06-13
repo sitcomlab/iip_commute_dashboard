@@ -10,7 +10,6 @@ export type EnergyTileProps = Omit<IconTileProps, 'variant' | 'icon'>
  */
 export default function DataTile({ children, ...props }: EnergyTileProps) {
   return (
-    // @ts-expect-error Server Component
     <IconTile {...props} icon={EnergyIcon} variant="data">
       <>{children}</>
     </IconTile>

@@ -7,7 +7,6 @@ const withSuspense = (
   function () {
     return (
       <Suspense fallback={FallbackComponent}>
-        {/* @ts-expect-error Server Component */}
         <WrappedComponent />
       </Suspense>
     )

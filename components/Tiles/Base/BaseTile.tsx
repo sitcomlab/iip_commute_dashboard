@@ -89,6 +89,7 @@ export function BaseTile({
           url: `${window.location.origin}/share/${embedId}`,
         })
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log('Could not share', e)
       } finally {
         return

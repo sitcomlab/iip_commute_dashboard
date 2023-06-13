@@ -71,22 +71,18 @@ export default async function TileFactory({
     case 'climate-weather':
       return <WeatherTile />
     case 'climate-co2':
-      // @ts-expect-error Server Component
       return <CO2EmissionsTile />
     case 'climate-indices':
-      // @ts-expect-error Server Component
       return <ClimateIndicesTile />
     case 'climate-development':
       return <ClimateDevelopmentTile />
     case 'climate-garbage':
-      // @ts-expect-error Server Component
       return <GarbageTile />
 
     // ---- BUILDINGS ----
     case 'building-ecoProfit':
       return <EcoProfitTile />
     case 'building-energyConsumption':
-      // @ts-expect-error Server Component
       return <EnergyComsumptionTile />
 
     // ---- ENERGY ----
@@ -97,26 +93,20 @@ export default async function TileFactory({
     case 'energy-PVAnlagen':
       return <PVAnlagenTile />
     case 'energy-energietraeger':
-      // @ts-expect-error Server Component
       return <EnergietraegerTile />
 
     // ---- MOBILITY ----
     case 'mobility-bicycle':
-      // @ts-expect-error Server Component
       return <BicycleChartTile />
     case 'mobility-stadtradeln':
-      // @ts-expect-error Server Component
       return <StadtradelnTile />
     case 'mobility-bus':
       return <BusTile />
     case 'mobility-modalSplit':
-      // @ts-expect-error Server Component
       return <ModalSplitTile />
     case 'mobility-trafficload':
-      // @ts-expect-error Server Component
       return <TrafficloadTile />
     case 'mobility-awm':
-      // @ts-expect-error Server Component
       return <AWMTile />
 
     // ---- SUCCESS-STORY ----

@@ -2,8 +2,6 @@ import useCO2Data from '@/hooks/useCO2Data'
 import { parse } from 'date-fns'
 import { SeriesOption } from 'echarts'
 import { ReactECharts } from '@/components/Charts/ReactECharts'
-import resolveConfig from 'tailwindcss/resolveConfig'
-import tailwindConfig from '@/tailwind.config'
 import Title from '@/components/Elements/Title'
 import { Spacer } from '@/components/Elements/Spacer'
 import useDevice from '@/hooks/useDevice'
@@ -14,8 +12,6 @@ type CO2ChartProps = {
   showFuture?: boolean
   mode: 'co2' | 'endenergie'
 }
-
-const { theme } = resolveConfig(tailwindConfig)
 
 export default function CO2Chart({ showFuture = false, mode }: CO2ChartProps) {
   const data = useCO2Data(mode)
