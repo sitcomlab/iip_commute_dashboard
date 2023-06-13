@@ -66,6 +66,7 @@ export default async function IconTile({
     <BaseTile
       embedId={embedId}
       footerCenterElement={live ? <LiveBadge variant={variant} /> : undefined}
+      isFullWidth={data?.full_width}
       moreInfo={data?.details}
       source={data?.data_url}
       variant={variant}

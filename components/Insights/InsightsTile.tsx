@@ -14,7 +14,7 @@ export default function InsightsTile({
   image,
 }: InsightsTileProps) {
   return (
-    <div className="h-full overflow-hidden rounded-KD bg-white">
+    <div className="h-full overflow-hidden rounded-[36px] bg-white md:rounded-[56px]">
       <Link href={link}>
         <div className="group flex h-full w-full flex-col  bg-secondary transition-all hover:bg-opacity-30">
           <div className="flex w-full flex-1 justify-between gap-2 py-[33px] pl-[52px] pr-12 group-hover:text-secondary">

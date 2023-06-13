@@ -13,7 +13,7 @@ import Title from '@/components/Elements/Title'
 import remarkGfm from 'remark-gfm'
 
 const baseTileStyle = cva(
-  'relative flex flex-col md:flex-row h-fit overflow-hidden rounded-KD ',
+  'relative flex flex-col md:flex-row h-fit overflow-hidden rounded-[36px] md:rounded-[56px]',
   {
     variants: {
       variant: {
@@ -48,6 +48,7 @@ export type BaseTileProps = VariantProps<typeof baseTileStyle> &
     footerCenterElement?: React.ReactElement
     moreInfo?: React.ReactNode
     source?: string
+    isFullWidth?: boolean
   }
 
 const transitionOpts = {
@@ -71,6 +72,7 @@ export function BaseTile({
   embedId,
   moreInfo,
   source,
+  isFullWidth,
 }: BaseTileProps) {
   const [showEmbedOverlay, setShowEmbedOverlay] = useState(false)
   const [showShareOverlay, setShowShareOverlay] = useState(false)
@@ -142,8 +144,10 @@ export function BaseTile({
           (styles, render) =>
             render && (
               <MoreInfoOverlay
+                isFullWidth={isFullWidth}
                 onClose={() => setShowMoreInfo(false)}
                 style={styles}
+                variant={variant}
               >
                 {typeof moreInfo === 'string' ? (
                   <ReactMarkdown
