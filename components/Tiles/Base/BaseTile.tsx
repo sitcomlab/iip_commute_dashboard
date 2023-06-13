@@ -161,7 +161,14 @@ export function BaseTile({
                       h6: props => <Title as={'h7'} {...props} />,
                       ul: props => <ul className="list-disc px-6" {...props} />,
                       p: props => <p className="mb-2" {...props} />,
-                      a: props => <a className="underline" {...props} />,
+                      a: props => (
+                        <a
+                          className="underline"
+                          {...props}
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        />
+                      ),
                     }}
                     remarkPlugins={[remarkGfm]}
                   >
