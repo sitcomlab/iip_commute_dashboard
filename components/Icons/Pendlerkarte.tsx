@@ -33,7 +33,7 @@ function SvgPendlerkarte(props: SVGProps<SVGSVGElement>) {
             fill="none"
             id="Pfad_365"
             stroke="#fff"
-            stroke-width="3"
+            strokeWidth="3"
             transform="translate(8640.632 21914.186)"
           />
           <path
@@ -42,7 +42,7 @@ function SvgPendlerkarte(props: SVGProps<SVGSVGElement>) {
             fill="none"
             id="Pfad_366"
             stroke="#fff"
-            stroke-width="3"
+            strokeWidth="3"
             transform="translate(8674.072 21752.449)"
           />
           <path
@@ -51,7 +51,7 @@ function SvgPendlerkarte(props: SVGProps<SVGSVGElement>) {
             fill="none"
             id="Pfad_367"
             stroke="#fff"
-            stroke-width="3"
+            strokeWidth="3"
             transform="translate(8452.497 21764.316)"
           />
           <path
@@ -60,7 +60,7 @@ function SvgPendlerkarte(props: SVGProps<SVGSVGElement>) {
             fill="none"
             id="Pfad_368"
             stroke="#fff"
-            stroke-width="3"
+            strokeWidth="3"
             transform="translate(8439.684 21836.385)"
           />
           <path
@@ -69,7 +69,7 @@ function SvgPendlerkarte(props: SVGProps<SVGSVGElement>) {
             fill="none"
             id="Pfad_369"
             stroke="#fff"
-            stroke-width="3"
+            strokeWidth="3"
             transform="translate(10533 21499)"
           />
         </g>
@@ -79,7 +79,7 @@ function SvgPendlerkarte(props: SVGProps<SVGSVGElement>) {
           fill="none"
           id="Pfad_371"
           stroke="#fff"
-          stroke-width="3"
+          strokeWidth="3"
           transform="translate(-16516.65 -10248.533)"
         />
         <path
@@ -88,7 +88,7 @@ function SvgPendlerkarte(props: SVGProps<SVGSVGElement>) {
           fill="none"
           id="Pfad_372"
           stroke="#fff"
-          stroke-width="2"
+          strokeWidth="2"
           transform="translate(-14508.75 -18607.764)"
         />
         <path
@@ -97,7 +97,7 @@ function SvgPendlerkarte(props: SVGProps<SVGSVGElement>) {
           fill="none"
           id="Pfad_373"
           stroke="#fff"
-          stroke-width="3"
+          strokeWidth="3"
           transform="translate(-14422.75 -11001.672)"
         />
         <path
@@ -106,7 +106,7 @@ function SvgPendlerkarte(props: SVGProps<SVGSVGElement>) {
           fill="none"
           id="Pfad_374"
           stroke="#fff"
-          stroke-width="3"
+          strokeWidth="3"
           transform="translate(-14422.75 -11001.672)"
         />
       </g>

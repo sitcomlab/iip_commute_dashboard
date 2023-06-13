@@ -7,13 +7,13 @@ import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { WindEnergyIcon } from '@/components/Icons'
 import { Spacer } from '@/components/Elements/Spacer'
 
-interface WindDataType {
-  ZEIT: string
-  AnzahlAnlagen: number
-  AnzahlSolarModule: number
-  Bruttoleistung: number
-  Nettonennleistung: number
-}
+// interface WindDataType {
+//   ZEIT: string
+//   AnzahlAnlagen: number
+//   AnzahlSolarModule: number
+//   Bruttoleistung: number
+//   Nettonennleistung: number
+// }
 
 export default function WindEnergyTile() {
   {

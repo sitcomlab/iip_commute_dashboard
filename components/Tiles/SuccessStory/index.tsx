@@ -22,6 +22,7 @@ export type SuccessStoryTileProps = {
  */
 export default function SuccessStoryTile({
   text,
+  // eslint-disable-next-line unused-imports/no-unused-vars
   link,
   image,
   imagePosition = 'left',

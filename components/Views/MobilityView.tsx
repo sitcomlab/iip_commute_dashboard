@@ -11,24 +11,22 @@ import BaseView from './BaseView'
 
 export default function MobilityView() {
   return (
-    // @ts-expect-error Server Component
     <BaseView type="mobility">
       <Columns>
-        {/* @ts-expect-error Server Component */}
         <BicycleChartTile />
-        {/* @ts-expect-error Server Component */}
+
         <StadtradelnTile />
         <BusTile />
-        {/* @ts-expect-error Server Component */}
+
         <AWMTile />
       </Columns>
       <Columns>
         <MasterplanTile />
         <PassengerTile />
       </Columns>
-      {/* @ts-expect-error Server Component */}
+
       <ModalSplitTile />
-      {/* @ts-expect-error Server Component */}
+
       <TrafficloadTile />
     </BaseView>
   )

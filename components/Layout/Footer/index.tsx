@@ -1,6 +1,7 @@
+'use client'
+
 import Link from 'next/link'
 import StairStepBackground from '../StairStepBackground'
-import Script from 'next/script'
 import Title from '@/components/Elements/Title'
 import Container from '../Container'
 import Image from 'next/image'
@@ -11,32 +12,26 @@ import StadtwerkeLogo from '@/assets/logos/Stadtwerke_Muenster_Logo.png'
 import BMWSBLogo from '@/assets/logos/BMWSB.png'
 import KFW from '@/assets/logos/kfw.png'
 
+function UnCryptMailto(s: string) {
+  var n = 0
+  var r = ''
+  for (var i = 0; i < s.length; i++) {
+    n = s.charCodeAt(i)
+    if (n >= 8364) {
+      n = 128
+    }
+    r += String.fromCharCode(n - 1)
+  }
+  return r
+}
+
+function linkTo_UnCryptMailto(s: string) {
+  location.href = UnCryptMailto(s)
+}
+
 export default function Footer() {
   return (
     <StairStepBackground>
-      <Script id="linkTo_UnCryptMailto">
-        {`function UnCryptMailto( s )
-          {
-            var n = 0;
-            var r = "";
-            for( var i = 0; i < s.length; i++)
-            {
-                n = s.charCodeAt( i );
-                if( n >= 8364 )
-                {
-                    n = 128;
-                }
-                r += String.fromCharCode( n - 1 );
-            }
-            return r;
-        }
-
-        function linkTo_UnCryptMailto( s )
-        {
-            location.href=UnCryptMailto( s );
-        }
-      `}
-      </Script>
       <Container>
         <div className="items-top flex w-full flex-col justify-around pb-10 lg:flex-row lg:gap-20 xl:pb-20 2xl:gap-44">
           <div className="flex-1">
@@ -109,7 +104,12 @@ export default function Footer() {
                 </Title>
               </Link>
               {/* https://www.math.uni-hamburg.de/it/dienste/encryptma.html */}
-              <a href="javascript:linkTo_UnCryptMailto('nbjmup;lmjnbAtubeu.nvfotufs/ef');">
+              <a
+                className="cursor-pointer"
+                onClick={() =>
+                  linkTo_UnCryptMailto('nbjmup;lmjnbAtubeu.nvfotufs/ef')
+                }
+              >
                 <Title as="h5" className="underline" variant={'primary'}>
                   Sie haben Feedback für uns?
                 </Title>
@@ -128,7 +128,12 @@ export default function Footer() {
               Datenschutz
             </Title>
           </Link>
-          <a href="javascript:linkTo_UnCryptMailto('nbjmup;lmjnbAtubeu.nvfotufs/ef');">
+          <a
+            className="cursor-pointer"
+            onClick={() =>
+              linkTo_UnCryptMailto('nbjmup;lmjnbAtubeu.nvfotufs/ef')
+            }
+          >
             <Title as="h5" className="underline" variant={'primary'}>
               Sie haben Feedback für uns?
             </Title>

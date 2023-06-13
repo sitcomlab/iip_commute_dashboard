@@ -23,7 +23,7 @@ function SvgCarIcon(props: SVGProps<SVGSVGElement>) {
           stroke="#f28443"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="2.5"
+          strokeWidth="2.5"
           transform="translate(0 26)"
           width="58"
         />
@@ -35,7 +35,7 @@ function SvgCarIcon(props: SVGProps<SVGSVGElement>) {
           stroke="#f28443"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="2.5"
+          strokeWidth="2.5"
           transform="translate(-701 -103)"
         />
         <path
@@ -46,7 +46,7 @@ function SvgCarIcon(props: SVGProps<SVGSVGElement>) {
           stroke="#f28443"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="2.5"
+          strokeWidth="2.5"
           transform="translate(-701 -103)"
         />
         <path
@@ -57,7 +57,7 @@ function SvgCarIcon(props: SVGProps<SVGSVGElement>) {
           stroke="#f28443"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="2.5"
+          strokeWidth="2.5"
           transform="translate(-701 -103)"
         />
         <path
@@ -68,7 +68,7 @@ function SvgCarIcon(props: SVGProps<SVGSVGElement>) {
           stroke="#f28443"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="2.5"
+          strokeWidth="2.5"
           transform="translate(-701 -103)"
         />
         <path
@@ -79,7 +79,7 @@ function SvgCarIcon(props: SVGProps<SVGSVGElement>) {
           stroke="#f28443"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="2.5"
+          strokeWidth="2.5"
           transform="translate(-701 -103)"
         />
         <circle
@@ -92,7 +92,7 @@ function SvgCarIcon(props: SVGProps<SVGSVGElement>) {
           stroke="#f28443"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="2.5"
+          strokeWidth="2.5"
           transform="translate(5 31)"
         />
         <path
@@ -103,7 +103,7 @@ function SvgCarIcon(props: SVGProps<SVGSVGElement>) {
           stroke="#f28443"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="2.5"
+          strokeWidth="2.5"
           transform="translate(-701 -103)"
         />
         <circle
@@ -116,7 +116,7 @@ function SvgCarIcon(props: SVGProps<SVGSVGElement>) {
           stroke="#f28443"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="2.5"
+          strokeWidth="2.5"
           transform="translate(45 31)"
         />
         <path
@@ -127,7 +127,7 @@ function SvgCarIcon(props: SVGProps<SVGSVGElement>) {
           stroke="#f28443"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="2.5"
+          strokeWidth="2.5"
           transform="translate(-701 -103)"
         />
         <path
@@ -138,7 +138,7 @@ function SvgCarIcon(props: SVGProps<SVGSVGElement>) {
           stroke="#f28443"
           stroke-linecap="round"
           stroke-linejoin="round"
-          stroke-width="2.5"
+          strokeWidth="2.5"
           transform="translate(-701 -103)"
         />
       </g>
