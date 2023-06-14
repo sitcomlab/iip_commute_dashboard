@@ -65,8 +65,8 @@ export default function Footer() {
               Unterstützt durch
             </Title>
             <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
-              <Link href="https://www.stadtwerke-muenster.de/">
-                <div className="relative h-28 w-full md:h-36">
+              <div className="relative h-28 w-full md:h-36">
+                <Link href="https://www.stadtwerke-muenster.de/">
                   <Image
                     alt="Stadtwerke Münster Logo"
                     className="object-contain"
