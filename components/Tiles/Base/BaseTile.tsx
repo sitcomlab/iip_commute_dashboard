@@ -11,9 +11,16 @@ import { TileType } from '@/utils/TileFactory'
 import ReactMarkdown from 'react-markdown'
 import Title from '@/components/Elements/Title'
 import remarkGfm from 'remark-gfm'
+import TileHeader from './TileHeader'
+import {
+  BicycleIcon,
+  BuildingIcon,
+  EnergyIcon,
+  MuensterIcon,
+} from '@/components/Icons'
 
 const baseTileStyle = cva(
-  'relative flex flex-col md:flex-row h-fit overflow-hidden rounded-[36px] md:rounded-[56px]',
+  'relative flex flex-col md:flex-row h-fit overflow-hidden rounded-[36px] lg:rounded-[56px]',
   {
     variants: {
       variant: {
@@ -101,11 +108,37 @@ export function BaseTile({
     setShowShareOverlay(true)
   }
 
+  const chooseIcon = function (variant: string | null | undefined) {
+    switch (variant) {
+      case 'energy':
+        return EnergyIcon
+      case 'mobility':
+        return BicycleIcon
+      case 'climate':
+        return MuensterIcon
+      case 'building':
+        return BuildingIcon
+      default:
+        return undefined
+    }
+  }
+
   return (
     <div className="pb-5">
       <div className={cx(baseTileStyle({ variant }), className)}>
         {startImage}
-        <div className="flex w-full flex-col justify-between px-4 py-8 md:p-16">
+        <div className="flex w-full flex-col justify-between px-4 py-8 lg:p-16">
+          <TileHeader
+            dataURL={source}
+            hasMoreDetails={!!moreInfo}
+            icon={chooseIcon(variant)}
+            onEmbedClick={() => setShowEmbedOverlay(true)}
+            onShareClick={openShareDialog}
+            variant={variant}
+          >
+            <></>
+          </TileHeader>
+
           <div>{children}</div>
           <TileFooter
             dataURL={source}

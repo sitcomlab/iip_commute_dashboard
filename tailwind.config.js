@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       container: {
         screens: {
+          'xl' : '1280px',
           '2xl': '1920px',
         },
       },
