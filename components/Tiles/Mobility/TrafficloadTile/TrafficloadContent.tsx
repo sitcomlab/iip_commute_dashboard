@@ -1,7 +1,5 @@
-//@ts-nocheck
 'use client'
 
-import { ReactECharts } from '@/components/Charts/ReactECharts'
 import Carousel from '@/components/Elements/Carousel'
 import Title from '@/components/Elements/Title'
 import Slider from '@/components/Inputs/Slider'
@@ -10,7 +8,7 @@ import { useState } from 'react'
 import { useWindowSize } from 'react-use'
 import monatsmittelwerte from '@/assets/data/monatsmittelwerte.json'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
-import { Pendlerkarte } from '@/components/Icons'
+import TrafficMap from './TrafficMap'
 
 function Toggle({ onChange }: { onChange: (_val: string) => void }) {
   return (
@@ -93,16 +91,14 @@ const getLabel = (value: number, name: string, width: number) => {
           color: '#005b79',
           fontWeight: 'bold',
           align: 'left',
-          fontSize: width <= 1600 ? 12 : 14,
-          // fontWeight: 500,
+          fontSize: width <= 1600 ? 16 : 20,
           padding: width <= 1600 ? [6, 0, 6, 0] : [18, 0, 6, 0],
         },
         monatsmittel: {
           color: '#34c17b',
           align: 'left',
           fontSize: width <= 1600 ? 32 : 40,
-          fontWeight: 'bold',
-          // fontWeight: 500,
+          fontWeight: '500',
         },
       },
     },
@@ -114,7 +110,7 @@ export default function TrafficloadContent() {
   const [mode, setMode] = useState<'2013' | '2019' | 'current'>('current')
   const { width } = useWindowSize()
 
-  let year
+  let year: string
   if (mode === 'current') {
     year = new Date().getFullYear().toString()
   } else {
@@ -146,316 +142,35 @@ export default function TrafficloadContent() {
       steinfurter?.properties.mittelwert.toFixed(0) ?? 0,
   }
 
+  console.log(streetData['Albersloher Weg / Heumannsweg'] as number)
+
   return (
     <>
       <div className="relative flex h-96 flex-1 flex-col rounded bg-white p-2 md:h-[32rem]">
         <div className="absolute -top-4 left-0 w-full md:-top-6 md:w-auto">
           <Toggle onChange={val => setMode(val as typeof mode)} />
         </div>
-        <div className="absolute bottom-5 left-0 flex h-[80%] w-full">
-          <Pendlerkarte className="h-full w-full flex-1" />
-          <div className="sm:w-14"></div>
-          {/* <SvgCarIcon className="[-translate-x-1/2] [-translate-y-1/2] absolute left-[50%] top-[50%] h-6 w-6 transform" />
-          <SvgCarIcon className="[-translate-x-1/2] [-translate-y-1/2] absolute left-[60%] top-[30%] transform" />
-          <SvgCarIcon className="[-translate-x-1/2] [-translate-y-1/2] absolute left-[25%] top-[30%] transform" />
-          <SvgCarIcon className="[-translate-x-1/2] [-translate-y-1/2] absolute left-[30%] top-[40%] transform" />
-          <SvgCarIcon className="[-translate-x-1/2] [-translate-y-1/2] absolute left-[50%] top-[50%] transform" /> */}
-        </div>
-        <div className="w-full flex-1 pb-12">
-          <div className=" h-full w-full">
-            <ReactECharts
-              option={{
-                series: [
-                  {
-                    name: '1',
-                    type: 'pie',
-                    center: ['35%', '45%'],
-                    itemStyle: {
-                      color: 'transparent',
-                      // opacity: 0.2,
-                    },
-                    radius: ['20%'],
-                    label: {
-                      show: true,
-                      position: 'center',
-                      textStyle: {
-                        opacity: 1,
-                      },
-                    },
-                    labelLine: {
-                      show: false,
-                    },
-                    data: [getIcon(width)],
-                  },
-                  {
-                    name: 'Steinfurter Str. / Austermannstr.',
-                    type: 'pie',
-                    center: ['35%', '45%'],
-                    startAngle: 0,
-                    selectedMode: width < 1024 ? 'single' : false,
-                    itemStyle: {
-                      color: '#34c17b',
-                      opacity: 0.2,
-                    },
-                    select: {
-                      itemStyle: {
-                        color: '#005b79',
-                      },
-                    },
-                    radius: ['', '20%'],
-                    labelLine: {
-                      show: true,
-                      lineStyle: {
-                        color: '#005b79',
-                        opacity: 1,
-                        cap: 'round',
-                      },
-                    },
-                    labelLayout: {
-                      x: '25%',
-                      y: '30%',
-                    },
-                    data: [
-                      getLabel(
-                        streetData['Steinfurter Str. / Austermannstr.'],
-                        'Steinfurter Straße / Austermannstraße',
-                        width,
-                      ),
-                    ],
-                  },
-                  {
-                    name: '2',
-                    type: 'pie',
-                    center: ['40%', '60%'],
-                    itemStyle: {
-                      color: 'transparent',
-                      // opacity: 0.2,
-                    },
-                    radius: ['15%'],
-                    label: {
-                      show: true,
-                      position: 'center',
-                      textStyle: {
-                        opacity: 1,
-                      },
-                    },
-                    labelLine: {
-                      show: false,
-                    },
-                    data: [getIcon(width)],
-                  },
-                  {
-                    name: '33',
-                    type: 'pie',
-                    startAngle: 0,
-                    selectedMode: width < 1024 ? 'single' : false,
-                    select: {
-                      itemStyle: {
-                        color: '#005b79',
-                      },
-                    },
-                    center: ['40%', '60%'],
-                    itemStyle: {
-                      color: '#34c17b',
-                      opacity: 0.2,
-                    },
-                    radius: ['', '15%'],
-                    label: {
-                      show: true,
-                    },
-                    labelLine: {
-                      show: true,
-                      lineStyle: {
-                        color: '#005b79',
-                      },
-                    },
-                    labelLayout: {
-                      x: '30%',
-                      y: '65%',
-                    },
-                    data: [
-                      getLabel(
-                        streetData['Rishon-le-Zion-Ring / Einsteinstr.'],
-                        'Rishon-le-Zion-Ring / Einsteinstr.',
-                        width,
-                      ),
-                    ],
-                  },
-
-                  {
-                    name: '3',
-                    type: 'pie',
-                    center: ['55%', '75%'],
-                    itemStyle: {
-                      color: 'transparent',
-                      // opacity: 0.2,
-                    },
-                    radius: ['20%'],
-                    label: {
-                      show: true,
-                      position: 'center',
-                      textStyle: {
-                        opacity: 1,
-                      },
-                    },
-                    labelLine: {
-                      show: false,
-                    },
-                    data: [getIcon(width)],
-                  },
-                  {
-                    name: '33',
-                    type: 'pie',
-                    selectedMode: width < 1024 ? 'single' : false,
-                    select: {
-                      itemStyle: {
-                        color: '#005b79',
-                      },
-                    },
-                    center: ['55%', '75%'],
-                    itemStyle: {
-                      color: '#34c17b',
-                      opacity: 0.2,
-                    },
-                    radius: ['', '20%'],
-                    label: {
-                      show: true,
-                    },
-                    labelLine: {
-                      show: true,
-                      lineStyle: {
-                        color: '#005b79',
-                      },
-                    },
-                    data: [
-                      getLabel(
-                        streetData['Albersloher Weg / Heumannsweg'],
-                        'Albersloher Weg / Heumannsweg',
-                        width,
-                      ),
-                    ],
-                  },
-                  {
-                    name: '4',
-                    type: 'pie',
-                    center: ['60%', '55%'],
-                    itemStyle: {
-                      color: 'transparent',
-                      // opacity: 0.2,
-                    },
-                    radius: ['15%'],
-                    label: {
-                      show: true,
-                      position: 'center',
-                      textStyle: {
-                        opacity: 1,
-                      },
-                    },
-                    labelLine: {
-                      show: false,
-                    },
-                    data: [getIcon(width)],
-                  },
-                  {
-                    name: '33',
-                    type: 'pie',
-                    center: ['60%', '55%'],
-                    selectedMode: width < 1024 ? 'single' : false,
-                    select: {
-                      itemStyle: {
-                        color: '#005b79',
-                      },
-                    },
-                    itemStyle: {
-                      color: '#34c17b',
-                      opacity: 0.2,
-                    },
-                    radius: ['', '15%'],
-                    label: {
-                      show: true,
-                    },
-                    labelLine: {
-                      show: true,
-                      lineStyle: {
-                        color: '#005b79',
-                      },
-                    },
-                    data: [
-                      getLabel(
-                        streetData['Warendorfer Str. / Schifffahrter Damm'],
-                        ' Warendorfer Str. / Schifffahrter Damm',
-                        width,
-                      ),
-                    ],
-                  },
-                  {
-                    name: '5',
-                    type: 'pie',
-                    center: ['35%', '75%'],
-                    itemStyle: {
-                      color: 'transparent',
-                      // opacity: 0.2,
-                    },
-                    radius: ['15%'],
-                    label: {
-                      show: true,
-                      position: 'center',
-                      textStyle: {
-                        opacity: 1,
-                      },
-                    },
-                    labelLine: {
-                      show: false,
-                    },
-                    data: [getIcon(width)],
-                  },
-                  {
-                    name: '33',
-                    type: 'pie',
-                    center: ['35%', '75%'],
-                    startAngle: 0,
-                    selectedMode: width < 1024 ? 'single' : false,
-                    select: {
-                      itemStyle: {
-                        color: '#005b79',
-                      },
-                    },
-                    itemStyle: {
-                      color: '#34c17b',
-                      opacity: 0.2,
-                    },
-                    radius: ['', '15%'],
-                    label: {
-                      show: true,
-                    },
-                    labelLine: {
-                      show: true,
-                      lineStyle: {
-                        color: '#005b79',
-                      },
-                    },
-                    labelLayout: {
-                      x: '25%',
-                      y: '90%',
-                    },
-                    data: [
-                      getLabel(
-                        streetData['Weseler Str. / Inselbogen'],
-                        'Weseler Str. / Inselbogen',
-                        width,
-                      ),
-                    ],
-                  },
-                ],
-              }}
-            />
-          </div>
+        <div className="absolute bottom-5 left-0 flex h-[80%] w-full justify-center">
+          <TrafficMap
+            albersloher={streetData['Albersloher Weg / Heumannsweg'] as number}
+            className="h-full"
+            rishon={streetData['Rishon-le-Zion-Ring / Einsteinstr.'] as number}
+            steinfurter={
+              streetData['Steinfurter Str. / Austermannstr.'] as number
+            }
+            warendorfer={
+              streetData['Warendorfer Str. / Schifffahrter Damm'] as number
+            }
+            weseler={streetData['Weseler Str. / Inselbogen'] as number}
+          />
         </div>
       </div>
       <div className="bg-white px-4 pb-4 lg:hidden">
         <Carousel arrows variant={'mobility'}>
           {Object.keys(streetData).map((key, index) => {
-            const val = parseInt(streetData[key as keyof typeof streetData])
+            const val = parseInt(
+              streetData[key as keyof typeof streetData] as string,
+            )
             return (
               <div
                 className="flex items-center justify-center gap-3"
