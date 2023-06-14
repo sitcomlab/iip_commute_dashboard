@@ -9,6 +9,7 @@ import Image from 'next/image'
 import SmartCityMSLogo from '@/assets/logos/smart_city_ms.png'
 import MuensterKlima2030 from '@/assets/logos/muenter_unser_klima_2030.png'
 import StadtwerkeLogo from '@/assets/logos/Stadtwerke_Muenster_Logo.png'
+import WFMLogo from '@/assets/logos/logo_wfm.svg'
 import BMWSBLogo from '@/assets/logos/BMWSB.png'
 import KFW from '@/assets/logos/kfw.png'
 
@@ -40,27 +41,40 @@ export default function Footer() {
             </Title>
             <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
               <div className="relative h-28 w-full md:h-36">
-                <Image
-                  alt="Stadtwerke Münster Logo"
-                  className="object-contain"
-                  fill
-                  src={SmartCityMSLogo}
-                />
+                <Link href="https://www.smartcity.ms">
+                  <Image
+                    alt="Smart City Münster Logo"
+                    className="object-contain"
+                    fill
+                    src={SmartCityMSLogo}
+                  />
+                </Link>
               </div>
               <div className="relative h-28 w-full md:h-36">
                 <Image
-                  alt="Stadtwerke Münster Logo"
+                  alt="Unser Klima Logo"
                   className="object-contain"
                   fill
                   src={MuensterKlima2030}
                 />
               </div>
+              <Title as={'h4'} className="py-10 md:py-20">
+                Unterstützt durch
+              </Title>
               <div className="relative h-28 w-full md:h-36">
                 <Image
                   alt="Stadtwerke Münster Logo"
                   className="object-contain"
                   fill
                   src={StadtwerkeLogo}
+                />
+              </div>
+              <div className="relative h-28 w-full md:h-36">
+                <Image
+                  alt="Wirtschaftsförderung Münster Logo"
+                  className="object-contain"
+                  fill
+                  src={WFMLogo}
                 />
               </div>
             </div>
@@ -72,7 +86,7 @@ export default function Footer() {
             <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
               <div className="relative h-28 w-full md:h-36">
                 <Image
-                  alt="Stadtwerke Münster Logo"
+                  alt="BMWSB Logo"
                   className="object-contain"
                   fill
                   src={BMWSBLogo}
@@ -80,7 +94,7 @@ export default function Footer() {
               </div>
               <div className="relative h-28 w-full md:h-36">
                 <Image
-                  alt="Stadtwerke Münster Logo"
+                  alt="KfW  Logo"
                   className="object-contain"
                   fill
                   src={KFW}
@@ -118,12 +132,12 @@ export default function Footer() {
           </div>
         </div>
         <div className="hidden justify-between sm:flex 2xl:hidden">
-          <Link href="https://www.stadt-muenster.de/impressum">
+          <Link href="/impressum">
             <Title as="h5" className="underline" variant={'primary'}>
               Impressum
             </Title>
           </Link>
-          <Link href="https://www.stadt-muenster.de/datenschutz">
+          <Link href="/datenschutz">
             <Title as="h5" className="underline" variant={'primary'}>
               Datenschutz
             </Title>
