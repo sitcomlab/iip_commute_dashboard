@@ -64,7 +64,7 @@ export default function TileHeader({
       <div
         className={cx(
           'flex gap-4',
-          variant === 'successStory' || variant === 'secondary'
+          variant === 'secondary'
             ? 'fill-white text-white'
             : 'fill-primary text-primary',
         )}
