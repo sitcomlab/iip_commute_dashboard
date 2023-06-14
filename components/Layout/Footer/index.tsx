@@ -51,31 +51,39 @@ export default function Footer() {
                 </Link>
               </div>
               <div className="relative h-28 w-full md:h-36">
-                <Image
-                  alt="Unser Klima Logo"
-                  className="object-contain"
-                  fill
-                  src={MuensterKlima2030}
-                />
+                <Link href="https://www.stadt-muenster.de/klima/">
+                  <Image
+                    alt="Unser Klima Logo"
+                    className="object-contain"
+                    fill
+                    src={MuensterKlima2030}
+                  />
+                </Link>
               </div>
-              <Title as={'h4'} className="py-10 md:py-20">
-                Unterstützt durch
-              </Title>
-              <div className="relative h-28 w-full md:h-36">
-                <Image
-                  alt="Stadtwerke Münster Logo"
-                  className="object-contain"
-                  fill
-                  src={StadtwerkeLogo}
-                />
+            </div>
+            <Title as={'h4'} className="py-10 md:py-20">
+              Unterstützt durch
+            </Title>
+            <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
+              <Link href="https://www.stadtwerke-muenster.de/">
+                <div className="relative h-28 w-full md:h-36">
+                  <Image
+                    alt="Stadtwerke Münster Logo"
+                    className="object-contain"
+                    fill
+                    src={StadtwerkeLogo}
+                  />
+                </Link>
               </div>
               <div className="relative h-28 w-full md:h-36">
-                <Image
-                  alt="Wirtschaftsförderung Münster Logo"
-                  className="object-contain"
-                  fill
-                  src={WFMLogo}
-                />
+                <Link href="https://www.wfm-muenster.de/">
+                  <Image
+                    alt="Wirtschaftsförderung Münster Logo"
+                    className="object-contain"
+                    fill
+                    src={WFMLogo}
+                  />
+                </Link>
               </div>
             </div>
           </div>
