@@ -418,9 +418,15 @@ export default function TrafficMap({
           fontWeight={500}
           transform="translate(-12843.75 -12773.281)"
         >
-          <AnimatedNumberSVG x={0} y={39}>
-            {Number(weseler)}
-          </AnimatedNumberSVG>
+          {weseler === 0 ? (
+            <tspan x={0} y={39}>
+              Keine Daten
+            </tspan>
+          ) : (
+            <AnimatedNumberSVG x={0} y={39}>
+              {Number(weseler)}
+            </AnimatedNumberSVG>
+          )}
         </text>
         <text
           fill="#005b79"
@@ -440,9 +446,15 @@ export default function TrafficMap({
           fontWeight={500}
           transform="translate(-11986.75 -12773.281)"
         >
-          <AnimatedNumberSVG x={0} y={39}>
-            {Number(albersloher)}
-          </AnimatedNumberSVG>
+          {albersloher === 0 ? (
+            <tspan x={0} y={39}>
+              Keine Daten
+            </tspan>
+          ) : (
+            <AnimatedNumberSVG x={0} y={39}>
+              {Number(albersloher)}
+            </AnimatedNumberSVG>
+          )}
         </text>
         <text
           data-name="Neutor"
@@ -463,9 +475,15 @@ export default function TrafficMap({
           fontWeight={500}
           transform="translate(-11986.75 -13101.277)"
         >
-          <AnimatedNumberSVG x={0} y={39}>
-            {Number(warendorfer)}
-          </AnimatedNumberSVG>
+          {warendorfer === 0 ? (
+            <tspan x={0} y={39}>
+              Keine Daten
+            </tspan>
+          ) : (
+            <AnimatedNumberSVG x={0} y={39}>
+              {Number(warendorfer)}
+            </AnimatedNumberSVG>
+          )}
         </text>
         <text
           data-name="Neutor"
@@ -518,9 +536,15 @@ export default function TrafficMap({
           fontWeight={500}
           transform="translate(-12843.75 -13103.795)"
         >
-          <AnimatedNumberSVG x={0} y={39}>
-            {Number(steinfurter)}
-          </AnimatedNumberSVG>
+          {steinfurter === 0 ? (
+            <tspan x={0} y={39}>
+              Keine Daten
+            </tspan>
+          ) : (
+            <AnimatedNumberSVG x={0} y={39}>
+              {Number(steinfurter)}
+            </AnimatedNumberSVG>
+          )}
         </text>
         <text
           data-name="Neutor"
@@ -542,9 +566,15 @@ export default function TrafficMap({
           fontWeight={500}
           transform="translate(-12843.75 -12939.797)"
         >
-          <AnimatedNumberSVG x={0} y={39}>
-            {Number(rishon)}
-          </AnimatedNumberSVG>
+          {rishon === 0 ? (
+            <tspan x={0} y={39}>
+              Keine Daten
+            </tspan>
+          ) : (
+            <AnimatedNumberSVG x={0} y={39}>
+              {Number(rishon)}
+            </AnimatedNumberSVG>
+          )}
         </text>
         <text
           data-name="Neutor"

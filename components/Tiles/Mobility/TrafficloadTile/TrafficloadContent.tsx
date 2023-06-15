@@ -151,7 +151,11 @@ export default function TrafficloadContent() {
                     color: '#34c17b',
                   }}
                 >
-                  <AnimatedNumber>{val}</AnimatedNumber>
+                  {val === 0 ? (
+                    'Keine Daten'
+                  ) : (
+                    <AnimatedNumber>{val}</AnimatedNumber>
+                  )}
                 </Title>
               </div>
             )
