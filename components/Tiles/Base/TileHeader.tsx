@@ -69,11 +69,18 @@ export default function TileHeader({
             : 'fill-primary text-primary',
         )}
       >
-        <SquaresPlus
-          className="h-6 cursor-pointer stroke-2"
-          onClick={onEmbedClick}
-        />
-        <Share className="h-6 cursor-pointer stroke-2" onClick={onShareClick} />
+        <div>
+          <SquaresPlus
+            className="h-6 w-6 cursor-pointer stroke-2"
+            onClick={onEmbedClick}
+          />
+        </div>
+        <div>
+          <Share
+            className="h-6 w-6 cursor-pointer stroke-2"
+            onClick={onShareClick}
+          />
+        </div>
         {dataURL && (
           <Link href={dataURL} target="_blank">
             <Download className="h-6 stroke-2" />
