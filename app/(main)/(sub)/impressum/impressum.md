@@ -50,4 +50,8 @@ https://reedu.de/
 
 Das Klimadashboard Münster ist [Freie Software](https://gitlab.opencode.de/smart-city-muenster/klimadashboard-muenster/). Der Quelltext ist unter der Lizenz [GNU AGPL v3.0](https://gitlab.opencode.de/smart-city-muenster/klimadashboard-muenster/LICENSE), die gestalterischen Elemente unter der Lizenz [CC BY-SA 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/deed.de) veröffentlicht.
 
+## Sonstiges
+
 Die Stadt Münster verwendet als moderne Verwaltung eine geschlechtergerechte Sprache. Seit Januar 2022 ist es allen Beschäftigten in diesem Kontext ergänzend freigestellt, den Genderstern zu nutzen, um allen Geschlechteridentitäten Raum zu geben.
+
+Das Klimadashboard läuft auf einem Server, der mit 100% Ökostrom betrieben wird.
