@@ -107,7 +107,7 @@ export default function TileHeader({
 
   return (
     <div className="">
-      <div className="relative flex flex-col gap-2 px-2.5 pb-6 lg:hidden">
+      <div className="relative flex flex-col gap-2 px-2.5 pb-10 lg:hidden">
         <IconButtons />
       </div>
     </div>
