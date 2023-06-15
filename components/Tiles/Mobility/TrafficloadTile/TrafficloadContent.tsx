@@ -142,8 +142,6 @@ export default function TrafficloadContent() {
       steinfurter?.properties.mittelwert.toFixed(0) ?? 0,
   }
 
-  console.log(streetData['Albersloher Weg / Heumannsweg'] as number)
-
   return (
     <>
       <div className="relative flex h-96 flex-1 flex-col rounded bg-white p-2 md:h-[32rem]">
