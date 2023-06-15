@@ -65,7 +65,8 @@ export default function Navbar() {
         Klimaschutz und Anpassung an die Folgen des Klimawandels und schafft so
         mehr Transparenz in der gesamtstädtischen Klimaarbeit. Entwickelt wurde
         das Klimadashboard von der Stabsstelle Smart City und der Stabsstelle
-        Klima der Stadt Münster, in Zusammenarbeit mit den Stadtwerken Münster.
+        Klima der Stadt Münster mit Unterstützung von den Stadtwerken Münster
+        und der Wirtschaftsförderung Münster.
         Wir arbeiten stetig daran, die Verfügbarkeit der Daten zu verbessern.
         Das Klimadashboard wird im Rahmen des Förderprogramms „Modellprojekte
         Smart Cities“ aus Mitteln des Bundesministeriums für Wohnen,
