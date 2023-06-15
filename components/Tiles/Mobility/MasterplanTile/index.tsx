@@ -16,12 +16,11 @@ export default function MasterplanTile() {
       <div>
         <div className="flex flex-row justify-center gap-6">
           <span className="flex flex-col justify-center">
-            <Masterplan className="h-20 text-primary md:h-44" />
+            <Masterplan className="h-20 text-primary lg:h-44" />
           </span>
           <Title as={'subtitle'}>
-            Mobilität Münster 2035+“ wird aktuell entwickelt.
-            Dabei wurden über verschiedene Formate Münsteraner Bürger*innen
-            beteiligt, die so{' '}
+            Mobilität Münster 2035+“ wird aktuell entwickelt. Dabei wurden über
+            verschiedene Formate Münsteraner Bürger*innen beteiligt, die so{' '}
             <span className="text-mobility">
               <AnimatedNumber>{967}</AnimatedNumber> Ideen
             </span>{' '}

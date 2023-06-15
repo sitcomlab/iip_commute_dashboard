@@ -61,16 +61,16 @@ export default function PassengerContent() {
           </Title>
           <div className="flex justify-end pb-2">
             <span>
-              <Passenger className="h-10 text-primary md:h-14" />
+              <Passenger className="h-10 text-primary lg:h-14" />
             </span>
             <span>
-              <Passenger className="h-10 text-primary md:h-14" />
+              <Passenger className="h-10 text-primary lg:h-14" />
             </span>
             <span>
-              <Passenger className="h-10 text-primary md:h-14" />
+              <Passenger className="h-10 text-primary lg:h-14" />
             </span>
             <span>
-              <Passenger className="hidden h-10 text-primary md:block md:h-14" />
+              <Passenger className="hidden h-10 text-primary lg:block lg:h-14" />
             </span>
           </div>
           {width >= 1800 && (
