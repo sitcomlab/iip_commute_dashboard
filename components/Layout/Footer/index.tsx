@@ -9,7 +9,7 @@ import Image from 'next/image'
 import SmartCityMSLogo from '@/assets/logos/smart_city_ms.png'
 import MuensterKlima2030 from '@/assets/logos/muenter_unser_klima_2030.png'
 import StadtwerkeLogo from '@/assets/logos/Stadtwerke_Muenster_Logo.png'
-import WFMLogo from '@/assets/logos/logo_wfm.svg'
+import WFMLogo from '@/assets/logos/logo_wfm.png'
 import BMWSBLogo from '@/assets/logos/BMWSB.png'
 import KFW from '@/assets/logos/kfw.png'
 
