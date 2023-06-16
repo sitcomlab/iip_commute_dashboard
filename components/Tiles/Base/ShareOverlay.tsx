@@ -26,8 +26,10 @@ export default function ShareOverlay({
 
   return (
     <BaseOverlay onClose={onClose} {...props}>
-      <div className="flex h-full w-full flex-col items-center">
-        <Title variant={'secondary'}>Diese Kachel teilen</Title>
+      <div className="flex h-full w-full flex-col">
+        <Title as="h3" variant={'secondary'}>
+          Diese Kachel teilen
+        </Title>
         <Spacer />
         <div className="flex w-full rounded bg-white p-4">
           <pre className="m-4 flex-1 whitespace-pre-wrap break-all text-sm">
