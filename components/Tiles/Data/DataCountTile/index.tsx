@@ -17,7 +17,7 @@ export default async function DataCountTile() {
       embedId={'climate-data'}
       title={
         <>
-          <AnimatedNumber>{12}</AnimatedNumber> Datenkacheln
+          <AnimatedNumber>{12}</AnimatedNumber> Datenquellen
         </>
       }
     >
