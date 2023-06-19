@@ -16158,5 +16158,13 @@
         "timestamp":"2023-04-01",
         "monthly_temperature":8.82,
         "temperature_deviation":0.4821276596
+    },
+    {
+        "observation_type":"historical",
+        "dwd_station_id":1766.0,
+        "wmo_station_id":null,
+        "timestamp":"2023-05-01",
+        "monthly_temperature":13.89,
+        "temperature_deviation":1.5410638298
     }
 ]
