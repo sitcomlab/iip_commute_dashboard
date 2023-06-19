@@ -4,6 +4,12 @@ import CookieConsent from 'react-cookie-consent'
 
 export default function Cookies() {
   return (
-    <CookieConsent enableDeclineButton>Einwilligung zu Cookies</CookieConsent>
+    <CookieConsent
+      buttonText="Akzeptieren"
+      declineButtonText="Ablehnen"
+      enableDeclineButton
+    >
+      Einwilligung zu Cookies (Analytics, Tracking)
+    </CookieConsent>
   )
 }
