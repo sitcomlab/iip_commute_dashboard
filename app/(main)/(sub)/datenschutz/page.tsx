@@ -42,6 +42,16 @@ export default function Datenschutz() {
       >
         {datenschutzText}
       </ReactMarkdown>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `
+          <div id="matomo-opt-out"></div>
+          <script
+            src="https://internet-webanalyse.stadt-muenster.de/index.php?module=CoreAdminHome&action=optOutJS&divId=matomo-opt-out&language=auto&showIntro=1"
+          />
+          `,
+        }}
+      ></div>
     </main>
   )
 }
