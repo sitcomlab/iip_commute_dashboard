@@ -93,7 +93,7 @@ export default function BusContent() {
           </AnimatedNumber>
         </div>
       </div>
-      <div className="flex h-[280px] w-full items-end gap-8 rounded bg-white p-4">
+      <div className="flex h-[150px] xs:h-[240px] md:h-[200px] lg:h-[290px] w-full items-end gap-8 rounded bg-white p-4">
         <div
           className="flex-none transition-all"
           style={{
