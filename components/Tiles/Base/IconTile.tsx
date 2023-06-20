@@ -72,10 +72,10 @@ export default async function IconTile({
       variant={variant}
     >
       <div className="px-2.5">
-        <div className="flex w-full justify-end 2xl:hidden">
+        <div className="absolute right-16 top-16 hidden lg:block">
           <Icon
             className={cx(
-              'h-[29px] w-auto flex-shrink-0 opacity-40  md:h-[50px]',
+              'h-[29px] w-auto flex-shrink-0 opacity-40 md:h-[50px]',
               iconTileTitleStyle({ variant }),
             )}
           />
@@ -101,12 +101,12 @@ export default async function IconTile({
               )}
             </div>
 
-            <Icon
+            {/* <Icon
               className={cx(
                 'absolute right-0 top-0 hidden h-[29px] w-auto flex-shrink-0 opacity-40 md:h-[50px] 2xl:block',
                 iconTileTitleStyle({ variant }),
               )}
-            />
+            /> */}
           </div>
         )}
         {(title || subtitle) && <Spacer />}

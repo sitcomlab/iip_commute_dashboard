@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { BaseTile } from '../Base/BaseTile'
 import { directusImage } from '@/lib/directus'
 import { ID } from '@directus/sdk'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 export type SuccessStoryTileProps = {
   text: string
@@ -35,9 +37,78 @@ export default function SuccessStoryTile({
         Stimmen für Münster
       </Title>
       <Spacer size="sm" />
-      <Title as="h3" variant={'primary'}>
+      <ReactMarkdown
+        components={{
+          h1: props => (
+            <Title
+              as="h3"
+              className="mb-4 md:mb-6"
+              variant={'primary'}
+              {...props}
+            />
+          ),
+          h2: props => (
+            <Title
+              as="h3"
+              className="mb-4 md:mb-6"
+              variant={'primary'}
+              {...props}
+            />
+          ),
+          h3: props => (
+            <Title
+              as="h3"
+              className="mb-4 md:mb-6"
+              variant={'primary'}
+              {...props}
+            />
+          ),
+          h4: props => (
+            <Title
+              as="h3"
+              className="mb-4 md:mb-6"
+              variant={'primary'}
+              {...props}
+            />
+          ),
+          h5: props => (
+            <Title
+              as="h3"
+              className="mb-4 md:mb-6"
+              variant={'primary'}
+              {...props}
+            />
+          ),
+          h6: props => (
+            <Title
+              as="h3"
+              className="mb-4 md:mb-6"
+              variant={'primary'}
+              {...props}
+            />
+          ),
+          p: props => (
+            <Title
+              as="h3"
+              className="mb-4 md:mb-6"
+              variant={'primary'}
+              {...props}
+            />
+          ),
+          a: props => (
+            <Title
+              as="h3"
+              className="mb-4 md:mb-6"
+              variant={'primary'}
+              {...props}
+            />
+          ),
+        }}
+        linkTarget={'_blank'}
+        remarkPlugins={[remarkGfm]}
+      >
         {text}
-      </Title>
+      </ReactMarkdown>
       <Spacer />
     </>
   )

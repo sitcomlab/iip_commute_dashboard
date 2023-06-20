@@ -5,15 +5,15 @@ import { HTMLAttributes } from 'react'
 const TitleStyle = cva('block', {
   variants: {
     as: {
-      h1: 'text-[40px] md:text-[80px] md:leading-[5.5rem]',
-      h2: 'text-[30px] md:text-[50px] md:leading-[3.5rem] md:tracking-tight',
-      h3: 'text-[30px] md:text-[40px] md:leading-[3rem]',
-      h4: 'text-[20px] md:text-3xl md:leading-[36px]',
-      h5: 'text-base md:text-xl md:leading-6 md:tracking-wide',
-      h6: 'text-base md:text-lg md:tracking-wide',
+      h1: 'text-[40px] lg:text-[80px] lg:leading-[5.5rem]',
+      h2: 'text-[30px] lg:text-[50px] lg:leading-[3.5rem] lg:tracking-tight',
+      h3: 'text-[30px] lg:text-[40px] lg:leading-[3rem]',
+      h4: 'text-[20px] lg:text-3xl lg:leading-[36px]',
+      h5: 'text-base lg:text-xl lg:leading-6 lg:tracking-wide',
+      h6: 'text-base lg:text-lg lg:tracking-wide',
       h7: 'text-base leading-7 tracking-wide',
       h8: 'text-sm leading-5 tracking-wide',
-      subtitle: 'text-xl md:text-3xl',
+      subtitle: 'text-xl lg:text-3xl',
     },
     variant: {
       primary: 'text-primary',

@@ -15,6 +15,7 @@ type TilesBucket = {
   isFullWidth: boolean
 }
 
+// check if a tile should be displayed full width
 const isFullWidth = async (tile: BaseTile) => {
   if (tile.collection === 'successStory') {
     return true

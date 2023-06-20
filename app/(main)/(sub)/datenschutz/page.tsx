@@ -4,6 +4,7 @@ import remarkGfm from 'remark-gfm'
 
 // @ts-ignore
 import datenschutzText from './datenschutz.md'
+import Script from 'next/script'
 
 export default function Datenschutz() {
   return (
@@ -42,6 +43,12 @@ export default function Datenschutz() {
       >
         {datenschutzText}
       </ReactMarkdown>
+
+      <Title as={'h3'} className="mb-2" variant={'primary'}>
+        Matomo Opt Out
+      </Title>
+      <div id="matomo-opt-out"></div>
+      <Script src="https://internet-webanalyse.stadt-muenster.de/index.php?module=CoreAdminHome&action=optOutJS&divId=matomo-opt-out&language=auto&showIntro=1" />
     </main>
   )
 }

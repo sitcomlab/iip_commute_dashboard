@@ -12,6 +12,7 @@ interface ViewProps {
   children: React.ReactNode | React.ReactNode[]
 }
 
+// TODO: read from directus
 const categoryID = {
   climate: '8f6f89ac-d6bf-4e6c-8445-d1503075963a',
   mobility: '4fa0c731-13d7-4ce9-8407-91a8a71da1cb',

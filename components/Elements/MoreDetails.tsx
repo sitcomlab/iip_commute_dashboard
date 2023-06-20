@@ -33,7 +33,7 @@ export default function MoreDetails({
   const Details = (
     <div className={cx(style({ variant }), className)} onClick={onClick}>
       <InformationCircleIcon className="h-6" />
-      <Title as="h6" className="underline">
+      <Title as="h6" className="whitespace-nowrap underline">
         {lessDetails ? 'Weniger Details' : 'Mehr Details'}
       </Title>
     </div>

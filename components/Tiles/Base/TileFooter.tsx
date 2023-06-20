@@ -4,7 +4,7 @@ import MoreDetails from '@/components/Elements/MoreDetails'
 import { cva, VariantProps } from 'class-variance-authority'
 import { Download, Share, SquaresPlus } from '@/components/Icons'
 
-const tileFooterStyle = cva('flex flex-1 gap-2', {
+const tileFooterStyle = cva('flex flex-1 gap-4', {
   variants: {
     variant: {
       primary: 'text-primary fill-primary',
@@ -42,13 +42,16 @@ export default function TileFooter({
     return (
       <div className={tileFooterStyle({ variant })}>
         <SquaresPlus
-          className="h-6 cursor-pointer stroke-2"
+          className="h-6 cursor-pointer stroke-2 px-1"
           onClick={onEmbedClick}
         />
-        <Share className="h-6 cursor-pointer stroke-2" onClick={onShareClick} />
+        <Share
+          className="h-6 cursor-pointer stroke-2 px-1"
+          onClick={onShareClick}
+        />
         {dataURL && (
           <Link href={dataURL} target="_blank">
-            <Download className="h-6 stroke-2" />
+            <Download className="h-6 stroke-2 px-1" />
           </Link>
         )}
       </div>
@@ -57,7 +60,7 @@ export default function TileFooter({
 
   return (
     <div className="mt-6">
-      <div className="hidden w-full flex-row items-center justify-between gap-2 md:flex">
+      <div className="hidden w-full flex-row items-center justify-between gap-2 lg:flex">
         <IconButtons />
         <div className="flex flex-[2_2_0%] justify-center">{children}</div>
         {hasMoreDetails && (
@@ -67,8 +70,8 @@ export default function TileFooter({
         )}
         {!hasMoreDetails && <div className="flex flex-1 justify-end"></div>}
       </div>
-      <div className="flex flex-col gap-2 md:hidden">
-        <IconButtons />
+      <div className="flex flex-col gap-2 lg:hidden">
+        {/* <IconButtons /> */}
 
         <div className="flex w-full items-center justify-between">
           {hasMoreDetails && (

@@ -72,3 +72,7 @@ Thank you for considering contributing to this project! We appreciate your help 
 3. Commit your changes using [Semantic Commit Messages](https://semantic-release.gitbook.io/semantic-release/#commit-message-format) to ensure clear and consistent commit history.
 4. Push your branch to your forked repository: `git push origin feature/your-feature-name`.
 5. Submit a pull request to the main repository's `main` branch, including a clear description of your changes.
+
+### License
+
+This project is licensed under the [AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.en.html) license.

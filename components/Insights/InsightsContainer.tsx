@@ -20,7 +20,7 @@ async function InsightsContainer() {
 
   return (
     <div className="w-full">
-      <Container className="px-0 sm:px-0 md:px-0 lg:px-0 xl:px-0 2xl:px-0">
+      <Container className="sm:px-0 px-0 md:px-0 lg:px-0 xl:px-0 2xl:px-0">
         {insights && <InsightsCarousel insights={insights} />}
       </Container>
     </div>
