@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config, options) => {
+  webpack: (config, _options) => {
     config.module.rules.push({
       test: /\.csv$/,
       loader: 'csv-loader',

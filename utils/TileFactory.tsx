@@ -51,6 +51,12 @@ interface TileFactoryProps {
   surveyData?: SurveyTileProps
 }
 
+/**
+ * The TileFactory is a helper function to create tiles dynamically.
+ *
+ * @param param TileFactoryProps
+ * @returns Tile
+ */
 export default async function TileFactory({
   type,
   ...props
