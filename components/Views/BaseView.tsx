@@ -10,6 +10,9 @@ import SuccessStoryTile from '../Tiles/SuccessStory'
 interface ViewProps {
   type: 'climate' | 'mobility' | 'energy' | 'building'
   children: React.ReactNode | React.ReactNode[]
+  showSuccessStories?: boolean
+  showSurveys?: boolean
+  showGoToButton?: boolean
 }
 
 // TODO: read from directus
@@ -20,7 +23,13 @@ const categoryID = {
   building: '84ff5cfe-184a-41dd-885d-ff9c2c8c9dcf',
 }
 
-export default async function BaseView({ type, children }: ViewProps) {
+export default async function BaseView({
+  type,
+  children,
+  showSurveys = true,
+  showSuccessStories = true,
+  showGoToButton = false,
+}: ViewProps) {
   const surveys = await getSurveysForCategory(categoryID[type])
   const success = await getSuccessStoriesForCategory(categoryID[type])
 
@@ -28,7 +37,7 @@ export default async function BaseView({ type, children }: ViewProps) {
     <>
       <SectionHeader variant={type} />
       {children}
-      {surveys && (
+      {showSurveys && surveys && (
         <Columns>
           {surveys.map(survey => (
             <SurveyTile
@@ -46,7 +55,7 @@ export default async function BaseView({ type, children }: ViewProps) {
           ))}
         </Columns>
       )}
-      {success && (
+      {showSuccessStories && success && (
         <>
           {success.map(success => (
             <SuccessStoryTile
@@ -61,8 +70,12 @@ export default async function BaseView({ type, children }: ViewProps) {
           ))}
         </>
       )}
-      <Spacer size={'sm'} />
-      <GoToButton type={type} />
+      {showGoToButton && (
+        <>
+          <Spacer size={'sm'} />
+          <GoToButton type={type} />
+        </>
+      )}
       <Spacer size={'xl'} />
     </>
   )

@@ -4,6 +4,7 @@ import InsightsTile from './InsightsTile'
 import { directusImage } from '@/lib/directus'
 import useDevice from '@/hooks/useDevice'
 import Carousel from '../Elements/Carousel'
+import { useWindowSize } from 'react-use'
 
 const pages = {
   desktop: 3,
@@ -12,7 +13,7 @@ const pages = {
 }
 
 const padding = {
-  desktop: '82px',
+  desktop: '0px',
   tablet: '16px',
   mobile: '16px',
 }
@@ -29,13 +30,20 @@ export default function InsightsCarousel({
   insights: Insight[]
 }) {
   const device = useDevice()
+  const { width } = useWindowSize()
 
   return (
     <Carousel
       arrows={device != 'desktop'}
       options={{
         gap: '1.5rem',
-        padding: padding[device],
+        // sorry for this quick and dirty hack
+        padding:
+          width < 1440 && width > 1024
+            ? '2.5rem'
+            : width >= 1920
+            ? '82px'
+            : padding[device],
         perPage: pages[device],
       }}
     >
