@@ -10,7 +10,9 @@ import DesktopView from './DesktopView'
 import MobileView from './MobileView'
 
 const years = Array.from(
-  new Set(stromData.map(d => new Date(d.Datum).getFullYear())),
+  new Set(
+    stromData.map(d => new Date(d.Datum).getFullYear()).filter(e => e > 2017),
+  ),
 ).sort((a, b) => a - b)
 
 export default function EnergyConsumptionContent() {
