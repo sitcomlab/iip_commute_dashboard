@@ -1,8 +1,8 @@
-import { InformationCircleIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import type { VariantProps } from 'class-variance-authority'
 import { cva, cx } from 'class-variance-authority'
 import Title from './Title'
+import { MehrDetailsI } from '../Icons'
 
 const style = cva('flex cursor-pointer items-center gap-1 md:gap-3', {
   variants: {
@@ -32,7 +32,7 @@ export default function MoreDetails({
 }: MoreDetailsProps) {
   const Details = (
     <div className={cx(style({ variant }), className)} onClick={onClick}>
-      <InformationCircleIcon className="h-6" />
+      <MehrDetailsI className="h-6" />
       <Title as="h6" className="whitespace-nowrap underline">
         {lessDetails ? 'Weniger Details' : 'Mehr Details'}
       </Title>
