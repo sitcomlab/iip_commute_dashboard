@@ -56,7 +56,7 @@ export default function AWMContent() {
           </AnimatedNumber>
         </div>
       </div>
-      <div className="flex h-[390px] w-full items-end rounded bg-white p-4">
+      <div className="flex h-[260px] xs:h-[370px] md:h-[300px] lg:h-[460px] xl:h-[370px] 2xl:h-[400px]  w-full items-end rounded bg-white p-4">
         <div
           className="flex-none transition-all"
           style={{
