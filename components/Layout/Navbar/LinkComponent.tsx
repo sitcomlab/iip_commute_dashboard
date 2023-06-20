@@ -9,6 +9,7 @@ export type LinkProps = {
   icon: (_props: SVGProps<SVGSVGElement>) => JSX.Element
   link: string
   variant?: 'primary' | 'inverse'
+  hover?: 'climate' | 'energy' | 'mobility' | 'buildings'
 }
 
 export default function LinkComponent({
@@ -16,16 +17,22 @@ export default function LinkComponent({
   link,
   icon,
   variant = 'primary',
+  hover,
 }: LinkProps) {
   const Icon = icon
   return (
     <Link href={link}>
       <Button
+        hover={hover}
         startIcon={
           <Icon
             className={cx(
-              'h-[34px]',
+              'h-[34px] transition-colors',
               variant === 'primary' ? 'text-primary' : 'text-white',
+              hover === 'climate' && 'group-hover:text-climate',
+              hover === 'energy' && 'group-hover:text-energy',
+              hover === 'mobility' && 'group-hover:text-mobility',
+              hover === 'buildings' && 'group-hover:text-buildings',
             )}
           />
         }

@@ -20,21 +20,25 @@ const links: LinkProps[] = [
     title: 'Klima in Münster',
     icon: MuensterIcon,
     link: '/klima',
+    hover: 'climate',
   },
   {
     title: 'Energie',
     icon: EnergyIcon,
     link: '/energie',
+    hover: 'energy',
   },
   {
     title: 'Mobilität',
     icon: BicycleIcon,
     link: '/mobilitaet',
+    hover: 'mobility',
   },
   {
     title: 'Gebäude',
     icon: BuildingIcon,
     link: '/gebaeude',
+    hover: 'buildings',
   },
 ]
 
