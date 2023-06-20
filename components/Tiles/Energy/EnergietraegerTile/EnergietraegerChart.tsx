@@ -17,7 +17,7 @@ import { useWindowSize } from 'react-use'
 type StromDataType = {
   Jahr: number
   'GUD (Erdgas)': number
-  'reg. Bezug (Bundesmix)': number
+  'Stromeinkauf (Bundesmix)': number
   Windkraft: number
   'Anteil EE (%)': number
   'PV,Biogas': number
