@@ -52,7 +52,7 @@ export default function EcoProfitTile() {
       </Title>
       <Spacer />
       <Title as="subtitle">
-        haben bereits die &quot;Startberatung Energieeffizienz&quot; genutzt und
+        haben bereits die „Startberatung Energieeffizienz“ genutzt und
         Maßnahmen zur Energieeinsparung entwickelt.
       </Title>
     </BuildingTile>
