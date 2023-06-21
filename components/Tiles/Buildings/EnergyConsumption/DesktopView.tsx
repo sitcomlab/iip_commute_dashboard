@@ -74,7 +74,7 @@ function getYearSum(
 
 const years = Array.from(
   new Set(
-    stromData.map(d => new Date(d.Datum).getFullYear()).filter(e => e > 2017),
+    stromData.map(d => new Date(d.Datum).getFullYear()).filter(e => e > 2018),
   ),
 ).sort((a, b) => a - b)
 
