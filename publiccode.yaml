@@ -67,11 +67,12 @@ description:
   de:
     genericName: Klimadashboard Münster
     shortDescription: >
-      Dieses Dashboard ist ein Informationsangebot der Stabsstelle Smart City
-      der Stadt Münster. Auf dem Dashboard („Armaturenbrett“ oder „Cockpit“)
-      werden Echtzeitdaten visualisiert, die in und für unterschiedliche Themen
-      der Stadtentwicklung durch die Stadt Münster und ihre Partner erhoben
-      werden.
+      Das Klimadasboard Münster visualisiert Echtzeit-Informationen über die
+      Klimabilanz der Stadt Münster. Das Dashboard zeigt Daten mit verschiedenen 
+      Grafiken in einem kachelbasierten Layout mit einzelnen Seiten für jede der vier
+      Kategorieren. Die Daten stammen von vielen verschiedenen Datenanbieteren,
+      u.a. das Open-Data-Portal der Stadt Münster, der Deutsche Wetterdienst (DWD),
+      BrightSky.
     longDescription: >
       Das Klimadashboard ist eine Softwarelösung, die in Echtzeit Informationen
       über die Klimabilanz der Stadt Münster bereitstellt. Es ermöglicht den
