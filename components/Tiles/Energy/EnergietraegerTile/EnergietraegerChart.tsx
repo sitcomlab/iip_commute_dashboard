@@ -50,7 +50,7 @@ export default function EnergietraegerChart() {
             {
               element: (
                 <Title as="h5" className="2xl:mx-auto">
-                  Anteilige Bezugsquellen
+                  Anteilige Stromerzeugung
                 </Title>
               ),
               value: 'stromerzeugung',
@@ -58,7 +58,7 @@ export default function EnergietraegerChart() {
             {
               element: (
                 <Title as="h5" className="2xl:mx-auto">
-                  CO₂ pro Bezugsquelle
+                  CO₂ pro Quelle
                 </Title>
               ),
               value: 'co2',
