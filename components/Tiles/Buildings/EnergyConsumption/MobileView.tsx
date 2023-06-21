@@ -26,8 +26,8 @@ type Building = Omit<DataType, 'Datum'>
 const buildings: Record<keyof Building, string> = {
   rathaus: 'Rathaus / Stadtweinhaus',
   stadtbuecherei: 'Stadtbücherei',
-  sentruper: 'Sportantlage Sentruper Höhe',
-  'freiherr-von-stein': 'Freiherr-von-Stein-Gymnasium',
+  sentruper: 'Sportanlage Sentruper Höhe',
+  'freiherr-von-stein': 'Freiherr-vom-Stein-Gymnasium',
 }
 
 const buildingIcon: Record<

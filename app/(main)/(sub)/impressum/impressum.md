@@ -32,18 +32,18 @@ https://www.stadt-muenster.de/klima
 
 Stabsstelle Smart City\
 smartcity@stadt-muenster.de\
-https://smartcity.ms/
+https://www.smartcity.ms/
 
 ## Design und Umsetzung
 
-Drees + Riggers GbR
-Hohenzollernring 47
-48145 Münster
+Drees + Riggers GbR\
+Hohenzollernring 47\
+48145 Münster\
 https://www.drees-riggers.de/
 
-Reedu GmbH & Co. KG
-Von-Steuben-Str. 21
-48143 Münster
+Reedu GmbH & Co. KG\
+Von-Steuben-Str. 21\
+48143 Münster\
 https://reedu.de/
 
 ## Lizenz
