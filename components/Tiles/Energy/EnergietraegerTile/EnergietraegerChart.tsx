@@ -149,6 +149,7 @@ export default function EnergietraegerChart() {
                           'Emissionen ges.',
                           'Anteil EE an Gesamtemissionen (%)',
                           'Anteil EE (%)',
+                          'Stromeinkauf (Bundesmix)',
                         ].includes(k),
                     )
                     .map(key => ({
