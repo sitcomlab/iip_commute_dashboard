@@ -26,8 +26,8 @@ type Building = Omit<DataType, 'Datum'>
 const buildings: Record<keyof Building, string> = {
   rathaus: 'Rathaus / Stadtweinhaus',
   stadtbuecherei: 'Stadtbücherei',
-  sentruper: 'Sportantlage Sentruper Höhe',
-  'freiherr-von-stein': 'Freiherr-von-Stein-Gymnasium',
+  sentruper: 'Sportanlage Sentruper Höhe',
+  'freiherr-von-stein': 'Freiherr-vom-Stein-Gymnasium',
 }
 
 const buildingIcon: Record<
@@ -74,7 +74,7 @@ function getYearSum(
 
 const years = Array.from(
   new Set(
-    stromData.map(d => new Date(d.Datum).getFullYear()).filter(e => e > 2017),
+    stromData.map(d => new Date(d.Datum).getFullYear()).filter(e => e > 2018),
   ),
 ).sort((a, b) => a - b)
 

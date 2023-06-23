@@ -13,8 +13,8 @@ export default async function EnergietraegerTile() {
       dataRetrieval="02.03.2023"
       dataSource="Stadt Münster &ndash; Stabsstelle Klima"
       embedId="energy-energietraeger"
-      subtitle={'Anteile am Stromverbrauch in Münster'}
-      title={'Energieträger'}
+      subtitle={'Anteile verschiedener Energieträger'}
+      title={'Stromerzeugung'}
     >
       <div className="h-[350px] md:h-[600px]">
         <EnergietraegerChart />
