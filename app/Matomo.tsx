@@ -30,7 +30,7 @@ export default function Matomo() {
       setIsAllowed(getCookie(COOKIE_CONSENT_NAME) == 'true')
     }, 1000)
 
-    return clearInterval(id)
+    return () => clearInterval(id)
   }, [])
 
   if (isAllowed) {
