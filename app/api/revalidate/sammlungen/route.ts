@@ -1,4 +1,7 @@
-import directus, { collectionsName } from '@/lib/directus'
+import directus, {
+  collectionsName,
+  ENV_DIRECTUS_ITEM_STATUS,
+} from '@/lib/directus'
 import { revalidatePath } from 'next/cache'
 import { NextResponse } from 'next/server'
 
@@ -6,7 +9,7 @@ export async function GET() {
   const { data } = await directus.items(collectionsName).readByQuery({
     fields: ['slug'],
     filter: {
-      status: 'published',
+      status: ENV_DIRECTUS_ITEM_STATUS,
     },
   })
 

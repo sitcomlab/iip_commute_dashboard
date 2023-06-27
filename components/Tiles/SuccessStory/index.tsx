@@ -121,7 +121,7 @@ export default function SuccessStoryTile({
     <div className="relative min-h-[20rem] overflow-hidden md:min-h-[30rem] md:w-2/3">
       <Image
         alt={'Image'}
-        className="object-cover object-top transition-all group-hover:scale-105"
+        className="object-cover object-center transition-all group-hover:scale-105"
         fill
         src={directusImage(image)}
       />
