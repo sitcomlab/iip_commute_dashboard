@@ -42,7 +42,7 @@ export default function SuccessStoryTile({
           h1: props => (
             <Title
               as="h3"
-              className="mb-4 md:mb-6"
+              className="mb-6 md:mb-8"
               variant={'primary'}
               {...props}
             />
@@ -50,7 +50,7 @@ export default function SuccessStoryTile({
           h2: props => (
             <Title
               as="h3"
-              className="mb-4 md:mb-6"
+              className="mb-6 md:mb-8"
               variant={'primary'}
               {...props}
             />
@@ -58,7 +58,7 @@ export default function SuccessStoryTile({
           h3: props => (
             <Title
               as="h3"
-              className="mb-4 md:mb-6"
+              className="mb-6 md:mb-8"
               variant={'primary'}
               {...props}
             />
@@ -66,7 +66,7 @@ export default function SuccessStoryTile({
           h4: props => (
             <Title
               as="h3"
-              className="mb-4 md:mb-6"
+              className="mb-6 md:mb-8"
               variant={'primary'}
               {...props}
             />
@@ -74,7 +74,7 @@ export default function SuccessStoryTile({
           h5: props => (
             <Title
               as="h3"
-              className="mb-4 md:mb-6"
+              className="mb-6 md:mb-8"
               variant={'primary'}
               {...props}
             />
@@ -82,7 +82,7 @@ export default function SuccessStoryTile({
           h6: props => (
             <Title
               as="h3"
-              className="mb-4 md:mb-6"
+              className="mb-6 md:mb-8"
               variant={'primary'}
               {...props}
             />
@@ -90,7 +90,7 @@ export default function SuccessStoryTile({
           p: props => (
             <Title
               as="h3"
-              className="mb-4 md:mb-6"
+              className="mb-6 md:mb-8"
               variant={'primary'}
               {...props}
             />
@@ -98,7 +98,7 @@ export default function SuccessStoryTile({
           a: props => (
             <Title
               as="h3"
-              className="mb-4 md:mb-6"
+              className="mb-6 md:mb-8"
               variant={'primary'}
               {...props}
             />
@@ -118,7 +118,7 @@ export default function SuccessStoryTile({
   }
 
   const StoryImage = (
-    <div className="relative min-h-[20rem] overflow-hidden md:min-h-[30rem] md:w-2/3">
+    <div className="relative min-h-[20rem]  overflow-hidden md:min-h-[40rem] md:w-4/5">
       <Image
         alt={'Image'}
         className="object-cover object-center transition-all group-hover:scale-105"
