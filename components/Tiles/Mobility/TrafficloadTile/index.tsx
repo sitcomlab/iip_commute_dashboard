@@ -13,9 +13,9 @@ export default async function TrafficloadTile() {
 
   return (
     <MobilityTile
+      dataRetrieval={format(new Date(), '01.MM.yyyy')}
       dataSource="Stadt Münster - Amt für Mobilität und Tiefbau"
       embedId="mobility-trafficload"
-      live
       subtitle="Anzahl gezählter Fahrzeuge an Werktagen"
       title={'Kfz-Verkehrsbelastung'}
     >
