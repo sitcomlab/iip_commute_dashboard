@@ -3,7 +3,7 @@
 import { ReactECharts } from '@/components/Charts/ReactECharts'
 import climateIndicesData from '@/assets/data/climate_indices.json'
 import { LineSeriesOption } from 'echarts'
-import { differenceInYears, getYear, parse } from 'date-fns'
+import { getYear, parse } from 'date-fns'
 import Switch from '@/components/Inputs/Switch'
 import { Eis, Frost, Heiss, Sommer, Tropen } from '@/components/Icons'
 import Title from '@/components/Elements/Title'
@@ -32,17 +32,13 @@ type ClimateIndex = {
   tropennaechte: number
 }
 
-const TIME_DELTA_IN_YEARS = 20
+const STARTING_YEAR = 1990
 
 const data = climateIndicesData as ClimateIndex[]
 const getSeries = (property: keyof ClimateIndex) => {
   const arr = data
     .filter(
-      e =>
-        differenceInYears(
-          new Date(),
-          parse(e.timestamp, 'yyyy-MM-dd HH:mm:ssXXX', new Date()),
-        ) <= TIME_DELTA_IN_YEARS,
+      e =>  new Date(e.timestamp).getFullYear() >= STARTING_YEAR
     )
     .map(e => [
       parse(e.timestamp, 'yyyy-MM-dd HH:mm:ssXXX', new Date()),
@@ -185,7 +181,31 @@ export default function ClimateIndicesChart() {
       itemStyle: {
         opacity: 0,
       },
+      data: indices[e as IndicesTypes].seriesOption.data?.filter(
+        // @ts-ignore
+        ([date, _val]) => getYear(new Date(date)) !== new Date().getFullYear()
+      ),
     }))
+
+  const curYearSeries: LineSeriesOption[] = Object.keys(indices)
+    .filter(e => seriesVisible[e as IndicesTypes])
+    .map(e => ({
+      ...indices[e as IndicesTypes].seriesOption,
+      name: `${indices[e as IndicesTypes].seriesOption.name} (${new Date().getFullYear()})`,
+      type: 'line',
+      itemStyle: {
+        opacity: 0,
+      },
+      lineStyle: {
+        ...indices[e as IndicesTypes].seriesOption.lineStyle,
+        type: 'dashed',
+      },
+      data: indices[e as IndicesTypes].seriesOption.data?.filter(
+        // @ts-ignore
+        ([date, _val]) => getYear(new Date(date)) >= new Date().getFullYear() - 1
+      ),
+    }))
+
 
   return (
     <div className="flex h-full w-full flex-col items-center p-5 2xl:flex-row">
@@ -203,18 +223,29 @@ export default function ClimateIndicesChart() {
                 left: 40,
                 right: 40,
               },
-              series,
+              series: [
+                ...series,
+                ...curYearSeries,
+              ],
               xAxis: {
                 type: 'time',
                 axisLabel: {
                   fontSize: device === 'mobile' ? 12 : 20,
                 },
+                min: parse(`${STARTING_YEAR}-01-01`, 'yyyy-MM-dd', new Date()).getTime(),
+                max: parse(`${new Date().getFullYear()}-01-01`, 'yyyy-MM-dd', new Date()).getTime(),
               },
               yAxis: {
                 type: 'value',
                 interval: 5,
                 axisLabel: {
                   fontSize: device === 'mobile' ? 12 : 20,
+                  formatter: (val: any) => {
+                    if (val === 0) {
+                      return ''
+                    }
+                    return val
+                  }
                 },
               },
               animation: true,
