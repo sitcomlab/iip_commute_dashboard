@@ -232,12 +232,20 @@ export default function ClimateIndicesChart() {
                 axisLabel: {
                   fontSize: device === 'mobile' ? 12 : 20,
                 },
+                min: parse(`${STARTING_YEAR}-01-01`, 'yyyy-MM-dd', new Date()).getTime(),
+                max: parse(`${new Date().getFullYear()}-01-01`, 'yyyy-MM-dd', new Date()).getTime(),
               },
               yAxis: {
                 type: 'value',
                 interval: 5,
                 axisLabel: {
                   fontSize: device === 'mobile' ? 12 : 20,
+                  formatter: (val: any) => {
+                    if (val === 0) {
+                      return ''
+                    }
+                    return val
+                  }
                 },
               },
               animation: true,
