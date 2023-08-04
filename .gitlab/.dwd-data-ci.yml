@@ -17,15 +17,15 @@ dwd_climate_indices:
     - git push -f gitlab_ci_origin HEAD:main
 
 dwd_climate_data:
-  image: python:3.11
+  image: docker:20.10.16
+  services:
+    - docker:dind
   stage: build
   only:
     - schedules
     - web
   script:
-    - git clone https://gitlab.opencode.de/smart-city-muenster/klimadashboard-muenster/climate-history-parser.git
-    - pip install -r climate-history-parser/requirements.txt
-    - python climate-history-parser/index.py https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/monatswerte_KL_03404_18530101_19911231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/monatswerte_KL_01766_19891001_20221231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/recent/monatswerte_KL_01766_akt.zip > assets/data/climate_history.json
+    - docker run registry.opencode.de/smart-city-muenster/klimadashboard-muenster/climate-history-parser:latest python index.py https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/monatswerte_KL_03404_18530101_19911231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/monatswerte_KL_01766_19891001_20221231_hist.zip https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/recent/monatswerte_KL_01766_akt.zip > assets/data/climate_history.json
     - git config user.email "f.erdmann@reedu.de"
     - git config user.name "ci-bot"
     - git remote remove gitlab_ci_origin || true # Local repo state may be cached
