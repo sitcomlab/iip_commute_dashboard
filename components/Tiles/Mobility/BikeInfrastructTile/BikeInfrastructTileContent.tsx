@@ -4,6 +4,7 @@ import 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet'
 import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
+import BicycleInfrastructureData from './BikeInfrastructData'
 
 export default function BikeInfrastructTileContent() {
     return (
@@ -18,6 +19,8 @@ export default function BikeInfrastructTileContent() {
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://geo.stadt-muenster.de/basiskarte/{z}/{x}/{y}.png"
             />
+            
+            <BicycleInfrastructureData />
 
         </MapContainer >
     )
