@@ -13,6 +13,7 @@ import BiMarkerIcon from './BiMarkerIcon';
 import { createClusterCustomIconBlue } from './ClusterMarkerIcons';
 import { createClusterCustomIconGreen } from './ClusterMarkerIcons';
 import { addInfo } from './PopupAddInfo';
+import LayerControl, { GroupedLayer } from './LayerControl/LayerControl';
 
 import {SvgChargingIcon as ChargingIcon} from '@/components/Icons/ChargingIcon';
 import {SvgShopIcon as ShopIcon} from '@/components/Icons/ShopIcon';
@@ -313,12 +314,16 @@ function BicycleInfrastructureData() {
         return L.marker(latlng, { icon: trainIcon });
     }
 
-    //TODO: wrap map elements in layer control
-    //      layer control should better be custom made
-    //      current state is an extremely bare bones implementation of smart-city-dashboard
     return (
         <>
+            <LayerControl position="bottomright">
+
             {/* Radverkehrs-Maßnahmen  */}
+            <GroupedLayer
+                checked
+                group="Radverkehrs-Maßnahmen"
+                name="Fahrradstraße 2.0"
+            >
             <Pane name="cyclingStreets" style={{ zIndex: 508 }}>
                 <FeatureGroup>
                     <GeoJSON
@@ -329,7 +334,9 @@ function BicycleInfrastructureData() {
                     />
                 </FeatureGroup>
             </Pane>
-            
+            </GroupedLayer>
+
+            <GroupedLayer checked group="Radverkehrs-Maßnahmen" name="Radweg">
             <Pane name="sepCycleLanes" style={{ zIndex: 506 }}>    
                 <FeatureGroup>
                     <GeoJSON
@@ -340,7 +347,9 @@ function BicycleInfrastructureData() {
                     />
                 </FeatureGroup>
             </Pane>
+            </GroupedLayer>
             
+            <GroupedLayer checked group="Radverkehrs-Maßnahmen" name="Radspur">
             <Pane name="cycleLanes" style={{ zIndex: 507 }}>
                 <FeatureGroup>
                     <GeoJSON
@@ -351,7 +360,9 @@ function BicycleInfrastructureData() {
                     />
                 </FeatureGroup>
             </Pane>
+            </GroupedLayer>
 
+            <GroupedLayer group="Radverkehrs-Maßnahmen" name="Fahrrad-Ampel">
             <Pane name="trafficSignals" style={{ zIndex: 510 }}>
                 <FeatureGroup>
                     <GeoJSON
@@ -361,8 +372,10 @@ function BicycleInfrastructureData() {
                     />
                 </FeatureGroup>
             </Pane>
+            </GroupedLayer>
 
             {/* Radwege-Netz */}
+            <GroupedLayer checked group="Radwege-Netz" name="Radwege-Netz">
             <Pane name="networkLines" style={{ zIndex: 504 }}>
                 <FeatureGroup>
                     <GeoJSON
@@ -372,7 +385,9 @@ function BicycleInfrastructureData() {
                     />
                 </FeatureGroup>
             </Pane>
+            </GroupedLayer>
 
+            <GroupedLayer group="Radwege-Netz" name="Weg-Beschilderung">
             <Pane name="wayfindingSigns" style={{ zIndex: 509 }}>
                 <FeatureGroup>
                     <GeoJSON
@@ -382,8 +397,15 @@ function BicycleInfrastructureData() {
                     />
                 </FeatureGroup>
             </Pane>
+            </GroupedLayer>
 
             {/* Parken und Laden */}
+            <GroupedLayer
+                checked
+                group="Parken + Laden"
+                icon={<ParkingIcon />}
+                name="Parken"
+            >
             <Pane name="parking" style={{ zIndex: 515 }}>
                 {/*
                 MarkerclusterGroup breaks leaflet. For an explanation see https://stackoverflow.com/questions/69371264/useleafletcontext-can-only-be-used-in-a-descendant-of-mapcontainer
@@ -394,14 +416,13 @@ function BicycleInfrastructureData() {
 
                 it seems react-leaflet-markercluster is not really being actively developed
 
-                https://github.com/yuzhva/react-leaflet-markercluster/pull/194 This discusses a fork. look into it
-
-                could be this one? https://www.npmjs.com/package/@changey/react-leaflet-markercluster
+                This one is used as an alternative https://www.npmjs.com/package/@changey/react-leaflet-markercluster
                 */}
                 <MarkerClusterGroup
                 clusterPane={'parking'}
                 eventHandlers={{
                     //TODO: look up how this works
+                    //TODO: what does this even do?
                     //TODO: implement in a way that works
                     add: (e: any) => {
                     //dispatch(updateParkingOverlay(true));
@@ -427,7 +448,13 @@ function BicycleInfrastructureData() {
                 ></GeoJSON>
                 </MarkerClusterGroup>
             </Pane>
+            </GroupedLayer>
 
+            <GroupedLayer
+                group="Parken + Laden"
+                icon={<ChargingIcon />}
+                name="Lade-Station"
+            >
             <Pane name="chargingStations" style={{ zIndex: 516 }}>
                 <FeatureGroup>
                 <GeoJSON
@@ -438,8 +465,15 @@ function BicycleInfrastructureData() {
                 />
                 </FeatureGroup>
             </Pane>
+            </GroupedLayer>
 
             {/* Rad-Service */}
+            <GroupedLayer
+                checked
+                group="Rad-Service"
+                icon={<ShopIcon />}
+                name="Fahrrad-Laden"
+            >
             <Pane name="bicycleShops" style={{ zIndex: 514 }}>
                 <MarkerClusterGroup
                 clusterPane={'bicycleShops'}
@@ -460,7 +494,13 @@ function BicycleInfrastructureData() {
                 ></GeoJSON>
                 </MarkerClusterGroup>
             </Pane>
+            </GroupedLayer>
 
+            <GroupedLayer
+                group="Rad-Service"
+                icon={<RepairIcon fill="#000000" />}
+                name="DIY-Station"
+            >
             <Pane name="repairStations" style={{ zIndex: 513 }}>
             <FeatureGroup>
                 <GeoJSON
@@ -471,6 +511,9 @@ function BicycleInfrastructureData() {
                 />
             </FeatureGroup>
             </Pane>
+            </GroupedLayer>
+
+            <GroupedLayer group="Rad-Service" name="Rad-Verleih">
             <Pane name="rentals" style={{ zIndex: 512 }}>
             <FeatureGroup>
                 <GeoJSON
@@ -481,6 +524,9 @@ function BicycleInfrastructureData() {
                 />
             </FeatureGroup>
             </Pane>
+            </GroupedLayer>
+            
+            <GroupedLayer group="Rad-Service" name="Schlauch-Automat">
             <Pane name="tubeVendings" style={{ zIndex: 511 }}>
                 <FeatureGroup>
                 <GeoJSON
@@ -491,8 +537,10 @@ function BicycleInfrastructureData() {
                 />
                 </FeatureGroup>
             </Pane>
+            </GroupedLayer>
 
             {/* Radverkehrs-Integration */}
+            <GroupedLayer group="Radverkehrs-Integration" name="Bahnhof">
             <Pane name="trainStations" style={{ zIndex: 517 }}>
                 <FeatureGroup>
                 <GeoJSON
@@ -503,7 +551,9 @@ function BicycleInfrastructureData() {
                 />
                 </FeatureGroup>
             </Pane>
+            </GroupedLayer>
 
+            <GroupedLayer group="Radverkehrs-Integration" name="Verkehrsberuhigt">
             <Pane name="trafficCalming" style={{ zIndex: 502 }}>
                 <FeatureGroup>
                 <GeoJSON
@@ -514,7 +564,12 @@ function BicycleInfrastructureData() {
                 />
                 </FeatureGroup>
             </Pane>
+            </GroupedLayer>
 
+            <GroupedLayer
+                group="Radverkehrs-Integration"
+                name="Einbahnstraßen-Ausnahme"
+            >
             <Pane name="onewayExceptions" style={{ zIndex: 503 }}>
                 <FeatureGroup>
                 <GeoJSON
@@ -524,7 +579,9 @@ function BicycleInfrastructureData() {
                 />
                 </FeatureGroup>
             </Pane>
+            </GroupedLayer>
 
+            <GroupedLayer group="Radverkehrs-Integration" name="Mix-Weg">
             <Pane name="mixedPathLines" style={{ zIndex: 505 }}>
                 <FeatureGroup>
                 <GeoJSON
@@ -535,7 +592,9 @@ function BicycleInfrastructureData() {
                 />
                 </FeatureGroup>
             </Pane>
+            </GroupedLayer>
 
+            <GroupedLayer group="Radverkehrs-Integration" name="Mix-Fläche">
             <Pane name="mixedPathPolygons" style={{ zIndex: 500 }}>
                 <FeatureGroup>
                 <GeoJSON
@@ -545,10 +604,11 @@ function BicycleInfrastructureData() {
                     style={mixedPathPolygonsPathOptions}
                 />
                 </FeatureGroup>
-            </Pane>    
+            </Pane>
+            </GroupedLayer>
 
                 
-
+            </LayerControl>
         </>
     )
 }
