@@ -41,7 +41,7 @@ const useStyles = mui_styled((theme: Theme) =>
       height: '20px',
     },
     heading: {
-//      fontWeight: theme.typography.fontWeightBold,
+      fontWeight: theme.typography.fontWeightBold,
     },
     innerMenuItem: {
       paddingLeft: '32px',
@@ -79,7 +79,7 @@ function LayerControl({ position, children }: IProps) {
   const [layers, setLayers] = useState<ILayerObj[]>([]);
   const positionClass =
     (position && POSITION_CLASSES[position]) || POSITION_CLASSES.topright;
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const map = useMapEvents({
     layerremove: () => {
