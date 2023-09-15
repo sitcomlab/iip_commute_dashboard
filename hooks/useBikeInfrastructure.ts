@@ -15,7 +15,9 @@ const INTERVAL = 60 * 60 * 24; // 1 day
 const getBikeInfrastructData = async () => {
     try {
         //TODO: remove that and put into .env at a later time to prevent leakage
-        const urlString:string = process.env.NEXT_PUBLIC_BICYCLE_INFRASTRUCTURE_URL | '';
+        let urlString = process.env.NEXT_PUBLIC_BICYCLE_INFRASTRUCTURE_URL;
+        if (urlString == undefined){urlString = ''}
+
         const res = await fetch(
             urlString,
         );
@@ -38,6 +40,7 @@ export default function useBikeInfrastructData() {
             //set the data once it arrives
             getBikeInfrastructData().then(e => setData(e))
         }, INTERVAL * 1000)
+        getBikeInfrastructData().then(e => setData(e))
 
     }, [])
 
