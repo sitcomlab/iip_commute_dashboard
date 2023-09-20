@@ -6,8 +6,8 @@ import Collapsible from '../../Elements/Collapsible'
 import Container from '../Container'
 import {
   //BicycleIcon,
-  BuildingIcon,
-  EnergyIcon,
+  //BuildingIcon,
+  //EnergyIcon,
   MuensterIcon,
 } from '@/components/Icons'
 import { Bars3Icon } from '@heroicons/react/24/outline'
@@ -21,12 +21,6 @@ const links: LinkProps[] = [
     icon: MuensterIcon,
     link: '/mobilitaet',
     hover: 'mobility',
-  },
-  {
-    title: 'Gebäude',
-    icon: BuildingIcon,
-    link: '/gebaeude',
-    hover: 'buildings',
   },
 ]
 

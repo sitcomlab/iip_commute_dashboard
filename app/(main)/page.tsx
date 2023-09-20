@@ -8,7 +8,6 @@ import Columns from '@/components/Layout/Columns'
 import TrafficloadTile from '@/components/Tiles/Mobility/TrafficloadTile'
 import BusTile from '@/components/Tiles/Mobility/Bus'
 import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
-import EnergyComsumptionTile from '@/components/Tiles/Buildings/EnergyConsumption'
 
 export default async function Home() {
   return (
@@ -30,14 +29,6 @@ export default async function Home() {
             </Columns>
           </BaseView>
 
-          <BaseView
-            showGoToButton={true}
-            showSuccessStories={false}
-            showSurveys={false}
-            type="building"
-          >
-            <EnergyComsumptionTile />
-          </BaseView>
         </Container>
       </AnimatedPage>
     </div>

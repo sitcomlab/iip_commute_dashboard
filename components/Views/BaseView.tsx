@@ -8,7 +8,7 @@ import getSuccessStoriesForCategory from '@/lib/api/getSuccessStories'
 import SuccessStoryTile from '../Tiles/SuccessStory'
 
 interface ViewProps {
-  type: 'mobility' | 'building'
+  type: 'mobility'
   children: React.ReactNode | React.ReactNode[]
   showSuccessStories?: boolean
   showSurveys?: boolean
@@ -18,7 +18,6 @@ interface ViewProps {
 // TODO: read from directus
 const categoryID = {
   mobility: '4fa0c731-13d7-4ce9-8407-91a8a71da1cb',
-  building: '84ff5cfe-184a-41dd-885d-ff9c2c8c9dcf',
 }
 
 export default async function BaseView({

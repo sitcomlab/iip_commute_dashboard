@@ -1,5 +1,3 @@
-import EcoProfitTile from '@/components/Tiles/Buildings/EcoProfit'
-import EnergyComsumptionTile from '@/components/Tiles/Buildings/EnergyConsumption'
 import AWMTile from '@/components/Tiles/Mobility/AWM'
 import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
 import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
@@ -76,12 +74,6 @@ export default async function TileFactory({
   }
 
   switch (type) {
-
-    // ---- BUILDINGS ----
-    case 'building-ecoProfit':
-      return <EcoProfitTile />
-    case 'building-energyConsumption':
-      return <EnergyComsumptionTile />
 
     // ---- MOBILITY ----
     case 'mobility-bicycleInfrastructure':
