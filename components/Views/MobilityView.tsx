@@ -5,13 +5,16 @@ import StadtradelnTile from '../Tiles/Mobility/Bicycle/Stadtradeln'
 import BusTile from '../Tiles/Mobility/Bus'
 import MasterplanTile from '../Tiles/Mobility/MasterplanTile'
 import ModalSplitTile from '../Tiles/Mobility/ModalSplit'
+import BikeInfrastructTile from '../Tiles/Mobility/BikeInfrastructTile'
 import PassengerTile from '../Tiles/Mobility/PassengerTile'
 import TrafficloadTile from '../Tiles/Mobility/TrafficloadTile'
 import BaseView from './BaseView'
 
+
 export default function MobilityView() {
   return (
     <BaseView type="mobility">
+      <BikeInfrastructTile />
       <Columns>
         <BicycleChartTile />
 

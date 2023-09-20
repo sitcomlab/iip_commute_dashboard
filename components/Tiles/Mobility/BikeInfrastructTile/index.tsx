@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 const BikeInfrastructTileContent = dynamic(() => import('./BikeInfrastructTileContent'), { ssr: false })
 //import MapTileContent from './MapTileContent'
 
-export default async function bikeInfrastructTile() {
+export default async function BikeInfrastructTile() {
     const data = await getTileData('mobility-trafficload')
     const infoText = data?.info ?? ''
 

@@ -19,6 +19,9 @@ import SuccessStoryTile, {
   SuccessStoryTileProps,
 } from '@/components/Tiles/SuccessStory'
 import SurveyTile, { SurveyTileProps } from '@/components/Tiles/Survey'
+
+import BikeInfrastructTile from '@/components/Tiles/Mobility/BikeInfrastructTile'
+
 import { getSurveyData } from '@/lib/api/getSurveyData'
 import {
   BuildingsTypes,
@@ -115,6 +118,8 @@ export default async function TileFactory({
       return <EnergietraegerTile />
 
     // ---- MOBILITY ----
+    case 'mobility-bicycleInfrastructure'
+      return <BikeInfrastructTile />
     case 'mobility-bicycle':
       return <BicycleChartTile />
     case 'mobility-stadtradeln':
