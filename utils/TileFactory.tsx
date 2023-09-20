@@ -1,9 +1,5 @@
 import EcoProfitTile from '@/components/Tiles/Buildings/EcoProfit'
 import EnergyComsumptionTile from '@/components/Tiles/Buildings/EnergyConsumption'
-import EnergietraegerTile from '@/components/Tiles/Energy/EnergietraegerTile'
-import PhotovoltTile from '@/components/Tiles/Energy/PhotovoltTile'
-import WindEnergyTile from '@/components/Tiles/Energy/WindEnergyTile'
-import PVAnlagenTile from '@/components/Tiles/Energy/PVAnlagenTile'
 import AWMTile from '@/components/Tiles/Mobility/AWM'
 import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
 import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
@@ -20,8 +16,6 @@ import BikeInfrastructTile from '@/components/Tiles/Mobility/BikeInfrastructTile
 import { getSurveyData } from '@/lib/api/getSurveyData'
 import {
   BuildingsTypes,
-  ClimateTypes,
-  EnergyTypes,
   MobilityTypes,
   TileTypePrefix,
 } from '@/types/tile'
@@ -29,10 +23,8 @@ import { ID } from '@directus/sdk'
 import { getSuccessStoryData } from '@/lib/api/getSuccessStoryData'
 
 type TileTypeSuffix =
-  | ClimateTypes
   | MobilityTypes
   | BuildingsTypes
-  | EnergyTypes
   | ID
 
 type SuccessStoryTileType = 'successStory'
@@ -90,16 +82,6 @@ export default async function TileFactory({
       return <EcoProfitTile />
     case 'building-energyConsumption':
       return <EnergyComsumptionTile />
-
-    // ---- ENERGY ----
-    case 'energy-PV':
-      return <PhotovoltTile />
-    case 'energy-wind':
-      return <WindEnergyTile />
-    case 'energy-PVAnlagen':
-      return <PVAnlagenTile />
-    case 'energy-energietraeger':
-      return <EnergietraegerTile />
 
     // ---- MOBILITY ----
     case 'mobility-bicycleInfrastructure':

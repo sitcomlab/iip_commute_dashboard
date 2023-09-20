@@ -17,12 +17,6 @@ import { Spacer } from '@/components/Elements/Spacer'
 
 const links: LinkProps[] = [
   {
-    title: 'Energie',
-    icon: EnergyIcon,
-    link: '/energie',
-    hover: 'energy',
-  },
-  {
     title: 'Mobilität',
     icon: MuensterIcon,
     link: '/mobilitaet',
