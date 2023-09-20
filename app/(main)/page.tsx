@@ -5,9 +5,6 @@ import AnimatedPage from '@/components/Layout/AnimatedPage'
 
 import BaseView from '@/components/Views/BaseView'
 import Columns from '@/components/Layout/Columns'
-import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
-import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
-import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
 import PhotovoltTile from '@/components/Tiles/Energy/PhotovoltTile'
 import EnergietraegerTile from '@/components/Tiles/Energy/EnergietraegerTile'
 import WindEnergyTile from '@/components/Tiles/Energy/WindEnergyTile'
@@ -22,18 +19,6 @@ export default async function Home() {
       <AnimatedPage>
         <InsightsContainer />
         <Container>
-          <BaseView
-            showGoToButton={true}
-            showSuccessStories={false}
-            showSurveys={false}
-            type="climate"
-          >
-            <CO2EmissionsTile />
-            <Columns>
-              <WeatherTile />
-              <ClimateDevelopmentTile />
-            </Columns>
-          </BaseView>
 
           <BaseView
             showGoToButton={true}

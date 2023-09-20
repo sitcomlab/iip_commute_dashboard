@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Collapsible from '../../Elements/Collapsible'
 import Container from '../Container'
 import {
-  BicycleIcon,
+  //BicycleIcon,
   BuildingIcon,
   EnergyIcon,
   MuensterIcon,
@@ -17,12 +17,6 @@ import { Spacer } from '@/components/Elements/Spacer'
 
 const links: LinkProps[] = [
   {
-    title: 'Klima in Münster',
-    icon: MuensterIcon,
-    link: '/klima',
-    hover: 'climate',
-  },
-  {
     title: 'Energie',
     icon: EnergyIcon,
     link: '/energie',
@@ -30,7 +24,7 @@ const links: LinkProps[] = [
   },
   {
     title: 'Mobilität',
-    icon: BicycleIcon,
+    icon: MuensterIcon,
     link: '/mobilitaet',
     hover: 'mobility',
   },

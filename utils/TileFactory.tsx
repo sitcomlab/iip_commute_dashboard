@@ -1,10 +1,5 @@
 import EcoProfitTile from '@/components/Tiles/Buildings/EcoProfit'
 import EnergyComsumptionTile from '@/components/Tiles/Buildings/EnergyConsumption'
-import ClimateIndicesTile from '@/components/Tiles/Climate/ClimateIndices'
-import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
-import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
-import GarbageTile from '@/components/Tiles/Climate/Garbage'
-import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
 import EnergietraegerTile from '@/components/Tiles/Energy/EnergietraegerTile'
 import PhotovoltTile from '@/components/Tiles/Energy/PhotovoltTile'
 import WindEnergyTile from '@/components/Tiles/Energy/WindEnergyTile'
@@ -89,17 +84,6 @@ export default async function TileFactory({
   }
 
   switch (type) {
-    // ---- WEATHER ----
-    case 'climate-weather':
-      return <WeatherTile />
-    case 'climate-co2':
-      return <CO2EmissionsTile />
-    case 'climate-indices':
-      return <ClimateIndicesTile />
-    case 'climate-development':
-      return <ClimateDevelopmentTile />
-    case 'climate-garbage':
-      return <GarbageTile />
 
     // ---- BUILDINGS ----
     case 'building-ecoProfit':
@@ -118,7 +102,7 @@ export default async function TileFactory({
       return <EnergietraegerTile />
 
     // ---- MOBILITY ----
-    case 'mobility-bicycleInfrastructure'
+    case 'mobility-bicycleInfrastructure':
       return <BikeInfrastructTile />
     case 'mobility-bicycle':
       return <BicycleChartTile />
