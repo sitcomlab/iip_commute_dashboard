@@ -13,10 +13,10 @@ const button = cva(
         secondary: 'border-secondary text-secondary',
         inverse: 'text-white border-white',
         danger: 'bg-red-600 text-white hover:bg-red-50:text-red-600',
-        goToClimate: 'border-climate text-primary',
         goToMobility: 'border-mobility text-primary',
-        goToEnergy: 'border-energy text-primary',
-        goToBuildings: 'border-buildings text-primary',
+
+        goToMuenster: 'border-climate text-primary',
+        goToOsnabrueck: 'border-climate text-primary',
       },
       size: {
         sm: 'py-1 px-3 text-sm',

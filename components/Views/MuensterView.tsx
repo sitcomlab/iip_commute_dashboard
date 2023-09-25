@@ -1,4 +1,4 @@
-import Columns from '../Layout/Columns'
+//import Columns from '../Layout/Columns'
 import BikeInfrastructTile from '../Tiles/Mobility/BikeInfrastructTile'
 import BaseView from './BaseView'
 

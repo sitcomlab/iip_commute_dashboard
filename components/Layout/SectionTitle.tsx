@@ -1,6 +1,6 @@
 import { cva, cx, VariantProps } from 'class-variance-authority'
 import Title from '../Elements/Title'
-import { BicycleIcon, BuildingIcon, EnergyIcon, MuensterIcon } from '../Icons'
+import { BicycleIcon, MuensterIcon } from '../Icons'
 import { SVGProps } from 'react'
 
 const sectionHeaderStyle = cva('', {
