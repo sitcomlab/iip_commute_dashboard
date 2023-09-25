@@ -1,7 +1,7 @@
 import { GoToButton } from '../Elements/GoToButton'
 import { Spacer } from '../Elements/Spacer'
 import SectionHeader from '../Layout/SectionHeader'
-import Columns from '../Layout/Columns'
+//import Columns from '../Layout/Columns'
 
 interface ViewProps {
   type: 'mobility' | 'münster' | 'osnabrück'
@@ -19,8 +19,6 @@ const categoryID = {
 export default async function BaseView({
   type,
   children,
-  showSurveys = true,
-  showSuccessStories = true,
   showGoToButton = false,
 }: ViewProps) {
   return (

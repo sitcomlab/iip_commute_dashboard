@@ -12,6 +12,9 @@ const sectionHeaderStyle = cva('', {
       energy: 'text-energy border-energy',
       impressum: 'text-white',
       datenschutz: 'text-white',
+
+      münster: 'text-mobility border-mobility',
+      osnabrück: 'text-mobility border-mobility',
     },
   },
 })
@@ -26,28 +29,16 @@ export default function SectionTitle({
   let Icon: ((_: SVGProps<SVGSVGElement>) => JSX.Element) | undefined =
     MuensterIcon
 
-  if (variant === 'climate') {
-    title = 'Klima in Münster'
+  if (variant === 'münster') {
+    title = 'Münster'
   }
   if (variant === 'mobility') {
     title = 'Mobilität'
     Icon = BicycleIcon
   }
-  if (variant === 'building') {
-    title = 'Gebäude'
-    Icon = BuildingIcon
-  }
-  if (variant === 'energy') {
-    title = 'Energie'
-    Icon = EnergyIcon
-  }
-  if (variant === 'impressum') {
-    title = 'Impressum'
-    Icon = undefined
-  }
-  if (variant === 'datenschutz') {
-    title = 'Datenschutz'
-    Icon = undefined
+  if (variant === 'osnabrück') {
+    title = 'Osnabrück'
+    //Icon = BuildingIcon
   }
 
   return (
