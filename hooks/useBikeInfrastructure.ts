@@ -12,11 +12,12 @@ type bikeApiResponse = GeoJSON.FeatureCollection;
 const INTERVAL = 60 * 60 * 24; // 1 day
 
 //function to fetch the bicycle infrastructure
-const getBikeInfrastructData = async () => {
+const getBikeInfrastructData = async (urlString) => {
     try {
         //TODO: remove that and put into .env at a later time to prevent leakage
-        let urlString = process.env.NEXT_PUBLIC_BICYCLE_INFRASTRUCTURE_URL;
-        if (urlString == undefined){urlString = ''}
+        //let urlString = process.env.NEXT_PUBLIC_BICYCLE_INFRASTRUCTURE_URL;
+        
+        if (urlString == undefined){urlString =  ''}
 
         const res = await fetch(
             urlString,
@@ -31,16 +32,17 @@ const getBikeInfrastructData = async () => {
 
 }
 
-export default function useBikeInfrastructData() {
+export default function useBikeInfrastructData(urlString) {
     const [data, setData] = useState<bikeApiResponse>()
 
     //fetch the data periodically
     useEffect(() => {
+        // eslint-disable-next-line unused-imports/no-unused-vars
         const timer = setInterval(() => {
             //set the data once it arrives
-            getBikeInfrastructData().then(e => setData(e))
+            getBikeInfrastructData(urlString).then(e => setData(e))
         }, INTERVAL * 1000)
-        getBikeInfrastructData().then(e => setData(e))
+        getBikeInfrastructData(urlString).then(e => setData(e))
 
     }, [])
 

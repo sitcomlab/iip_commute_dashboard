@@ -25,9 +25,15 @@ import {SvgSignalIcon as SignalIcon} from '@/components/Icons/SignalIcon';
 import {SvgWayfindingIcon as WayfindingIcon} from '@/components/Icons/WayfindingIcon';
 import {SvgTrainstationIcon as TrainstationIcon} from '@/components/Icons/TrainstationIcon';
 
+import { useContext } from 'react';
+import { CityContext } from './BikeInfrastructTileContent';
+import CityViewConfig from '@/components/Views/CityViewConfig';
+
 function BicycleInfrastructureData() {
     //regularly fetch bike infrastructure data
-    var BicycleInfrastructureData = useBikeInfrastructData()
+    const city = useContext(CityContext) 
+    console.log(CityViewConfig[city].infrastructureSource)
+    var BicycleInfrastructureData = useBikeInfrastructData(CityViewConfig[city].infrastructureSource)
     
     if (BicycleInfrastructureData === undefined) {
         return (<></>)

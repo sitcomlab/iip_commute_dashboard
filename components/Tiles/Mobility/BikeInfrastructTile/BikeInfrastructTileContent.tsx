@@ -9,13 +9,13 @@ import BicycleInfrastructureData from './BikeInfrastructData'
 
 import CityViewConfig from '@/components/Views/CityViewConfig'
 
-const cityContext = createContext('muenster')
 
+export const CityContext = createContext('muenster')
 export default function BikeInfrastructTileContent(props) {
-    const city = CityViewConfig[props.city] || CityViewConfig["muenster"];
+    const city = CityViewConfig[props.city] || CityViewConfig.muenster;
 
     return (
-        <cityContext.Provider value={props.city}>
+        <CityContext.Provider value={props.city}>
         <MapContainer
             center={city.mapSettings.center}
             className="h-[75vh] z-0 rounded-3xl"
@@ -31,6 +31,6 @@ export default function BikeInfrastructTileContent(props) {
             <BicycleInfrastructureData />
 
         </MapContainer >
-        </cityContext.Provider>
+        </CityContext.Provider>
     )
 }
