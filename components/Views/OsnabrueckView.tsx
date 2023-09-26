@@ -8,8 +8,8 @@ export default function MobilityView() {
 
   return (
 
-    <BaseView type="münster">
-      <BikeInfrastructTile city="muenster"/>
+    <BaseView type="osnabrück">
+      <BikeInfrastructTile city="osnabrueck"/>
     </BaseView>
 
   )

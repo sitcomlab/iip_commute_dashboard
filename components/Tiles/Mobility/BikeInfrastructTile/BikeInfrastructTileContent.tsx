@@ -1,19 +1,27 @@
 'use client'
 
+import { createContext } from 'react'
 import 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet'
 import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import BicycleInfrastructureData from './BikeInfrastructData'
 
-export default function BikeInfrastructTileContent() {
+import CityViewConfig from '@/components/Views/CityViewConfig'
+
+const cityContext = createContext('muenster')
+
+export default function BikeInfrastructTileContent(props) {
+    const city = CityViewConfig[props.city] || CityViewConfig["muenster"];
+
     return (
+        <cityContext.Provider value={props.city}>
         <MapContainer
-            center={[51.962, 7.627]}
+            center={city.mapSettings.center}
             className="h-[75vh] z-0 rounded-3xl"
             scrollWheelZoom={true}
 
-            zoom={12}
+            zoom={city.mapSettings.zoom}
         >
             <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -23,5 +31,6 @@ export default function BikeInfrastructTileContent() {
             <BicycleInfrastructureData />
 
         </MapContainer >
+        </cityContext.Provider>
     )
 }

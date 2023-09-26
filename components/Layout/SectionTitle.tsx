@@ -1,6 +1,6 @@
 import { cva, cx, VariantProps } from 'class-variance-authority'
 import Title from '../Elements/Title'
-import { BicycleIcon, MuensterIcon } from '../Icons'
+import { BicycleIcon, MuensterIcon, OsnabrueckIcon } from '../Icons'
 import { SVGProps } from 'react'
 
 const sectionHeaderStyle = cva('', {
@@ -38,7 +38,7 @@ export default function SectionTitle({
   }
   if (variant === 'osnabrück') {
     title = 'Osnabrück'
-    //Icon = BuildingIcon
+    Icon = OsnabrueckIcon
   }
 
   return (

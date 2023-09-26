@@ -1,3 +1,5 @@
+//"use client"
+
 import { BicycleIcon } from '@/components/Icons'
 import IconTile, { IconTileProps } from '../Base/IconTile'
 
