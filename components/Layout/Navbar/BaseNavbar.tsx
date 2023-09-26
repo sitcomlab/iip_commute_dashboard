@@ -7,8 +7,9 @@ import Container from '../Container'
 import {
   //BicycleIcon,
   //BuildingIcon,
-  //EnergyIcon,
+  BicycleIcon,
   MuensterIcon,
+  OsnabrueckIcon,
 } from '@/components/Icons'
 import { Bars3Icon } from '@heroicons/react/24/outline'
 import Title from '@/components/Elements/Title'
@@ -18,8 +19,20 @@ import { Spacer } from '@/components/Elements/Spacer'
 const links: LinkProps[] = [
   {
     title: 'Mobilität',
-    icon: MuensterIcon,
+    icon: BicycleIcon,
     link: '/mobilitaet',
+    hover: 'mobility',
+  },
+  {
+    title: 'Münster',
+    icon: MuensterIcon,
+    link: '/muenster',
+    hover: 'mobility',
+  },
+  {
+    title: 'Osnabrück',
+    icon: OsnabrueckIcon,
+    link: '/osnabrueck',
     hover: 'mobility',
   },
 ]
