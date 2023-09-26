@@ -3,7 +3,7 @@ import { SVGProps } from 'react'
 function SvgOsnabrueckIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
-      viewBox="0 0 65 50"
+      viewBox="0 0 66 52"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
@@ -16,7 +16,7 @@ function SvgOsnabrueckIcon(props: SVGProps<SVGSVGElement>) {
           strokeLinecap: 'round',
           strokeLinejoin: 'round',
           strokeMiterlimit: 10,
-          strokeWidth: '2.5px',
+          strokeWidth: '2.3px',
         }}
         transform="translate(1.25 1.25)"
       />
