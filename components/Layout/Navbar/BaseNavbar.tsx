@@ -49,14 +49,18 @@ export default function BaseNavbar({
   children,
 }: BaseNavbarProps) {
   return (
-    <div className="pt-8">
+    <div>
+      {/*
       <div className="container relative z-10 mx-auto translate-y-1/2 px-4 md:px-12">
+        
         <Image
           alt="Logo der Stadt Münster"
           className="ml-auto h-12 w-auto"
           src={MSLogo}
         />
+        
       </div>
+      */}
       <StairStepBackground variant={variant}>
         <Container>
           <div className="xl:hidden">
@@ -74,13 +78,13 @@ export default function BaseNavbar({
               </div>
             </Collapsible>
           </div>
-          <div className="flex flex-col justify-between gap-4">
+          <div className="flex flex-col justify-between gap-4 pt-8">
             <Link href={'/'}>
               <Title
                 as="h2"
                 variant={variant === 'overlay' ? 'inverse' : 'primary'}
               >
-                Klimadashboard Münster
+                Pendel-Dashboard
               </Title>
             </Link>
             <div className="flex items-center justify-between">

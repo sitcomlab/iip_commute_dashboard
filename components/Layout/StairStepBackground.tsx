@@ -24,10 +24,12 @@ export default function StairStepBackground({
 }: StairStepBackgroundProps) {
   return (
     <div>
+      {/*
       <div className="hidden h-12 w-full md:flex">
         <div className="flex-[2_2_0%]"></div>
         <div className={phenomenonStyle({ variant })}></div>
       </div>
+      */}
       <div className={phenomenonStyle({ variant })}>{children}</div>
     </div>
   )
