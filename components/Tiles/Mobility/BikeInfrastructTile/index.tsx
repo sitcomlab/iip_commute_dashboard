@@ -12,21 +12,15 @@ const BikeInfrastructTileContent = dynamic(() => import('./BikeInfrastructTileCo
 
 
 export default async function BikeInfrastructTile(props) {
-    const data = await getTileData('mobility-trafficload')
-    const infoText = data?.info ?? ''
-
-    const endIndex = infoText.indexOf('nehmen.')
-    const firstParagraph = infoText.slice(0, endIndex + 7)
-    const secondParagraph = infoText.slice(endIndex + 7)
-
     const cityConfig = CityViewConfig[props.city] || '';
+    const embedID = `mobility-bike-${props.city}`;
 
 
     return (
         <MobilityTile
             dataRetrieval={format(new Date(), '01.MM.yyyy')}
             dataSource="OpenStreetMap Contributors"
-            embedId="mobility-maptile"
+            embedId={embedID}
             subtitle={cityConfig.name || ''}
 
             //use props to display current city

@@ -31,8 +31,8 @@ import CityViewConfig from '@/components/Views/CityViewConfig';
 
 function BicycleInfrastructureData() {
     //regularly fetch bike infrastructure data
+    //  get the city which we are looking at, and pass that to the bike infrastructure hook
     const city = useContext(CityContext) 
-    console.log(CityViewConfig[city].infrastructureSource)
     var BicycleInfrastructureData = useBikeInfrastructData(CityViewConfig[city].infrastructureSource)
     
     if (BicycleInfrastructureData === undefined) {

@@ -20,7 +20,7 @@ export default function EmbedOverlay({
 }: EmbedOverlayProps) {
   const link = `${window.location.origin}/embed/${embedId}`
 
-  const iframeSrc = `<iframe src="${link}" style="border:none; width:100%; height:100%" title="Klimadashboard Münster"></iframe>`
+  const iframeSrc = `<iframe src="${link}" style="border:none; width:100%; height:100%" title="Pendler-Dashboard"></iframe>`
 
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(iframeSrc)
