@@ -9,7 +9,7 @@ type bikeApiResponse = GeoJSON.FeatureCollection;
 
 //simplest example of a live-updating hook
 
-const INTERVAL = 60 * 60 * 24; // 1 day
+const INTERVAL = 60 * 60 * 12; // 1/2 day
 
 //function to fetch the bicycle infrastructure
 const getBikeInfrastructData = async (urlString) => {
@@ -34,23 +34,30 @@ const getBikeInfrastructData = async (urlString) => {
 
 export default function useBikeInfrastructData(urlString) {
     const [data, setData] = useState<bikeApiResponse>()
+    const [loopIteration, setLoopIteration] = useState(() => {return 0})
+    function incrementLoop(){
+        setLoopIteration(prevLoop => prevLoop + 1)
+    }
 
-    //fetch the data periodically
+    //get the data for a first time
+    getBikeInfrastructData(urlString).then(e => setData(e))
+
+    //start new loop whenever the iteration counter has changed
     useEffect(() => {
-        // eslint-disable-next-line unused-imports/no-unused-vars
-        const timer = setInterval(() => {
-            //set the data once it arrives
+        setTimeout(() => {
+            //increment count again, so the loop starts anew.
+            //this way the cycle breaks when the component isn't running anymore
+            incrementLoop()
+
+            //get the data and set it once it arrives
             getBikeInfrastructData(urlString).then(e => setData(e))
         }, INTERVAL * 1000)
-        getBikeInfrastructData(urlString).then(e => setData(e))
-
-    }, [])
+    }, [loopIteration])
 
     useEffect(() => {
         if (!data) {
             return
         }
-
 
     })
 
