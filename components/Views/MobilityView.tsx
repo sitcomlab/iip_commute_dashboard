@@ -10,7 +10,7 @@ import BaseView from './BaseView'
 export default function MobilityView() {
   return (
     <BaseView type="mobility">
-      <BikeInfrastructTile />
+      <BikeInfrastructTile city="muenster" />
       <Columns>
         <BicycleChartTile />
 
