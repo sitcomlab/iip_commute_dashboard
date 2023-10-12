@@ -1,10 +1,12 @@
 //import React, { useEffect, useState } from 'react';
 
-
 import L from 'leaflet';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { FeatureGroup, GeoJSON, Pane } from 'react-leaflet';
+import { FeatureGroup, GeoJSON, Pane, Polygon, Popup, Tooltip } from 'react-leaflet';
 import MarkerClusterGroup from '@changey/react-leaflet-markercluster';
+import flip from '@turf/flip';
+import styled from 'styled-components';
+import ReactTooltip from 'react-tooltip';
 
 import useBikeInfrastructData from '@/hooks/useBikeInfrastructure';
 
@@ -12,8 +14,9 @@ import BiMarker from './BiMarker';
 import BiMarkerIcon from './BiMarkerIcon';
 import { createClusterCustomIconBlue } from './ClusterMarkerIcons';
 import { createClusterCustomIconGreen } from './ClusterMarkerIcons';
-import { addInfo } from './PopupAddInfo';
+import { addInfo } from './PopupInfos/PopupAddInfo';
 import LayerControl, { GroupedLayer } from './LayerControl/LayerControl';
+import PopupPages from './PopupInfos/PopupPages';
 
 import {SvgChargingIcon as ChargingIcon} from '@/components/Icons/ChargingIcon';
 import {SvgShopIcon as ShopIcon} from '@/components/Icons/ShopIcon';
@@ -29,6 +32,13 @@ import { useContext } from 'react';
 import { CityContext } from './BikeInfrastructTileContent';
 import CityViewConfig from '@/components/Views/CityViewConfig';
 
+const StyledPopup = styled(Popup)`
+  min-width: 350px;
+  padding: 0rem;
+  margin: 0rem;
+  border: 0rem;
+`;
+
 function BicycleInfrastructureData() {
     //regularly fetch bike infrastructure data
     //  get the city which we are looking at, and pass that to the bike infrastructure hook
@@ -38,8 +48,54 @@ function BicycleInfrastructureData() {
     if (BicycleInfrastructureData === undefined) {
         return (<></>)
     }
+
+    // ## ADMINISTRATIVE AREAS
+    //filter and style administrative areas
+    const administrativeAreas = BicycleInfrastructureData.features.filter(
+        (feature: any) =>
+        feature.properties.bike_infrastructure_type === 'admin_area'
+    );
+    const adminAreaOptions = {
+        color: '#000000',
+        weight: 2,
+        opacity: 1,
+        fillColor: '#4d514d',
+        fillOpacity: 0.2,
+    };
+    //event functions for Adnimistrative areas
+    function clickAdminArea(e: any) {
+        e.target.setStyle({
+          color: '#000000',
+          weight: 2,
+          opacity: 1,
+          fillColor: '#4d514d',
+          fillOpacity: 0,
+        });
+        if (e.target.isTooltipOpen()) {
+          e.target.closeTooltip();
+        }
+      }
+      function popupCloseAdminArea(e: any) {
+        e.target.setStyle({
+          color: '#000000',
+          weight: 2,
+          opacity: 1,
+          fillColor: '#4d514d',
+          fillOpacity: 0.5,
+        });
+      }
+      function mouseMoveAdminArea(e: any) {
+        if (!e.target.isPopupOpen()) {
+            e.target.openTooltip(e.latlng);
+        }
+      }
+      function mouseOverAdminArea(e: any) {
+        if (e.target.isPopupOpen()) {
+          e.target.closeTooltip();
+        }
+      }
     
-    //geometry
+    // ## BICYCLE INFRASTRUCTURE
     // Filter and style mixed paths polygons
     const mixedPathPolygons = BicycleInfrastructureData.features.filter(
         (feature: any) =>
@@ -322,7 +378,50 @@ function BicycleInfrastructureData() {
 
     return (
         <>
+
             <LayerControl position="bottomright">
+
+            {/* Stadtteile */}
+            <GroupedLayer 
+                checked
+                group="misc"
+                name="Stadtteile"
+            >
+            <Pane name="administrativeAreas" style={{ zIndex: 650 }}>
+            <FeatureGroup>
+                {administrativeAreas.map((feature: any, index: any) => {
+                    return(
+                        <GeoJSON
+                            data={feature}
+                            eventHandlers={{
+                                click: clickAdminArea,
+                                popupclose: popupCloseAdminArea,
+                                mousemove: mouseMoveAdminArea,
+                                mouseover: mouseOverAdminArea,
+                            }}
+                            key={index}
+                            pathOptions={adminAreaOptions}
+                        >
+                        <Tooltip pane="tooltip">{feature.properties.name}</Tooltip>
+                            <StyledPopup
+                                autoClose={false}
+                                closeOnClick={false}
+                                pane="popup"
+                            >
+                                <PopupPages
+                                    name={feature.properties.name}
+                                ></PopupPages>
+                            </StyledPopup>
+                            
+                        </GeoJSON>
+                    )
+                })}
+                
+            </FeatureGroup>
+            </Pane>
+
+            </GroupedLayer>
+
 
             {/* Radverkehrs-Maßnahmen  */}
             <GroupedLayer

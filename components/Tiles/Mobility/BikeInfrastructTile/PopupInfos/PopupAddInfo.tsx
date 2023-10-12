@@ -17,7 +17,7 @@
  */
 
 // Function add info automatically creates a table for the popoup with the entries from feature.properties.attributes
-export function addInfo(feature: any, layer: any) {
+function addInfo(feature: any, layer: any) {
   const bIType = feature.properties.bike_infrastructure_type;
   const heading =
     "<p style='text-align:center; font-size:150%; font-weight:bold;'> " +
@@ -44,3 +44,5 @@ export function addInfo(feature: any, layer: any) {
     layer.bindPopup(heading);
   }
 }
+
+export {addInfo}

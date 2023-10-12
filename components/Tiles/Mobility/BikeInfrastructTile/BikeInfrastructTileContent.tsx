@@ -2,7 +2,7 @@
 
 import { createContext } from 'react'
 import 'leaflet';
-import { MapContainer, TileLayer } from 'react-leaflet'
+import { MapContainer, Pane, TileLayer } from 'react-leaflet'
 import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import BicycleInfrastructureData from './BikeInfrastructData'
@@ -29,6 +29,8 @@ export default function BikeInfrastructTileContent(props) {
             />
             
             <BicycleInfrastructureData />
+            <Pane name="popup" style={{ zIndex: 660 }}></Pane>
+            <Pane name="tooltip" style={{ zIndex: 670 }}></Pane>
 
         </MapContainer >
         </CityContext.Provider>
