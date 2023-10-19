@@ -27,7 +27,7 @@ import {
   PopupWrapper,
 } from '../styles';
 
-import { SvgCyclingIcon as CyclingIcon } from '@/components/Icons/CyclingIcon';
+import { SvgCyclingPathIcon as CyclingPathIcon } from '@/components/Icons/CyclingPathIcon';
 import { SvgShopIcon as ShopIcon } from '@/components/Icons/ShopIcon';
 import { SvgParkingIcon as ParkingIcon } from '@/components/Icons/ParkingIcon';
 
@@ -86,7 +86,7 @@ function PopupPages(props: IPopupPagesProps) {
         <PopupWrapper>
           <HeadingWrapper>
             <IconWrapper>
-              <CyclingIcon />
+              <CyclingPathIcon />
             </IconWrapper>
             <p className="is-size-4 has-text-weight-semibold">
               Fahrradstraßen 2.0 <br />

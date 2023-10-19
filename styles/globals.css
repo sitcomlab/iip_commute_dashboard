@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 /* https://dev.to/derick1530/how-to-create-scrollable-element-in-tailwind-without-a-scrollbar-4mbd */
 @layer utilities {
 
@@ -21,6 +23,25 @@
   /* https://css-tricks.com/almanac/properties/c/column-fill/ */
   .column-fill-auto {
     column-fill: auto;
+  }
+  
+  /* from App.scss in smart-city-dashboard*/
+  :root {
+    --scms-primary-blue: rgb(0, 159, 227);
+    --scms-green: rgb(134, 188, 37);
+    --scms-yellow: rgb(253, 195, 0);
+    --scms-orange: rgb(242, 140, 0);
+    --scms-red: rgb(234, 79, 61);
+  
+    --scms-dark-grey: rgb(50, 50, 50);
+  
+    --scms-box-shadow: 3.5px 3.5px 7px rgba(0, 0, 0, 0.12),
+      2.5px 2.5px 2.5px rgba(0, 0, 0, 0.06);
+    --scms-box-shadow-small: 2px 2px 4px rgba(0, 0, 0, 0.12),
+      1px 1px 1px rgba(0, 0, 0, 0.02);
+  
+    --scms-semi-bold: 600;
+    --scms-bold: 700;
   }
 }
 

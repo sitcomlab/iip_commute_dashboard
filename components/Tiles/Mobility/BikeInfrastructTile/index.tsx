@@ -1,7 +1,6 @@
 //'use client'
 import { format } from 'date-fns'
 import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
-import getTileData from '@/lib/api/getTileData'
 
 import CityViewConfig from '@/components/Views/CityViewConfig'
 
@@ -14,7 +13,6 @@ const BikeInfrastructTileContent = dynamic(() => import('./BikeInfrastructTileCo
 export default async function BikeInfrastructTile(props) {
     const cityConfig = CityViewConfig[props.city] || '';
     const embedID = `mobility-bike-${props.city}`;
-
 
     return (
         <MobilityTile

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-sort-props */
 //import React, { useEffect, useState } from 'react';
 
 import L from 'leaflet';
@@ -7,6 +8,7 @@ import MarkerClusterGroup from '@changey/react-leaflet-markercluster';
 import flip from '@turf/flip';
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
+import Skeleton from 'react-loading-skeleton';
 
 import useBikeInfrastructData from '@/hooks/useBikeInfrastructure';
 
@@ -16,7 +18,13 @@ import { createClusterCustomIconBlue } from './ClusterMarkerIcons';
 import { createClusterCustomIconGreen } from './ClusterMarkerIcons';
 import { addInfo } from './PopupInfos/PopupAddInfo';
 import LayerControl, { GroupedLayer } from './LayerControl/LayerControl';
+import MeasurementTilePopup from './MeasurementTilePopup';
 import PopupPages from './PopupInfos/PopupPages';
+import DonutChart from './DonutChart';
+import SliderCarousel from './SlideCarousel';
+import { Size } from './MeasurementTilePopup';
+import { CapacityLegend, ChartHeadingWrapper, TilesWrapper } from './styles';
+import { CapacitySlider } from './CapacitySlider';
 
 import {SvgChargingIcon as ChargingIcon} from '@/components/Icons/ChargingIcon';
 import {SvgShopIcon as ShopIcon} from '@/components/Icons/ShopIcon';
@@ -28,7 +36,7 @@ import {SvgSignalIcon as SignalIcon} from '@/components/Icons/SignalIcon';
 import {SvgWayfindingIcon as WayfindingIcon} from '@/components/Icons/WayfindingIcon';
 import {SvgTrainstationIcon as TrainstationIcon} from '@/components/Icons/TrainstationIcon';
 
-import { useContext } from 'react';
+import { useContext, Suspense } from 'react';
 import { CityContext } from './BikeInfrastructTileContent';
 import CityViewConfig from '@/components/Views/CityViewConfig';
 
@@ -44,7 +52,7 @@ function BicycleInfrastructureData() {
     //  get the city which we are looking at, and pass that to the bike infrastructure hook
     const city = useContext(CityContext) 
     var BicycleInfrastructureData = useBikeInfrastructData(CityViewConfig[city].infrastructureSource)
-    
+
     if (BicycleInfrastructureData === undefined) {
         return (<></>)
     }
@@ -81,7 +89,7 @@ function BicycleInfrastructureData() {
           weight: 2,
           opacity: 1,
           fillColor: '#4d514d',
-          fillOpacity: 0.5,
+          fillOpacity: 0.2,
         });
       }
       function mouseMoveAdminArea(e: any) {
@@ -261,7 +269,7 @@ function BicycleInfrastructureData() {
         (feature: any) =>
             feature.properties.bike_infrastructure_type === 'bicycle_repair_station'
     );
-    function pointRepair(geojsonPoint: any, latlng: any) {
+    function pointRepair(geojsonPoint: any, latlng: any) {  
         const repairIcon = L.divIcon({
             className: '',
             html: renderToStaticMarkup(
@@ -382,6 +390,7 @@ function BicycleInfrastructureData() {
             <LayerControl position="bottomright">
 
             {/* Stadtteile */}
+            { //this is where the view context goes
             <GroupedLayer 
                 checked
                 group="misc"
@@ -390,38 +399,203 @@ function BicycleInfrastructureData() {
             <Pane name="administrativeAreas" style={{ zIndex: 650 }}>
             <FeatureGroup>
                 {administrativeAreas.map((feature: any, index: any) => {
+                    console.log(feature.properties)
                     return(
-                        <GeoJSON
-                            data={feature}
-                            eventHandlers={{
-                                click: clickAdminArea,
-                                popupclose: popupCloseAdminArea,
-                                mousemove: mouseMoveAdminArea,
-                                mouseover: mouseOverAdminArea,
-                            }}
-                            key={index}
-                            pathOptions={adminAreaOptions}
-                        >
+                    <GeoJSON
+                        data={feature}
+                        eventHandlers={{
+                            click: clickAdminArea,
+                            popupclose: popupCloseAdminArea,
+                            mousemove: mouseMoveAdminArea,
+                            mouseover: mouseOverAdminArea,
+                        }}
+                        key={index}
+                        pathOptions={adminAreaOptions}
+                    >
                         <Tooltip pane="tooltip">{feature.properties.name}</Tooltip>
                             <StyledPopup
                                 autoClose={false}
                                 closeOnClick={false}
                                 pane="popup"
                             >
-                                <PopupPages
-                                    name={feature.properties.name}
-                                ></PopupPages>
-                            </StyledPopup>
-                            
-                        </GeoJSON>
-                    )
-                })}
+                            <PopupPages
+                            name={feature.properties.name}
+                            contentParking={
+                                <SliderCarousel
+                                contentParkingunits={feature.properties.parking.freqObjects}
+                                contentCapacity={
+                                    <>
+                                    <span className="is-size-6">
+                                        {'Stellplätze'}
+                                    </span><br />
+                                    <span className="is-size-6">
+                                        {JSON.stringify(feature.properties.parking.capacity)}
+                                    </span>
+                                    </>
+                                }
+                                contentWeather={
+                                    <>
+                                    <span className="is-size-6">
+                                        {'Wetterschutz'}
+                                    </span><br/>
+                                    <span className="is-size-6">
+                                        {JSON.stringify(feature.properties.parking.weather)}
+                                    </span>
+                                    </>
+                                    /*<ChartHeadingWrapper>
+                                        <span className="is-size-6">
+                                        {'Wetterschutz'}
+                                        </span>
+                                    </ChartHeadingWrapper>
+                                    <DonutChart
+                                        id="parkingWeather"
+                                        type="donut"
+                                        width={300}
+                                        height={200}
+                                        series={Object.values(
+                                        feature.properties.parking.weather
+                                        )}
+                                        chartOptions={{
+                                        labels: Object.keys(
+                                            feature.properties.parking.weather
+                                        ),
+                                        }}
+                                        colors={Object.keys(
+                                        feature.properties.parking.weather
+                                        ).map((type: string) => {
+                                        switch (type) {
+                                            case 'Unbekannt':
+                                            return '#bcbcbc';
+                                            case 'Ja':
+                                            return 'var(--scms-green)';
+                                            case 'Nein':
+                                            return 'var(--scms-red)';
+                                        }
+                                        })}
+                                    />
+                                    </>*/
+                                }
+                                contentTypes={
+                                    <>
+                                    <span className="is-size-6">
+                                        {'Parktypen'}
+                                    </span><br/>
+                                    <span className="is-size-6">
+                                        {JSON.stringify(feature.properties.parking.type)}
+                                    </span>
+                                    </>
+
+                                    /*
+                                    <ChartHeadingWrapper>
+                                        <span className="is-size-6">{'Parktypen'}</span>
+                                    </ChartHeadingWrapper>
+                                    <DonutChart
+                                        id="parkingTypes"
+                                        type="donut"
+                                        width={300}
+                                        height={200}
+                                        series={Object.values(
+                                        feature.properties.parking.type
+                                        )}
+                                        chartOptions={{
+                                        labels: Object.keys(
+                                            feature.properties.parking.type
+                                        ),
+                                        }}
+                                        colors={Object.keys(
+                                        feature.properties.parking.type
+                                        ).map((type: string) => {
+                                        switch (type) {
+                                            case 'Unbekannt':
+                                            return '#bcbcbc';
+                                            case 'Radstall':
+                                            return '#f8cc1b';
+                                            case 'Anlehnbügel':
+                                            return '#fa7a48';
+                                            case '(Boden)Anker':
+                                            return '#ab0a58';
+                                            case 'Radboxen':
+                                            return '#bed057';
+                                            case 'Reifenständer':
+                                            return '#84a2cd';
+                                            case 'Rad-Gebäude':
+                                            return '#442276';
+                                            case 'Lenkerhalter':
+                                            return '#ffa5c8';
+                                            case 'Doppeletage':
+                                            return '#4777cd';
+                                        }
+                                        })}
+                                    />
+                                    </>*/
+                                }
+                                ></SliderCarousel>
+                            }
+                            contentCycling={
+                                <>
+                                <TilesWrapper>
+                                    <Suspense
+                                    fallback={<Skeleton width="100%" height="100%" />}
+                                    >
+                                    <>
+                                        <span className="is-size-6">
+                                            {'Gesamtlänge'}
+                                        </span><br/>
+                                        <span className="is-size-6">
+                                            {JSON.stringify(feature.properties.cycling.cyclingstreets.lengthKM)}
+                                        </span>
+                                    </>
+                                    </Suspense>
+                                </TilesWrapper>
+                                </>
+                            }
+                            contentService={
+                                <TilesWrapper>
+                                <Suspense
+                                    fallback={<Skeleton width="100%" height="100%" />}
+                                >
+                                    <span className="is-size-6">
+                                        {'Innerhalb'}
+                                    </span><br/>
+                                    <span className="is-size-6">
+                                        {JSON.stringify(feature.properties.service.shopsWithin)}
+                                    </span>
+                                </Suspense>
+                                <Suspense
+                                    fallback={<Skeleton width="100%" height="100%" />}
+                                >
+                                    <span className="is-size-6">
+                                        {'In der Nähe'}
+                                    </span><br/>
+                                    <span className="is-size-6">
+                                        {JSON.stringify(feature.properties.service.shopsNearby)}
+                                    </span>
+                                </Suspense>
+                                <Suspense
+                                    fallback={<Skeleton width="100%" height="100%" />}
+                                >
+                                    <span className="is-size-6">
+                                        {'Abdeckung'}
+                                    </span><br/>
+                                    <span className="is-size-6">
+                                        {JSON.stringify(feature.properties.service.coverage)}
+                                    </span>
+                                    {/*TODO: don't forget the hover-description*/}
+                                </Suspense>
+                                </TilesWrapper>
+                            }
+                            ></PopupPages>
+                                </StyledPopup>
+                                
+                            </GeoJSON>
+                        )
+                    })}
                 
             </FeatureGroup>
             </Pane>
 
             </GroupedLayer>
-
+            }
 
             {/* Radverkehrs-Maßnahmen  */}
             <GroupedLayer

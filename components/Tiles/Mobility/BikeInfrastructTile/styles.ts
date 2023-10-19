@@ -99,6 +99,14 @@ export const ChartHeadingWrapper = styled.div`
   color: '#263238';
 `;
 
+export const TilesWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: 100%;
+  align-items: center;
+`;
+
 export const CapacityLegend = styled.div`
   display: flex;
   justify-content: space-between;
