@@ -39,18 +39,16 @@ export default function useBikeInfrastructData(urlString) {
         setLoopIteration(prevLoop => prevLoop + 1)
     }
 
-    //get the data for a first time
-    getBikeInfrastructData(urlString).then(e => setData(e))
-
     //start new loop whenever the iteration counter has changed
     useEffect(() => {
+        //get the data
+        getBikeInfrastructData(urlString).then(e => setData(e))
+
+        //start another cycle of the loop
         setTimeout(() => {
             //increment count again, so the loop starts anew.
-            //this way the cycle breaks when the component isn't running anymore
+            //this way the cycle breaks when the component isn't running anymore    
             incrementLoop()
-
-            //get the data and set it once it arrives
-            getBikeInfrastructData(urlString).then(e => setData(e))
         }, INTERVAL * 1000)
     }, [loopIteration])
 
