@@ -16,7 +16,7 @@ export default async function BikeInfrastructTile(props) {
 
     return (
         <MobilityTile
-            dataRetrieval={format(new Date(), '01.MM.yyyy')}
+            dataRetrieval={format(new Date(), 'dd.MM.yyyy')}
             dataSource="OpenStreetMap Contributors"
             embedId={embedID}
             subtitle={cityConfig.name || ''}
