@@ -128,14 +128,22 @@ function LayerControl({ position, children }: IProps) {
     icon: JSX.Element
   ) => {
     const cLayers = layers;
-    cLayers.push({
-      layer,
-      group,
-      name,
-      icon,
-      checked: map?.hasLayer(layer),
-      id: Util.stamp(layer),
-    });
+    
+    //ensure not to add duplicate layers when component rerenders
+    const existing = cLayers.find((member) => {
+      return member.layer == layer
+    }) || false
+    
+    if (!existing){
+      cLayers.push({
+        layer,
+        group,
+        name,
+        icon,
+        checked: map?.hasLayer(layer),
+        id: Util.stamp(layer),
+      });  
+    }
     setLayers(cLayers);
   };
 
@@ -154,7 +162,6 @@ function LayerControl({ position, children }: IProps) {
           {
             <Paper
               onMouseEnter={() => setCollapsed(false)}
-              onMouseOver={() => hovering = true}
               onMouseLeave={() => 
                 {
                   hovering = false;
@@ -162,6 +169,7 @@ function LayerControl({ position, children }: IProps) {
                     if (!hovering){setCollapsed(true)}
                   }, 500)}
               }
+              onMouseOver={() => hovering = true}
             >
               {collapsed && (
                 <IconButton>
