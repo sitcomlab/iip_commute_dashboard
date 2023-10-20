@@ -140,6 +140,7 @@ function LayerControl({ position, children }: IProps) {
   };
 
   const groupedLayers = lodashGroupBy(layers, 'group');
+  let hovering = false;
 
   return (
     <LayersControlProvider
@@ -153,7 +154,14 @@ function LayerControl({ position, children }: IProps) {
           {
             <Paper
               onMouseEnter={() => setCollapsed(false)}
-              onMouseLeave={() => setCollapsed(true)}
+              onMouseOver={() => hovering = true}
+              onMouseLeave={() => 
+                {
+                  hovering = false;
+                  setTimeout(()=> {
+                    if (!hovering){setCollapsed(true)}
+                  }, 500)}
+              }
             >
               {collapsed && (
                 <IconButton>
