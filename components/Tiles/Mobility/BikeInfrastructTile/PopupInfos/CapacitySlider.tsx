@@ -16,11 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import styled from 'styled-components';
-
-const AnimatedNumber = lazy(() => import('./AnimatedNumber'));
 
 interface CapacityProps {
   freqKnown: number;
@@ -142,15 +140,15 @@ export function CapacitySlider(props: CapacityProps) {
           <CapacityKnobHidden></CapacityKnobHidden>
           {/* This is the square knob at the start */}
           <CapacityKnown>
-            <AnimatedNumber value={props.freqKnown}></AnimatedNumber>
+            {props.freqKnown}
           </CapacityKnown>
           {/* This is the square knob at the end */}
           <CapacityUnknown>         
-            <AnimatedNumber value={props.freqUnknown}></AnimatedNumber>
+            {props.freqUnknown}
           </CapacityUnknown>
           {/* This is the circular knob sliding in the progress bar */}
           <SumStands value={(props.freqKnown / props.max) * 100}>
-            <AnimatedNumber value={props.sumStands}></AnimatedNumber>
+            {props.sumStands}
           </SumStands>
         </Suspense>
       </CapacityKnobs>

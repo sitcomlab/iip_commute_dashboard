@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 /* https://dev.to/derick1530/how-to-create-scrollable-element-in-tailwind-without-a-scrollbar-4mbd */
 @layer utilities {
 
@@ -42,7 +40,30 @@
   
     --scms-semi-bold: 600;
     --scms-bold: 700;
+
+    
   }
+
+  .is-size-2{
+    font-size: xx-large
+  }
+  .is-size-4{
+    font-size: x-large
+  }
+  .is-size-6{
+    font-size: large
+  }
+  .is-size-7{
+    font-size: medium
+  }
+
+
+  
 }
 
 @import "leaflet/dist/leaflet.css";
+
+.leaflet-popup-content {
+  width: 350px !important; /* Set width to auto */
+  max-width: 100%; /* Ensure the content does not exceed the available width */
+}

@@ -162,6 +162,7 @@ function LayerControl({ position, children }: IProps) {
           {
             <Paper
               onMouseEnter={() => setCollapsed(false)}
+              // timeout when leaving the controls, so they don't collapse immediately
               onMouseLeave={() => 
                 {
                   hovering = false;

@@ -52,7 +52,7 @@ function PopupPages(props: IPopupPagesProps) {
               <ParkingIcon />
             </IconWrapper>
             <p className="is-size-4 has-text-weight-semibold">
-              Parken <br />
+              Stellplätze <br />
               <span className="is-size-4 has-text-weight-normal">
                 in {props.name}
               </span>

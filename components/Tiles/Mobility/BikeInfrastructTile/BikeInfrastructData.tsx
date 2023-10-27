@@ -3,11 +3,9 @@
 
 import L from 'leaflet';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { FeatureGroup, GeoJSON, Pane, Polygon, Popup, Tooltip } from 'react-leaflet';
+import { FeatureGroup, GeoJSON, Pane, Popup, Tooltip } from 'react-leaflet';
 import MarkerClusterGroup from '@changey/react-leaflet-markercluster';
-import flip from '@turf/flip';
 import styled from 'styled-components';
-import ReactTooltip from 'react-tooltip';
 import Skeleton from 'react-loading-skeleton';
 
 import useBikeInfrastructData from '@/hooks/useBikeInfrastructure';
@@ -18,13 +16,11 @@ import { createClusterCustomIconBlue } from './ClusterMarkerIcons';
 import { createClusterCustomIconGreen } from './ClusterMarkerIcons';
 import { addInfo } from './PopupInfos/PopupAddInfo';
 import LayerControl, { GroupedLayer } from './LayerControl/LayerControl';
-import MeasurementTilePopup from './MeasurementTilePopup';
 import PopupPages from './PopupInfos/PopupPages';
-import DonutChart from './DonutChart';
-import SliderCarousel from './SlideCarousel';
-import { Size } from './MeasurementTilePopup';
+import PopupData, {Size} from './PopupInfos/PopupData';
+import SliderCarousel from './PopupInfos/SlideCarousel';
 import { CapacityLegend, ChartHeadingWrapper, TilesWrapper } from './styles';
-import { CapacitySlider } from './CapacitySlider';
+import { CapacitySlider } from './PopupInfos/CapacitySlider';
 
 import {SvgChargingIcon as ChargingIcon} from '@/components/Icons/ChargingIcon';
 import {SvgShopIcon as ShopIcon} from '@/components/Icons/ShopIcon';
@@ -36,12 +32,13 @@ import {SvgSignalIcon as SignalIcon} from '@/components/Icons/SignalIcon';
 import {SvgWayfindingIcon as WayfindingIcon} from '@/components/Icons/WayfindingIcon';
 import {SvgTrainstationIcon as TrainstationIcon} from '@/components/Icons/TrainstationIcon';
 
-import { useContext, Suspense } from 'react';
+import { Suspense, useContext } from 'react';
 import { CityContext } from './BikeInfrastructTileContent';
 import CityViewConfig from '@/components/Views/CityViewConfig';
+import DonutChart from './PopupInfos/DonutChart';
 
 const StyledPopup = styled(Popup)`
-  min-width: 350px;
+  min-width: 400px;
   padding: 0rem;
   margin: 0rem;
   border: 0rem;
@@ -386,12 +383,12 @@ function BicycleInfrastructureData() {
 
     return (
         <>
-
             <LayerControl position="bottomright">
 
             {/* Stadtteile */}
             { //this is where the view context goes
             <GroupedLayer 
+
                 checked
                 group="misc"
                 name="Stadtteile"
@@ -399,7 +396,6 @@ function BicycleInfrastructureData() {
             <Pane name="administrativeAreas" style={{ zIndex: 650 }}>
             <FeatureGroup>
                 {administrativeAreas.map((feature: any, index: any) => {
-                    console.log(feature.properties)
                     return(
                     <GeoJSON
                         data={feature}
@@ -421,130 +417,181 @@ function BicycleInfrastructureData() {
                             <PopupPages
                             name={feature.properties.name}
                             contentParking={
-                                <SliderCarousel
-                                contentParkingunits={feature.properties.parking.freqObjects}
-                                contentCapacity={
-                                    <>
-                                    <span className="is-size-6">
-                                        {'Stellplätze'}
-                                    </span><br />
-                                    <span className="is-size-6">
-                                        {JSON.stringify(feature.properties.parking.capacity)}
-                                    </span>
-                                    </>
-                                }
-                                contentWeather={
-                                    <>
-                                    <span className="is-size-6">
-                                        {'Wetterschutz'}
-                                    </span><br/>
-                                    <span className="is-size-6">
-                                        {JSON.stringify(feature.properties.parking.weather)}
-                                    </span>
-                                    </>
-                                    /*<ChartHeadingWrapper>
+                                function(){
+                                if(feature.properties.parking.freqObjects > 0){
+                                    return(<SliderCarousel
+                                    contentParkingunits={
+                                        <PopupData 
+                                            header='Summe Parkeinheiten'
+                                            size={Size.big}
+                                            value={
+                                              feature.properties.parking.freqObjects
+                                            }
+                                            decimals={0}
+                                        ></PopupData>
+                                    }
+                                    contentCapacity={
+                                        <>
+                                        <ChartHeadingWrapper>
                                         <span className="is-size-6">
-                                        {'Wetterschutz'}
+                                          {'Stellplätze'}
                                         </span>
-                                    </ChartHeadingWrapper>
-                                    <DonutChart
-                                        id="parkingWeather"
-                                        type="donut"
-                                        width={300}
-                                        height={200}
-                                        series={Object.values(
-                                        feature.properties.parking.weather
-                                        )}
-                                        chartOptions={{
-                                        labels: Object.keys(
-                                            feature.properties.parking.weather
-                                        ),
-                                        }}
-                                        colors={Object.keys(
-                                        feature.properties.parking.weather
-                                        ).map((type: string) => {
-                                        switch (type) {
-                                            case 'Unbekannt':
-                                            return '#bcbcbc';
-                                            case 'Ja':
-                                            return 'var(--scms-green)';
-                                            case 'Nein':
-                                            return 'var(--scms-red)';
-                                        }
-                                        })}
-                                    />
-                                    </>*/
-                                }
-                                contentTypes={
+                                        </ChartHeadingWrapper>
+                                        <CapacityLegend>
+                                            <p className="green">
+                                            Parkeinheiten mit bekannter <br /> Kapazität
+                                            </p>
+                                            <p className="blue">
+                                            Bekannte Summe an
+                                            <br /> Stellplätzen
+                                            </p>
+                                            <p className="red">
+                                            Parkeinheiten <br /> mit unbekannter Kapazität
+                                            </p>
+                                        </CapacityLegend>
+                                        <CapacitySlider
+                                            freqKnown={
+                                            feature.properties.parking.capacity.freqKnown
+                                            }
+                                            freqUnknown={
+                                            feature.properties.parking.capacity
+                                                .freqUnknown
+                                            }
+                                            max={
+                                            feature.properties.parking.capacity
+                                                .freqKnown +
+                                            feature.properties.parking.capacity
+                                                .freqUnknown
+                                            }
+                                            sumStands={
+                                            feature.properties.parking.capacity.sumStands
+                                            }
+                                        ></CapacitySlider>
+                                        </>
+                                    }
+                                    contentWeather={
+                                        <>
+                                        <span>
+                                        <div style={{height: '240px', width: '350px'}}>
+                                        <ChartHeadingWrapper>
+                                            <span className="is-size-6">
+                                            {'Wetterschutz'}
+                                            </span>
+                                        </ChartHeadingWrapper>
+                                        <DonutChart 
+                                            
+                                            data={[
+                                                {
+                                                    value: feature.properties.parking.weather.Ja,
+                                                    name: 'Ja',
+                                                    color: 'rgb(134, 188, 37)'
+                                                },{
+                                                    value: feature.properties.parking.weather.Nein,
+                                                    name: 'Nein',
+                                                    color: 'rgb(234, 79, 61)'
+                                                },{
+                                                    value: feature.properties.parking.weather.Unbekannt,
+                                                    name: 'Unbekannt',
+                                                    color: '#bcbcbc'
+                                                }
+                                            ]}
+                                            orientation='vertical'
+                                        />
+                                        </div>
+                                        </span>
+                                        </>
+                                    }
+                                    contentTypes={
+                                        <span>
+                                        <div style={{height: '240px', width: '400px'}}>
+                                        <ChartHeadingWrapper>
+                                            <span className="is-size-6">
+                                            {'Parktypen'}
+                                            </span>
+                                        </ChartHeadingWrapper>
+                                        <DonutChart 
+                                            style={{height: '300px'}}
+                                            data={
+                                                (() => {
+                                                function colorPicker(type: string){
+                                                    switch (type) {
+                                                        case 'Unbekannt':
+                                                        return '#bcbcbc';
+                                                        case 'Radstall':
+                                                        return '#f8cc1b';
+                                                        case 'Anlehnbügel':
+                                                        return '#fa7a48';
+                                                        case '(Boden)Anker':
+                                                        return '#ab0a58';
+                                                        case 'Radboxen':
+                                                        return '#bed057';
+                                                        case 'Reifenständer':
+                                                        return '#84a2cd';
+                                                        case 'Rad-Gebäude':
+                                                        return '#442276';
+                                                        case 'Lenkerhalter':
+                                                        return '#ffa5c8';
+                                                        case 'Doppeletage':
+                                                        return '#4777cd';
+                                                    }
+                                                }
+    
+                                                const dataArray = []
+                                                for (const key of Object.keys(feature.properties.parking.type)){
+                                                    
+                                                    dataArray.push({
+                                                        value: feature.properties.parking.type[key],
+                                                        name: key,
+                                                        color: colorPicker(key)
+                                                    })
+                                                }
+                                                return dataArray
+                                                })()                                           
+                                            }
+                                            orientation='horizontal'
+                                        />
+                                        </div>
+                                        </span>
+                                    }
+                                    ></SliderCarousel>)} 
+                                    
+                                    //no need for pages when there are no parking units
+                                    return (
                                     <>
-                                    <span className="is-size-6">
-                                        {'Parktypen'}
-                                    </span><br/>
-                                    <span className="is-size-6">
-                                        {JSON.stringify(feature.properties.parking.type)}
-                                    </span>
+                                    <TilesWrapper>
+                                        <Suspense
+                                        fallback={<Skeleton width="100%" height="100%" />}
+                                        >
+                                        <PopupData 
+                                            header='Summe Parkeinheiten'
+                                            size={Size.big}
+                                            value={
+                                            feature.properties.parking.freqObjects
+                                            }
+                                            decimals={0}
+                                        ></PopupData>
+                                        </Suspense>
+                                    </TilesWrapper>
                                     </>
-
-                                    /*
-                                    <ChartHeadingWrapper>
-                                        <span className="is-size-6">{'Parktypen'}</span>
-                                    </ChartHeadingWrapper>
-                                    <DonutChart
-                                        id="parkingTypes"
-                                        type="donut"
-                                        width={300}
-                                        height={200}
-                                        series={Object.values(
-                                        feature.properties.parking.type
-                                        )}
-                                        chartOptions={{
-                                        labels: Object.keys(
-                                            feature.properties.parking.type
-                                        ),
-                                        }}
-                                        colors={Object.keys(
-                                        feature.properties.parking.type
-                                        ).map((type: string) => {
-                                        switch (type) {
-                                            case 'Unbekannt':
-                                            return '#bcbcbc';
-                                            case 'Radstall':
-                                            return '#f8cc1b';
-                                            case 'Anlehnbügel':
-                                            return '#fa7a48';
-                                            case '(Boden)Anker':
-                                            return '#ab0a58';
-                                            case 'Radboxen':
-                                            return '#bed057';
-                                            case 'Reifenständer':
-                                            return '#84a2cd';
-                                            case 'Rad-Gebäude':
-                                            return '#442276';
-                                            case 'Lenkerhalter':
-                                            return '#ffa5c8';
-                                            case 'Doppeletage':
-                                            return '#4777cd';
-                                        }
-                                        })}
-                                    />
-                                    </>*/
-                                }
-                                ></SliderCarousel>
+                                    )
+                                }()
                             }
+                            
                             contentCycling={
                                 <>
                                 <TilesWrapper>
                                     <Suspense
                                     fallback={<Skeleton width="100%" height="100%" />}
                                     >
-                                    <>
-                                        <span className="is-size-6">
-                                            {'Gesamtlänge'}
-                                        </span><br/>
-                                        <span className="is-size-6">
-                                            {JSON.stringify(feature.properties.cycling.cyclingstreets.lengthKM)}
-                                        </span>
-                                    </>
+                                    <PopupData 
+                                        header='Gesamtlänge'
+                                        size={Size.big}
+                                        value={
+                                            feature.properties.cycling.cyclingstreets.lengthKM
+                                        }
+                                        unit='Kilometer'
+                                        decimals={2}
+                                    ></PopupData>
                                     </Suspense>
                                 </TilesWrapper>
                                 </>
@@ -554,38 +601,47 @@ function BicycleInfrastructureData() {
                                 <Suspense
                                     fallback={<Skeleton width="100%" height="100%" />}
                                 >
-                                    <span className="is-size-6">
-                                        {'Innerhalb'}
-                                    </span><br/>
-                                    <span className="is-size-6">
-                                        {JSON.stringify(feature.properties.service.shopsWithin)}
-                                    </span>
+                                    <PopupData 
+                                        header='Läden innerhalb'
+                                        size={Size.normal}
+                                        value={
+                                            feature.properties.service.shopsWithin
+                                        }
+                                        unit=''
+                                        decimals={0}
+                                    ></PopupData>
                                 </Suspense>
                                 <Suspense
                                     fallback={<Skeleton width="100%" height="100%" />}
                                 >
-                                    <span className="is-size-6">
-                                        {'In der Nähe'}
-                                    </span><br/>
-                                    <span className="is-size-6">
-                                        {JSON.stringify(feature.properties.service.shopsNearby)}
-                                    </span>
+                                    <PopupData 
+                                        header='Läden in der Nähe'
+                                        size={Size.normal}
+                                        value={
+                                            feature.properties.service.shopsNearby
+                                        }
+                                        unit=''
+                                        decimals={0}
+                                    ></PopupData>
                                 </Suspense>
                                 <Suspense
                                     fallback={<Skeleton width="100%" height="100%" />}
                                 >
-                                    <span className="is-size-6">
-                                        {'Abdeckung'}
-                                    </span><br/>
-                                    <span className="is-size-6">
-                                        {JSON.stringify(feature.properties.service.coverage)}
-                                    </span>
+                                    <PopupData 
+                                        header='Abdeckung'
+                                        size={Size.normal}
+                                        value={
+                                            feature.properties.service.coverage
+                                        }
+                                        unit='%'
+                                        decimals={2}
+                                    ></PopupData>                                    
                                     {/*TODO: don't forget the hover-description*/}
                                 </Suspense>
                                 </TilesWrapper>
                             }
                             ></PopupPages>
-                                </StyledPopup>
+                            </StyledPopup>
                                 
                             </GeoJSON>
                         )
