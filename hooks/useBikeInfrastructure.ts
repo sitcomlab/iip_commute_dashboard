@@ -7,8 +7,6 @@ import { GeoJSON } from 'react-leaflet';
 type bikeApiResponse = GeoJSON.FeatureCollection;
 //type bikeApiResponse = any;
 
-//simplest example of a live-updating hook
-
 const INTERVAL = 60 * 60 * 12; // 1/2 day
 
 //function to fetch the bicycle infrastructure

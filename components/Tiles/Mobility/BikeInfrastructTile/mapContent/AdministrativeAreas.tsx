@@ -1,4 +1,4 @@
-import { FeatureGroup, GeoJSON, Pane, Popup, Tooltip } from 'react-leaflet';
+import { FeatureGroup, GeoJSON, Popup, Tooltip } from 'react-leaflet';
 import styled from 'styled-components';
 import Skeleton from 'react-loading-skeleton';
 import { Suspense } from 'react';
@@ -23,7 +23,6 @@ const StyledPopup = styled(Popup)`
 `;
 
 function AdministrativeAreas(props: AAProps){
-
     // ## ADMINISTRATIVE AREAS
     //filter and style administrative areas
     const administrativeAreas = props.contentGeometry.features.filter(
