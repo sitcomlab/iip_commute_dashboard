@@ -23,6 +23,10 @@ const StyledPopup = styled(Popup)`
 `;
 
 function AdministrativeAreas(props: AAProps){
+    if (props.contentGeometry === undefined) {
+        return (<></>)
+    }
+
     // ## ADMINISTRATIVE AREAS
     //filter and style administrative areas
     const administrativeAreas = props.contentGeometry.features.filter(

@@ -26,6 +26,10 @@ interface BIProps{
 
 function BicycleInfrastructureFeatures(props: BIProps) {
 
+    if (props.contentGeometry === undefined) {
+        return (<></>)
+    }
+
         // ## BICYCLE INFRASTRUCTURE
     // Filter and style mixed paths polygons
     const mixedPathPolygons = props.contentGeometry.features.filter(

@@ -18,10 +18,6 @@ function BicycleInfrastructureData() {
     const city = useContext(CityContext) 
     var BicycleInfrastructureData = useBikeInfrastructData(CityViewConfig[city].infrastructureSource)
 
-    if (BicycleInfrastructureData === undefined) {
-        return (<></>)
-    }
-
     return (
         <>
             <LayerControl position="bottomright">
