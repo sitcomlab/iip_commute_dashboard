@@ -40,8 +40,8 @@ const BaseMapMarker = styled.div`
   }
 `;
 
-const BiMarker = (props: BiMarkerProps) => {
+function BiMarker(props: BiMarkerProps) {
   return <BaseMapMarker>{props.icon}</BaseMapMarker>;
-};
+}
 
 export default BiMarker;
