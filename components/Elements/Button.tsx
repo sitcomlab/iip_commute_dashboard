@@ -13,10 +13,14 @@ const button = cva(
         secondary: 'border-secondary text-secondary',
         inverse: 'text-white border-white',
         danger: 'bg-red-600 text-white hover:bg-red-50:text-red-600',
-        goToMobility: 'border-mobility text-primary',
-
+        
+        goToMobility: 'border-mobility text-mobility',
+        
         goToMuenster: 'border-climate text-primary',
         goToOsnabrueck: 'border-climate text-primary',
+        
+        viewButton: 'border-mobility text-mobility',
+        viewButtonActive: 'text-white bg-mobility border-mobility text-mobility',
       },
       size: {
         sm: 'py-1 px-3 text-sm',
@@ -28,6 +32,7 @@ const button = cva(
         energy: 'hover:border-energy',
         mobility: 'hover:border-mobility',
         buildings: 'hover:border-buildings',
+        view: 'hover:bg-mobility hover:text-white'
       },
     },
     defaultVariants: {

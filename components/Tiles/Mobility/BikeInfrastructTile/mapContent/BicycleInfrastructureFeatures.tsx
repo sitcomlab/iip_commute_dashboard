@@ -30,7 +30,7 @@ function BicycleInfrastructureFeatures(props: BIProps) {
         return (<></>)
     }
 
-        // ## BICYCLE INFRASTRUCTURE
+    // ## BICYCLE INFRASTRUCTURE
     // Filter and style mixed paths polygons
     const mixedPathPolygons = props.contentGeometry.features.filter(
         (feature: any) =>

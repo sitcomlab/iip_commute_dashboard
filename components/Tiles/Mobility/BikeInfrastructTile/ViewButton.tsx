@@ -1,0 +1,63 @@
+import * as React from 'react'
+import { Button } from '@/components/Elements/Button'
+import { MapViewContext, ViewMode } from './BikeInfrastructTileContent';
+import { SVGProps } from 'react'
+import { cx } from 'class-variance-authority'
+
+interface ButtonProps {
+    type: ViewMode,
+    mapViewContext: ViewMode,
+    buttonText: string,
+    buttonIcon?: (_props: SVGProps<SVGSVGElement>) => JSX.Element,
+    onClick: React.MouseEventHandler<HTMLButtonElement>
+}
+
+function ButtonBase({ 
+    type,
+    mapViewContext, 
+    buttonText, 
+    buttonIcon,
+    onClick
+}: ButtonProps,
+...props
+){
+    const buttonVariant = (type == mapViewContext) ? 'viewButtonActive' : 'viewButton' 
+    const Icon = buttonIcon || <></>
+    return(
+        <Button
+        hover={'view'}
+        onClick={onClick}
+        variant={buttonVariant}
+        {...props}
+        >{buttonText}</Button>
+    )
+}
+
+function ViewButton({ type }: ButtonProps): JSX.Element {
+    const {mapViewState, setMapViewState} = React.useContext(MapViewContext)
+
+    if (type == ViewMode.AdministrativeAreas) {
+        return(
+            <ButtonBase 
+                buttonText='Stadtteile'
+                mapViewContext={mapViewState}
+                onClick={() => {return setMapViewState(type);}}
+                type={type}
+            />
+        )
+    }
+
+    if (type == ViewMode.BicycleNetwork) {
+        return(
+            <ButtonBase 
+                buttonText='Fahrradnetz'
+                mapViewContext={mapViewState}
+                onClick={() => {return setMapViewState(type);}}
+                type={type}
+            />
+        )
+    }
+}
+
+export { ButtonBase }
+export default ViewButton

@@ -131,7 +131,7 @@ function LayerControl({ position, children }: IProps) {
     
     //ensure not to add duplicate layers when component rerenders
     const existing = cLayers.find((member) => {
-      return member.layer == layer
+      return member.layer == layer || member.name == name
     }) || false
     
     if (!existing){

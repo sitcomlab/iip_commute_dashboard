@@ -1,21 +1,48 @@
 'use client'
 
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 import 'leaflet';
 import { MapContainer, Pane, TileLayer } from 'react-leaflet'
 import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import BicycleInfrastructureData from './BikeInfrastructData'
+import ViewButton from './ViewButton';
 
 import CityViewConfig from '@/components/Views/CityViewConfig'
+import { Directions } from '@mui/icons-material';
 
+enum ViewMode {
+    AdministrativeAreas = 'Administrative Areas',
+    BicycleNetwork = 'Bicycle Network'
+}
+const MapViewContext = createContext({
+    mapViewState: ViewMode.BicycleNetwork,
+    setMapViewState: (arg) => {}
+  })
 
-export const CityContext = createContext('muenster')
-export default function BikeInfrastructTileContent(props) {
+const CityContext = createContext('muenster')
+function BikeInfrastructTileContent(props) {
     const city = CityViewConfig[props.city] || CityViewConfig.muenster;
+    const [mapViewState, setMapViewState] = useState(ViewMode.BicycleNetwork)
 
     return (
+        <MapViewContext.Provider value={{mapViewState, setMapViewState}}>
         <CityContext.Provider value={props.city}>
+        {/*buttons here*/}
+        <div
+            style={{
+                display: 'flex', justifyContent: 'end', gap: '10px',
+                marginBottom: '10px'
+            }}
+        >
+        <ViewButton 
+            type={ViewMode.AdministrativeAreas}
+        />
+        <ViewButton 
+            type={ViewMode.BicycleNetwork}
+        />    
+        </div>
+
         <MapContainer
             center={city.mapSettings.center}
             className="h-[75vh] z-0 rounded-3xl"
@@ -34,5 +61,9 @@ export default function BikeInfrastructTileContent(props) {
 
         </MapContainer >
         </CityContext.Provider>
+        </MapViewContext.Provider>
     )
 }
+
+export { ViewMode, MapViewContext, CityContext}
+export default BikeInfrastructTileContent
