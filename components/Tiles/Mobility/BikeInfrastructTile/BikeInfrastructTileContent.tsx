@@ -32,29 +32,29 @@ function BikeInfrastructTileContent(props) {
         <div
             style={{
                 display: 'flex', justifyContent: 'end', gap: '10px',
-                marginBottom: '10px'
+                marginBottom: '10px',     
             }}
-        >
-        <ViewButton 
-            type={ViewMode.AdministrativeAreas}
-        />
-        <ViewButton 
-            type={ViewMode.BicycleNetwork}
-        />    
-        </div>
+            >
+            <ViewButton
+                type={ViewMode.AdministrativeAreas}
+            />
+            <ViewButton 
+                type={ViewMode.BicycleNetwork}
+            />    
+        </div> 
+
 
         <MapContainer
             center={city.mapSettings.center}
             className="h-[75vh] z-0 rounded-3xl"
             scrollWheelZoom={true}
-
             zoom={city.mapSettings.zoom}
         >
             <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://geo.stadt-muenster.de/basiskarte/{z}/{x}/{y}.png"
             />
-            
+              
             <BicycleInfrastructureData />
             <Pane name="popup" style={{ zIndex: 660 }}></Pane>
             <Pane name="tooltip" style={{ zIndex: 670 }}></Pane>
