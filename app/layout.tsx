@@ -6,9 +6,9 @@ import Matomo from './Matomo'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata = {
-  title: 'Klimadashboard Münster',
+  title: 'Pendel-Dashboard',
   viewport: 'width=device-width, initial-scale=1',
-  description: 'Das Klimadashboard der Stadt Münster',
+  description: 'Dashboard für Pendler*innen',
   icons: '/favicon.ico',
 }
 
