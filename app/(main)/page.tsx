@@ -4,9 +4,7 @@ import AnimatedPage from '@/components/Layout/AnimatedPage'
 
 import BaseView from '@/components/Views/BaseView'
 import Columns from '@/components/Layout/Columns'
-import TrafficloadTile from '@/components/Tiles/Mobility/TrafficloadTile'
 import BusTile from '@/components/Tiles/Mobility/Bus'
-import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
 
 export default async function Home() {
   return (
@@ -20,10 +18,8 @@ export default async function Home() {
             showSurveys={false}
             type="mobility"
           >
-            <TrafficloadTile />
             <Columns>
               <BusTile />
-              <BicycleChartTile />
             </Columns>
           </BaseView>
 
