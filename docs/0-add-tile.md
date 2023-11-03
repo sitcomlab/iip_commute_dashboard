@@ -3,7 +3,7 @@
 ### 0. Prerequisites:
 
 - Name of the Tile
-- Category (`climate`, `mobility`, `energy`, `building`)
+- Category (`climate`, `mobility`, `energy`, `building`, `muenster`, `osnabrueck`)
 - ID (you can choose by yourself)
 - Name of the Data Source (e.g. Stadt Münster - Amt für Mobilität)
 
@@ -17,9 +17,9 @@ export type MobilityTypes = ... | 'sampleTile'
 
 ### 2. Create File
 
-Create a new file: `klimadashboard-ms/components/Tiles/(category)/(name)/index.tsx`
+Create a new file: `iip_commute_dashboard/components/Tiles/(category)/(name)/index.tsx`
 
-All tiles follow the same structure. It's best practice to keep the tile itself a Server Component and create seperate client components for interactivity (e.g. charts etc).
+All tiles follow the same structure. It's best practice to keep the tile itself a Server Component and create separate client components for interactivity (e.g. charts etc).
 
 ### 3. Create Simple Tile
 
@@ -87,7 +87,3 @@ The TileFactory is useful to map the IDs to the Tile. Please add the new Tile to
 To add the Tile to the Page, you need to add it to its corresponding `View` (here: `components/Views/MobilityView.tsx`)
 
 You need to add the `@ts-expect-error Server Component` comment here as well.
-
-### 7. Connect CMS
-
-Please refer to the [docs/1-connect-cms.md](docs/1-connect-cms.md) document on how to add the tile to the CMS
