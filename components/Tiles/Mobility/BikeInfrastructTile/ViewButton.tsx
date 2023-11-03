@@ -19,7 +19,7 @@ function ButtonBase({
     buttonIcon,
     onClick
 }: ButtonProps,
-...props
+...props: any[]
 ){
     const buttonVariant = (type == mapViewContext) ? 'viewButtonActive' : 'viewButton' 
     const Icon = buttonIcon || <></>
@@ -57,6 +57,9 @@ function ViewButton({ type }: ButtonProps): JSX.Element {
             />
         )
     }
+
+    //this shall not be reached
+    return <></>
 }
 
 export { ButtonBase }
