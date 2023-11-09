@@ -1,9 +1,7 @@
 import Columns from '../Layout/Columns'
-import BicycleChartTile from '../Tiles/Mobility/Bicycle/BicycleChartTile'
 import BusTile from '../Tiles/Mobility/Bus'
 import ModalSplitTile from '../Tiles/Mobility/ModalSplit'
 import BikeInfrastructTile from '../Tiles/Mobility/BikeInfrastructTile'
-import TrafficloadTile from '../Tiles/Mobility/TrafficloadTile'
 import BaseView from './BaseView'
 
 
@@ -12,7 +10,6 @@ export default function MobilityView() {
     <BaseView type="mobility">
       <BikeInfrastructTile city="muenster" />
       <Columns>
-        <BicycleChartTile />
 
         <BusTile />
 
@@ -20,7 +17,6 @@ export default function MobilityView() {
 
       <ModalSplitTile />
 
-      <TrafficloadTile />
     </BaseView>
   )
 }

@@ -2,7 +2,6 @@ import * as React from 'react'
 import { Button } from '@/components/Elements/Button'
 import { MapViewContext, ViewMode } from './BikeInfrastructTileContent';
 import { SVGProps } from 'react'
-import { cx } from 'class-variance-authority'
 
 interface ButtonProps {
     type: ViewMode,
@@ -33,7 +32,7 @@ function ButtonBase({
     )
 }
 
-function ViewButton({ type }: ButtonProps): JSX.Element {
+function ViewButton({ type }: ButtonProps) {
     const {mapViewState, setMapViewState} = React.useContext(MapViewContext)
 
     if (type == ViewMode.AdministrativeAreas) {

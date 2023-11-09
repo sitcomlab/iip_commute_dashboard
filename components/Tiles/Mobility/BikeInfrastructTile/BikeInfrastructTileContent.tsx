@@ -9,7 +9,6 @@ import BicycleInfrastructureData from './BikeInfrastructData'
 import ViewButton from './ViewButton';
 
 import CityViewConfig from '@/components/Views/CityViewConfig'
-import { Directions } from '@mui/icons-material';
 
 enum ViewMode {
     AdministrativeAreas = 'Administrative Areas',
@@ -17,11 +16,11 @@ enum ViewMode {
 }
 const MapViewContext = createContext({
     mapViewState: ViewMode.BicycleNetwork,
-    setMapViewState: (arg) => {}
+    setMapViewState: (_arg: any) => {}
   })
 
 const CityContext = createContext('muenster')
-function BikeInfrastructTileContent(props) {
+function BikeInfrastructTileContent(props: { city: string; }) {
     const city = CityViewConfig[props.city] || CityViewConfig.muenster;
     const [mapViewState, setMapViewState] = useState(ViewMode.BicycleNetwork)
 
@@ -36,11 +35,21 @@ function BikeInfrastructTileContent(props) {
             }}
             >
             <ViewButton
-                type={ViewMode.AdministrativeAreas}
+                buttonText={''} 
+                mapViewContext={ViewMode.AdministrativeAreas} 
+                onClick={function (): void {
+                    throw new Error('Function not implemented.');
+                } } 
+                type={ViewMode.AdministrativeAreas}            
             />
-            <ViewButton 
-                type={ViewMode.BicycleNetwork}
-            />    
+            <ViewButton
+                buttonText={''} 
+                mapViewContext={ViewMode.BicycleNetwork} 
+                onClick={function (): void {
+                    throw new Error('Function not implemented.');
+                } } 
+                type={ViewMode.BicycleNetwork}            
+            />   
         </div> 
 
 
