@@ -220,8 +220,9 @@ function LayerControl({ position, children }: IProps) {
             </Paper>
           }
         </div>
-        {children}
+        
       </div>
+      {children}
     </LayersControlProvider>
   );
 }

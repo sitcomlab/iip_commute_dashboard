@@ -11,6 +11,7 @@ import CityViewConfig from '@/components/Views/CityViewConfig';
 
 import AdministrativeAreas from './mapContent/AdministrativeAreas';
 import BicycleInfrastructureFeatures from './mapContent/BicycleInfrastructureFeatures';
+import Legend from './LayerControl/Legend';
 
 function BicycleInfrastructureData() {
     //regularly fetch bike infrastructure data
@@ -44,9 +45,12 @@ function BicycleInfrastructureData() {
 
         { mapViewState == ViewMode.BicycleNetwork &&
         <LayerControl position="bottomright">
-            <BicycleInfrastructureFeatures
-                contentGeometry={BicycleInfrastructureData}
-            />
+            <Legend position='bottomleft'>
+                <BicycleInfrastructureFeatures
+                    contentGeometry={BicycleInfrastructureData}
+                />
+                <></>
+            </Legend>
             <></>
         </LayerControl>
         }

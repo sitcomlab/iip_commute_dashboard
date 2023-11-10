@@ -1,8 +1,9 @@
-import { useState} from 'react';
+import { useContext} from 'react';
 import {Layer} from 'leaflet';
 import { ReactElement } from 'react-markdown/lib/react-markdown';
 import { Paper } from '@mui/material';
-import lodashGroupBy from 'lodash.groupby';
+
+import { LayersControlContext } from './layerControlContext';
 
 const POSITION_CLASSES: { [key: string]: string } = {
     bottomleft: 'leaflet-bottom leaflet-left',
@@ -23,20 +24,34 @@ interface ILayerObj {
     icon: JSX.Element;
     checked: boolean;
     id: number;
-  }
+}
+
+function getSymbology(layer){
+    
+}
+
 
 function Legend({children, position}: LegendProps) {
-    const [layers, setLayers] = useState<ILayerObj[]>([]);
+    //const [layers, setLayers] = useState<ILayerObj[]>([]);
+    const layers = useContext(LayersControlContext)
     const positionClass = (position && POSITION_CLASSES[position]) || POSITION_CLASSES.topright;
 
-    const groupedLayers = lodashGroupBy(layers, 'group');
+    //const groupedLayers = lodashGroupBy(layers, 'group');
+
+    const categories = layers.layers || [];
+    console.log(categories)
 
     return (
         <>
             <div className={positionClass}>
                 <div className='leaflet-control leaflet-bar'>
-                    <Paper>
-                        <div>{'test'}</div>
+                    <Paper className='p-3'>
+                        <span><h1 className='text-lg text-center bold'>Legende</h1></span>
+                        {
+                            categories.map((category, index) => (
+                                category.checked && <div key={index}><p>{category.name}</p></div>
+                            ))
+                        }
                     </Paper>
                 </div>
                 {children}
