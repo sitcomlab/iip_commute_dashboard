@@ -2,8 +2,19 @@ import { useContext} from 'react';
 import {Layer} from 'leaflet';
 import { ReactElement } from 'react-markdown/lib/react-markdown';
 import { Paper } from '@mui/material';
+import styled from 'styled-components';
 
 import { LayersControlContext } from './layerControlContext';
+
+import {SvgChargingIcon as ChargingIcon} from '@/components/Icons/ChargingIcon';
+import {SvgShopIcon as ShopIcon} from '@/components/Icons/ShopIcon';
+import {SvgParkingIcon as ParkingIcon} from '@/components/Icons/ParkingIcon';
+import {SvgRepairIcon as RepairIcon} from '@/components/Icons/RepairIcon';
+import {SvgRentalIcon as RentalIcon} from '@/components/Icons/RentalIcon';
+import {SvgTubeIcon as TubeIcon} from '@/components/Icons/TubeIcon';
+import {SvgSignalIcon as SignalIcon} from '@/components/Icons/SignalIcon';
+import {SvgWayfindingIcon as WayfindingIcon} from '@/components/Icons/WayfindingIcon';
+import {SvgTrainstationIcon as TrainstationIcon} from '@/components/Icons/TrainstationIcon';
 
 const POSITION_CLASSES: { [key: string]: string } = {
     bottomleft: 'leaflet-bottom leaflet-left',
@@ -26,8 +37,135 @@ interface ILayerObj {
     id: number;
 }
 
-function getSymbology(layer){
-    
+interface LegendRowProps {
+    color:
+      | '#385723'
+      | '#203864'
+      | '#FF0000'
+      | 'blue'
+      | 'green'
+      | 'orange'
+      | 'red'; // 'darkgreen', 'darkblue', 'red'
+    icon: JSX.Element;
+    text: String;
+  }
+  
+  const BaseMapMarker = styled.span`
+    background-color: ${(props) => props.color};
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border: 1px solid white;
+    width: 1.4rem;
+    height: 1.4rem;
+    color: white;
+    font-weight: var(--scms-semi-bold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: small;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+
+    margin-right: 0.5rem;
+  
+    > svg {
+      width: 1rem;
+      pointer-events: none;
+    }
+  `;
+  
+  function LegendRow(props: LegendRowProps) {
+    return <div
+            style={{'display': 'flex', 'align-items': 'center'}}
+            >
+                <BaseMapMarker color={props.color}>{props.icon}</BaseMapMarker><span>{props.text}</span>
+            </div>;
+  }
+
+function Symbology(layer, text){
+    let icon = <></>;
+    switch(layer.name){
+        //this could be more generalized
+        case 'Fahrradstraße 2.0':
+            break;
+        case 'Radweg':
+            break;
+        case 'Fahrrad-Ampel':
+            icon = <LegendRow
+                        icon={<SignalIcon fill="#DEEBF7" stroke="#000000"/>}
+                        text={text}
+                    ></LegendRow>;
+            break;
+        case 'Radwege-Netz':
+            break;
+        case 'Weg-Beschilderung':
+            icon = <LegendRow
+                        icon={<WayfindingIcon fill="#ffc000" stroke="#000000"/>}
+                        text={text}
+                    ></LegendRow>;
+            break;
+        case 'Parken':
+            icon = <LegendRow
+                        color="#203864"
+                        icon={<ParkingIcon fill="#DEEBF7" />}
+                        text={text}
+                    ></LegendRow>;
+            break;
+        case 'Lade-Station':
+            icon = <LegendRow
+                        color="#203864"
+                        icon={<ChargingIcon fill="#DEEBF7" />}
+                        text={text}
+                    ></LegendRow>;
+            break;
+        case 'Fahrrad-Laden':
+            icon = <LegendRow
+                        color="#385723"
+                        icon={<ShopIcon fill="#E2F0D9" />}
+                        text={text}
+                    ></LegendRow>
+            break;
+        case 'DIY-Station':
+            icon = <LegendRow
+                        color="#385723"
+                        icon={<RepairIcon fill="#E2F0D9" />}
+                        text={text}
+                    ></LegendRow>
+            break;
+        case 'Rad-Verleih':
+            icon = <LegendRow
+                        color="#385723"
+                        icon={<RentalIcon fill="#E2F0D9" />}
+                        text={text}
+                    ></LegendRow>
+            break;
+        case 'Schlauch-Automat':
+            icon = <LegendRow
+                        color="#385723"
+                        icon={<TubeIcon fill="#E2F0D9" />}
+                        text={text}
+                    ></LegendRow>
+            break;
+        case 'Bahnhof':
+            icon = <LegendRow
+                        color="#FF0000"
+                        icon={<TrainstationIcon fill="#FFF3F3" />}
+                        text={text}
+                    ></LegendRow>
+            break;
+        case 'Verkehrsberuhigt':
+            break;
+        case 'Einbahnstraßen-Ausnahme':
+            break;
+        case 'Mix-Weg':
+            break;
+        case 'Mix-Fläche':
+            break;
+        default:
+            break;
+    }
+    return icon
 }
 
 
@@ -49,7 +187,8 @@ function Legend({children, position}: LegendProps) {
                         <span><h1 className='text-lg text-center bold'>Legende</h1></span>
                         {
                             categories.map((category, index) => (
-                                category.checked && <div key={index}><p>{category.name}</p></div>
+                                category.checked && 
+                                <div key={index}>{Symbology(category, category.name)}</div>
                             ))
                         }
                     </Paper>
