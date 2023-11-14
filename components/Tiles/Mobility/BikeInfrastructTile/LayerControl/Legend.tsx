@@ -48,9 +48,9 @@ interface LegendRowProps {
       | 'red'; // 'darkgreen', 'darkblue', 'red'
     icon: JSX.Element;
     text: String;
-  }
+}
   
-  const BaseMapMarker = styled.span`
+const BaseMapMarker = styled.span`
     background-color: ${(props) => props.color};
     border-bottom-left-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
@@ -66,30 +66,63 @@ interface LegendRowProps {
     -moz-border-radius: 50px;
     -webkit-border-radius: 50px;
     border-radius: 50px;
-
     margin-right: 0.5rem;
-  
+
     > svg {
-      width: 1rem;
-      pointer-events: none;
+        width: 1rem;
+        pointer-events: none;
     }
-  `;
-  
-  function LegendRow(props: LegendRowProps) {
-    return <div
-            style={{'display': 'flex', 'align-items': 'center'}}
-            >
-                <BaseMapMarker color={props.color}>{props.icon}</BaseMapMarker><span>{props.text}</span>
-            </div>;
-  }
+`;
+
+function LegendRow(props: LegendRowProps) {
+  return <div
+          style={{'display': 'flex', 'align-items': 'center'}}
+          >
+              <BaseMapMarker color={props.color}>{props.icon}</BaseMapMarker><span>{props.text}</span>
+          </div>;
+}
+
+
+function LineIcon(props, dashed){
+    const dash = dashed ? '4,8' : ''
+    return (
+        <svg
+        stroke-linecap="round"
+        stroke-width='4'
+
+        viewBox="0 0 25 10"
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+        >
+        <g fill="none">
+            <path d="M0 4 l30 0"  />
+        </g>
+        </svg>
+    )
+}
+
 
 function Symbology(layer, text){
     let icon = <></>;
     switch(layer.name){
         //this could be more generalized
         case 'Fahrradstraße 2.0':
+            icon = <LegendRow
+                    icon={<LineIcon stroke='#f6ef3c' stroke-width='20'/>}
+                    text={text}
+                ></LegendRow>;
             break;
         case 'Radweg':
+            icon = <LegendRow
+                    icon={<LineIcon stroke='#f8b000'/>}
+                    text={text}
+                ></LegendRow>;
+            break;
+        case 'Radspur':
+            icon = <LegendRow
+                    icon={<LineIcon stroke='#cc0000' stroke-dasharray='4,8'/>}
+                    text={text}
+                ></LegendRow>;
             break;
         case 'Fahrrad-Ampel':
             icon = <LegendRow
@@ -155,12 +188,28 @@ function Symbology(layer, text){
                     ></LegendRow>
             break;
         case 'Verkehrsberuhigt':
+            icon = <LegendRow
+                    icon={<LineIcon stroke='#08A99C'/>}
+                    text={text}
+                ></LegendRow>;
             break;
         case 'Einbahnstraßen-Ausnahme':
+            icon = <LegendRow
+                    icon={<LineIcon stroke='#8429b1'/>}
+                    text={text}
+                ></LegendRow>;
             break;
         case 'Mix-Weg':
+            icon = <LegendRow
+                icon={<LineIcon stroke='#b22f2f'/>}
+                text={text}
+            ></LegendRow>;
             break;
         case 'Mix-Fläche':
+            icon = <LegendRow
+                    icon={<LineIcon stroke='#b22f2f' stroke-width='30'/>}
+                    text={text}
+                ></LegendRow>;
             break;
         default:
             break;
