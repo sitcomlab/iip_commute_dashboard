@@ -4,6 +4,8 @@ import { ReactElement } from 'react-markdown/lib/react-markdown';
 import { Paper } from '@mui/material';
 import styled from 'styled-components';
 
+import  { SVGProps } from 'react'
+
 import { LayersControlContext } from './layerControlContext';
 
 import {SvgChargingIcon as ChargingIcon} from '@/components/Icons/ChargingIcon';
@@ -83,8 +85,7 @@ function LegendRow(props: LegendRowProps) {
 }
 
 
-function LineIcon(props, dashed){
-    const dash = dashed ? '4,8' : ''
+function LineIcon(props: SVGProps<SVGSVGElement>){
     return (
         <svg
         stroke-linecap="round"
@@ -96,6 +97,23 @@ function LineIcon(props, dashed){
         >
         <g fill="none">
             <path d="M0 4 l30 0"  />
+        </g>
+        </svg>
+    )
+}
+
+function AreaIcon(props: SVGProps<SVGSVGElement>){
+    return (
+        <svg
+        stroke-linecap="round"
+        stroke-width='4'
+
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+        >
+        <g>
+            <rect height="20" width="20" />
         </g>
         </svg>
     )
@@ -207,7 +225,12 @@ function Symbology(layer, text){
             break;
         case 'Mix-Fläche':
             icon = <LegendRow
-                    icon={<LineIcon stroke='#b22f2f' stroke-width='30'/>}
+                    icon={<AreaIcon 
+                        fill="#b22f2f"
+                        fill-opacity="0.5"
+                        stroke="#b22f2f"
+                        stroke-dasharray='4,4'
+                    />}
                     text={text}
                 ></LegendRow>;
             break;
