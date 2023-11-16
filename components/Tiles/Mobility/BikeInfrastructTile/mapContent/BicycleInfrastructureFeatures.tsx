@@ -1,6 +1,6 @@
 import L from 'leaflet';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { FeatureGroup, GeoJSON, Pane, Popup, Tooltip } from 'react-leaflet';
+import { FeatureGroup, GeoJSON, Pane } from 'react-leaflet';
 import MarkerClusterGroup from '@changey/react-leaflet-markercluster';
 
 import BiMarker from './BiMarker';
@@ -26,7 +26,7 @@ interface BIProps{
 
 function BicycleInfrastructureFeatures(props: BIProps) {
 
-    if (props.contentGeometry === undefined) {
+    if (props.contentGeometry === undefined || props.contentGeometry.features === undefined) {
         return (<></>)
     }
 
