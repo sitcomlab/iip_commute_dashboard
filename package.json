@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install",
     "svg": "npx @svgr/cli svgicons --out-dir components/Icons --typescript --ignore-existing --no-dimensions",
     "test": "./node_modules/.bin/jest"
   },
