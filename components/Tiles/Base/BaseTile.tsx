@@ -10,14 +10,14 @@ import TileFooter from './TileFooter'
 import { TileType } from '@/utils/TileFactory'
 import ReactMarkdown from 'react-markdown'
 import Title from '@/components/Elements/Title'
-import remarkGfm from 'remark-gfm'
+//import remarkGfm from 'remark-gfm'
 import TileHeader from './TileHeader'
 import {
   BicycleIcon,
   BuildingIcon,
   EnergyIcon,
   MuensterIcon,
-} from '@/components/Icons'
+} from '@/components/Icons/index'
 
 const baseTileStyle = cva(
   'relative flex flex-col md:flex-row h-fit overflow-hidden rounded-[36px] lg:rounded-[56px]',
@@ -203,7 +203,7 @@ export function BaseTile({
                         />
                       ),
                     }}
-                    remarkPlugins={[remarkGfm]}
+                    //remarkPlugins={[remarkGfm]}
                   >
                     {moreInfo}
                   </ReactMarkdown>
