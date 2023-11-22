@@ -5,44 +5,27 @@ const createJestConfig = nextJest({
   dir: './',
 })
 
-const swcConfigs = {
-  module: {
-    type: 'commonjs',
-  },
-}
-
 // Add any custom config to be passed to Jest
 /** @type {import('jest').Config} */
 const config = {
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
  
-  preset: 'ts-jest/presets/js-with-ts',
+  //preset: 'ts-jest/presets/js-with-ts',
   testEnvironment: 'jest-environment-jsdom',
-  globals: {
-    'ts-jest': {
-        tsconfig: '<rootDir>/test/tsconfig.json',
-    },
-  },
+
   transform: {
     //'^.+\\.ts?$': 'ts-jest',
     //"node_modules\\/.+\\.(js)|(mjs)$": "@swc/jest",
     //'\\.(js|jsx|ts|tsx)$': '@swc/jest',
-    '^.+\\.(t|j)sx?$': ['@swc/jest', swcConfigs],
+    //'^.+\\.(t|j)sx?$': ['@swc/jest', swcConfigs],
     
-    '.*\\.(tsx?|jsx?)$': [
-      '@swc/jest',
-      {
-        jsc: {
-          transform: {
-            react: {
-              runtime: 'automatic',
-            },
-          },
-        },
-      },
-    ]
+    '^.+\\.(ts|tsx)$': '@swc/jest',
+    //"^.+\\.(js|jsx)$": "babel-jest"
   },
+  transformIgnorePatterns: [
+    "node_modules/(?!(remark-gfm/|react-markdown/))"
+  ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   moduleNameMapper: {
     'next/router': '<rootDir>/__mocks__/next/router.js',
