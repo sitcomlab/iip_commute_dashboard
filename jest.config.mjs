@@ -21,18 +21,20 @@ const config = {
     //'^.+\\.(t|j)sx?$': ['@swc/jest', swcConfigs],
     
     '^.+\\.(ts|tsx)$': '@swc/jest',
-    //"^.+\\.(js|jsx)$": "babel-jest"
+    "^.+\\.(js|jsx)$": "babel-jest"
   },
   transformIgnorePatterns: [
-    "node_modules/(?!(remark-gfm/|react-markdown/))"
+    "node_modules/(?!(remark-gfm/|react-markdown/|react-leaflet/))"
   ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   moduleNameMapper: {
     'next/router': '<rootDir>/__mocks__/next/router.js',
     '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
     '^.+\\.(jpg|jpeg|png|gif|webp|avif|svg)$': '<rootDir>/__mocks__/file-mock.js',
+    
     'react-markdown': '<rootDir>/node_modules/react-markdown/react-markdown.min.js',
     'remark-gfm': '<rootDir>/node_modules/remark-gfm/index.d.ts',
+    //'react-leaflet': '<rootDir>/node_modules/react-leaflet/lib/index.d.ts'
   },
 }
  
