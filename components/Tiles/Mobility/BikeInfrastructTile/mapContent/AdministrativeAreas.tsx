@@ -15,11 +15,18 @@ interface AAProps{
     contentGeometry: GeoJSON.FeatureCollection
 }
 
-const StyledPopup = styled(Popup)`
+/*const StyledPopup = styled(Popup)`
   min-width: 400px;
   padding: 0rem;
   margin: 0rem;
   border: 0rem;
+`;*/
+
+const StyledPopup = styled(props => <Popup {...props}/>)`
+min-width: 400px;
+padding: 0rem;
+margin: 0rem;
+border: 0rem;
 `;
 
 function AdministrativeAreas(props: AAProps){
