@@ -24,7 +24,8 @@ const config = {
     "^.+\\.(js|jsx)$": "babel-jest"
   },
   transformIgnorePatterns: [
-    "node_modules/(?!(remark-gfm/|react-markdown/|react-leaflet/))"
+    "/node_modules/(?!(remark-gfm|react-markdown|react-leaflet|\@react-leaflet)/)",
+    //"<rootDir>/node_modules/"
   ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   moduleNameMapper: {
@@ -34,7 +35,7 @@ const config = {
     
     'react-markdown': '<rootDir>/node_modules/react-markdown/react-markdown.min.js',
     'remark-gfm': '<rootDir>/node_modules/remark-gfm/index.d.ts',
-    //'react-leaflet': '<rootDir>/node_modules/react-leaflet/lib/index.d.ts'
+    'react-leaflet': '<rootDir>/node_modules/@react-leaflet/core/lib/index.d.ts'
   },
 }
  

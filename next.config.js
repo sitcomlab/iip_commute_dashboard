@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ['react-markdown', 'remark-gfm', 'react-leaflet'],
+  transpilePackages: ['react-markdown', 'remark-gfm', '@react-leaflet'],
   webpack: (config, _options) => {
     config.module.rules.push({
       test: /\.csv$/,
