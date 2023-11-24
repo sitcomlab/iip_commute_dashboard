@@ -29,8 +29,8 @@ margin: 0rem;
 border: 0rem;
 `;
 
-function AdministrativeAreas(props: AAProps){
-    if (props.contentGeometry === undefined) {
+function AdministrativeAreas(props: AAProps) {
+    if (props.contentGeometry === undefined || props.contentGeometry.features === undefined) {
         return (<></>)
     }
 
