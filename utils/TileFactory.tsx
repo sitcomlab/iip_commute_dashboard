@@ -7,6 +7,7 @@ import {
   TileTypePrefix,
 } from '@/types/tile'
 import { ID } from '@directus/sdk'
+import WeatherTile from '@/components/Tiles/Mobility/WeatherTile'
 
 type TileTypeSuffix =
   | MobilityTypes
@@ -73,6 +74,10 @@ export default async function TileFactory({
       return <BikeInfrastructTile city="osnabrueck"/>
     case 'mobility-bike-muenster':
       return <BikeInfrastructTile city="muenster"/>
+    case 'mobility-weatherTile-muenster':
+      return <WeatherTile lat="51.962" lon="7.627"/>
+    case 'mobility-weatherTile-muenster':
+      return <WeatherTile lat="52.279" lon="8.047"/>
 
     default:
       return null
