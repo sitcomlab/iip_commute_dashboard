@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 const INTERVAL = 60 * 10
 
-const getWeatherData = async function(urlString){
+const getWeatherData = async function(urlString: String){
     try {        
         if (urlString == undefined){urlString =  ''}
 
