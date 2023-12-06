@@ -249,7 +249,6 @@ function Legend({children, position}: LegendProps) {
     //const groupedLayers = lodashGroupBy(layers, 'group');
 
     const categories = layers.layers || [];
-    console.log(categories)
 
     return (
         <>
