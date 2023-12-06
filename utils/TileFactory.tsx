@@ -1,9 +1,4 @@
-
-import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
 import BusTile from '@/components/Tiles/Mobility/Bus'
-import ModalSplitTile from '@/components/Tiles/Mobility/ModalSplit'
-import TrafficloadTile from '@/components/Tiles/Mobility/TrafficloadTile'
-
 import BikeInfrastructTile from '@/components/Tiles/Mobility/BikeInfrastructTile'
 
 import {
@@ -71,14 +66,8 @@ export default async function TileFactory({
     // ---- MOBILITY ----
     case 'mobility-bicycleInfrastructure':
       return <BikeInfrastructTile />
-    case 'mobility-bicycle':
-      return <BicycleChartTile />
     case 'mobility-bus':
       return <BusTile />
-    case 'mobility-modalSplit':
-      return <ModalSplitTile />
-    case 'mobility-trafficload':
-      return <TrafficloadTile />
 
     case 'mobility-bike-osnabrueck':
       return <BikeInfrastructTile city="osnabrueck"/>
