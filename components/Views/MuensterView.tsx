@@ -4,7 +4,6 @@ import BaseView from './BaseView'
 import React from 'react';
 import WeatherTile from '../Tiles/Mobility/WeatherTile';
 //import { useContext, createContext } from 'react'
-import CityViewConfig from './CityViewConfig';
 import Columns from '../Layout/Columns';
 
 export default function MobilityView() {
@@ -15,8 +14,7 @@ export default function MobilityView() {
       <BikeInfrastructTile city="muenster"/>
       <Columns>
       <WeatherTile 
-        lat={CityViewConfig.muenster.mapSettings.center[0]}
-        lon={CityViewConfig.muenster.mapSettings.center[1]}
+        city="muenster"
       ></WeatherTile>
       </Columns>
       
