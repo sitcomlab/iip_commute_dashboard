@@ -25,36 +25,36 @@ function toCelsius(kelvin: number){
 function getWeatherCondition(weather){
     const wid = weather.weather[0].id
     //see https://openweathermap.org/weather-conditions
-    let icon = Sun
+    let icon = <Sun />
     let text = ''
     switch(true){
         case (wid >= 200 && wid <= 232): //thunderstorm
             text = 'Gewitter'
-            icon = EnergyIcon
+            icon = <EnergyIcon />
             break;
         case (wid >= 300 && wid <= 321): //drizzle
             text = 'leichter Regen'
-            icon = Water
+            icon = <Water />
             break;
         case (wid >= 500 && wid <= 531): //rain
             text = 'Regen'
-            icon = Water
+            icon = <Water />
             break;
         case (wid >= 600 && wid <= 622): //snow
             text = 'Schnee'
-            icon = Eis
+            icon = <Eis />
             break;
         case (wid >= 700 && wid <= 781): //atmosphere (mist / fog)
             text = 'Nebel'
-            icon = Cloud;
+            icon = <Cloud fill='none'/>;
             break;
         case (wid == 800): //clear
             text = 'klar'
-            icon = Sun
+            icon = <Sun />;
             break;
         case (wid >= 801 && wid <= 804): //clouds
             text = 'bewölkt'
-            icon = Cloud;
+            icon = <Cloud fill='none'/>;
             break;
     }
 
@@ -74,14 +74,14 @@ function WeatherTileContent(props: {lat: string; lon: string}){
     return(
         <div className="flex" style={{justifyContent: 'space-around'}}>
         <div className="flex flex-col text-primary">
-            <div style={{'display': 'flex', 'align-items': 'center'}}>
+            <div style={{'display': 'flex', 'alignItems': 'center'}}>
                 <InlineIcon><Temperature /></InlineIcon>
                 <Title as="h2">{trueTemp}°C</Title>
             </div>
             <div>feels like: <Title as="h5">{perceivedTemp}°C</Title></div>
         </div>
         <div className="flex flex-col items-end">
-            <WeatherIcon />
+            {WeatherIcon}
             <Title as="h4">{weatherText}</Title>
         </div>
         {/* 
