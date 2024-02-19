@@ -7,19 +7,22 @@ The dashboard currently sources data off of OpenStreetMap, but later aims to inc
 ## Getting Started
 
 To run the Klimadashboard application on your local machine, first clone the repository:
-
-> git clone https://github.com/sitcomlab/iip_commute_dashboard.git
-> cd iip_commute_dashboard
+```bash
+git clone https://github.com/sitcomlab/iip_commute_dashboard.git
+cd iip_commute_dashboard
+```
 
 Then, install the dependencies:
 
->  npm install
-> 
->  # or
-> 
->  yarn install
+```bash
+npm install
 
-set up an instance of [https://github.com/niebl/OSMBicycleInfrastructure](https://github.com/niebl/OSMBicycleInfrastructure
+# or
+ 
+yarn install
+```
+
+set up an instance of [https://github.com/niebl/OSMBicycleInfrastructure](https://github.com/niebl/OSMBicycleInfrastructure)
 set up a .env in iip_commute_dasboard/ with the following content
 ```
 NEXT_PUBLIC_BICYCLE_INFRASTRUCTURE_URL_MS=http://{BikeInfrastructureServer}/bicycleinfrastructure_MS
@@ -29,11 +32,13 @@ where `{BikeInfrastructureServer}` refers to the hostname of the OSMBicycleInfra
 
 Finally, start the development server:
 
-> npm run dev
-> 
-> # or
-> 
-> yarn dev
+```bash
+npm run dev
+ 
+# or
+ 
+yarn dev
+```
 
 You should now be able to access the application at `http://localhost:3000`.
 
