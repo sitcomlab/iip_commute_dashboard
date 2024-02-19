@@ -26,7 +26,7 @@ set up an instance of [https://github.com/niebl/OSMBicycleInfrastructure](https:
 set up a .env in iip_commute_dasboard/ with the following content
 ```
 NEXT_PUBLIC_BICYCLE_INFRASTRUCTURE_URL_MS=http://{BikeInfrastructureServer}/bicycleinfrastructure_MS
-NEXT_PUBLIC_BICYCLE_INFRASTRUCTURE_URL_OS=http://{BikeInfrastructureServer}:3001/bicycleinfrastructure_OS
+NEXT_PUBLIC_BICYCLE_INFRASTRUCTURE_URL_OS=http://{BikeInfrastructureServer}/bicycleinfrastructure_OS
 ```
 where `{BikeInfrastructureServer}` refers to the hostname of the OSMBicycleInfrastructure instance
 
