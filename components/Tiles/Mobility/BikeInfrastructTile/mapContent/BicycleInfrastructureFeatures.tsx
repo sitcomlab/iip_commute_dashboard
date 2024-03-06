@@ -19,6 +19,7 @@ import {SvgTubeIcon as TubeIcon} from '@/components/Icons/TubeIcon';
 import {SvgSignalIcon as SignalIcon} from '@/components/Icons/SignalIcon';
 import {SvgWayfindingIcon as WayfindingIcon} from '@/components/Icons/WayfindingIcon';
 import {SvgTrainstationIcon as TrainstationIcon} from '@/components/Icons/TrainstationIcon';
+import { SvgBusStopIcon as BusStopIcon } from '@/components/Icons/BusStopIcon';
 
 interface BIProps{
     contentGeometry: GeoJSON.FeatureCollection
@@ -323,10 +324,10 @@ function BicycleInfrastructureFeatures(props: BIProps) {
         const trainIcon = L.divIcon({
         className: '',
         html: renderToStaticMarkup(
-            <BiMarkerIcon
-            color="#FF0000"
-            icon={<TrainstationIcon fill="#FFF3F3" />}
-            ></BiMarkerIcon>
+            <BusStopIcon
+                height="70%"
+                width="70%"
+            />
         ),
         iconSize: [32, 32],
         iconAnchor: [16, 16],
