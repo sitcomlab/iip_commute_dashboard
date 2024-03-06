@@ -311,6 +311,30 @@ function BicycleInfrastructureFeatures(props: BIProps) {
         return L.marker(latlng, { icon: trainIcon });
     }
 
+    // Filter and style bus stops
+    //TODO: merge bus stops at the same street
+    const busStops = props.contentGeometry.features.filter(
+        (feature: any) => 
+        feature.properties.bike_infrastructure_type === 'bus_stop'
+    );
+    function pointBusStop(geojsonPoint: any, latlng: any) {
+        //TODO: add bus icon
+        //TODO: implement popup for departures
+        const trainIcon = L.divIcon({
+        className: '',
+        html: renderToStaticMarkup(
+            <BiMarkerIcon
+            color="#FF0000"
+            icon={<TrainstationIcon fill="#FFF3F3" />}
+            ></BiMarkerIcon>
+        ),
+        iconSize: [32, 32],
+        iconAnchor: [16, 16],
+        popupAnchor: [-3, -11],
+        });
+        return L.marker(latlng, { icon: trainIcon });
+    }
+
     return(
         <>
         {/* Radverkehrs-Maßnahmen  */}
@@ -543,6 +567,19 @@ function BicycleInfrastructureFeatures(props: BIProps) {
                 key={'trainStations'}
                 onEachFeature={addInfo}
                 pointToLayer={pointTrain}
+            />
+            </FeatureGroup>
+        </Pane>
+        </GroupedLayer>
+
+        <GroupedLayer group="Radverkehrs-Integration" name="Bushaltestelle">
+        <Pane name="busStops" style={{ zIndex: 517 }}>
+            <FeatureGroup>
+            <GeoJSON
+                data={busStops}
+                key={'busStops'}
+                onEachFeature={addInfo}
+                pointToLayer={pointBusStop}
             />
             </FeatureGroup>
         </Pane>
