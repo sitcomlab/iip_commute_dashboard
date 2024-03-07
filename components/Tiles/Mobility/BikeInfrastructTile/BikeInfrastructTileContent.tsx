@@ -29,11 +29,10 @@ function BikeInfrastructTileContent(props: { city: string; }) {
         <CityContext.Provider value={props.city}>
         {/*buttons here*/}
         <div
-            className='px-8 lg:px-20'
+            className='px-8 lg:pr-20'
             style={{
                 paddingTop:'1rem',
-                display: 'flex', justifyContent: 'end', gap: '10px',
-                left: 0,
+                display: 'inline-flex', justifyContent: 'end', gap: '10px',
                 right: 0,
                 position: 'absolute',
                 zIndex: 1000,
