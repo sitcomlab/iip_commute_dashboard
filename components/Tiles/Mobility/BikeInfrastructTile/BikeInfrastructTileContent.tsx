@@ -12,7 +12,8 @@ import CityViewConfig from '@/components/Views/CityViewConfig'
 
 enum ViewMode {
     AdministrativeAreas = 'Administrative Areas',
-    BicycleNetwork = 'Bicycle Network'
+    BicycleNetwork = 'Bicycle Network',
+    PublicTransport = 'Public Transport'
 }
 const MapViewContext = createContext({
     mapViewState: ViewMode.BicycleNetwork,
@@ -29,9 +30,13 @@ function BikeInfrastructTileContent(props: { city: string; }) {
         <CityContext.Provider value={props.city}>
         {/*buttons here*/}
         <div
+            className='px-8 lg:pr-20'
             style={{
-                display: 'flex', justifyContent: 'end', gap: '10px',
-                marginBottom: '10px',     
+                paddingTop:'1rem',
+                display: 'inline-flex', justifyContent: 'end', gap: '10px',
+                right: 0,
+                position: 'absolute',
+                zIndex: 1000,
             }}
             >
             <ViewButton
@@ -49,6 +54,14 @@ function BikeInfrastructTileContent(props: { city: string; }) {
                     throw new Error('Function not implemented.');
                 } } 
                 type={ViewMode.BicycleNetwork}            
+            />
+            <ViewButton
+                buttonText={''} 
+                mapViewContext={ViewMode.PublicTransport} 
+                onClick={function (): void {
+                    throw new Error('Function not implemented.');
+                } } 
+                type={ViewMode.PublicTransport}            
             />   
         </div> 
 

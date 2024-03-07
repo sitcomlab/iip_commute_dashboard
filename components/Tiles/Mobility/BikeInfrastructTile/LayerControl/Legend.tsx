@@ -17,6 +17,7 @@ import {SvgTubeIcon as TubeIcon} from '@/components/Icons/TubeIcon';
 import {SvgSignalIcon as SignalIcon} from '@/components/Icons/SignalIcon';
 import {SvgWayfindingIcon as WayfindingIcon} from '@/components/Icons/WayfindingIcon';
 import {SvgTrainstationIcon as TrainstationIcon} from '@/components/Icons/TrainstationIcon';
+import {SvgBusStopIcon as BusStopIcon} from '@/components/Icons/BusStopIcon';
 
 const POSITION_CLASSES: { [key: string]: string } = {
     bottomleft: 'leaflet-bottom leaflet-left',
@@ -202,6 +203,12 @@ function Symbology(layer, text){
             icon = <LegendRow
                         color="#FF0000"
                         icon={<TrainstationIcon fill="#FFF3F3" />}
+                        text={text}
+                    ></LegendRow>
+            break;
+        case 'Bushaltestelle':
+            icon = <LegendRow
+                        icon={<BusStopIcon />}
                         text={text}
                     ></LegendRow>
             break;
