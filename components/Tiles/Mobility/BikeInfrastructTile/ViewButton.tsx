@@ -49,7 +49,18 @@ function ViewButton({ type }: ButtonProps) {
     if (type == ViewMode.BicycleNetwork) {
         return(
             <ButtonBase 
-                buttonText='Fahrradnetz'
+                buttonText='Radnetz'
+                mapViewContext={mapViewState}
+                onClick={() => {return setMapViewState(type);}}
+                type={type}
+            />
+        )
+    }
+
+    if (type == ViewMode.PublicTransport) {
+        return(
+            <ButtonBase 
+                buttonText='Bus & Bahn'
                 mapViewContext={mapViewState}
                 onClick={() => {return setMapViewState(type);}}
                 type={type}

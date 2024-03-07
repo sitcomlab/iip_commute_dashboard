@@ -87,6 +87,51 @@ export function createClusterCustomIconGreen(cluster: any) {
   }
 }
 
+export function createClusterCustomIconBusStop(cluster: any) {
+  const count = cluster.getChildCount();
+  if (count < 10) {
+    return L.divIcon({
+      html: renderToStaticMarkup(
+        <DefaultMapMarker
+          color="#008754"
+          colorbg="#f0c900"
+          font="0.9"
+          size="1.5"
+        >
+          {count}
+        </DefaultMapMarker>
+      ),
+      className: '',
+      iconSize: L.point(40, 40, true),
+    });
+  } else if (count >= 10 && count < 50) {
+    return L.divIcon({
+      html: renderToStaticMarkup(
+        <DefaultMapMarker color="#008754" colorbg="#f0c900" font="1.1" size="2">
+          {count}
+        </DefaultMapMarker>
+      ),
+      className: '',
+      iconSize: L.point(40, 40, true),
+    });
+  } else if (count >= 50) {
+    return L.divIcon({
+      html: renderToStaticMarkup(
+        <DefaultMapMarker
+          color="#008754"
+          colorbg="#f0c900"
+          font="1.5"
+          size="2.5"
+        >
+          {count}
+        </DefaultMapMarker>
+      ),
+      className: '',
+      iconSize: L.point(40, 40, true),
+    });
+  }
+}
+
 export function createClusterCustomIconBlue(cluster: any) {
   const count = cluster.getChildCount();
   if (count < 10) {

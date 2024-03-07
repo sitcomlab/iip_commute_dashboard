@@ -12,7 +12,8 @@ import CityViewConfig from '@/components/Views/CityViewConfig'
 
 enum ViewMode {
     AdministrativeAreas = 'Administrative Areas',
-    BicycleNetwork = 'Bicycle Network'
+    BicycleNetwork = 'Bicycle Network',
+    PublicTransport = 'Public Transport'
 }
 const MapViewContext = createContext({
     mapViewState: ViewMode.BicycleNetwork,
@@ -53,6 +54,14 @@ function BikeInfrastructTileContent(props: { city: string; }) {
                     throw new Error('Function not implemented.');
                 } } 
                 type={ViewMode.BicycleNetwork}            
+            />
+            <ViewButton
+                buttonText={''} 
+                mapViewContext={ViewMode.PublicTransport} 
+                onClick={function (): void {
+                    throw new Error('Function not implemented.');
+                } } 
+                type={ViewMode.PublicTransport}            
             />   
         </div> 
 

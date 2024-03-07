@@ -11,6 +11,7 @@ import CityViewConfig from '@/components/Views/CityViewConfig';
 
 import AdministrativeAreas from './mapContent/AdministrativeAreas';
 import BicycleInfrastructureFeatures from './mapContent/BicycleInfrastructureFeatures';
+import PublicTransportFeatures from './mapContent/PublicTransportFeatures';
 import Legend from './LayerControl/Legend';
 
 function BicycleInfrastructureData() {
@@ -53,6 +54,18 @@ function BicycleInfrastructureData() {
             </Legend>
             <></>
         </LayerControl>
+        }
+
+        { mapViewState == ViewMode.PublicTransport && 
+            <LayerControl position="bottomright">
+                <Legend position='bottomleft'>
+                    <PublicTransportFeatures
+                        contentGeometry={BicycleInfrastructureData}
+                    />
+                    <></>
+                </Legend>
+                <></>
+            </LayerControl>
         }
                 
         </>
