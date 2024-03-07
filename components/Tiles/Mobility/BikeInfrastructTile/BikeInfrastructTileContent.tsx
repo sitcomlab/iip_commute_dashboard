@@ -29,9 +29,14 @@ function BikeInfrastructTileContent(props: { city: string; }) {
         <CityContext.Provider value={props.city}>
         {/*buttons here*/}
         <div
+            className='px-8 lg:px-20'
             style={{
+                paddingTop:'1rem',
                 display: 'flex', justifyContent: 'end', gap: '10px',
-                marginBottom: '10px',     
+                left: 0,
+                right: 0,
+                position: 'absolute',
+                zIndex: 1000,
             }}
             >
             <ViewButton

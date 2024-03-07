@@ -19,7 +19,7 @@ const button = cva(
         goToMuenster: 'border-climate text-primary',
         goToOsnabrueck: 'border-climate text-primary',
         
-        viewButton: 'border-mobility text-mobility',
+        viewButton: 'border-mobility text-mobility bg-mobility-light',
         viewButtonActive: 'text-white bg-mobility border-mobility text-mobility',
       },
       size: {
