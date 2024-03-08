@@ -2,10 +2,9 @@
 //import React, { useEffect, useState } from 'react';
 
 import { useContext } from 'react';
-import { Pane } from 'react-leaflet';
 
 import useBikeInfrastructData from '@/hooks/useBikeInfrastructure';
-import LayerControl, { GroupedLayer } from './LayerControl/LayerControl';
+import LayerControl from './LayerControl/LayerControl';
 import { CityContext, MapViewContext, ViewMode } from './BikeInfrastructTileContent';
 import CityViewConfig from '@/components/Views/CityViewConfig';
 
@@ -28,18 +27,9 @@ function BicycleInfrastructureData() {
         {/* Stadtteile */}
         { mapViewState == ViewMode.AdministrativeAreas && 
         <LayerControl position="bottomright">
-            <GroupedLayer 
-                checked
-                group="Stadtteile"
-                name="Stadtteile"
-            >
-            <Pane name="administrativeAreas" style={{ zIndex: 650 }}>
-                <AdministrativeAreas 
-                    contentGeometry={BicycleInfrastructureData}
-                />
-            </Pane>
-
-            </GroupedLayer>
+            <AdministrativeAreas 
+                contentGeometry={BicycleInfrastructureData}
+            />
             <></>
         </LayerControl>
         }

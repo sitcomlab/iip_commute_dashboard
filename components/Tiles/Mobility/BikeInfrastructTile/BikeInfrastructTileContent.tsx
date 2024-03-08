@@ -1,6 +1,7 @@
 'use client'
 
 import { createContext, useState } from 'react'
+import { RecoilRoot } from 'recoil';
 import 'leaflet';
 import { MapContainer, Pane, TileLayer } from 'react-leaflet'
 import 'leaflet-defaulticon-compatibility';
@@ -26,6 +27,7 @@ function BikeInfrastructTileContent(props: { city: string; }) {
     const [mapViewState, setMapViewState] = useState(ViewMode.BicycleNetwork)
 
     return (
+        <RecoilRoot>
         <MapViewContext.Provider value={{mapViewState, setMapViewState}}>
         <CityContext.Provider value={props.city}>
         {/*buttons here*/}
@@ -84,6 +86,7 @@ function BikeInfrastructTileContent(props: { city: string; }) {
         </MapContainer >
         </CityContext.Provider>
         </MapViewContext.Provider>
+        </RecoilRoot>
     )
 }
 
