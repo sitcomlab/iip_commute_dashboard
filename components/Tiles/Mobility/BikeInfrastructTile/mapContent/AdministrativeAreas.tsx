@@ -18,6 +18,8 @@ import { addInfo } from '../PopupInfos/PopupAddInfo';
 import { SvgTrainstationIcon as TrainstationIcon } from '@/components/Icons/TrainstationIcon';
 import { SvgBusStopIcon as BusStopIcon } from '@/components/Icons/BusStopIcon';
 
+import { Button } from '@/components/Elements/Button';
+
 
 interface AAProps{
     contentGeometry: GeoJSON.FeatureCollection
@@ -138,6 +140,29 @@ function AdministrativeAreas(props: AAProps) {
 
       return(
         <>
+        <GroupedLayer
+            checked
+            group="Stadtteile"
+            name="Öffentliche Verkehrsmittel"
+        >
+        <Pane name="busStops" style={{ zIndex: 660 }}>
+            {/* naively display the bus stop GeoJSON, the filtering is done based on a state, which is set by the options */}
+            <FeatureGroup>
+                <GeoJSON
+                    data={busStops}
+                    key={'busStops'}
+                    onEachFeature={addInfo}
+                    pointToLayer={pointBusStop}
+                />
+                <GeoJSON
+                    data={trainStations}
+                    key={'trainStations'}
+                    onEachFeature={addInfo}
+                    pointToLayer={pointTrain}
+                />
+            </FeatureGroup>
+        </Pane>
+        </GroupedLayer>
         <GroupedLayer 
                 checked
                 group="Stadtteile"
@@ -346,6 +371,37 @@ function AdministrativeAreas(props: AAProps) {
                             }()
                         }
 
+                        contentPublicTransport={
+                            <TilesWrapper>
+                            <Suspense
+                                fallback={<Skeleton height="100%" width="100%" />}
+                            >
+                                <PopupData 
+                                    decimals={0}
+                                    header='Bus- haltestellen'
+                                    size={Size.normal}
+                                    unit=''
+                                    value={
+                                        feature.properties.service.busStopsWithin                                    }
+                                ></PopupData>
+                            </Suspense><br/>
+                            <Suspense
+                                fallback={<Skeleton height="100%" width="100%" />}
+                            >
+                                <PopupData 
+                                    decimals={0}
+                                    header='Bahnhöfe'
+                                    size={Size.normal}
+                                    unit=''
+                                    value={
+                                        feature.properties.service.trainStationsWithin
+                                    }
+                                ></PopupData>
+                            </Suspense>
+                            <Button hover='mobility' size='md'>zeigen</Button>
+                            </TilesWrapper>
+                        }
+
                         contentService={
                             <TilesWrapper>
                             <Suspense
@@ -390,6 +446,7 @@ function AdministrativeAreas(props: AAProps) {
                             </Suspense>
                             </TilesWrapper>
                         }
+
                         name={feature.properties.name}
                         ></PopupPages>
                         </StyledPopup>
@@ -401,27 +458,6 @@ function AdministrativeAreas(props: AAProps) {
             </FeatureGroup>
             </Pane>
         </GroupedLayer>
-
-        <Pane name="busStops" style={{ zIndex: 750 }}>
-            {/* naively display the bus stop GeoJSON, the filtering is done based on a state, which is set by the options */}
-            <FeatureGroup>
-                <GeoJSON
-                    data={trainStations}
-                    key={'trainStations'}
-                    onEachFeature={addInfo}
-                    pointToLayer={pointTrain}
-                />
-            </FeatureGroup>
-            <FeatureGroup>
-                <GeoJSON
-                    data={busStops}
-                    key={'busStops'}
-                    onEachFeature={addInfo}
-                    pointToLayer={pointBusStop}
-                />
-            </FeatureGroup>
-        </Pane>
-
         </>
       )
 
