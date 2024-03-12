@@ -2,6 +2,7 @@
 //import React, { useEffect, useState } from 'react';
 
 import { useContext } from 'react';
+import L from 'leaflet';
 
 import useBikeInfrastructData from '@/hooks/useBikeInfrastructure';
 import LayerControl from './LayerControl/LayerControl';
@@ -13,13 +14,12 @@ import BicycleInfrastructureFeatures from './mapContent/BicycleInfrastructureFea
 import PublicTransportFeatures from './mapContent/PublicTransportFeatures';
 import Legend from './LayerControl/Legend';
 
-function BicycleInfrastructureData() {
+function BicycleInfrastructureData(map: L.Map) {
     //regularly fetch bike infrastructure data
     //  get the city which we are looking at, and pass that to the bike infrastructure hook
     const city = useContext(CityContext) 
     var BicycleInfrastructureData = useBikeInfrastructData(CityViewConfig[city].infrastructureSource)
     const {mapViewState, setMapViewState} = useContext(MapViewContext)
-
     return (
         <>
             
@@ -28,6 +28,7 @@ function BicycleInfrastructureData() {
         { mapViewState == ViewMode.AdministrativeAreas && 
         <LayerControl position="bottomright">
             <AdministrativeAreas 
+                map={map}
                 contentGeometry={BicycleInfrastructureData}
             />
             <></>

@@ -23,7 +23,8 @@ import { Button } from '@/components/Elements/Button';
 
 
 interface AAProps{
-    contentGeometry: GeoJSON.FeatureCollection
+    contentGeometry: GeoJSON.FeatureCollection|undefined,
+    map: L.Map
 }
 
 //not the bristol stool scale
@@ -54,6 +55,11 @@ function AdministrativeAreas(props: AAProps) {
             setSelectedAA(adminArea)
         }
         return
+    }
+
+    function focusFeature(feature: L.FeatureGroup){
+        const map = props.map.map
+        map.flyToBounds(feature.getBounds())
     }
 
     // ## ADMINISTRATIVE AREAS
@@ -410,7 +416,10 @@ function AdministrativeAreas(props: AAProps) {
                                 ></PopupData>
                             </Suspense>
                             <Button hover='mobility' onClick={() => {
-                                    toggleDisplayStops(feature.properties.name)
+                                    toggleDisplayStops(feature.properties.name);
+                                    if(selectedAA != feature.properties.name){
+                                        focusFeature(L.geoJSON(feature))
+                                    }
                                 }}
                                 size='md'
                             >{selectedAA != feature.properties.name ? 'zeigen' : 'verstecken'}</Button>
