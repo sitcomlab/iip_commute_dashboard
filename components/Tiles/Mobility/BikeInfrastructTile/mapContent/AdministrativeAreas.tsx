@@ -1,4 +1,5 @@
 import { renderToStaticMarkup } from 'react-dom/server';
+import L from 'leaflet';
 import { FeatureGroup, GeoJSON, Pane, Popup, Tooltip } from 'react-leaflet';
 import styled from 'styled-components';
 import Skeleton from 'react-loading-skeleton';
@@ -28,7 +29,7 @@ interface AAProps{
 //not the bristol stool scale
 const selectedAAState = atom({
     key: 'selectedAA',
-    default: false
+    default: ''
 })
 
 const StyledPopup = styled(Popup)`
@@ -43,6 +44,16 @@ function AdministrativeAreas(props: AAProps) {
 
     if (props.contentGeometry === undefined || props.contentGeometry.features === undefined) {
         return (<></>)
+    }
+
+    function toggleDisplayStops(adminArea: String){
+        //TODO: this works but doesn't cause a re-render
+        if( selectedAA == adminArea ){
+            setSelectedAA('')
+        }else{
+            setSelectedAA(adminArea)
+        }
+        return
     }
 
     // ## ADMINISTRATIVE AREAS
@@ -141,34 +152,34 @@ function AdministrativeAreas(props: AAProps) {
       return(
         <>
         <GroupedLayer
-            checked
-            group="Stadtteile"
-            name="Öffentliche Verkehrsmittel"
-        >
-        <Pane name="busStops" style={{ zIndex: 660 }}>
-            {/* naively display the bus stop GeoJSON, the filtering is done based on a state, which is set by the options */}
-            <FeatureGroup>
-                <GeoJSON
-                    data={busStops}
-                    key={'busStops'}
-                    onEachFeature={addInfo}
-                    pointToLayer={pointBusStop}
-                />
-                <GeoJSON
-                    data={trainStations}
-                    key={'trainStations'}
-                    onEachFeature={addInfo}
-                    pointToLayer={pointTrain}
-                />
-            </FeatureGroup>
-        </Pane>
+                checked
+                group="Stadtteile"
+                name="Öffentliche Verkehrsmittel"
+            >
+            <Pane name="busStops" style={{ zIndex: 600 }}>
+                {/* naively display the bus stop GeoJSON, the filtering is done based on a state, which is set by the options */}
+                <FeatureGroup>
+                    <GeoJSON
+                        data={busStops}
+                        key={'busStops_'+selectedAA}
+                        onEachFeature={addInfo}
+                        pointToLayer={pointBusStop}
+                    />
+                    <GeoJSON
+                        data={trainStations}
+                        key={'trainStations_'+selectedAA}
+                        onEachFeature={addInfo}
+                        pointToLayer={pointTrain}
+                    />
+                </FeatureGroup>
+            </Pane>
         </GroupedLayer>
         <GroupedLayer 
                 checked
                 group="Stadtteile"
                 name="Stadtteile"
             >
-            <Pane name="administrativeAreas" style={{ zIndex: 650 }}>
+            <Pane name="administrativeAreas" style={{ zIndex: 500}}>
             <FeatureGroup>
             {administrativeAreas.map((feature: any, index: any) => {
                 return(
@@ -181,7 +192,7 @@ function AdministrativeAreas(props: AAProps) {
                         mousemove: mouseMoveAdminArea,
                         mouseover: mouseOverAdminArea,
                     }}
-                    key={index}
+                    key={'aa'+index}
                     pathOptions={adminAreaOptions}
                 >
                     <Tooltip pane="tooltip">{feature.properties.name}</Tooltip>
@@ -398,7 +409,11 @@ function AdministrativeAreas(props: AAProps) {
                                     }
                                 ></PopupData>
                             </Suspense>
-                            <Button hover='mobility' size='md'>zeigen</Button>
+                            <Button hover='mobility' onClick={() => {
+                                    toggleDisplayStops(feature.properties.name)
+                                }}
+                                size='md'
+                            >{selectedAA != feature.properties.name ? 'zeigen' : 'verstecken'}</Button>
                             </TilesWrapper>
                         }
 
