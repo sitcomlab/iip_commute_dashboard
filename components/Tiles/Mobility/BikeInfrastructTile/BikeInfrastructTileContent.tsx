@@ -1,6 +1,7 @@
 'use client'
 
 import { createContext, useState } from 'react'
+import { RecoilRoot } from 'recoil';
 import 'leaflet';
 import { MapContainer, Pane, TileLayer } from 'react-leaflet'
 import 'leaflet-defaulticon-compatibility';
@@ -24,8 +25,10 @@ const CityContext = createContext('muenster')
 function BikeInfrastructTileContent(props: { city: string; }) {
     const city = CityViewConfig[props.city] || CityViewConfig.muenster;
     const [mapViewState, setMapViewState] = useState(ViewMode.BicycleNetwork)
+    const [map, setMap] = useState(null)
 
     return (
+        <RecoilRoot>
         <MapViewContext.Provider value={{mapViewState, setMapViewState}}>
         <CityContext.Provider value={props.city}>
         {/*buttons here*/}
@@ -69,6 +72,7 @@ function BikeInfrastructTileContent(props: { city: string; }) {
         <MapContainer
             center={city.mapSettings.center}
             className="h-[75vh] z-0 rounded-3xl"
+            ref={setMap}
             scrollWheelZoom={true}
             zoom={city.mapSettings.zoom}
         >
@@ -77,13 +81,14 @@ function BikeInfrastructTileContent(props: { city: string; }) {
                 url="https://geo.stadt-muenster.de/basiskarte/{z}/{x}/{y}.png"
             />
               
-            <BicycleInfrastructureData />
+            <BicycleInfrastructureData map={map}/>
             <Pane name="popup" style={{ zIndex: 660 }}></Pane>
             <Pane name="tooltip" style={{ zIndex: 670 }}></Pane>
 
         </MapContainer >
         </CityContext.Provider>
         </MapViewContext.Provider>
+        </RecoilRoot>
     )
 }
 

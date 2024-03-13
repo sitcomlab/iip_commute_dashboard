@@ -36,16 +36,97 @@ interface IPopupPagesProps {
   contentParking?: JSX.Element;
   contentCycling?: JSX.Element;
   contentService?: JSX.Element;
+  contentPublicTransport?: JSX.Element;
+}
+
+interface IFooterProps {
+  currentPage: OpenPage;
+  setCurrentPage: Function;
+}
+
+enum OpenPage {
+  Parking,
+  Cycling,
+  Service,
+  PublicTransport,
+}
+
+function Footer(props: IFooterProps) {
+  return (
+    <FooterWrapper>
+      {props.currentPage == OpenPage.Parking ?
+        ( 
+          <HighlightedFooterButton bold={true}>
+            Parken
+          </HighlightedFooterButton>
+        ) : (
+          <FooterButton
+            onClick={() => {
+              props.setCurrentPage(OpenPage.Parking)
+            }}
+          >
+            Parken
+          </FooterButton>
+        )
+      }
+
+      {props.currentPage == OpenPage.Cycling ?
+        ( 
+          <HighlightedFooterButton bold={true}>
+            Fahrradstraßen 2.0
+          </HighlightedFooterButton>
+        ) : (
+          <FooterButton
+            onClick={() => {
+              props.setCurrentPage(OpenPage.Cycling)
+            }}
+          >
+            Fahrradstraßen 2.0
+          </FooterButton>
+        )
+      }
+
+      {props.currentPage == OpenPage.Service ?
+        ( 
+          <HighlightedFooterButton bold={true}>
+            Service
+          </HighlightedFooterButton>
+        ) : (
+          <FooterButton
+            onClick={() => {
+              props.setCurrentPage(OpenPage.Service)
+            }}
+          >
+            Service
+          </FooterButton>
+        )
+      }
+
+      {props.currentPage == OpenPage.PublicTransport ?
+        ( 
+          <HighlightedFooterButton bold={true}>
+            Öffis
+          </HighlightedFooterButton>
+        ) : (
+          <FooterButton
+            onClick={() => {
+              props.setCurrentPage(OpenPage.PublicTransport)
+            }}
+          >
+            Öffis
+          </FooterButton>
+        )
+      }
+    </FooterWrapper>
+  )
 }
 
 function PopupPages(props: IPopupPagesProps) {
-  const [showParking, setShowParking] = useState(false);
-  const [showCycling, setShowCycling] = useState(false);
-  const [showService, setShowService] = useState(true);
+  const [currentPage, setCurrentPage] = useState(OpenPage.Service)
 
   return (
     <>
-      {showParking && (
+      {currentPage == OpenPage.Parking && (
         <PopupWrapper>
           <HeadingWrapper>
             <IconWrapper>
@@ -59,30 +140,10 @@ function PopupPages(props: IPopupPagesProps) {
             </p>
           </HeadingWrapper>
           <ContentWrapper>{props.contentParking}</ContentWrapper>
-          <FooterWrapper>
-            <HighlightedFooterButton bold={showParking}>
-              Parken
-            </HighlightedFooterButton>
-            <FooterButton
-              onClick={() => {
-                setShowCycling(true);
-                setShowParking(false);
-              }}
-            >
-              Fahrradstraßen 2.0
-            </FooterButton>
-            <FooterButton
-              onClick={() => {
-                setShowService(true);
-                setShowParking(false);
-              }}
-            >
-              Service
-            </FooterButton>
-          </FooterWrapper>
+          <Footer currentPage={currentPage} setCurrentPage={setCurrentPage} />
         </PopupWrapper>
       )}
-      {showCycling && (
+      {currentPage == OpenPage.Cycling && (
         <PopupWrapper>
           <HeadingWrapper>
             <IconWrapper>
@@ -96,30 +157,10 @@ function PopupPages(props: IPopupPagesProps) {
             </p>
           </HeadingWrapper>
           <ContentWrapper>{props.contentCycling}</ContentWrapper>
-          <FooterWrapper>
-            <FooterButton
-              onClick={() => {
-                setShowParking(true);
-                setShowCycling(false);
-              }}
-            >
-              Parken
-            </FooterButton>
-            <HighlightedFooterButton bold={showCycling}>
-              Fahrradstraßen 2.0
-            </HighlightedFooterButton>
-            <FooterButton
-              onClick={() => {
-                setShowService(true);
-                setShowCycling(false);
-              }}
-            >
-              Service
-            </FooterButton>
-          </FooterWrapper>
+          <Footer currentPage={currentPage} setCurrentPage={setCurrentPage} />
         </PopupWrapper>
       )}
-      {showService && (
+      {currentPage == OpenPage.Service && (
         <PopupWrapper>
           <HeadingWrapper>
             <IconWrapper>
@@ -135,27 +176,23 @@ function PopupPages(props: IPopupPagesProps) {
             }
           </HeadingWrapper>
           <ContentWrapper>{props.contentService}</ContentWrapper>
-          <FooterWrapper>
-            <FooterButton
-              onClick={() => {
-                setShowParking(true);
-                setShowService(false);
-              }}
-            >
-              Parken
-            </FooterButton>
-            <FooterButton
-              onClick={() => {
-                setShowCycling(true);
-                setShowService(false);
-              }}
-            >
-              Fahrradstraßen 2.0
-            </FooterButton>
-            <HighlightedFooterButton bold={showService}>
-              Service
-            </HighlightedFooterButton>
-          </FooterWrapper>
+          <Footer currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        </PopupWrapper>
+      )}
+      {currentPage == OpenPage.PublicTransport && (
+        <PopupWrapper>
+          <HeadingWrapper>
+            {
+              <p className="is-size-4 has-text-weight-semibold">
+                Öffentliche Verkehrsmittel <br />
+                <span className="is-size-4 has-text-weight-normal">
+                  in {props.name}
+                </span>
+              </p>
+            }
+          </HeadingWrapper>
+          <ContentWrapper>{props.contentPublicTransport}</ContentWrapper>
+          <Footer currentPage={currentPage} setCurrentPage={setCurrentPage} />
         </PopupWrapper>
       )}
     </>

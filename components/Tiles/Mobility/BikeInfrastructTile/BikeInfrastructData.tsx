@@ -2,10 +2,10 @@
 //import React, { useEffect, useState } from 'react';
 
 import { useContext } from 'react';
-import { Pane } from 'react-leaflet';
+import L from 'leaflet';
 
 import useBikeInfrastructData from '@/hooks/useBikeInfrastructure';
-import LayerControl, { GroupedLayer } from './LayerControl/LayerControl';
+import LayerControl from './LayerControl/LayerControl';
 import { CityContext, MapViewContext, ViewMode } from './BikeInfrastructTileContent';
 import CityViewConfig from '@/components/Views/CityViewConfig';
 
@@ -14,13 +14,12 @@ import BicycleInfrastructureFeatures from './mapContent/BicycleInfrastructureFea
 import PublicTransportFeatures from './mapContent/PublicTransportFeatures';
 import Legend from './LayerControl/Legend';
 
-function BicycleInfrastructureData() {
+function BicycleInfrastructureData(map: L.Map) {
     //regularly fetch bike infrastructure data
     //  get the city which we are looking at, and pass that to the bike infrastructure hook
     const city = useContext(CityContext) 
     var BicycleInfrastructureData = useBikeInfrastructData(CityViewConfig[city].infrastructureSource)
     const {mapViewState, setMapViewState} = useContext(MapViewContext)
-
     return (
         <>
             
@@ -28,18 +27,10 @@ function BicycleInfrastructureData() {
         {/* Stadtteile */}
         { mapViewState == ViewMode.AdministrativeAreas && 
         <LayerControl position="bottomright">
-            <GroupedLayer 
-                checked
-                group="Stadtteile"
-                name="Stadtteile"
-            >
-            <Pane name="administrativeAreas" style={{ zIndex: 650 }}>
-                <AdministrativeAreas 
-                    contentGeometry={BicycleInfrastructureData}
-                />
-            </Pane>
-
-            </GroupedLayer>
+            <AdministrativeAreas 
+                map={map}
+                contentGeometry={BicycleInfrastructureData}
+            />
             <></>
         </LayerControl>
         }

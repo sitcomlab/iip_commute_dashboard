@@ -27,4 +27,4 @@ export default async function BikeInfrastructTile(props) {
             <BikeInfrastructTileContent city={props.city}/>
         </MobilityTile>
     )
-}4
+}
