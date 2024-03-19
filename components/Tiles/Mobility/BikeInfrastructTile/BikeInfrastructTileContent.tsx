@@ -61,7 +61,7 @@ function BikeInfrastructTileContent(props: { city: string; }) {
 
         {/*container of the map-side*/}
         <div style={{ 
-            flexGrow: 1,
+            flexGrow: 2,
             flexBasis: '60%',
             position: 'relative'
             }}>

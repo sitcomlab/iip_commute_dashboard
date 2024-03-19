@@ -3,8 +3,8 @@ import { Suspense } from 'react';
 import { useRecoilState } from 'recoil';
 
 import { Button } from '@/components/Elements/Button';
-import PopupPages from '../PopupInfos/PopupPages';
-import PopupData, {Size} from '../PopupInfos/PopupData';
+import SidebarPages from '../PopupInfos/SidebarPages';
+import SidebarData, {Size} from '../PopupInfos/SidebarData';
 import SliderCarousel from '../PopupInfos/SlideCarousel';
 import { CapacityLegend, ChartHeadingWrapper, TilesWrapper } from '../styles';
 import { CapacitySlider } from '../PopupInfos/CapacitySlider';
@@ -16,7 +16,6 @@ import { selectedAAFeatureState } from '../BikeInfrastructTileContent';
 function AASideView(){
     const [selectedAA, setSelectedAA] = useRecoilState(selectedAAState)
     const [selectedAAFeature, setSelectedAAFeature] = useRecoilState(selectedAAFeatureState)
-    console.log(selectedAAFeature)
 
     function toggleDisplayStops(adminArea: String){
         //TODO: this works but doesn't cause a re-render
@@ -27,6 +26,11 @@ function AASideView(){
         }
         return
     }
+
+    /* function focusFeature(feature: L.FeatureGroup){
+        const map = props.map.map
+        map.flyToBounds(feature.getBounds())
+    } */
 
     const feature = selectedAAFeature
 
@@ -41,14 +45,14 @@ function AASideView(){
 
 
 
-        <PopupPages
+        <SidebarPages
                         contentCycling={
                             <>
                             <TilesWrapper>
                                 <Suspense
                                 fallback={<Skeleton height="100%" width="100%" />}
                                 >
-                                <PopupData 
+                                <SidebarData 
                                     decimals={2}
                                     header='Gesamtlänge'
                                     size={Size.big}
@@ -56,7 +60,7 @@ function AASideView(){
                                     value={
                                         feature.properties.cycling.cyclingstreets.lengthKM
                                     }
-                                ></PopupData>
+                                ></SidebarData>
                                 </Suspense>
                             </TilesWrapper>
                             </>
@@ -105,14 +109,14 @@ function AASideView(){
                                     </>
                                 }
                                 contentParkingunits={
-                                    <PopupData 
+                                    <SidebarData 
                                         decimals={0}
                                         header='Summe Parkeinheiten'
                                         size={Size.big}
                                         value={
                                           feature.properties.parking.freqObjects
                                         }
-                                    ></PopupData>
+                                    ></SidebarData>
                                 }
                                 contentTypes={
                                     <span>
@@ -207,14 +211,14 @@ function AASideView(){
                                     <Suspense
                                     fallback={<Skeleton height="100%" width="100%" />}
                                     >
-                                    <PopupData 
+                                    <SidebarData 
                                         decimals={0}
                                         header='Summe Parkeinheiten'
                                         size={Size.big}
                                         value={
                                         feature.properties.parking.freqObjects
                                         }
-                                    ></PopupData>
+                                    ></SidebarData>
                                     </Suspense>
                                 </TilesWrapper>
                                 </>
@@ -227,19 +231,19 @@ function AASideView(){
                             <Suspense
                                 fallback={<Skeleton height="100%" width="100%" />}
                             >
-                                <PopupData 
+                                <SidebarData 
                                     decimals={0}
                                     header='Bus- haltestellen'
                                     size={Size.normal}
                                     unit=''
                                     value={
                                         feature.properties.service.busStopsWithin                                    }
-                                ></PopupData>
+                                ></SidebarData>
                             </Suspense><br/>
                             <Suspense
                                 fallback={<Skeleton height="100%" width="100%" />}
                             >
-                                <PopupData 
+                                <SidebarData 
                                     decimals={0}
                                     header='Bahnhöfe'
                                     size={Size.normal}
@@ -247,7 +251,7 @@ function AASideView(){
                                     value={
                                         feature.properties.service.trainStationsWithin
                                     }
-                                ></PopupData>
+                                ></SidebarData>
                             </Suspense>
                             <Button hover='mobility' onClick={() => {
                                     toggleDisplayStops(feature.properties.name);
@@ -265,7 +269,7 @@ function AASideView(){
                             <Suspense
                                 fallback={<Skeleton height="100%" width="100%" />}
                             >
-                                <PopupData 
+                                <SidebarData 
                                     decimals={0}
                                     header='Läden innerhalb'
                                     size={Size.normal}
@@ -273,12 +277,12 @@ function AASideView(){
                                     value={
                                         feature.properties.service.shopsWithin
                                     }
-                                ></PopupData>
+                                ></SidebarData>
                             </Suspense>
                             <Suspense
                                 fallback={<Skeleton height="100%" width="100%" />}
                             >
-                                <PopupData 
+                                <SidebarData 
                                     decimals={0}
                                     header='Läden in der Nähe'
                                     size={Size.normal}
@@ -286,12 +290,12 @@ function AASideView(){
                                     value={
                                         feature.properties.service.shopsNearby
                                     }
-                                ></PopupData>
+                                ></SidebarData>
                             </Suspense>
                             <Suspense
                                 fallback={<Skeleton height="100%" width="100%" />}
                             >
-                                <PopupData 
+                                <SidebarData 
                                     decimals={2}
                                     header='Abdeckung'
                                     size={Size.normal}
@@ -299,24 +303,14 @@ function AASideView(){
                                     value={
                                         feature.properties.service.coverage
                                     }
-                                ></PopupData>                                    
+                                ></SidebarData>                                    
                                 {/*TODO: don't forget the hover-description*/}
                             </Suspense>
                             </TilesWrapper>
                         }
 
                         name={feature.properties.name}
-                        ></PopupPages>
-
-
-
-
-
-
-
-
-
-
+                        ></SidebarPages>
 
         </>
     )
