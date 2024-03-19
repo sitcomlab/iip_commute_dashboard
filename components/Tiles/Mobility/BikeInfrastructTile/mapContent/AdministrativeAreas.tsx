@@ -13,7 +13,6 @@ import { SvgTrainstationIcon as TrainstationIcon } from '@/components/Icons/Trai
 import { SvgBusStopIcon as BusStopIcon } from '@/components/Icons/BusStopIcon';
 
 
-
 interface AAProps{
     contentGeometry: GeoJSON.FeatureCollection|undefined,
     map: L.Map
@@ -36,6 +35,8 @@ function AdministrativeAreas(props: AAProps) {
     const [selectedAA, setSelectedAA] = useRecoilState(selectedAAState)
     const [selectedAAFeature, setSelectedAAFeature] = useRecoilState(selectedAAFeatureState)
 
+    console.log(selectedAA)
+
     if (props.contentGeometry === undefined || props.contentGeometry.features === undefined) {
         return (<></>)
     }
@@ -51,8 +52,10 @@ function AdministrativeAreas(props: AAProps) {
     }
 
     function isAdminAreaSelected(adminArea: String){
-        console.log(selectedAA, adminArea)
-        return(selectedAA == adminArea)
+        if((selectedAAFeature === undefined || selectedAAFeature.properties === undefined)){
+            return false
+        }
+        return(selectedAAFeature.properties.name == adminArea)
     }
 
     // ## ADMINISTRATIVE AREAS
@@ -78,6 +81,7 @@ function AdministrativeAreas(props: AAProps) {
     //event functions for Adnimistrative areas
     function clickAdminArea(e: any, feature) {
         setSelectedAAFeature(feature);
+
         e.target.setStyle({
           color: '#000000',
           weight: 2,
@@ -189,6 +193,20 @@ function AdministrativeAreas(props: AAProps) {
             <Pane name="administrativeAreas" style={{ zIndex: 500}}>
             <FeatureGroup>
             {administrativeAreas.map((feature: any, index: any) => {
+                if(isAdminAreaSelected(feature.properties.name)){
+                    return(
+                        <GeoJSON
+                            data={feature}
+                            eventHandlers={{
+                                click: (e) => {clickAdminArea(e, feature)},
+                            }}
+                            key={'aa'+index+Date.now()+'selected'}
+                            pathOptions={selectedAdminAreaOptions}
+                        >
+                        </GeoJSON>
+                    )    
+                }
+                
                 return(
                     <GeoJSON
                         data={feature}
