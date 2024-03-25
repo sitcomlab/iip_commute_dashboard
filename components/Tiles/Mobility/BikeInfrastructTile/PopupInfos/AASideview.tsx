@@ -1,5 +1,5 @@
 import Skeleton from 'react-loading-skeleton';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 
 import { Button } from '@/components/Elements/Button';
@@ -12,6 +12,8 @@ import DonutChart from '../PopupInfos/DonutChart';
 
 import { selectedAAState } from '../mapContent/AdministrativeAreas';
 import { selectedAAFeatureState } from '../mapContent/AdministrativeAreas';
+import { displayedPointDataState } from '../mapContent/AdministrativeAreas';
+import { PointDataType } from '../mapContent/AdministrativeAreas';
 
 interface AASideViewProps{
     map: L.Map
@@ -20,6 +22,14 @@ interface AASideViewProps{
 function AASideView(props: AASideViewProps){
     const [selectedAA, setSelectedAA] = useRecoilState(selectedAAState)
     const [selectedAAFeature, setSelectedAAFeature] = useRecoilState(selectedAAFeatureState)
+    const [displayedPointData, setDisplayedPointData] = useRecoilState(displayedPointDataState)
+
+    useEffect(()=>{
+        console.log(selectedAA)
+    }, [selectedAA])
+    useEffect(()=>{
+        console.log(displayedPointData)
+    }, [displayedPointData])
 
     function toggleDisplayStops(adminArea: String){
         //TODO: this works but doesn't cause a re-render
@@ -27,6 +37,22 @@ function AASideView(props: AASideViewProps){
             setSelectedAA('')
         }else{
             setSelectedAA(adminArea)
+        }
+        return
+    }
+
+    function toggleDisplay(adminArea: String, typeDisplay: PointDataType){
+        if( displayedPointData != typeDisplay){
+            if(selectedAA != adminArea){
+                setSelectedAA(adminArea)
+            }
+            setDisplayedPointData(typeDisplay)
+        } else {
+            //if displayedPointData == typeDisplay
+            if(selectedAA == adminArea){
+                setSelectedAA('')
+            }
+            setDisplayedPointData(PointDataType.none)
         }
         return
     }
@@ -120,6 +146,7 @@ function AASideView(props: AASideViewProps){
                                     </>
                                 }
                                 contentParkingunits={
+                                    <>
                                     <SidebarData 
                                         decimals={0}
                                         header='Summe Parkeinheiten'
@@ -128,7 +155,18 @@ function AASideView(props: AASideViewProps){
                                           feature.properties.parking.freqObjects
                                         }
                                     ></SidebarData>
-                                }
+                                    <Button hover='mobility' onClick={() => {
+                                        toggleDisplay(feature.properties.name, PointDataType.parken)
+                                        /* if(selectedAA != feature.properties.name){
+                                            focusFeature(L.geoJSON(feature))
+                                        } */
+                                    }}
+                                        size='md'
+                                    >{(selectedAA == feature.properties.name) 
+                                        && (displayedPointData == PointDataType.parken) 
+                                        ? 'verstecken' : 'zeigen'}</Button>
+                                            </>
+                                        }
                                 contentTypes={
                                     <span>
                                     <div style={{height: '240px', width: '400px'}}>
@@ -265,13 +303,15 @@ function AASideView(props: AASideViewProps){
                                 ></SidebarData>
                             </Suspense>
                             <Button hover='mobility' onClick={() => {
-                                    toggleDisplayStops(feature.properties.name);
-                                    if(selectedAA != feature.properties.name){
+                                    toggleDisplay(feature.properties.name, PointDataType.öffis)
+                                    /* if(selectedAA != feature.properties.name){
                                         focusFeature(L.geoJSON(feature))
-                                    }
+                                    } */
                                 }}
                                 size='md'
-                            >{selectedAA != feature.properties.name ? 'zeigen' : 'verstecken'}</Button>
+                            >{(selectedAA == feature.properties.name) 
+                                && (displayedPointData == PointDataType.öffis) 
+                                ? 'verstecken' : 'zeigen'}</Button>
                             </TilesWrapper>
                         }
 
