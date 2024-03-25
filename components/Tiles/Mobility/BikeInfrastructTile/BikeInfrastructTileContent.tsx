@@ -47,16 +47,9 @@ function BikeInfrastructTileContent(props: { city: string; }) {
         
         {/*container of the AA-info-side*/}
         { mapViewState == ViewMode.AdministrativeAreas &&
-        <div
-            className='bg-white rounded-3xl shadow-md'
-            style={{
-                minWidth: '400px',
-                minHeight: '400px',
-                flexGrow: 1,
-            }}
-        >
-            <AASideView></AASideView>
-        </div>
+        
+            <AASideView map={map}></AASideView>
+
         }
 
         {/*container of the map-side*/}

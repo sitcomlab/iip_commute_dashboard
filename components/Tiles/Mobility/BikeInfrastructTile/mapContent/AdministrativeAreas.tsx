@@ -35,8 +35,6 @@ function AdministrativeAreas(props: AAProps) {
     const [selectedAA, setSelectedAA] = useRecoilState(selectedAAState)
     const [selectedAAFeature, setSelectedAAFeature] = useRecoilState(selectedAAFeatureState)
 
-    console.log(selectedAA)
-
     if (props.contentGeometry === undefined || props.contentGeometry.features === undefined) {
         return (<></>)
     }

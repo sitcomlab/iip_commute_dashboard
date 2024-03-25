@@ -13,7 +13,11 @@ import DonutChart from '../PopupInfos/DonutChart';
 import { selectedAAState } from '../mapContent/AdministrativeAreas';
 import { selectedAAFeatureState } from '../BikeInfrastructTileContent';
 
-function AASideView(){
+interface AASideViewProps{
+    map: L.Map
+}
+
+function AASideView(props: AASideViewProps){
     const [selectedAA, setSelectedAA] = useRecoilState(selectedAAState)
     const [selectedAAFeature, setSelectedAAFeature] = useRecoilState(selectedAAFeatureState)
 
@@ -27,15 +31,15 @@ function AASideView(){
         return
     }
 
-    /* function focusFeature(feature: L.FeatureGroup){
-        const map = props.map.map
+    function focusFeature(feature: L.FeatureGroup){
+        const map = props.map
         map.flyToBounds(feature.getBounds())
-    } */
+    }
 
     const feature = selectedAAFeature
 
-    if(feature === undefined || feature.properties === undefined){
-        return <>selected: none</>
+    if(feature === undefined || feature.properties === undefined || feature.properties.name === undefined){
+        return <></>
     }
 
     return(
@@ -44,7 +48,14 @@ function AASideView(){
 
 
 
-
+        <div
+            className='bg-white rounded-3xl shadow-md'
+            style={{
+                minWidth: '400px',
+                minHeight: '400px',
+                flexGrow: 1,
+            }}
+        >
         <SidebarPages
                         contentCycling={
                             <>
@@ -311,7 +322,7 @@ function AASideView(){
 
                         name={feature.properties.name}
                         ></SidebarPages>
-
+        </div>
         </>
     )
 }
