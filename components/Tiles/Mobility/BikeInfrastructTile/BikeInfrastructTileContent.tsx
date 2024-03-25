@@ -10,6 +10,7 @@ import BicycleInfrastructureData from './BikeInfrastructData'
 import ViewButton from './ViewButton';
 
 import CityViewConfig from '@/components/Views/CityViewConfig'
+import AASideView from './PopupInfos/AASideview';
 
 enum ViewMode {
     AdministrativeAreas = 'Administrative Areas',
@@ -19,7 +20,7 @@ enum ViewMode {
 const MapViewContext = createContext({
     mapViewState: ViewMode.BicycleNetwork,
     setMapViewState: (_arg: any) => {}
-  })
+})
 
 const CityContext = createContext('muenster')
 function BikeInfrastructTileContent(props: { city: string; }) {
@@ -31,12 +32,35 @@ function BikeInfrastructTileContent(props: { city: string; }) {
         <RecoilRoot>
         <MapViewContext.Provider value={{mapViewState, setMapViewState}}>
         <CityContext.Provider value={props.city}>
+        {/*Flex container of the two*/}
+        <div style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'stretch',
+            flexWrap: 'wrap-reverse',
+            gap: '1em'
+            }}>
+        
+        {/*container of the AA-info-side*/}
+        { mapViewState == ViewMode.AdministrativeAreas &&
+        
+            <AASideView map={map}></AASideView>
+
+        }
+
+        {/*container of the map-side*/}
+        <div style={{ 
+            flexGrow: 2,
+            flexBasis: '60%',
+            position: 'relative'
+            }}>
         {/*buttons here*/}
         <div
-            className='px-8 lg:pr-20'
             style={{
                 paddingTop:'1rem',
+                paddingRight:'1rem',
                 display: 'inline-flex', justifyContent: 'end', gap: '10px',
+                width: '100%',
                 right: 0,
                 position: 'absolute',
                 zIndex: 1000,
@@ -71,9 +95,10 @@ function BikeInfrastructTileContent(props: { city: string; }) {
 
         <MapContainer
             center={city.mapSettings.center}
-            className="h-[75vh] z-0 rounded-3xl"
+            className="h-[70vh] z-0 rounded-3xl"
             ref={setMap}
             scrollWheelZoom={true}
+            style={{}}
             zoom={city.mapSettings.zoom}
         >
             <TileLayer
@@ -86,11 +111,19 @@ function BikeInfrastructTileContent(props: { city: string; }) {
             <Pane name="tooltip" style={{ zIndex: 670 }}></Pane>
 
         </MapContainer >
+        </div>
+        </div>
+
+
         </CityContext.Provider>
         </MapViewContext.Provider>
         </RecoilRoot>
     )
 }
 
-export { ViewMode, MapViewContext, CityContext}
+export { 
+    ViewMode, 
+    MapViewContext, 
+    CityContext
+}
 export default BikeInfrastructTileContent
