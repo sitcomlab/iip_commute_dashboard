@@ -7,7 +7,6 @@ import { atom, useRecoilState} from 'recoil';
 import { GroupedLayer } from '../LayerControl/LayerControl';
 import BiMarkerIcon from './BiMarkerIcon';
 import { addInfo } from '../PopupInfos/PopupAddInfo';
-import { selectedAAFeatureState } from '../BikeInfrastructTileContent';
 
 import { SvgTrainstationIcon as TrainstationIcon } from '@/components/Icons/TrainstationIcon';
 import { SvgBusStopIcon as BusStopIcon } from '@/components/Icons/BusStopIcon';
@@ -22,6 +21,10 @@ interface AAProps{
 const selectedAAState = atom({
     key: 'selectedAA',
     default: ''
+})
+const selectedAAFeatureState = atom({
+    key: 'selectedAAFeature',
+    default: []
 })
 
 const StyledPopup = styled(Popup)`
@@ -230,5 +233,8 @@ function AdministrativeAreas(props: AAProps) {
 
 }
 
-export { selectedAAState }
+export { 
+    selectedAAState,
+    selectedAAFeatureState 
+}
 export default AdministrativeAreas

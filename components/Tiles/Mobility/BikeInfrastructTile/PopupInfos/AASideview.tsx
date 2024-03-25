@@ -11,7 +11,7 @@ import { CapacitySlider } from '../PopupInfos/CapacitySlider';
 import DonutChart from '../PopupInfos/DonutChart';
 
 import { selectedAAState } from '../mapContent/AdministrativeAreas';
-import { selectedAAFeatureState } from '../BikeInfrastructTileContent';
+import { selectedAAFeatureState } from '../mapContent/AdministrativeAreas';
 
 interface AASideViewProps{
     map: L.Map

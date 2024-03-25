@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, useState } from 'react'
-import { atom, RecoilRoot } from 'recoil';
+import { RecoilRoot } from 'recoil';
 import 'leaflet';
 import { MapContainer, Pane, TileLayer } from 'react-leaflet'
 import 'leaflet-defaulticon-compatibility';
@@ -20,10 +20,6 @@ enum ViewMode {
 const MapViewContext = createContext({
     mapViewState: ViewMode.BicycleNetwork,
     setMapViewState: (_arg: any) => {}
-})
-const selectedAAFeatureState = atom({
-    key: 'selectedAAFeature',
-    default: []
 })
 
 const CityContext = createContext('muenster')
@@ -125,5 +121,9 @@ function BikeInfrastructTileContent(props: { city: string; }) {
     )
 }
 
-export { ViewMode, MapViewContext, CityContext, selectedAAFeatureState}
+export { 
+    ViewMode, 
+    MapViewContext, 
+    CityContext
+}
 export default BikeInfrastructTileContent
