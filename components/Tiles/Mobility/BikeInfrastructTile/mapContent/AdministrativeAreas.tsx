@@ -66,20 +66,6 @@ function AdministrativeAreas(props: AAProps) {
         return (<></>)
     }
 
-    function toggleDisplay(adminArea: String, typeDisplay: PointDataType){
-        if( selectedAA == adminArea ){
-            setSelectedAA('')
-        }else{
-            setSelectedAA(adminArea)
-        }
-        if( displayedPointData == PointDataType.none ){
-            setDisplayedPointData(typeDisplay)
-        }else{
-            setDisplayedPointData(PointDataType.none)
-        }
-        return
-    }
-
     function isAdminAreaSelected(adminArea: String){
         if((selectedAAFeature === undefined || selectedAAFeature.properties === undefined)){
             return false

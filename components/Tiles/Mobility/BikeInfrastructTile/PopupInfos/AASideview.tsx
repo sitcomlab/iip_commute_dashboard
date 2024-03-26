@@ -1,5 +1,5 @@
 import Skeleton from 'react-loading-skeleton';
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 import { useRecoilState } from 'recoil';
 
 import { Button } from '@/components/Elements/Button';
@@ -24,23 +24,6 @@ function AASideView(props: AASideViewProps){
     const [selectedAAFeature, setSelectedAAFeature] = useRecoilState(selectedAAFeatureState)
     const [displayedPointData, setDisplayedPointData] = useRecoilState(displayedPointDataState)
 
-    useEffect(()=>{
-        console.log(selectedAA)
-    }, [selectedAA])
-    useEffect(()=>{
-        console.log(displayedPointData)
-    }, [displayedPointData])
-
-    function toggleDisplayStops(adminArea: String){
-        //TODO: this works but doesn't cause a re-render
-        if( selectedAA == adminArea ){
-            setSelectedAA('')
-        }else{
-            setSelectedAA(adminArea)
-        }
-        return
-    }
-
     function toggleDisplay(adminArea: String, typeDisplay: PointDataType){
         if( displayedPointData != typeDisplay){
             if(selectedAA != adminArea){
@@ -51,6 +34,9 @@ function AASideView(props: AASideViewProps){
             //if displayedPointData == typeDisplay
             if(selectedAA == adminArea){
                 setSelectedAA('')
+            } else {
+                setSelectedAA(adminArea)
+                return
             }
             setDisplayedPointData(PointDataType.none)
         }
