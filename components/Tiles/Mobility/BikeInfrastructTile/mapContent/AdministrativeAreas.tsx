@@ -290,9 +290,6 @@ function AdministrativeAreas(props: AAProps) {
                     return(
                         <GeoJSON
                             data={feature}
-                            eventHandlers={{
-                                click: (e) => {clickAdminArea(e, feature)},
-                            }}
                             key={'aa'+index+Date.now()+'selected'}
                             pathOptions={selectedAdminAreaOptions}
                         >
