@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { SVGProps } from 'react'
+//based on OSM data: © OpenStreetMap contributors: https://www.openstreetmap.org/copyright 
 function SvgOsnabrueckIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
