@@ -1,15 +1,12 @@
-import Image from 'next/image'
 import StairStepBackground from '../StairStepBackground'
-import MSLogo from '@/assets/logos/stadtlogo-muenster.png'
 import Link from 'next/link'
 import Collapsible from '../../Elements/Collapsible'
 import Container from '../Container'
 import {
-  //BicycleIcon,
-  //BuildingIcon,
   BicycleIcon,
+  LuebeckIcon,
   MuensterIcon,
-  OsnabrueckIcon,
+  OsnabrueckIcon
 } from '@/components/Icons'
 import { Bars3Icon } from '@heroicons/react/24/outline'
 import Title from '@/components/Elements/Title'
@@ -33,6 +30,12 @@ const links: LinkProps[] = [
     title: 'Osnabrück',
     icon: OsnabrueckIcon,
     link: '/osnabrueck',
+    hover: 'mobility',
+  },
+  {
+    title: 'Lübeck',
+    icon: LuebeckIcon,
+    link: '/luebeck',
     hover: 'mobility',
   },
 ]

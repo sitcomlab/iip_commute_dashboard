@@ -16,6 +16,15 @@ const CityViewConfig = {
                 zoom: 12
             },
         infrastructureSource: process.env.NEXT_PUBLIC_BICYCLE_INFRASTRUCTURE_URL_OS
+    },
+    luebeck: {
+        name: 'Lübeck',
+        mapSettings:
+            {
+                center: [53.890, 10.729],
+                zoom: 11
+            },
+        infrastructureSource: process.env.NEXT_PUBLIC_BICYCLE_INFRASTRUCTURE_URL_LB
     }
 }
 

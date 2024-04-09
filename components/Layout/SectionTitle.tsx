@@ -1,6 +1,6 @@
 import { cva, cx, VariantProps } from 'class-variance-authority'
 import Title from '../Elements/Title'
-import { BicycleIcon, MuensterIcon, OsnabrueckIcon } from '../Icons'
+import { BicycleIcon, LuebeckIcon, MuensterIcon, OsnabrueckIcon } from '../Icons'
 import { SVGProps } from 'react'
 
 const sectionHeaderStyle = cva('', {
@@ -15,6 +15,7 @@ const sectionHeaderStyle = cva('', {
 
       münster: 'text-mobility border-mobility',
       osnabrück: 'text-mobility border-mobility',
+      lübeck: 'text-mobility border-mobility',
     },
   },
 })
@@ -39,6 +40,10 @@ export default function SectionTitle({
   if (variant === 'osnabrück') {
     title = 'Osnabrück'
     Icon = OsnabrueckIcon
+  }
+  if (variant === 'lübeck') {
+    title = 'Lübeck'
+    Icon = LuebeckIcon
   }
 
   return (

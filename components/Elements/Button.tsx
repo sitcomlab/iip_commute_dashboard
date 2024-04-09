@@ -18,6 +18,7 @@ const button = cva(
         
         goToMuenster: 'border-climate text-primary',
         goToOsnabrueck: 'border-climate text-primary',
+        goToLuebeck: 'border-climate text-primary',
         
         viewButton: 'border-mobility text-mobility bg-mobility-light',
         viewButtonActive: 'text-white bg-mobility border-mobility text-mobility',
