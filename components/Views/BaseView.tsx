@@ -4,7 +4,7 @@ import SectionHeader from '../Layout/SectionHeader'
 //import Columns from '../Layout/Columns'
 
 interface ViewProps {
-  type: 'mobility' | 'münster' | 'osnabrück'
+  type: 'mobility' | 'münster' | 'osnabrück' | 'lübeck'
   children: React.ReactNode | React.ReactNode[]
   showSuccessStories?: boolean
   showSurveys?: boolean

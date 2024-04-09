@@ -3,7 +3,7 @@ import SectionTitle from './SectionTitle'
 export default function SectionHeader({
   variant,
 }: {
-  variant: 'mobility' | 'münster' | 'osnabrück'
+  variant: 'mobility' | 'münster' | 'osnabrück' | 'lübeck'
 }) {
   return (
     <div className="my-4 flex w-full items-center justify-between">
