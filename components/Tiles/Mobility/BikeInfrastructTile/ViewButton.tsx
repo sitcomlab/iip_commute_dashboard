@@ -57,17 +57,6 @@ function ViewButton({ type }: ButtonProps) {
         )
     }
 
-    if (type == ViewMode.PublicTransport) {
-        return(
-            <ButtonBase 
-                buttonText='Bus & Bahn'
-                mapViewContext={mapViewState}
-                onClick={() => {return setMapViewState(type);}}
-                type={type}
-            />
-        )
-    }
-
     //this shall not be reached
     return <></>
 }
