@@ -374,7 +374,6 @@ function BicycleInfrastructureFeatures(props: BIProps) {
 
         {/* Parken und Laden */}
         <GroupedLayer
-            checked
             group="Parken + Laden"
             icon={<ParkingIcon />}
             name="Parken"
@@ -442,7 +441,6 @@ function BicycleInfrastructureFeatures(props: BIProps) {
 
         {/* Rad-Service */}
         <GroupedLayer
-            checked
             group="Rad-Service"
             icon={<ShopIcon />}
             name="Fahrrad-Laden"
