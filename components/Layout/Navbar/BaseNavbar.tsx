@@ -87,9 +87,15 @@ export default function BaseNavbar({
                 as="h2"
                 variant={variant === 'overlay' ? 'inverse' : 'primary'}
               >
-                Pendel-Dashboard
+                IP-Dashboard
               </Title>
             </Link>
+            <Title
+              as="h4"
+              variant={variant === 'overlay' ? 'inverse' : 'primary'}
+            >
+              (work-in-progress)
+            </Title>
             <div className="flex items-center justify-between">
               {actionComponent}
 
