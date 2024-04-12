@@ -8,12 +8,15 @@ import MarkerClusterGroup from '@changey/react-leaflet-markercluster';
 import { GroupedLayer } from '../LayerControl/LayerControl';
 import BiMarkerIcon from './BiMarkerIcon';
 import { addInfo } from '../PopupInfos/PopupAddInfo';
-import { createClusterCustomIconBlue } from './ClusterMarkerIcons';
+import { createClusterCustomIconBlue, createClusterCustomIconGreen } from './ClusterMarkerIcons';
 
 import { SvgTrainstationIcon as TrainstationIcon } from '@/components/Icons/TrainstationIcon';
 import { SvgBusStopIcon as BusStopIcon } from '@/components/Icons/BusStopIcon';
 import { SvgParkingIcon as ParkingIcon } from '@/components/Icons/ParkingIcon';
-
+import {SvgShopIcon as ShopIcon} from '@/components/Icons/ShopIcon';
+import {SvgRepairIcon as RepairIcon} from '@/components/Icons/RepairIcon';
+import {SvgRentalIcon as RentalIcon} from '@/components/Icons/RentalIcon';
+import {SvgTubeIcon as TubeIcon} from '@/components/Icons/TubeIcon';
 
 interface AAProps{
     contentGeometry: GeoJSON.FeatureCollection|undefined,
@@ -24,6 +27,8 @@ enum PointDataType{
     none = 'keine',
 
     öffis = 'Öffis',
+
+    service = 'Service',
 
     fahrradLaden = 'Fahrrad-Laden',
     diyStation = 'DIY-Station',
@@ -64,20 +69,6 @@ function AdministrativeAreas(props: AAProps) {
 
     if (props.contentGeometry === undefined || props.contentGeometry.features === undefined) {
         return (<></>)
-    }
-
-    function toggleDisplay(adminArea: String, typeDisplay: PointDataType){
-        if( selectedAA == adminArea ){
-            setSelectedAA('')
-        }else{
-            setSelectedAA(adminArea)
-        }
-        if( displayedPointData == PointDataType.none ){
-            setDisplayedPointData(typeDisplay)
-        }else{
-            setDisplayedPointData(PointDataType.none)
-        }
-        return
     }
 
     function isAdminAreaSelected(adminArea: String){
@@ -199,6 +190,7 @@ function AdministrativeAreas(props: AAProps) {
             return L.marker(latlng, { icon: trainIcon });
         }
 
+        // Filter and style parking
         const parking = props.contentGeometry.features.filter(
             (feature: any) =>
             feature.properties.bike_infrastructure_type === 'parking' &&
@@ -221,6 +213,95 @@ function AdministrativeAreas(props: AAProps) {
             });
             return L.marker(latlng, { icon: parkingIcon });
         }
+
+        // Filter and Style service stations
+        const bicycleShops = props.contentGeometry.features.filter(
+            (feature: any) =>
+            feature.properties.bike_infrastructure_type === 'bicycle_shop' &&
+            feature.geometry.type === 'Point' &&
+            feature.properties.aa === selectedAA &&
+            displayedPointData == PointDataType.service
+        );
+        function pointShop(geojsonPoint: any, latlng: any) {
+            const shopIcon = L.divIcon({
+            className: '',
+            html: renderToStaticMarkup(
+                <BiMarkerIcon
+                color="#385723"
+                icon={<ShopIcon fill="#E2F0D9" />}
+                ></BiMarkerIcon>
+            ),
+            iconSize: [32, 32],
+            iconAnchor: [16, 16],
+            popupAnchor: [-3, -11],
+            });
+            return L.marker(latlng, { icon: shopIcon });
+        }
+        const tubeVendings = props.contentGeometry.features.filter(
+            (feature: any) =>
+            feature.properties.bike_infrastructure_type === 'tube_vending_machine' &&
+            feature.properties.aa === selectedAA &&
+            displayedPointData == PointDataType.service
+        );
+        function pointTube(geojsonPoint: any, latlng: any) {
+            const tubeIcon = L.divIcon({
+            className: '',
+            html: renderToStaticMarkup(
+                <BiMarkerIcon
+                color="#385723"
+                icon={<TubeIcon fill="#E2F0D9" />}
+                ></BiMarkerIcon>
+            ),
+            iconSize: [32, 32],
+            iconAnchor: [16, 16],
+            popupAnchor: [-3, -11],
+            });
+            return L.marker(latlng, { icon: tubeIcon });
+        }
+        const repairStations = props.contentGeometry.features.filter(
+            (feature: any) =>
+                feature.properties.bike_infrastructure_type === 'bicycle_repair_station' &&
+                feature.properties.aa === selectedAA &&
+                displayedPointData == PointDataType.service
+        );
+        function pointRepair(geojsonPoint: any, latlng: any) {  
+            const repairIcon = L.divIcon({
+                className: '',
+                html: renderToStaticMarkup(
+                    <BiMarkerIcon
+                        color="#385723"
+                        icon={<RepairIcon fill="#E2F0D9" />}
+                    ></BiMarkerIcon>
+                ),
+                iconSize: [32, 32],
+                iconAnchor: [16, 16],
+                popupAnchor: [-3, -11],
+            });
+            return L.marker(latlng, { icon: repairIcon });
+        }
+        const rentals = props.contentGeometry.features.filter(
+            (feature: any) =>
+                feature.properties.bike_infrastructure_type === 'bicycle_rental' &&
+                feature.properties.aa === selectedAA &&
+                displayedPointData == PointDataType.service
+        );
+        function pointRental(geojsonPoint: any, latlng: any) {
+            const rentalIcon = L.divIcon({
+                className: '',
+                html: renderToStaticMarkup(
+                    <BiMarkerIcon
+                        color="#385723"
+                        icon={<RentalIcon fill="#E2F0D9" />}
+                    ></BiMarkerIcon>
+                ),
+                iconSize: [32, 32],
+                iconAnchor: [16, 16],
+                popupAnchor: [-3, -11],
+            });
+            return L.marker(latlng, { icon: rentalIcon });
+        }
+
+
 
       return(
         <>
@@ -291,6 +372,88 @@ function AdministrativeAreas(props: AAProps) {
             </Pane>
         </GroupedLayer>
         }
+        { displayedPointData == PointDataType.service &&
+        <>
+        <GroupedLayer
+        checked
+        group="Rad-Service"
+        icon={<ShopIcon />}
+        name="Fahrrad-Laden"
+            >
+            <Pane name="bicycleShops" style={{ zIndex: 514 }}>
+                <MarkerClusterGroup
+                clusterPane={'bicycleShops'}
+                iconCreateFunction={createClusterCustomIconGreen}
+                polygonOptions={{
+                    color: '#253a18',
+                    weight: 2,
+                    opacity: 0.8,
+                    fillOpacity: 0.3,
+                }}
+                spiderfyDistanceMultiplier={3}
+                >
+                <GeoJSON
+                    data={bicycleShops}
+                    key={'bicycleShops'+selectedAA}
+                    onEachFeature={addInfo}
+                    pointToLayer={pointShop}
+                ></GeoJSON>
+                </MarkerClusterGroup>
+            </Pane>
+            </GroupedLayer>
+    
+            <GroupedLayer
+                checked
+                group="Rad-Service"
+                icon={<RepairIcon fill="#000000" />}
+                name="DIY-Station"
+            >
+            <Pane name="repairStations" style={{ zIndex: 513 }}>
+            <FeatureGroup>
+                <GeoJSON
+                    data={repairStations}
+                    key={'repairStations'+selectedAA}
+                    onEachFeature={addInfo}
+                    pointToLayer={pointRepair}
+                />
+            </FeatureGroup>
+            </Pane>
+            </GroupedLayer>
+    
+            <GroupedLayer 
+                checked
+                group="Rad-Service" 
+                name="Rad-Verleih">
+            <Pane name="rentals" style={{ zIndex: 512 }}>
+            <FeatureGroup>
+                <GeoJSON
+                    data={rentals}
+                    key={'rentals'+selectedAA}
+                    onEachFeature={addInfo}
+                    pointToLayer={pointRental}
+                />
+            </FeatureGroup>
+            </Pane>
+            </GroupedLayer>
+            
+            <GroupedLayer 
+                checked
+                group="Rad-Service" 
+                name="Schlauch-Automat"
+            >
+            <Pane name="tubeVendings" style={{ zIndex: 511 }}>
+                <FeatureGroup>
+                <GeoJSON
+                    data={tubeVendings}
+                    key={'tubeVendings'+selectedAA}
+                    onEachFeature={addInfo}
+                    pointToLayer={pointTube}
+                />
+                </FeatureGroup>
+            </Pane>
+        </GroupedLayer>
+        </>
+        }
 
         <GroupedLayer 
                 checked
@@ -304,9 +467,6 @@ function AdministrativeAreas(props: AAProps) {
                     return(
                         <GeoJSON
                             data={feature}
-                            eventHandlers={{
-                                click: (e) => {clickAdminArea(e, feature)},
-                            }}
                             key={'aa'+index+Date.now()+'selected'}
                             pathOptions={selectedAdminAreaOptions}
                         >

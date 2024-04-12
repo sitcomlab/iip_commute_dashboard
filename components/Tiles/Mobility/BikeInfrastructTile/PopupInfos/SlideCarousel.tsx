@@ -33,8 +33,9 @@ const SliderPage = styled.div`
   margin: 0rem;
   border: 0rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 `;
 
 function SliderCarousel(props: ISliderCarouselProps) {
