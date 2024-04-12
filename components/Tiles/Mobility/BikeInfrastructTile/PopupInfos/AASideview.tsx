@@ -288,7 +288,9 @@ function AASideView(props: AASideViewProps){
                                     }
                                 ></SidebarData>
                             </Suspense>
-                            <Button hover='mobility' onClick={() => {
+                            <Button 
+                            className='mx-4'
+                            hover='mobility' onClick={() => {
                                     toggleDisplay(feature.properties.name, PointDataType.öffis)
                                     /* if(selectedAA != feature.properties.name){
                                         focusFeature(L.geoJSON(feature))
@@ -343,6 +345,18 @@ function AASideView(props: AASideViewProps){
                                 ></SidebarData>                                    
                                 {/*TODO: don't forget the hover-description*/}
                             </Suspense>
+                            <Button 
+                            className='mx-20'
+                            hover='mobility' onClick={() => {
+                                    toggleDisplay(feature.properties.name, PointDataType.service)
+                                    /* if(selectedAA != feature.properties.name){
+                                        focusFeature(L.geoJSON(feature))
+                                    } */
+                                }}
+                                size='md'
+                            >{(selectedAA == feature.properties.name) 
+                                && (displayedPointData == PointDataType.service) 
+                                ? 'verstecken' : 'zeigen'}</Button>
                             </TilesWrapper>
                         }
 
