@@ -127,7 +127,7 @@ function Symbology(layer, text){
         //this could be more generalized
         case 'Fahrradstraße 2.0':
             icon = <LegendRow
-                    icon={<LineIcon stroke='#f6ef3c' stroke-width='20'/>}
+                    icon={<LineIcon stroke='#319621'/>}
                     text={text}
                 ></LegendRow>;
             break;
@@ -150,6 +150,10 @@ function Symbology(layer, text){
                     ></LegendRow>;
             break;
         case 'Radwege-Netz':
+            icon = <LegendRow
+                    icon={<LineIcon stroke='#f6ef3c' stroke-width='20'/>}
+                    text={text}
+                ></LegendRow>;
             break;
         case 'Weg-Beschilderung':
             icon = <LegendRow
