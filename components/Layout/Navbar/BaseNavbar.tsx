@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Collapsible from '../../Elements/Collapsible'
 import Container from '../Container'
 import {
-  BicycleIcon,
   LuebeckIcon,
   MuensterIcon,
   OsnabrueckIcon
@@ -14,12 +13,6 @@ import LinkComponent, { LinkProps } from './LinkComponent'
 import { Spacer } from '@/components/Elements/Spacer'
 
 const links: LinkProps[] = [
-  {
-    title: 'Mobilität',
-    icon: BicycleIcon,
-    link: '/mobilitaet',
-    hover: 'mobility',
-  },
   {
     title: 'Münster',
     icon: MuensterIcon,
