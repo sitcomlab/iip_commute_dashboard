@@ -8,7 +8,6 @@ import {
   TileTypePrefix,
 } from '@/types/tile'
 import { ID } from '@directus/sdk'
-import WeatherTile from '@/components/Tiles/Mobility/WeatherTile'
 
 type TileTypeSuffix =
   | MobilityTypes
